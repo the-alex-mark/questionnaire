@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Windows.Forms;
 
+using Teacher.Properties;
 using ProgLib.Data.CSharp;
 using ProgLib.Diagnostics;
 using Questionnaire.Controls;
@@ -112,10 +113,10 @@ namespace Teacher
         public FormAbout()
         {
             InitializeComponent();
-        }
 
-        private void Information_Load(Object sender, EventArgs e)
-        {
+            // Установка максимального размера завёртывания формы
+            MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+
             // Оформление MainMenu
             MainMenu.Renderer = new MenuRenderer();
             MainMenu.MouseDown += delegate (Object _object, MouseEventArgs _mouseEventArgs)
@@ -132,8 +133,12 @@ namespace Teacher
             {
                 Close();
             };
+        }
 
+        private void Information_Load(Object sender, EventArgs e)
+        {
             Property _property = AssemblyInfo.Get(Assembly.GetExecutingAssembly().Location);
+
             Title.Text = _property.Title;
             Version.Text = $"Версия {_property.Version.Major}.{_property.Version.Minor} сборка {_property.FileVersion.Major}";
             Copyright.Text = _property.Copyright;
@@ -154,7 +159,7 @@ namespace Teacher
         {
             try
             {
-                Process.Start(Developer.Text);
+                Process.Start(Properties.Resources.Developer);
             }
             catch { MessageBox.Show("Отсутствует подключение к интернету.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
