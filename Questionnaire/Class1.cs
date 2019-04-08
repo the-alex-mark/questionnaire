@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Questionnaire
 {
-    public class Class1
+    public class пввп
     {
     }
 }
