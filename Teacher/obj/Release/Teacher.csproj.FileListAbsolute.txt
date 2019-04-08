@@ -7,3 +7,12 @@ C:\Users\Александр Макаров\source\repos\Опросник\Teacher
 C:\Users\Александр Макаров\source\repos\Опросник\Teacher\obj\Release\Teacher.csproj.CoreCompileInputs.cache
 C:\Users\Александр Макаров\source\repos\Опросник\Teacher\obj\Release\Teacher.exe
 C:\Users\Александр Макаров\source\repos\Опросник\Teacher\obj\Release\Teacher.pdb
+C:\Users\Александр Макаров\source\repos\Опросник\Teacher\bin\Release\ProgLib.dll
+C:\Users\Александр Макаров\source\repos\Опросник\Teacher\bin\Release\Questionnaire.dll
+C:\Users\Александр Макаров\source\repos\Опросник\Teacher\bin\Release\Ionic.Zip.dll
+C:\Users\Александр Макаров\source\repos\Опросник\Teacher\bin\Release\taglib-sharp.dll
+C:\Users\Александр Макаров\source\repos\Опросник\Teacher\bin\Release\CoreAudioApi.dll
+C:\Users\Александр Макаров\source\repos\Опросник\Teacher\bin\Release\Questionnaire.pdb
+C:\Users\Александр Макаров\source\repos\Опросник\Teacher\bin\Release\ProgLib.pdb
+C:\Users\Александр Макаров\source\repos\Опросник\Teacher\obj\Release\Teacher.FormMain.resources
+C:\Users\Александр Макаров\source\repos\Опросник\Teacher\obj\Release\Teacher.csproj.CopyComplete
