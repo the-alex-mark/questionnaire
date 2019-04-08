@@ -1,0 +1,9 @@
+C:\Users\Александр Макаров\source\repos\Опросник\Teacher\bin\Release\Teacher.exe.config
+C:\Users\Александр Макаров\source\repos\Опросник\Teacher\bin\Release\Teacher.exe
+C:\Users\Александр Макаров\source\repos\Опросник\Teacher\bin\Release\Teacher.pdb
+C:\Users\Александр Макаров\source\repos\Опросник\Teacher\obj\Release\Teacher.csprojAssemblyReference.cache
+C:\Users\Александр Макаров\source\repos\Опросник\Teacher\obj\Release\Teacher.Properties.Resources.resources
+C:\Users\Александр Макаров\source\repos\Опросник\Teacher\obj\Release\Teacher.csproj.GenerateResource.cache
+C:\Users\Александр Макаров\source\repos\Опросник\Teacher\obj\Release\Teacher.csproj.CoreCompileInputs.cache
+C:\Users\Александр Макаров\source\repos\Опросник\Teacher\obj\Release\Teacher.exe
+C:\Users\Александр Макаров\source\repos\Опросник\Teacher\obj\Release\Teacher.pdb

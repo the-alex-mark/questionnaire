@@ -1,6 +1,5 @@
 C:\Users\Александр Макаров\source\repos\Опросник\Questionnaire\bin\Release\Questionnaire.dll
 C:\Users\Александр Макаров\source\repos\Опросник\Questionnaire\bin\Release\Questionnaire.pdb
-C:\Users\Александр Макаров\source\repos\Опросник\Questionnaire\bin\Release\ProgLib.dll
 C:\Users\Александр Макаров\source\repos\Опросник\Questionnaire\obj\Release\Questionnaire.csprojAssemblyReference.cache
 C:\Users\Александр Макаров\source\repos\Опросник\Questionnaire\obj\Release\Questionnaire.csproj.CoreCompileInputs.cache
 C:\Users\Александр Макаров\source\repos\Опросник\Questionnaire\obj\Release\Questionnaire.csproj.CopyComplete
