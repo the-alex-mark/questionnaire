@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            //System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDesigner));
             this.MainMenu = new System.Windows.Forms.MenuStrip();
             this.menuClose = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMaximum = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,6 +64,8 @@
             this.mDelQuestion = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.mRandomOrderAnswers = new System.Windows.Forms.ToolStripMenuItem();
+            this.mAddImage = new System.Windows.Forms.ToolStripMenuItem();
+            this.mDelImage = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.mTypeOfQuestion = new System.Windows.Forms.ToolStripMenuItem();
             this.mSingleAnswerSelection = new System.Windows.Forms.ToolStripMenuItem();
@@ -80,8 +81,6 @@
             this.listAnswers = new System.Windows.Forms.Panel();
             this.addAnswer = new System.Windows.Forms.Button();
             this.tAutosave = new System.Windows.Forms.Timer(this.components);
-            this.mAddImage = new System.Windows.Forms.ToolStripMenuItem();
-            this.mDelImage = new System.Windows.Forms.ToolStripMenuItem();
             this.addImage = new System.Windows.Forms.Button();
             this.pImage = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -198,7 +197,7 @@
             // 
             this.mSaveAs.Name = "mSaveAs";
             this.mSaveAs.Padding = new System.Windows.Forms.Padding(0);
-            this.mSaveAs.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift)
+            this.mSaveAs.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.S)));
             this.mSaveAs.Size = new System.Drawing.Size(203, 20);
             this.mSaveAs.Text = "Сохранить как ...";
@@ -393,7 +392,7 @@
             this.mAddQuestion.Name = "mAddQuestion";
             this.mAddQuestion.Padding = new System.Windows.Forms.Padding(0);
             this.mAddQuestion.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
-            this.mAddQuestion.Size = new System.Drawing.Size(202, 20);
+            this.mAddQuestion.Size = new System.Drawing.Size(208, 20);
             this.mAddQuestion.Text = "Добавить вопрос";
             this.mAddQuestion.Click += new System.EventHandler(this.mAddQuestion_Click);
             // 
@@ -402,7 +401,7 @@
             this.mDuplicateQuestion.Name = "mDuplicateQuestion";
             this.mDuplicateQuestion.Padding = new System.Windows.Forms.Padding(0);
             this.mDuplicateQuestion.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
-            this.mDuplicateQuestion.Size = new System.Drawing.Size(202, 20);
+            this.mDuplicateQuestion.Size = new System.Drawing.Size(208, 20);
             this.mDuplicateQuestion.Text = "Дублировать вопрос";
             this.mDuplicateQuestion.Click += new System.EventHandler(this.mDuplicateQuestion_Click);
             // 
@@ -410,27 +409,44 @@
             // 
             this.mDelQuestion.Name = "mDelQuestion";
             this.mDelQuestion.Padding = new System.Windows.Forms.Padding(0);
-            this.mDelQuestion.Size = new System.Drawing.Size(202, 20);
+            this.mDelQuestion.Size = new System.Drawing.Size(208, 20);
             this.mDelQuestion.Text = "Удалить вопрос";
             this.mDelQuestion.Click += new System.EventHandler(this.mDelQuestion_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(199, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(205, 6);
             // 
             // mRandomOrderAnswers
             // 
             this.mRandomOrderAnswers.Name = "mRandomOrderAnswers";
             this.mRandomOrderAnswers.Padding = new System.Windows.Forms.Padding(0);
-            this.mRandomOrderAnswers.Size = new System.Drawing.Size(202, 20);
+            this.mRandomOrderAnswers.Size = new System.Drawing.Size(208, 20);
             this.mRandomOrderAnswers.Text = "Случайный порядок ответов";
             this.mRandomOrderAnswers.Click += new System.EventHandler(this.mRandomOrderAnswers_Click);
+            // 
+            // mAddImage
+            // 
+            this.mAddImage.Name = "mAddImage";
+            this.mAddImage.Padding = new System.Windows.Forms.Padding(0);
+            this.mAddImage.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
+            this.mAddImage.Size = new System.Drawing.Size(208, 20);
+            this.mAddImage.Text = "Добавить изображение";
+            this.mAddImage.Click += new System.EventHandler(this.mAddImage_Click);
+            // 
+            // mDelImage
+            // 
+            this.mDelImage.Name = "mDelImage";
+            this.mDelImage.Padding = new System.Windows.Forms.Padding(0);
+            this.mDelImage.Size = new System.Drawing.Size(208, 20);
+            this.mDelImage.Text = "Удалить изображение";
+            this.mDelImage.Click += new System.EventHandler(this.mDelImage_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(199, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(205, 6);
             // 
             // mTypeOfQuestion
             // 
@@ -440,7 +456,7 @@
             this.mTypeOfQuestion.Margin = new System.Windows.Forms.Padding(0, 0, 0, 1);
             this.mTypeOfQuestion.Name = "mTypeOfQuestion";
             this.mTypeOfQuestion.Padding = new System.Windows.Forms.Padding(0);
-            this.mTypeOfQuestion.Size = new System.Drawing.Size(202, 20);
+            this.mTypeOfQuestion.Size = new System.Drawing.Size(208, 20);
             this.mTypeOfQuestion.Text = "Тип вопроса";
             // 
             // mSingleAnswerSelection
@@ -496,7 +512,7 @@
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
             this.panel1.Controls.Add(this.listQuestions);
@@ -555,8 +571,8 @@
             // 
             // listAnswers
             // 
-            this.listAnswers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.listAnswers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listAnswers.AutoScroll = true;
             this.listAnswers.BackColor = System.Drawing.Color.Transparent;
@@ -581,27 +597,9 @@
             this.tAutosave.Interval = 300000;
             this.tAutosave.Tick += new System.EventHandler(this.tAutosave_Tick);
             // 
-            // mAddImage
-            // 
-            this.mAddImage.Name = "mAddImage";
-            this.mAddImage.Padding = new System.Windows.Forms.Padding(0);
-            this.mAddImage.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
-            this.mAddImage.Size = new System.Drawing.Size(208, 20);
-            this.mAddImage.Text = "Добавить изображение";
-            this.mAddImage.Click += new System.EventHandler(this.mAddImage_Click);
-            // 
-            // mDelImage
-            // 
-            this.mDelImage.Name = "mDelImage";
-            this.mDelImage.Padding = new System.Windows.Forms.Padding(0);
-            this.mDelImage.Size = new System.Drawing.Size(202, 20);
-            this.mDelImage.Text = "Удалить изображение";
-            this.mDelImage.Click += new System.EventHandler(this.mDelImage_Click);
-            // 
             // addImage
             // 
             this.addImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            //this.addImage.Image = ((System.Drawing.Image)(resources.GetObject("addImage.Image")));
             this.addImage.Location = new System.Drawing.Point(419, 506);
             this.addImage.Name = "addImage";
             this.addImage.Size = new System.Drawing.Size(24, 24);
@@ -624,6 +622,8 @@
             // 
             // panel2
             // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.Controls.Add(this.tQuestion);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.pImage);

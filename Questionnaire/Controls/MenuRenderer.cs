@@ -40,14 +40,14 @@ namespace Questionnaire.Controls
                     {
                         switch (e.Item.Name)
                         {
-                            case "menuTitle":
-                            case "menuIcon":
+                            case "mmmTitle":
+                            case "mmIcon":
                                 e.Graphics.FillRectangle(
                                     new SolidBrush(Color.Transparent),
                                     new Rectangle(0, 0, e.Item.Width, e.Item.Height));
                                 break;
 
-                            case "menuClose":
+                            case "mmClose":
                                 e.Graphics.FillRectangle(
                                     new SolidBrush(Color.FromArgb(232, 38, 55)),
                                     new Rectangle(0, 0, e.Item.Width, e.Item.Height));

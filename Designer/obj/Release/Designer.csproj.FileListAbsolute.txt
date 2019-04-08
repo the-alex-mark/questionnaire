@@ -15,3 +15,4 @@ C:\Users\Александр Макаров\source\repos\Опросник\Designe
 C:\Users\Александр Макаров\source\repos\Опросник\Designer\bin\Release\Questionnaire.pdb
 C:\Users\Александр Макаров\source\repos\Опросник\Designer\bin\Release\ProgLib.pdb
 C:\Users\Александр Макаров\source\repos\Опросник\Designer\obj\Release\Designer.csproj.CopyComplete
+C:\Users\Александр Макаров\source\repos\Опросник\Designer\obj\Release\Designer.FormDesigner.resources

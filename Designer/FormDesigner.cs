@@ -746,25 +746,31 @@ namespace Designer
             // Растяжение формы
             MouseMove += delegate (Object _object, MouseEventArgs _mouseEventArgs)
             {
-                if (_mouseEventArgs.X >= Width - 4 && _mouseEventArgs.Y >= Height - 4) { Cursor = Cursors.SizeNWSE; }
-                else if (_mouseEventArgs.X >= Width - 4 && _mouseEventArgs.Y > 25) { Cursor = Cursors.SizeWE; }
-                else if (_mouseEventArgs.Y >= Height - 4) { Cursor = Cursors.SizeNS; }
-                else { Cursor = Cursors.Default; }
+                if (WindowState != FormWindowState.Maximized)
+                {
+                    if (_mouseEventArgs.X >= Width - 4 && _mouseEventArgs.Y >= Height - 4) { Cursor = Cursors.SizeNWSE; }
+                    else if (_mouseEventArgs.X >= Width - 4 && _mouseEventArgs.Y > 25) { Cursor = Cursors.SizeWE; }
+                    else if (_mouseEventArgs.Y >= Height - 4) { Cursor = Cursors.SizeNS; }
+                    else { Cursor = Cursors.Default; }
+                }
             };
             MouseDown += delegate (Object _object, MouseEventArgs _mouseEventArgs)
             {
-                uint Param = 0;
+                if (WindowState != FormWindowState.Maximized)
+                {
+                    uint Param = 0;
 
-                if (Cursor == Cursors.Default) { Param = 0; }
-                else
-                if (Cursor == Cursors.SizeNWSE) { Param = 0xF008; }
-                else
-                if (Cursor == Cursors.SizeWE) { Param = 0xF002; }
-                else
-                if (Cursor == Cursors.SizeNS) { Param = 0xF006; }
+                    if (Cursor == Cursors.Default) { Param = 0; }
+                    else
+                    if (Cursor == Cursors.SizeNWSE) { Param = 0xF008; }
+                    else
+                    if (Cursor == Cursors.SizeWE) { Param = 0xF002; }
+                    else
+                    if (Cursor == Cursors.SizeNS) { Param = 0xF006; }
 
-                ReleaseCapture();
-                PostMessage(Handle, 0x0112, Param, 0);
+                    ReleaseCapture();
+                    PostMessage(Handle, 0x0112, Param, 0);
+                }
             };
 
             // Оформление MainMenu
