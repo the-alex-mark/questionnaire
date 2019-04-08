@@ -1,4 +1,5 @@
-﻿using Questionnaire.Controls;
+﻿using ProgLib.Network;
+using Questionnaire.Controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -203,5 +204,12 @@ namespace Teacher
         }
 
         #endregion
+
+        private void FormMain_Load(Object sender, EventArgs e)
+        {
+            //LocalNetwork LN = new LocalNetwork();
+            //MessageBox.Show(LN.GetListMachines(1).Aggregate("", (S, I) => S += I + "\n"));
+            //MessageBox.Show(LN.GetListMachines(2).Aggregate("", (S, I) => S += I + "\n"));
+        }
     }
 }
