@@ -1,0 +1,9 @@
+C:\Users\Александр Макаров\source\repos\Опросник\Designer\bin\x64\Release\Designer.exe.config
+C:\Users\Александр Макаров\source\repos\Опросник\Designer\bin\x64\Release\Designer.exe
+C:\Users\Александр Макаров\source\repos\Опросник\Designer\bin\x64\Release\Designer.pdb
+C:\Users\Александр Макаров\source\repos\Опросник\Designer\obj\x64\Release\Designer.csprojAssemblyReference.cache
+C:\Users\Александр Макаров\source\repos\Опросник\Designer\obj\x64\Release\Designer.Properties.Resources.resources
+C:\Users\Александр Макаров\source\repos\Опросник\Designer\obj\x64\Release\Designer.csproj.GenerateResource.cache
+C:\Users\Александр Макаров\source\repos\Опросник\Designer\obj\x64\Release\Designer.csproj.CoreCompileInputs.cache
+C:\Users\Александр Макаров\source\repos\Опросник\Designer\obj\x64\Release\Designer.exe
+C:\Users\Александр Макаров\source\repos\Опросник\Designer\obj\x64\Release\Designer.pdb
