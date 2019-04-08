@@ -61,6 +61,15 @@ namespace Teacher.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на https://vk.com/the_alex_mark.
+        /// </summary>
+        internal static string Developer {
+            get {
+                return ResourceManager.GetString("Developer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap mmClose {

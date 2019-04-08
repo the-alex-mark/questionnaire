@@ -727,9 +727,9 @@ namespace Designer
         {
             try
             {
-                Process.Start("https://vk.com/the_alex_mark");
+                Process.Start(Resources.Developer);
             }
-            catch { MessageBox.Show("Отсутствует подключение к интернету.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch { MessageBox.Show("Отсутствует подключение к интернету.", "Конструктор тестов", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
         private void mAboutTheProgram_Click(Object sender, EventArgs e)
         {
