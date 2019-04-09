@@ -781,6 +781,11 @@ namespace Designer
         }
 
         // О программе
+        private void mAboutTheProgram_Click(Object sender, EventArgs e)
+        {
+            FormAbout FA = new FormAbout();
+            FA.ShowDialog();
+        }
         private void mDeveloper_Click(Object sender, EventArgs e)
         {
             try
@@ -788,11 +793,6 @@ namespace Designer
                 Process.Start(Resources.Developer);
             }
             catch { MessageBox.Show("Отсутствует подключение к интернету.", "Конструктор тестов", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-        }
-        private void mAboutTheProgram_Click(Object sender, EventArgs e)
-        {
-            FormAbout FA = new FormAbout();
-            FA.ShowDialog();
         }
 
         #endregion

@@ -135,7 +135,7 @@
             this.Developer.TabStop = true;
             this.Developer.Text = "https://vk.com/the_alex_mark";
             this.Developer.VisitedLinkColor = System.Drawing.Color.Blue;
-            this.Developer.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            this.Developer.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Developer_LinkClicked);
             // 
             // FormAbout
             // 
@@ -155,8 +155,8 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "О программе";
-            this.Load += new System.EventHandler(this.Information_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormInformation_KeyDown);
+            this.Load += new System.EventHandler(this.FormAbout_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormAbout_KeyDown);
             this.MainMenu.ResumeLayout(false);
             this.MainMenu.PerformLayout();
             this.ResumeLayout(false);

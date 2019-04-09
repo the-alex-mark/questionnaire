@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Windows.Forms;
 
+using Designer.Properties;
 using ProgLib.Data.CSharp;
 using ProgLib.Diagnostics;
 using Questionnaire.Controls;
@@ -112,10 +113,7 @@ namespace Designer
         public FormAbout()
         {
             InitializeComponent();
-        }
 
-        private void Information_Load(Object sender, EventArgs e)
-        {
             // Оформление MainMenu
             MainMenu.Renderer = new MenuRenderer();
             MainMenu.MouseDown += delegate (Object _object, MouseEventArgs _mouseEventArgs)
@@ -132,13 +130,17 @@ namespace Designer
             {
                 Close();
             };
+        }
 
+        private void FormAbout_Load(Object sender, EventArgs e)
+        {
             Property _property = AssemblyInfo.Get(Assembly.GetExecutingAssembly().Location);
             Title.Text = _property.Title;
             Version.Text = $"Версия {_property.Version.Major}.{_property.Version.Minor} сборка {_property.FileVersion.Major}";
             Copyright.Text = _property.Copyright;
+            Developer.Text = Properties.Resources.Developer;
         }
-        private void FormInformation_KeyDown(Object sender, KeyEventArgs e)
+        private void FormAbout_KeyDown(Object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
             {
@@ -149,14 +151,14 @@ namespace Designer
                 default: break;
             }
         }
-
-        private void linkLabel1_LinkClicked(Object sender, LinkLabelLinkClickedEventArgs e)
+        
+        private void Developer_LinkClicked(Object sender, LinkLabelLinkClickedEventArgs e)
         {
             try
             {
                 Process.Start(Developer.Text);
             }
-            catch { MessageBox.Show("Отсутствует подключение к интернету.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch { MessageBox.Show("Отсутствует подключение к интернету.", "Конструктор тестов", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
     }
 }

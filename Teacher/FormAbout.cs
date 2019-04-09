@@ -114,9 +114,6 @@ namespace Teacher
         {
             InitializeComponent();
 
-            // Установка максимального размера завёртывания формы
-            MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
-
             // Оформление MainMenu
             MainMenu.Renderer = new MenuRenderer();
             MainMenu.MouseDown += delegate (Object _object, MouseEventArgs _mouseEventArgs)
@@ -135,7 +132,7 @@ namespace Teacher
             };
         }
 
-        private void Information_Load(Object sender, EventArgs e)
+        private void FormAbout_Load(Object sender, EventArgs e)
         {
             Property _property = AssemblyInfo.Get(Assembly.GetExecutingAssembly().Location);
 
@@ -143,7 +140,7 @@ namespace Teacher
             Version.Text = $"Версия {_property.Version.Major}.{_property.Version.Minor} сборка {_property.FileVersion.Major}";
             Copyright.Text = _property.Copyright;
         }
-        private void FormInformation_KeyDown(Object sender, KeyEventArgs e)
+        private void FormAbout_KeyDown(Object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
             {
@@ -155,13 +152,13 @@ namespace Teacher
             }
         }
 
-        private void linkLabel1_LinkClicked(Object sender, LinkLabelLinkClickedEventArgs e)
+        private void Developer_LinkClicked(Object sender, LinkLabelLinkClickedEventArgs e)
         {
             try
             {
                 Process.Start(Properties.Resources.Developer);
             }
-            catch { MessageBox.Show("Отсутствует подключение к интернету.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch { MessageBox.Show("Отсутствует подключение к интернету.", "Опросник", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
     }
 }
