@@ -119,6 +119,64 @@ namespace Designer
         public FormDesigner()
         {
             InitializeComponent();
+
+            // Установка максимального размера завёртывания формы
+            MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+
+            // Растяжение формы
+            MouseMove += delegate (Object _object, MouseEventArgs _mouseEventArgs)
+            {
+                if (WindowState != FormWindowState.Maximized)
+                {
+                    if (_mouseEventArgs.X >= Width - 4 && _mouseEventArgs.Y >= Height - 4) { Cursor = Cursors.SizeNWSE; }
+                    else if (_mouseEventArgs.X >= Width - 4 && _mouseEventArgs.Y > 25) { Cursor = Cursors.SizeWE; }
+                    else if (_mouseEventArgs.Y >= Height - 4) { Cursor = Cursors.SizeNS; }
+                    else { Cursor = Cursors.Default; }
+                }
+            };
+            MouseDown += delegate (Object _object, MouseEventArgs _mouseEventArgs)
+            {
+                if (WindowState != FormWindowState.Maximized)
+                {
+                    uint Param = 0;
+
+                    if (Cursor == Cursors.Default) { Param = 0; }
+                    else
+                    if (Cursor == Cursors.SizeNWSE) { Param = 0xF008; }
+                    else
+                    if (Cursor == Cursors.SizeWE) { Param = 0xF002; }
+                    else
+                    if (Cursor == Cursors.SizeNS) { Param = 0xF006; }
+
+                    ReleaseCapture();
+                    PostMessage(Handle, 0x0112, Param, 0);
+                }
+            };
+
+            // Оформление MainMenu
+            MainMenu.Renderer = new MenuRenderer();
+            MainMenu.MouseDown += delegate (Object _object, MouseEventArgs _mouseEventArgs)
+            {
+                ReleaseCapture();
+                PostMessage(Handle, 0x0112, 0xF012, 0);
+            };
+            MainMenu.Items["mmMinimum"].Click += delegate (Object _object, EventArgs _eventArgs)
+            {
+                WindowState = FormWindowState.Minimized;
+            };
+            MainMenu.Items["mmMaximum"].Click += delegate (Object _object, EventArgs _eventArgs)
+            {
+                WindowState = (WindowState == FormWindowState.Maximized)
+                    ? FormWindowState.Normal
+                    : FormWindowState.Maximized;
+            };
+            MainMenu.Items["mmClose"].Click += delegate (Object _object, EventArgs _eventArgs)
+            {
+                Close();
+            };
+
+            // Оформление ListBox
+            OnStyleListBox(listQuestions);
         }
 
         #region Global Variables
@@ -741,62 +799,7 @@ namespace Designer
 
         private void Designer_Load(Object sender, EventArgs e)
         {
-            MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
-
-            // Растяжение формы
-            MouseMove += delegate (Object _object, MouseEventArgs _mouseEventArgs)
-            {
-                if (WindowState != FormWindowState.Maximized)
-                {
-                    if (_mouseEventArgs.X >= Width - 4 && _mouseEventArgs.Y >= Height - 4) { Cursor = Cursors.SizeNWSE; }
-                    else if (_mouseEventArgs.X >= Width - 4 && _mouseEventArgs.Y > 25) { Cursor = Cursors.SizeWE; }
-                    else if (_mouseEventArgs.Y >= Height - 4) { Cursor = Cursors.SizeNS; }
-                    else { Cursor = Cursors.Default; }
-                }
-            };
-            MouseDown += delegate (Object _object, MouseEventArgs _mouseEventArgs)
-            {
-                if (WindowState != FormWindowState.Maximized)
-                {
-                    uint Param = 0;
-
-                    if (Cursor == Cursors.Default) { Param = 0; }
-                    else
-                    if (Cursor == Cursors.SizeNWSE) { Param = 0xF008; }
-                    else
-                    if (Cursor == Cursors.SizeWE) { Param = 0xF002; }
-                    else
-                    if (Cursor == Cursors.SizeNS) { Param = 0xF006; }
-
-                    ReleaseCapture();
-                    PostMessage(Handle, 0x0112, Param, 0);
-                }
-            };
-
-            // Оформление MainMenu
-            MainMenu.Renderer = new MenuRenderer();
-            MainMenu.MouseDown += delegate (Object _object, MouseEventArgs _mouseEventArgs)
-            {
-                ReleaseCapture();
-                PostMessage(Handle, 0x0112, 0xF012, 0);
-            };
-            MainMenu.Items["menuMinimum"].Click += delegate (Object _object, EventArgs _eventArgs)
-            {
-                WindowState = FormWindowState.Minimized;
-            };
-            MainMenu.Items["menuMaximum"].Click += delegate (Object _object, EventArgs _eventArgs)
-            {
-                WindowState = (WindowState == FormWindowState.Maximized)
-                    ? FormWindowState.Normal
-                    : FormWindowState.Maximized;
-            };
-            MainMenu.Items["menuClose"].Click += delegate (Object _object, EventArgs _eventArgs)
-            {
-                //Close();
-            };
-
-            // Оформление ListBox
-            OnStyleListBox(listQuestions);
+            
 
             // Создание первого вопроса
             listQuestions.Items.Add("");

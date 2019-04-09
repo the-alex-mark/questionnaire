@@ -124,12 +124,12 @@ namespace Teacher
                 ReleaseCapture();
                 PostMessage(Handle, 0x0112, 0xF012, 0);
             };
-            MainMenu.Items["menuTitle"].MouseDown += delegate (Object _object, MouseEventArgs _mouseEventArgs)
+            MainMenu.Items["mmTitle"].MouseDown += delegate (Object _object, MouseEventArgs _mouseEventArgs)
             {
                 ReleaseCapture();
                 PostMessage(Handle, 0x0112, 0xF012, 0);
             };
-            MainMenu.Items["menuClose"].Click += delegate (Object _object, EventArgs _eventArgs)
+            MainMenu.Items["mmClose"].Click += delegate (Object _object, EventArgs _eventArgs)
             {
                 Close();
             };

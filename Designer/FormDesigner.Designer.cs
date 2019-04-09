@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             this.MainMenu = new System.Windows.Forms.MenuStrip();
-            this.menuClose = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuMaximum = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuMinimum = new System.Windows.Forms.ToolStripMenuItem();
+            this.mmClose = new System.Windows.Forms.ToolStripMenuItem();
+            this.mmMaximum = new System.Windows.Forms.ToolStripMenuItem();
+            this.mmMinimum = new System.Windows.Forms.ToolStripMenuItem();
             this.mmFile = new System.Windows.Forms.ToolStripMenuItem();
             this.mCreate = new System.Windows.Forms.ToolStripMenuItem();
             this.mOpen = new System.Windows.Forms.ToolStripMenuItem();
@@ -96,9 +96,9 @@
             // 
             this.MainMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
             this.MainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuClose,
-            this.menuMaximum,
-            this.menuMinimum,
+            this.mmClose,
+            this.mmMaximum,
+            this.mmMinimum,
             this.mmFile,
             this.mmCorrection,
             this.mmView,
@@ -112,36 +112,36 @@
             this.MainMenu.TabIndex = 6;
             this.MainMenu.Text = "menuStrip1";
             // 
-            // menuClose
+            // mmClose
             // 
-            this.menuClose.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.menuClose.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.menuClose.Image = global::Designer.Properties.Resources.mmClose;
-            this.menuClose.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.menuClose.Name = "menuClose";
-            this.menuClose.Padding = new System.Windows.Forms.Padding(12, 0, 12, 0);
-            this.menuClose.Size = new System.Drawing.Size(39, 24);
-            this.menuClose.Click += new System.EventHandler(this.menuClose_Click);
+            this.mmClose.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.mmClose.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.mmClose.Image = global::Designer.Properties.Resources.mmClose;
+            this.mmClose.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.mmClose.Name = "mmClose";
+            this.mmClose.Padding = new System.Windows.Forms.Padding(12, 0, 12, 0);
+            this.mmClose.Size = new System.Drawing.Size(39, 24);
+            this.mmClose.Click += new System.EventHandler(this.menuClose_Click);
             // 
-            // menuMaximum
+            // mmMaximum
             // 
-            this.menuMaximum.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.menuMaximum.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.menuMaximum.Image = global::Designer.Properties.Resources.mmMaximum;
-            this.menuMaximum.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.menuMaximum.Name = "menuMaximum";
-            this.menuMaximum.Padding = new System.Windows.Forms.Padding(12, 0, 12, 0);
-            this.menuMaximum.Size = new System.Drawing.Size(39, 24);
+            this.mmMaximum.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.mmMaximum.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.mmMaximum.Image = global::Designer.Properties.Resources.mmMaximum;
+            this.mmMaximum.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.mmMaximum.Name = "mmMaximum";
+            this.mmMaximum.Padding = new System.Windows.Forms.Padding(12, 0, 12, 0);
+            this.mmMaximum.Size = new System.Drawing.Size(39, 24);
             // 
-            // menuMinimum
+            // mmMinimum
             // 
-            this.menuMinimum.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.menuMinimum.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.menuMinimum.Image = global::Designer.Properties.Resources.mmMinimum;
-            this.menuMinimum.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.menuMinimum.Name = "menuMinimum";
-            this.menuMinimum.Padding = new System.Windows.Forms.Padding(12, 0, 12, 0);
-            this.menuMinimum.Size = new System.Drawing.Size(39, 24);
+            this.mmMinimum.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.mmMinimum.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.mmMinimum.Image = global::Designer.Properties.Resources.mmMinimum;
+            this.mmMinimum.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.mmMinimum.Name = "mmMinimum";
+            this.mmMinimum.Padding = new System.Windows.Forms.Padding(12, 0, 12, 0);
+            this.mmMinimum.Size = new System.Drawing.Size(39, 24);
             // 
             // mmFile
             // 
@@ -676,9 +676,9 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip MainMenu;
-        private System.Windows.Forms.ToolStripMenuItem menuClose;
-        private System.Windows.Forms.ToolStripMenuItem menuMaximum;
-        private System.Windows.Forms.ToolStripMenuItem menuMinimum;
+        private System.Windows.Forms.ToolStripMenuItem mmClose;
+        private System.Windows.Forms.ToolStripMenuItem mmMaximum;
+        private System.Windows.Forms.ToolStripMenuItem mmMinimum;
         private System.Windows.Forms.ToolStripMenuItem mmFile;
         private System.Windows.Forms.ToolStripMenuItem mCreate;
         private System.Windows.Forms.ToolStripMenuItem mOpen;

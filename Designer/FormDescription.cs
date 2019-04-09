@@ -109,10 +109,7 @@ namespace Designer
         public FormDescription()
         {
             InitializeComponent();
-        }
-
-        private void Information_Load(Object sender, EventArgs e)
-        {
+            
             // Оформление MainMenu
             MainMenu.Renderer = new MenuRenderer();
             MainMenu.MouseDown += delegate (Object _object, MouseEventArgs _mouseEventArgs)
@@ -120,26 +117,17 @@ namespace Designer
                 ReleaseCapture();
                 PostMessage(Handle, 0x0112, 0xF012, 0);
             };
-            MainMenu.Items["menuTitle"].MouseDown += delegate (Object _object, MouseEventArgs _mouseEventArgs)
+            MainMenu.Items["mmTitle"].MouseDown += delegate (Object _object, MouseEventArgs _mouseEventArgs)
             {
                 ReleaseCapture();
                 PostMessage(Handle, 0x0112, 0xF012, 0);
             };
-            //MainMenu.Items["menuMinimum"].Click += delegate (Object _object, EventArgs _eventArgs)
-            //{
-            //    WindowState = FormWindowState.Minimized;
-            //};
-            //MainMenu.Items["menuMaximum"].Click += delegate (Object _object, EventArgs _eventArgs)
-            //{
-            //    WindowState = (WindowState == FormWindowState.Maximized)
-            //        ? FormWindowState.Normal
-            //        : FormWindowState.Maximized;
-            //};
-            MainMenu.Items["menuClose"].Click += delegate (Object _object, EventArgs _eventArgs)
+            MainMenu.Items["mmClose"].Click += delegate (Object _object, EventArgs _eventArgs)
             {
                 Close();
             };
         }
+
         private void FormInformation_KeyDown(Object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
