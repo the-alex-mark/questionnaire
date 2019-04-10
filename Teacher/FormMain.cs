@@ -207,44 +207,8 @@ namespace Teacher
 
         private void FormMain_Load(Object sender, EventArgs e)
         {
-            //LocalNetwork LN = new LocalNetwork();
-            //Questionnaire.Network.ComputersInLocalNetwork computersInLocalNetwork = new Questionnaire.Network.ComputersInLocalNetwork();
-            //String[] Machines;
-            //Int32 CountMethods = 2;
-
-            //for (int i = 1; i <= CountMethods; i++)
-            //{
-            //    Machines = LN.GetListMachines(i);
-
-            //    if (Machines.Length > 0)
-            //    {
-            //        if (Machines.Length != 1)
-            //        {
-            //            //MessageBox.Show(LN.GetListMachines(1).Aggregate("", (S, I) => S += I + "\n"));
-            //            //MessageBox.Show(LN.GetListMachines(2).Aggregate("", (S, I) => S += I + "\n"));
-
-            //            MessageBox.Show(Machines.Aggregate("", (S, I) => S += I + "\n"));
-            //            return;
-            //        }
-            //        else
-            //        {
-            //            if (i != CountMethods) { continue; }
-            //            else { MessageBox.Show("Нет доступных компьютеров в локальной сети!", "Опросник", MessageBoxButtons.OK, MessageBoxIcon.Asterisk); }
-            //        }
-            //    }
-            //    else
-            //    {
-            //        if (i != CountMethods) { continue; }
-            //        else { MessageBox.Show("Данные о компьютерах не получены!", "Опросник", MessageBoxButtons.OK, MessageBoxIcon.Asterisk); }
-            //    }
-            //}
-
-            Questionnaire.Network.LocalNetwork CLN = new Questionnaire.Network.LocalNetwork();
-            MessageBox.Show(CLN.GetServerList().Aggregate("", (S, I) => S += I + "\n"));
-            MessageBox.Show(CLN.GetServerList(Questionnaire.Network.ServerTypes.All).Aggregate("", (S, I) => S += I + "\n"));
-            MessageBox.Show(CLN.GetServerList(Questionnaire.Network.ServerTypes.Workstation).Aggregate("", (S, I) => S += I + "\n"));
-            //MessageBox.Show(LN.GetListMachines(1).Aggregate("", (S, I) => S += I + "\n"));
-            //MessageBox.Show(LN.GetListMachines(2).Aggregate("", (S, I) => S += I + "\n"));
+            MessageBox.Show(LocalNetwork.GetMachines().Aggregate("", (S, I) => S += I + "\n"), "Список доступных компьютеров");
+            MessageBox.Show(LocalNetwork.GetServers(TypeServer.Workstation).Aggregate("", (S, I) => S += I + "\n"), "Список доступных компьютеров");
         }
     }
 }

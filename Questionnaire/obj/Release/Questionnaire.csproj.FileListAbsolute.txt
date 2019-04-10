@@ -7,3 +7,8 @@ C:\Users\Александр Макаров\source\repos\Опросник\Questio
 C:\Users\Александр Макаров\source\repos\Опросник\Questionnaire\obj\Release\Questionnaire.pdb
 C:\Users\Александр Макаров\source\repos\Опросник\Questionnaire\obj\Release\Questionnaire.Properties.Resources.resources
 C:\Users\Александр Макаров\source\repos\Опросник\Questionnaire\obj\Release\Questionnaire.csproj.GenerateResource.cache
+C:\Users\Александр Макаров\source\repos\Опросник\Questionnaire\bin\Release\ProgLib.dll
+C:\Users\Александр Макаров\source\repos\Опросник\Questionnaire\bin\Release\Ionic.Zip.dll
+C:\Users\Александр Макаров\source\repos\Опросник\Questionnaire\bin\Release\taglib-sharp.dll
+C:\Users\Александр Макаров\source\repos\Опросник\Questionnaire\bin\Release\CoreAudioApi.dll
+C:\Users\Александр Макаров\source\repos\Опросник\Questionnaire\bin\Release\ProgLib.pdb
