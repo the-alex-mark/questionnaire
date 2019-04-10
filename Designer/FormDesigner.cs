@@ -182,7 +182,7 @@ namespace Designer
         #region Global Variables
 
         private Survey _survey = new Survey();
-        private String _file = "";
+        private String _file = null;
 
         //private Boolean _created = false;
         private Boolean _rewrite = false;
@@ -434,23 +434,6 @@ namespace Designer
 
         #region Menu
 
-        private Boolean CheckSave()
-        {
-            //if (!(_survey.Questions.Count == 1 && _survey.Questions[0].Name == "" && _survey.Questions[0].Answers.Count == 2 && _survey.Questions[0].Answers[0] == ""))
-
-            if (_survey.Questions.Count == 1)
-            {
-
-            }
-
-            if (_survey.Questions.Count > 1)
-            {
-
-            }
-
-            return true;
-        }
-
         // Создание теста
         private void mCreate_Click(Object sender, EventArgs e)
         {
@@ -544,8 +527,6 @@ namespace Designer
         // Сохранение теста
         private void mSave_Click(Object sender, EventArgs e)
         {
-            listQuestions_SelectedIndexChanged(sender, e);
-
             if (_file == "")
             {
                 SaveFileDialog SFD = new SaveFileDialog
@@ -818,6 +799,8 @@ namespace Designer
 
         private void Designer_Load(Object sender, EventArgs e)
         {
+            
+
             // Создание первого вопроса
             listQuestions.Items.Add("");
             _survey.Questions.Add(new Question("Выбор одного правильного ответа", "", -1, null, new String[] { "", "" }));
@@ -848,8 +831,6 @@ namespace Designer
                     mIntervalAutoSave30_Click(sender, e);
                     break;
             }
-
-            tQuestion.Focus();
         }
 
         // Выбор вопроса
@@ -880,7 +861,6 @@ namespace Designer
             catch { }
 
             _rewrite = true;
-            tQuestion.Focus();
         }
         private void tQuestion_TextChanged(Object sender, EventArgs e)
         {
