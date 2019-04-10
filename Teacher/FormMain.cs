@@ -239,7 +239,7 @@ namespace Teacher
             //    }
             //}
 
-            Questionnaire.Network.ComputersInLocalNetwork CLN = new Questionnaire.Network.ComputersInLocalNetwork();
+            Questionnaire.Network.LocalNetwork CLN = new Questionnaire.Network.LocalNetwork();
             MessageBox.Show(CLN.GetServerList().Aggregate("", (S, I) => S += I + "\n"));
             MessageBox.Show(CLN.GetServerList(Questionnaire.Network.ServerTypes.All).Aggregate("", (S, I) => S += I + "\n"));
             MessageBox.Show(CLN.GetServerList(Questionnaire.Network.ServerTypes.Workstation).Aggregate("", (S, I) => S += I + "\n"));

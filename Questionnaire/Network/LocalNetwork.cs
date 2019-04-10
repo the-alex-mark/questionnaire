@@ -49,7 +49,7 @@ namespace Questionnaire.Network
         Domain_Enum = 0x80000000
     }
 
-    public class ComputersInLocalNetwork
+    public class LocalNetwork
     {
         // Объявление Netapi32: Импорт метода NetServerEnum.
         [DllImport("netapi32.dll", EntryPoint = "NetServerEnum")]
