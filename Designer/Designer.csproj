@@ -32,7 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ProgLib">
+    <Reference Include="ProgLib, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>D:\System\User\Документы\Projects Visual Studio\ProgLib\ProgLib\bin\Debug\ProgLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -115,6 +116,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\mmMinimum.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pictureИзображение_16.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -600,6 +600,7 @@
             // addImage
             // 
             this.addImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.addImage.Image = global::Designer.Properties.Resources.pictureИзображение_16;
             this.addImage.Location = new System.Drawing.Point(419, 506);
             this.addImage.Name = "addImage";
             this.addImage.Size = new System.Drawing.Size(24, 24);
