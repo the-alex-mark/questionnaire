@@ -206,7 +206,7 @@
             this.mSurvey.Padding = new System.Windows.Forms.Padding(0);
             this.mSurvey.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.O)));
-            this.mSurvey.Size = new System.Drawing.Size(177, 20);
+            this.mSurvey.Size = new System.Drawing.Size(180, 20);
             this.mSurvey.Text = "Опрос";
             // 
             // mStatistics
@@ -215,13 +215,14 @@
             this.mStatistics.Padding = new System.Windows.Forms.Padding(0);
             this.mStatistics.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.S)));
-            this.mStatistics.Size = new System.Drawing.Size(177, 20);
+            this.mStatistics.Size = new System.Drawing.Size(180, 20);
             this.mStatistics.Text = "Статистика";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(174, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator2.Visible = false;
             // 
             // mOptions
             // 
@@ -229,8 +230,9 @@
             this.mOptions.Name = "mOptions";
             this.mOptions.Padding = new System.Windows.Forms.Padding(0);
             this.mOptions.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
-            this.mOptions.Size = new System.Drawing.Size(177, 20);
+            this.mOptions.Size = new System.Drawing.Size(180, 20);
             this.mOptions.Text = "Настройки";
+            this.mOptions.Visible = false;
             // 
             // mmHelp
             // 
@@ -248,7 +250,7 @@
             this.mAboutTheProgram.Name = "mAboutTheProgram";
             this.mAboutTheProgram.Padding = new System.Windows.Forms.Padding(0);
             this.mAboutTheProgram.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this.mAboutTheProgram.Size = new System.Drawing.Size(155, 20);
+            this.mAboutTheProgram.Size = new System.Drawing.Size(180, 20);
             this.mAboutTheProgram.Text = "О приложении";
             this.mAboutTheProgram.Click += new System.EventHandler(this.mAboutTheProgram_Click);
             // 
@@ -257,7 +259,7 @@
             this.mDeveloper.Margin = new System.Windows.Forms.Padding(0, 0, 0, 1);
             this.mDeveloper.Name = "mDeveloper";
             this.mDeveloper.Padding = new System.Windows.Forms.Padding(0);
-            this.mDeveloper.Size = new System.Drawing.Size(155, 20);
+            this.mDeveloper.Size = new System.Drawing.Size(180, 20);
             this.mDeveloper.Text = "Разработчик";
             this.mDeveloper.Click += new System.EventHandler(this.mDeveloper_Click);
             // 
@@ -285,6 +287,7 @@
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox3.TabIndex = 2;
             this.pictureBox3.TabStop = false;
+            this.pictureBox3.Visible = false;
             // 
             // pbStatisticsView
             // 
@@ -399,7 +402,7 @@
             // bNext
             // 
             this.bNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bNext.Location = new System.Drawing.Point(-259, 9);
+            this.bNext.Location = new System.Drawing.Point(-319, 9);
             this.bNext.Name = "bNext";
             this.bNext.Size = new System.Drawing.Size(136, 24);
             this.bNext.TabIndex = 27;
@@ -409,7 +412,7 @@
             // bBreak
             // 
             this.bBreak.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bBreak.Location = new System.Drawing.Point(-401, 9);
+            this.bBreak.Location = new System.Drawing.Point(-461, 9);
             this.bBreak.Name = "bBreak";
             this.bBreak.Size = new System.Drawing.Size(136, 24);
             this.bBreak.TabIndex = 28;
