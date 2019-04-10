@@ -98,15 +98,5 @@ namespace Designer.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap pictureИзображение_16 {
-            get {
-                object obj = ResourceManager.GetObject("pictureИзображение_16", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }
