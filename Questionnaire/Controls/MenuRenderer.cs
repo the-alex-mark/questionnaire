@@ -40,7 +40,7 @@ namespace Questionnaire.Controls
                     {
                         switch (e.Item.Name)
                         {
-                            case "mmmTitle":
+                            case "mmTitle":
                             case "mmIcon":
                                 e.Graphics.FillRectangle(
                                     new SolidBrush(Color.Transparent),

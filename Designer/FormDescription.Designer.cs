@@ -32,7 +32,7 @@
             this.mmClose = new System.Windows.Forms.ToolStripMenuItem();
             this.mmMaximum = new System.Windows.Forms.ToolStripMenuItem();
             this.mmMinimum = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuTitle = new System.Windows.Forms.ToolStripMenuItem();
+            this.mmTitle = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.nameOfTest = new System.Windows.Forms.TextBox();
             this.descriptionOfTest = new System.Windows.Forms.TextBox();
@@ -49,7 +49,7 @@
             this.mmClose,
             this.mmMaximum,
             this.mmMinimum,
-            this.menuTitle});
+            this.mmTitle});
             this.MainMenu.Location = new System.Drawing.Point(0, 0);
             this.MainMenu.Margin = new System.Windows.Forms.Padding(3);
             this.MainMenu.Name = "MainMenu";
@@ -90,12 +90,12 @@
             this.mmMinimum.Size = new System.Drawing.Size(39, 24);
             this.mmMinimum.Visible = false;
             // 
-            // menuTitle
+            // mmTitle
             // 
-            this.menuTitle.Font = new System.Drawing.Font("Segoe UI", 7.5F);
-            this.menuTitle.Name = "menuTitle";
-            this.menuTitle.Size = new System.Drawing.Size(85, 24);
-            this.menuTitle.Text = "Свойства теста";
+            this.mmTitle.Font = new System.Drawing.Font("Segoe UI", 7.5F);
+            this.mmTitle.Name = "mmTitle";
+            this.mmTitle.Size = new System.Drawing.Size(85, 24);
+            this.mmTitle.Text = "Свойства теста";
             // 
             // label1
             // 
@@ -188,7 +188,7 @@
         private System.Windows.Forms.ToolStripMenuItem mmClose;
         private System.Windows.Forms.ToolStripMenuItem mmMaximum;
         private System.Windows.Forms.ToolStripMenuItem mmMinimum;
-        private System.Windows.Forms.ToolStripMenuItem menuTitle;
+        private System.Windows.Forms.ToolStripMenuItem mmTitle;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox nameOfTest;
         private System.Windows.Forms.TextBox descriptionOfTest;
