@@ -193,6 +193,20 @@ namespace Designer
         #region Methods
 
         /// <summary>
+        /// Проверяет, требуется ли сохранение теста.
+        /// </summary>
+        /// <returns></returns>
+        private Boolean CheckSave()
+        {
+            if (Survey.Equals(_survey, new Survey("", "", "", new Question("Выбор одного правильного ответа", "", -1, null, new String[] { "", "" }))))
+                return true;
+
+            return (_file != "" && _file != null)
+                ? Survey.Equals(_survey, new Survey(_file))
+                : false;
+        }
+
+        /// <summary>
         /// Обновляет отображение вопроса
         /// </summary>
         /// <param name="Question"></param>
@@ -437,17 +451,7 @@ namespace Designer
         #endregion
 
         #region Menu
-
-        private Boolean CheckSave()
-        {
-            if (Survey.Equals(_survey, new Survey("", "", "", new Question("Выбор одного правильного ответа", "", -1, null, new String[] { "", "" }))))
-                return true;
-
-            return (_file != "" && _file != null)
-                ? Survey.Equals(_survey, new Survey(_file))
-                : false;
-        }
-
+        
         // Создание теста
         private void mCreate_Click(Object sender, EventArgs e)
         {
