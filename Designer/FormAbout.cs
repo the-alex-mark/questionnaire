@@ -138,7 +138,7 @@ namespace Designer
             Title.Text = _property.Title;
             Version.Text = $"Версия {_property.Version.Major}.{_property.Version.Minor} сборка {_property.FileVersion.Major}";
             Copyright.Text = _property.Copyright;
-            Developer.Text = Properties.Resources.Developer;
+            Developer.Text = Questionnaire.Properties.Resources.Developer;
         }
         private void FormAbout_KeyDown(Object sender, KeyEventArgs e)
         {
@@ -156,7 +156,7 @@ namespace Designer
         {
             try
             {
-                Process.Start(Developer.Text);
+                Process.Start(Questionnaire.Properties.Resources.Developer);
             }
             catch { MessageBox.Show("Отсутствует подключение к интернету.", "Конструктор тестов", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }

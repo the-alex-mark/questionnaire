@@ -61,6 +61,15 @@ namespace Questionnaire.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на https://vk.com/the_alex_mark.
+        /// </summary>
+        public static string Developer {
+            get {
+                return ResourceManager.GetString("Developer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap mmClose {

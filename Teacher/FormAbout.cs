@@ -137,8 +137,9 @@ namespace Teacher
             Property _property = AssemblyInfo.Get(Assembly.GetExecutingAssembly().Location);
 
             Title.Text = _property.Title;
-            Version.Text = $"Версия {_property.Version.Major}.{_property.Version.Minor} сборка {_property.FileVersion.Major}";
+            Version.Text = $"Версия \"Teacher\" {_property.Version.Major}.{_property.Version.Minor} сборка {_property.FileVersion.Major}";
             Copyright.Text = _property.Copyright;
+            Developer.Text = Questionnaire.Properties.Resources.Developer;
         }
         private void FormAbout_KeyDown(Object sender, KeyEventArgs e)
         {
@@ -156,7 +157,7 @@ namespace Teacher
         {
             try
             {
-                Process.Start(Properties.Resources.Developer);
+                Process.Start(Questionnaire.Properties.Resources.Developer);
             }
             catch { MessageBox.Show("Отсутствует подключение к интернету.", "Опросник", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }

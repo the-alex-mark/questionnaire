@@ -234,7 +234,7 @@ namespace Teacher
         {
             try
             {
-                Process.Start(Resources.Developer);
+                Process.Start(Questionnaire.Properties.Resources.Developer);
             }
             catch { MessageBox.Show("Отсутствует подключение к интернету.", "Опросник", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }

@@ -810,7 +810,7 @@ namespace Designer
         {
             try
             {
-                Process.Start(Resources.Developer);
+                Process.Start(Questionnaire.Properties.Resources.Developer);
             }
             catch { MessageBox.Show("Отсутствует подключение к интернету.", "Конструктор тестов", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
