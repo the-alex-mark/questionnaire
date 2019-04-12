@@ -94,12 +94,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Questionnaire\Questionnaire.csproj">
-      <Project>{29c650c9-541d-4e8f-849f-532541f7418e}</Project>
-      <Name>Questionnaire</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\mmClose.png" />
   </ItemGroup>
   <ItemGroup>
@@ -119,6 +113,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\pictureФон_100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Questionnaire\Questionnaire.csproj">
+      <Project>{29c650c9-541d-4e8f-849f-532541f7418e}</Project>
+      <Name>Questionnaire</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

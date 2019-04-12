@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -188,6 +189,41 @@ namespace Teacher
 
         #region Menu
 
+        // Создание нового теста
+        private void mCreate_Click(Object sender, EventArgs e)
+        {
+            if (File.Exists(Environment.CurrentDirectory + @"\Designer.exe"))
+                Process.Start(Environment.CurrentDirectory + @"\Designer.exe");
+        }
+
+        // Начать прохождение
+        private void mStart_Click(Object sender, EventArgs e)
+        {
+
+        }
+
+        // Завершить прохождение
+        private void mBreak_Click(Object sender, EventArgs e)
+        {
+
+        }
+
+        // Выход
+        private void mExit_Click(Object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        // Вид
+        private void mSurvey_Click(Object sender, EventArgs e)
+        {
+            pbQuestionView_Click(sender, e);
+        }
+        private void mStatistics_Click(Object sender, EventArgs e)
+        {
+            pbStatisticsView_Click(sender, e);
+        }
+
         // О программе
         private void mAboutTheProgram_Click(Object sender, EventArgs e)
         {
@@ -207,8 +243,25 @@ namespace Teacher
 
         private void FormMain_Load(Object sender, EventArgs e)
         {
-            MessageBox.Show(LocalNetwork.GetMachines().Aggregate("", (S, I) => S += I + "\n"), "Список доступных компьютеров");
-            MessageBox.Show(LocalNetwork.GetServers(TypeServer.Workstation).Aggregate("", (S, I) => S += I + "\n"), "Список доступных компьютеров");
+            // Получение списка компьютеров средствами .Net
+            MessageBox.Show(
+                LocalNetwork.GetMachines().Aggregate("", (S, I) => S += I + "\n"), "Список доступных компьютеров");
+
+            // Получение списка компьютеров средствами WinAPI
+            MessageBox.Show(
+                LocalNetwork.GetServers(TypeServer.Workstation).Aggregate("", (S, I) => S += I + "\n"), "Список доступных компьютеров");
         }
+
+        // Вид
+        private void pbQuestionView_Click(Object sender, EventArgs e)
+        {
+
+        }
+        private void pbStatisticsView_Click(Object sender, EventArgs e)
+        {
+
+        }
+
+        
     }
 }
