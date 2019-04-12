@@ -33,6 +33,7 @@
             this.mmMaximum = new System.Windows.Forms.ToolStripMenuItem();
             this.mmMinimum = new System.Windows.Forms.ToolStripMenuItem();
             this.mmTitle = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
             this.MainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,7 +49,7 @@
             this.MainMenu.Margin = new System.Windows.Forms.Padding(3);
             this.MainMenu.Name = "MainMenu";
             this.MainMenu.Padding = new System.Windows.Forms.Padding(0);
-            this.MainMenu.Size = new System.Drawing.Size(800, 24);
+            this.MainMenu.Size = new System.Drawing.Size(950, 24);
             this.MainMenu.TabIndex = 6;
             this.MainMenu.Text = "menuStrip1";
             // 
@@ -89,13 +90,28 @@
             this.mmTitle.Size = new System.Drawing.Size(65, 24);
             this.mmTitle.Text = "Опросник";
             // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(12, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(926, 467);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Ожидайте ...\r\nВопросы появяться у вас на экране!";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(950, 500);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.MainMenu);
+            this.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -116,6 +132,7 @@
         private System.Windows.Forms.ToolStripMenuItem mmMaximum;
         private System.Windows.Forms.ToolStripMenuItem mmMinimum;
         private System.Windows.Forms.ToolStripMenuItem mmTitle;
+        private System.Windows.Forms.Label label1;
     }
 }
 

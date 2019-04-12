@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.MainMenu = new System.Windows.Forms.MenuStrip();
             this.mmClose = new System.Windows.Forms.ToolStripMenuItem();
             this.mmMaximum = new System.Windows.Forms.ToolStripMenuItem();
@@ -94,7 +94,7 @@
             this.MainMenu.Margin = new System.Windows.Forms.Padding(3);
             this.MainMenu.Name = "MainMenu";
             this.MainMenu.Padding = new System.Windows.Forms.Padding(0);
-            this.MainMenu.Size = new System.Drawing.Size(800, 24);
+            this.MainMenu.Size = new System.Drawing.Size(900, 24);
             this.MainMenu.TabIndex = 5;
             this.MainMenu.Text = "menuStrip1";
             // 
@@ -148,21 +148,21 @@
             this.mCreate.Name = "mCreate";
             this.mCreate.Padding = new System.Windows.Forms.Padding(0);
             this.mCreate.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.mCreate.Size = new System.Drawing.Size(180, 20);
+            this.mCreate.Size = new System.Drawing.Size(151, 20);
             this.mCreate.Text = "Создать";
             this.mCreate.Click += new System.EventHandler(this.mCreate_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(148, 6);
             // 
             // mStart
             // 
             this.mStart.Name = "mStart";
             this.mStart.Padding = new System.Windows.Forms.Padding(0);
             this.mStart.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Q)));
-            this.mStart.Size = new System.Drawing.Size(180, 20);
+            this.mStart.Size = new System.Drawing.Size(151, 20);
             this.mStart.Text = "Начать";
             this.mStart.Click += new System.EventHandler(this.mStart_Click);
             // 
@@ -172,14 +172,14 @@
             this.mBreak.Name = "mBreak";
             this.mBreak.Padding = new System.Windows.Forms.Padding(0);
             this.mBreak.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.W)));
-            this.mBreak.Size = new System.Drawing.Size(180, 20);
+            this.mBreak.Size = new System.Drawing.Size(151, 20);
             this.mBreak.Text = "Завершить";
             this.mBreak.Click += new System.EventHandler(this.mBreak_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(148, 6);
             // 
             // mExit
             // 
@@ -187,7 +187,7 @@
             this.mExit.Name = "mExit";
             this.mExit.Padding = new System.Windows.Forms.Padding(0);
             this.mExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.mExit.Size = new System.Drawing.Size(180, 20);
+            this.mExit.Size = new System.Drawing.Size(151, 20);
             this.mExit.Text = "Выход";
             this.mExit.Click += new System.EventHandler(this.mExit_Click);
             // 
@@ -210,7 +210,7 @@
             this.mSurvey.Padding = new System.Windows.Forms.Padding(0);
             this.mSurvey.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.O)));
-            this.mSurvey.Size = new System.Drawing.Size(180, 20);
+            this.mSurvey.Size = new System.Drawing.Size(177, 20);
             this.mSurvey.Text = "Опрос";
             this.mSurvey.Click += new System.EventHandler(this.mSurvey_Click);
             // 
@@ -220,14 +220,14 @@
             this.mStatistics.Padding = new System.Windows.Forms.Padding(0);
             this.mStatistics.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.S)));
-            this.mStatistics.Size = new System.Drawing.Size(180, 20);
+            this.mStatistics.Size = new System.Drawing.Size(177, 20);
             this.mStatistics.Text = "Статистика";
             this.mStatistics.Click += new System.EventHandler(this.mStatistics_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(174, 6);
             this.toolStripSeparator2.Visible = false;
             // 
             // mOptions
@@ -236,7 +236,7 @@
             this.mOptions.Name = "mOptions";
             this.mOptions.Padding = new System.Windows.Forms.Padding(0);
             this.mOptions.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
-            this.mOptions.Size = new System.Drawing.Size(180, 20);
+            this.mOptions.Size = new System.Drawing.Size(177, 20);
             this.mOptions.Text = "Настройки";
             this.mOptions.Visible = false;
             // 
@@ -256,7 +256,7 @@
             this.mAboutTheProgram.Name = "mAboutTheProgram";
             this.mAboutTheProgram.Padding = new System.Windows.Forms.Padding(0);
             this.mAboutTheProgram.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this.mAboutTheProgram.Size = new System.Drawing.Size(180, 20);
+            this.mAboutTheProgram.Size = new System.Drawing.Size(155, 20);
             this.mAboutTheProgram.Text = "О приложении";
             this.mAboutTheProgram.Click += new System.EventHandler(this.mAboutTheProgram_Click);
             // 
@@ -265,7 +265,7 @@
             this.mDeveloper.Margin = new System.Windows.Forms.Padding(0, 0, 0, 1);
             this.mDeveloper.Name = "mDeveloper";
             this.mDeveloper.Padding = new System.Windows.Forms.Padding(0);
-            this.mDeveloper.Size = new System.Drawing.Size(180, 20);
+            this.mDeveloper.Size = new System.Drawing.Size(155, 20);
             this.mDeveloper.Text = "Разработчик";
             this.mDeveloper.Click += new System.EventHandler(this.mDeveloper_Click);
             // 
@@ -279,7 +279,7 @@
             this.panel1.Enabled = false;
             this.panel1.Location = new System.Drawing.Point(0, 24);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(38, 426);
+            this.panel1.Size = new System.Drawing.Size(38, 476);
             this.panel1.TabIndex = 21;
             // 
             // pictureBox3
@@ -287,7 +287,7 @@
             this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox3.Image = global::Teacher.Properties.Resources.pictureНастройки_16;
-            this.pictureBox3.Location = new System.Drawing.Point(0, 393);
+            this.pictureBox3.Location = new System.Drawing.Point(0, 443);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(38, 30);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -327,28 +327,28 @@
             // 
             this.Statistics.BackColor = System.Drawing.Color.Transparent;
             this.Statistics.BorderlineColor = System.Drawing.Color.DimGray;
-            chartArea4.Name = "ChartArea1";
-            this.Statistics.ChartAreas.Add(chartArea4);
+            chartArea1.Name = "ChartArea1";
+            this.Statistics.ChartAreas.Add(chartArea1);
             this.Statistics.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend4.Alignment = System.Drawing.StringAlignment.Center;
-            legend4.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            legend4.IsTextAutoFit = false;
-            legend4.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
-            legend4.Name = "Legend1";
-            legend4.TitleAlignment = System.Drawing.StringAlignment.Far;
-            legend4.TitleFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Statistics.Legends.Add(legend4);
+            legend1.Alignment = System.Drawing.StringAlignment.Center;
+            legend1.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            legend1.IsTextAutoFit = false;
+            legend1.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
+            legend1.Name = "Legend1";
+            legend1.TitleAlignment = System.Drawing.StringAlignment.Far;
+            legend1.TitleFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Statistics.Legends.Add(legend1);
             this.Statistics.Location = new System.Drawing.Point(150, 80);
             this.Statistics.Name = "Statistics";
             this.Statistics.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry;
-            series4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            series4.BorderWidth = 4;
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series4.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.Statistics.Series.Add(series4);
+            series1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            series1.BorderWidth = 4;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.Statistics.Series.Add(series1);
             this.Statistics.Size = new System.Drawing.Size(0, 0);
             this.Statistics.TabIndex = 23;
             this.Statistics.Text = "Статистика";
@@ -363,7 +363,7 @@
             this.panel2.Controls.Add(this.panelStatistics);
             this.panel2.Location = new System.Drawing.Point(44, 30);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(744, 408);
+            this.panel2.Size = new System.Drawing.Size(844, 458);
             this.panel2.TabIndex = 24;
             // 
             // panelQuestions
@@ -412,7 +412,7 @@
             // bNext
             // 
             this.bNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bNext.Location = new System.Drawing.Point(-379, 9);
+            this.bNext.Location = new System.Drawing.Point(-499, 9);
             this.bNext.Name = "bNext";
             this.bNext.Size = new System.Drawing.Size(136, 24);
             this.bNext.TabIndex = 27;
@@ -422,7 +422,7 @@
             // bBreak
             // 
             this.bBreak.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bBreak.Location = new System.Drawing.Point(-521, 9);
+            this.bBreak.Location = new System.Drawing.Point(-641, 9);
             this.bBreak.Name = "bBreak";
             this.bBreak.Size = new System.Drawing.Size(136, 24);
             this.bBreak.TabIndex = 28;
@@ -482,7 +482,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(900, 500);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.MainMenu);

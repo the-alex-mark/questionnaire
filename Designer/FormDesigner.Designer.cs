@@ -108,7 +108,7 @@
             this.MainMenu.Margin = new System.Windows.Forms.Padding(3);
             this.MainMenu.Name = "MainMenu";
             this.MainMenu.Padding = new System.Windows.Forms.Padding(0);
-            this.MainMenu.Size = new System.Drawing.Size(918, 24);
+            this.MainMenu.Size = new System.Drawing.Size(950, 24);
             this.MainMenu.TabIndex = 6;
             this.MainMenu.Text = "menuStrip1";
             // 
@@ -520,7 +520,7 @@
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.panel1.Size = new System.Drawing.Size(191, 517);
+            this.panel1.Size = new System.Drawing.Size(191, 476);
             this.panel1.TabIndex = 7;
             // 
             // listQuestions
@@ -533,7 +533,7 @@
             this.listQuestions.ItemHeight = 12;
             this.listQuestions.Location = new System.Drawing.Point(0, 5);
             this.listQuestions.Name = "listQuestions";
-            this.listQuestions.Size = new System.Drawing.Size(191, 507);
+            this.listQuestions.Size = new System.Drawing.Size(191, 466);
             this.listQuestions.TabIndex = 1;
             this.listQuestions.SelectedIndexChanged += new System.EventHandler(this.listQuestions_SelectedIndexChanged);
             // 
@@ -555,7 +555,7 @@
             this.tQuestion.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
             this.tQuestion.Multiline = true;
             this.tQuestion.Name = "tQuestion";
-            this.tQuestion.Size = new System.Drawing.Size(429, 134);
+            this.tQuestion.Size = new System.Drawing.Size(461, 134);
             this.tQuestion.TabIndex = 0;
             this.tQuestion.TextChanged += new System.EventHandler(this.tQuestion_TextChanged);
             // 
@@ -578,13 +578,13 @@
             this.listAnswers.BackColor = System.Drawing.Color.Transparent;
             this.listAnswers.Location = new System.Drawing.Point(239, 239);
             this.listAnswers.Name = "listAnswers";
-            this.listAnswers.Size = new System.Drawing.Size(634, 261);
+            this.listAnswers.Size = new System.Drawing.Size(666, 220);
             this.listAnswers.TabIndex = 1;
             // 
             // addAnswer
             // 
             this.addAnswer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.addAnswer.Location = new System.Drawing.Point(239, 506);
+            this.addAnswer.Location = new System.Drawing.Point(239, 465);
             this.addAnswer.Name = "addAnswer";
             this.addAnswer.Size = new System.Drawing.Size(174, 24);
             this.addAnswer.TabIndex = 16;
@@ -601,7 +601,7 @@
             // 
             this.addImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.addImage.Image = global::Designer.Properties.Resources.pictureИзображение_16;
-            this.addImage.Location = new System.Drawing.Point(419, 506);
+            this.addImage.Location = new System.Drawing.Point(419, 465);
             this.addImage.Name = "addImage";
             this.addImage.Size = new System.Drawing.Size(24, 24);
             this.addImage.TabIndex = 18;
@@ -611,7 +611,7 @@
             // pImage
             // 
             this.pImage.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pImage.Location = new System.Drawing.Point(434, 0);
+            this.pImage.Location = new System.Drawing.Point(466, 0);
             this.pImage.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
             this.pImage.Name = "pImage";
             this.pImage.Padding = new System.Windows.Forms.Padding(10);
@@ -630,13 +630,13 @@
             this.panel2.Controls.Add(this.pImage);
             this.panel2.Location = new System.Drawing.Point(239, 65);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(634, 134);
+            this.panel2.Size = new System.Drawing.Size(666, 134);
             this.panel2.TabIndex = 21;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pictureBox1.Location = new System.Drawing.Point(429, 0);
+            this.pictureBox1.Location = new System.Drawing.Point(461, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(5, 134);
             this.pictureBox1.TabIndex = 21;
@@ -647,7 +647,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.ClientSize = new System.Drawing.Size(918, 541);
+            this.ClientSize = new System.Drawing.Size(950, 500);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.addImage);
             this.Controls.Add(this.addAnswer);
