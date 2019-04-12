@@ -81,7 +81,7 @@ namespace Questionnaire.Data
         public List<String> Answers { get; set; }
 
         /// <summary>
-        /// Преобразует вопрос в XML разметку
+        /// Преобразует вопрос в XML разметку.
         /// </summary>
         /// <returns></returns>
         public XElement ToXML()
@@ -98,7 +98,7 @@ namespace Questionnaire.Data
         }
 
         /// <summary>
-        /// Преобразует вопрос в строку в виде XML разметки
+        /// Преобразует вопрос в строку в виде XML разметки.
         /// </summary>
         /// <returns></returns>
         public new String ToString()

@@ -51,7 +51,6 @@ namespace Questionnaire.Controls
 
         #region New Events
 
-        public event HandledEventArgs DeleteChanged;
         public event HandledEventArgs TrueChanged;
         public delegate void HandledEventArgs(Object sender, EventArgs eventArgs);
 
@@ -61,7 +60,6 @@ namespace Questionnaire.Controls
 
         private void linkLabel1_LinkClicked(Object sender, LinkLabelLinkClickedEventArgs e)
         {
-            DeleteChanged?.Invoke(this, new EventArgs());
             this.Dispose();
         }
 

@@ -65,7 +65,7 @@ namespace Questionnaire.Data
         /// <param name="Subject">Предмет</param>
         /// <param name="Theme">Тема</param>
         /// <param name="Question">Вопрос</param>
-        public Survey(String Name, String Description, String Author, Question[] Questions)
+        public Survey(String Name, String Description, String Author, params Question[] Questions)
         {
             this.Name = Name;
             this.Description = Description;
@@ -94,10 +94,19 @@ namespace Questionnaire.Data
         public List<Question> Questions { get; set; }
 
         /// <summary>
-        /// Сохраняет опрос в файл
+        /// Сохраняет опрос в файл.
         /// </summary>
         /// <param name="File"></param>
         public void Save(String File)
+        {
+            this.ToXML().Save(File);
+        }
+
+        /// <summary>
+        /// Преобразует вопрос в XML разметку.
+        /// </summary>
+        /// <returns></returns>
+        public XDocument ToXML()
         {
             List<XElement> Elements = new List<XElement>();
             foreach (Question Question in Questions)
@@ -116,8 +125,25 @@ namespace Questionnaire.Data
                         Answers.ToArray()));
             }
 
-            XDocument Document = new XDocument(new XDeclaration("1.0", "UTF-8", ""), new XElement("survey", new XAttribute("name", this.Name), new XAttribute("description", this.Description), new XAttribute("author", this.Author), Elements.ToArray()));
-            Document.Save(File);
+            return new XDocument(new XDeclaration("1.0", "UTF-8", ""), new XElement("survey", new XAttribute("name", this.Name), new XAttribute("description", this.Description), new XAttribute("author", this.Author), Elements.ToArray()));
+        }
+
+        /// <summary>
+        /// Преобразует объект в строковое представление.
+        /// </summary>
+        /// <returns></returns>
+        public override String ToString()
+        {
+            return ToXML().ToString();
+        }
+
+        /// <summary>
+        /// Определяет, имеют ли два указанных объекта <see cref="Survey"/> одинаковые значения.
+        /// </summary>
+        /// <returns></returns>
+        public static Boolean Equals(Survey A, Survey B)
+        {
+            return Equals(A.ToString(), B.ToString());
         }
     }
 }

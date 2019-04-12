@@ -172,7 +172,7 @@ namespace Designer
             };
             MainMenu.Items["mmClose"].Click += delegate (Object _object, EventArgs _eventArgs)
             {
-                Close();
+                //Close();
             };
 
             // Оформление ListBox
@@ -222,16 +222,20 @@ namespace Designer
                 {
                     Text = Question.Answers[i - 1],
                     Size = new Size(panel2.Width, 69),
+                    //MaximumSize = new Size(1000, 69),
                     Location = new Point(0, Y += 80),
                     Margin = new Padding(0, 0, 0, 0),
                     Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right,
                     TabIndex = i + 2,
+                    Dock = DockStyle.Top,
 
                     Name = "pAnswer" + i.ToString(),
                     Parent = listAnswers,
                 };
-            }
 
+                viewAnswer.BringToFront();
+            }
+            
             switch (Question.Type)
             {
                 case "Выбор одного правильного ответа":
@@ -436,19 +440,12 @@ namespace Designer
 
         private Boolean CheckSave()
         {
-            //if (!(_survey.Questions.Count == 1 && _survey.Questions[0].Name == "" && _survey.Questions[0].Answers.Count == 2 && _survey.Questions[0].Answers[0] == ""))
+            if (Survey.Equals(_survey, new Survey("", "", "", new Question("Выбор одного правильного ответа", "", -1, null, new String[] { "", "" }))))
+                return true;
 
-            if (_survey.Questions.Count == 1)
-            {
-
-            }
-
-            if (_survey.Questions.Count > 1)
-            {
-
-            }
-
-            return true;
+            return (_file != "" && _file != null)
+                ? Survey.Equals(_survey, new Survey(_file))
+                : false;
         }
 
         // Создание теста
@@ -469,9 +466,9 @@ namespace Designer
                 listQuestions.SelectedIndex = 0;
             };
 
-            if (!(_survey.Questions.Count == 1 && _survey.Questions[0].Name == "" && _survey.Questions[0].Answers.Count == 2 && _survey.Questions[0].Answers[0] == ""))
+            if (!CheckSave())
             {
-                DialogResult DR = MessageBox.Show("Сохранить изменения прошлого созданного теста?", "Конструктор тестов", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                DialogResult DR = MessageBox.Show("Сохранить изменения?", "Конструктор тестов", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
 
                 switch (DR)
                 {
@@ -498,7 +495,7 @@ namespace Designer
                 OpenFileDialog OFD = new OpenFileDialog
                 {
                     Title = "Открытие теста",
-                    Filter = "Файл теста (*.xml, *.json)|*.xml; *.json"
+                    Filter = "Файл теста (*.xml)|*.xml"
                 };
 
                 if (DialogResult.OK == OFD.ShowDialog())
@@ -520,9 +517,9 @@ namespace Designer
                 }
             };
 
-            if (!(_survey.Questions.Count == 1 && _survey.Questions[0].Name == "" && _survey.Questions[0].Answers.Count == 2 && _survey.Questions[0].Answers[0] == ""))
+            if (!CheckSave())
             {
-                DialogResult DR = MessageBox.Show("Сохранить изменения прошлого созданного теста?", "Конструктор тестов", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                DialogResult DR = MessageBox.Show("Сохранить изменения?", "Конструктор тестов", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
 
                 switch (DR)
                 {
@@ -638,9 +635,9 @@ namespace Designer
         // Выход из программы
         private void mExit_Click(Object sender, EventArgs e)
         {
-            if (!(_survey.Questions.Count == 1 && _survey.Questions[0].Name == "" && _survey.Questions[0].Answers.Count == 2 && _survey.Questions[0].Answers[0] == ""))
+            if (!CheckSave())
             {
-                DialogResult DR = MessageBox.Show("Сохранить изменения прошлого созданного теста?", "Конструктор тестов", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                DialogResult DR = MessageBox.Show("Сохранить изменения?", "Конструктор тестов", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
 
                 switch (DR)
                 {
@@ -661,9 +658,9 @@ namespace Designer
         }
         private void menuClose_Click(Object sender, EventArgs e)
         {
-            if (!(_survey.Questions.Count == 1 && _survey.Questions[0].Name == "" && _survey.Questions[0].Answers.Count == 2 && _survey.Questions[0].Answers[0] == ""))
+            if (!CheckSave())
             {
-                DialogResult DR = MessageBox.Show("Сохранить изменения прошлого созданного теста?", "Конструктор тестов", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                DialogResult DR = MessageBox.Show("Сохранить изменения?", "Конструктор тестов", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
 
                 switch (DR)
                 {
@@ -901,10 +898,13 @@ namespace Designer
                 Margin = new Padding(0, 0, 0, 0),
                 Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right,
                 //TabIndex = i + 2,
-
+                Dock = DockStyle.Top,
+                
                 Name = "pAnswer" + _survey.Questions[listQuestions.SelectedIndex].Answers.Count.ToString(),
                 Parent = listAnswers,
             };
+
+            viewAnswer.BringToFront();
 
             foreach (Control Control in listAnswers.Controls)
             {
