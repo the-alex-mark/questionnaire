@@ -1,4 +1,6 @@
-﻿using Questionnaire.Controls;
+﻿using Questionnaire;
+using Questionnaire.Controls;
+using Questionnaire.INI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -178,7 +180,15 @@ namespace Student
 
         private void FormMain_Load(Object sender, EventArgs e)
         {
+            //IniDocument INI = new IniDocument(@"C:\Users\Александр Макаров\Desktop\config.ini");
+            //MessageBox.Show(INI.Get("TcpConfig", "Port"));
+            //MessageBox.Show(INI.Get("TcpConfig", "Teacher"));
 
+            //IniDocument INI = new IniDocument(
+            //    new IniSection("SQL-mode", new IniKey("Server", "docsrv"), new IniKey("Base", "docrec_0528"), new IniKey("Schema", "docrec_0528.stack")),
+            //    new IniSection("AppConfig", new IniKey("ProgramName", "Стек-Документооборот")));
+
+            //INI.Save(@"C:\Users\Александр Макаров\Desktop\config.ini");
         }
         private void FormMain_KeyDown(Object sender, KeyEventArgs e)
         {
