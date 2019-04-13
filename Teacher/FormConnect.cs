@@ -1,5 +1,4 @@
-﻿using ProgLib.IO;
-using Questionnaire;
+﻿using ProgLib.Network;
 using Questionnaire.Controls;
 using System;
 using System.Collections.Generic;
@@ -10,10 +9,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Teacher.Data;
 
-namespace Student
+namespace Teacher
 {
-    public partial class FormMain : Form
+    public partial class FormConnect : Form
     {
         #region Import
 
@@ -113,42 +113,9 @@ namespace Student
 
         #endregion
 
-        public FormMain()
+        public FormConnect()
         {
             InitializeComponent();
-
-            // Установка максимального размера завёртывания формы
-            MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
-
-            // Растяжение формы
-            MouseMove += delegate (Object _object, MouseEventArgs _mouseEventArgs)
-            {
-                if (WindowState != FormWindowState.Maximized)
-                {
-                    if (_mouseEventArgs.X >= Width - 4 && _mouseEventArgs.Y >= Height - 4) { Cursor = Cursors.SizeNWSE; }
-                    else if (_mouseEventArgs.X >= Width - 4 && _mouseEventArgs.Y > 25) { Cursor = Cursors.SizeWE; }
-                    else if (_mouseEventArgs.Y >= Height - 4) { Cursor = Cursors.SizeNS; }
-                    else { Cursor = Cursors.Default; }
-                }
-            };
-            MouseDown += delegate (Object _object, MouseEventArgs _mouseEventArgs)
-            {
-                if (WindowState != FormWindowState.Maximized)
-                {
-                    uint Param = 0;
-
-                    if (Cursor == Cursors.Default) { Param = 0; }
-                    else
-                    if (Cursor == Cursors.SizeNWSE) { Param = 0xF008; }
-                    else
-                    if (Cursor == Cursors.SizeWE) { Param = 0xF002; }
-                    else
-                    if (Cursor == Cursors.SizeNS) { Param = 0xF006; }
-
-                    ReleaseCapture();
-                    PostMessage(Handle, 0x0112, Param, 0);
-                }
-            };
 
             // Оформление MainMenu
             MainMenu.Renderer = new MenuRenderer();
@@ -162,45 +129,37 @@ namespace Student
                 ReleaseCapture();
                 PostMessage(Handle, 0x0112, 0xF012, 0);
             };
-            MainMenu.Items["mmMinimum"].Click += delegate (Object _object, EventArgs _eventArgs)
-            {
-                WindowState = FormWindowState.Minimized;
-            };
-            MainMenu.Items["mmMaximum"].Click += delegate (Object _object, EventArgs _eventArgs)
-            {
-                WindowState = (WindowState == FormWindowState.Maximized)
-                    ? FormWindowState.Normal
-                    : FormWindowState.Maximized;
-            };
             MainMenu.Items["mmClose"].Click += delegate (Object _object, EventArgs _eventArgs)
             {
                 Close();
             };
         }
 
-        private void FormMain_Load(Object sender, EventArgs e)
+        private String _file = "";
+        private List<String> _machines = new List<String>();
+
+        public Information Connect()
         {
-            IniDocument INI = new IniDocument(Environment.CurrentDirectory + @"\config.ini");
-            MessageBox.Show(INI.Get("TcpConfig", "Port"));
-            MessageBox.Show(INI.Get("TcpConfig", "Teacher"));
-
-            //IniDocument INI = new IniDocument(
-            //    new IniSection("SQL-mode", new IniKey("Server", "docsrv"), new IniKey("Base", "docrec_0528"), new IniKey("Schema", "docrec_0528.stack")),
-            //    new IniSection("AppConfig", new IniKey("ProgramName", "Стек-Документооборот")));
-
-            //INI.Save(@"C:\Users\Александр Макаров\Desktop\config.ini");
+            ShowDialog();
+            return new Information(_file, _machines.ToArray());
         }
-        private void FormMain_KeyDown(Object sender, KeyEventArgs e)
-        {
-            switch (e.KeyCode)
-            {
-                case Keys.F1:
-                    FormAbout About = new FormAbout();
-                    About.ShowDialog();
-                    break;
 
-                default: break;
-            }
+        private void FormConnect_Load(Object sender, EventArgs e)
+        {
+            OpenFileDialog OFD = new OpenFileDialog
+            {
+                Title = "Открытие теста",
+                Filter = "Файл теста (*.xml)|*.xml"
+            };
+            
+            _file = (DialogResult.OK == OFD.ShowDialog()) ? OFD.FileName : null;
+            tConnect.Start();
+        }
+
+        private void tConnect_Tick(Object sender, EventArgs e)
+        {
+            Int32 Total = LocalNetwork.GetServers(TypeServer.Workstation).Length;
+            Int32 Connected = 0;
         }
     }
 }

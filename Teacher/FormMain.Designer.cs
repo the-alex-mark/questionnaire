@@ -40,7 +40,7 @@
             this.mCreate = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.mStart = new System.Windows.Forms.ToolStripMenuItem();
-            this.mBreak = new System.Windows.Forms.ToolStripMenuItem();
+            this.mStop = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.mExit = new System.Windows.Forms.ToolStripMenuItem();
             this.mmView = new System.Windows.Forms.ToolStripMenuItem();
@@ -135,7 +135,7 @@
             this.mCreate,
             this.toolStripSeparator1,
             this.mStart,
-            this.mBreak,
+            this.mStop,
             this.toolStripSeparator3,
             this.mExit});
             this.mmFile.Font = new System.Drawing.Font("Segoe UI", 7.5F);
@@ -149,38 +149,38 @@
             this.mCreate.Name = "mCreate";
             this.mCreate.Padding = new System.Windows.Forms.Padding(0);
             this.mCreate.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.mCreate.Size = new System.Drawing.Size(151, 20);
+            this.mCreate.Size = new System.Drawing.Size(180, 20);
             this.mCreate.Text = "Создать";
             this.mCreate.Click += new System.EventHandler(this.mCreate_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(148, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // mStart
             // 
             this.mStart.Name = "mStart";
             this.mStart.Padding = new System.Windows.Forms.Padding(0);
             this.mStart.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Q)));
-            this.mStart.Size = new System.Drawing.Size(151, 20);
+            this.mStart.Size = new System.Drawing.Size(180, 20);
             this.mStart.Text = "Начать";
             this.mStart.Click += new System.EventHandler(this.mStart_Click);
             // 
-            // mBreak
+            // mStop
             // 
-            this.mBreak.Enabled = false;
-            this.mBreak.Name = "mBreak";
-            this.mBreak.Padding = new System.Windows.Forms.Padding(0);
-            this.mBreak.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.W)));
-            this.mBreak.Size = new System.Drawing.Size(151, 20);
-            this.mBreak.Text = "Завершить";
-            this.mBreak.Click += new System.EventHandler(this.mBreak_Click);
+            this.mStop.Enabled = false;
+            this.mStop.Name = "mStop";
+            this.mStop.Padding = new System.Windows.Forms.Padding(0);
+            this.mStop.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.W)));
+            this.mStop.Size = new System.Drawing.Size(180, 20);
+            this.mStop.Text = "Завершить";
+            this.mStop.Click += new System.EventHandler(this.mStop_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(148, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
             // 
             // mExit
             // 
@@ -188,7 +188,7 @@
             this.mExit.Name = "mExit";
             this.mExit.Padding = new System.Windows.Forms.Padding(0);
             this.mExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.mExit.Size = new System.Drawing.Size(151, 20);
+            this.mExit.Size = new System.Drawing.Size(180, 20);
             this.mExit.Text = "Выход";
             this.mExit.Click += new System.EventHandler(this.mExit_Click);
             // 
@@ -413,7 +413,7 @@
             // bNext
             // 
             this.bNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bNext.Location = new System.Drawing.Point(-679, 9);
+            this.bNext.Location = new System.Drawing.Point(-739, 9);
             this.bNext.Name = "bNext";
             this.bNext.Size = new System.Drawing.Size(136, 24);
             this.bNext.TabIndex = 27;
@@ -423,7 +423,7 @@
             // bBreak
             // 
             this.bBreak.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bBreak.Location = new System.Drawing.Point(-821, 9);
+            this.bBreak.Location = new System.Drawing.Point(-881, 9);
             this.bBreak.Name = "bBreak";
             this.bBreak.Size = new System.Drawing.Size(136, 24);
             this.bBreak.TabIndex = 28;
@@ -525,7 +525,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem mExit;
         private System.Windows.Forms.ToolStripMenuItem mmView;
-        private System.Windows.Forms.ToolStripMenuItem mBreak;
+        private System.Windows.Forms.ToolStripMenuItem mStop;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem mmHelp;
         private System.Windows.Forms.ToolStripMenuItem mSurvey;

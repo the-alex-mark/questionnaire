@@ -196,16 +196,21 @@ namespace Teacher
                 Process.Start(Environment.CurrentDirectory + @"\Designer.exe");
         }
 
-        // Начать прохождение
+        // Начать трансляцию
         private void mStart_Click(Object sender, EventArgs e)
         {
+            mStart.Enabled = false;
+            mStop.Enabled = true;
 
+            FormConnect Connect = new FormConnect();
+            Connect.ShowDialog();
         }
 
-        // Завершить прохождение
-        private void mBreak_Click(Object sender, EventArgs e)
+        // Завершить трансляцию
+        private void mStop_Click(Object sender, EventArgs e)
         {
-
+            mStart.Enabled = true;
+            mStop.Enabled = false;
         }
 
         // Выход
@@ -261,7 +266,5 @@ namespace Teacher
         {
 
         }
-
-        
     }
 }
