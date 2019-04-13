@@ -18,3 +18,6 @@ C:\Users\Александр Макаров\source\repos\Опросник\Designe
 C:\Users\Александр Макаров\source\repos\Опросник\Designer\obj\Release\Designer.FormDesigner.resources
 C:\Users\Александр Макаров\source\repos\Опросник\Designer\obj\Release\Designer.FormDescription.resources
 C:\Users\Александр Макаров\source\repos\Опросник\Designer\obj\Release\Designer.FormAbout.resources
+C:\Users\Александр Макаров\source\repos\Опросник\bin\Release\Designer.exe.config
+C:\Users\Александр Макаров\source\repos\Опросник\bin\Release\Designer.exe
+C:\Users\Александр Макаров\source\repos\Опросник\bin\Release\Designer.pdb

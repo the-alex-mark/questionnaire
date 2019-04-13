@@ -17,3 +17,6 @@ C:\Users\Александр Макаров\source\repos\Опросник\Teacher
 C:\Users\Александр Макаров\source\repos\Опросник\Teacher\obj\Release\Teacher.FormMain.resources
 C:\Users\Александр Макаров\source\repos\Опросник\Teacher\obj\Release\Teacher.csproj.CopyComplete
 C:\Users\Александр Макаров\source\repos\Опросник\Teacher\obj\Release\Teacher.FormAbout.resources
+C:\Users\Александр Макаров\source\repos\Опросник\bin\Release\Teacher.exe.config
+C:\Users\Александр Макаров\source\repos\Опросник\bin\Release\Teacher.exe
+C:\Users\Александр Макаров\source\repos\Опросник\bin\Release\Teacher.pdb

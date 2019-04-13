@@ -17,3 +17,6 @@ C:\Users\Александр Макаров\source\repos\Опросник\Student
 C:\Users\Александр Макаров\source\repos\Опросник\Student\obj\Release\Student.exe
 C:\Users\Александр Макаров\source\repos\Опросник\Student\obj\Release\Student.pdb
 C:\Users\Александр Макаров\source\repos\Опросник\Student\obj\Release\Student.FormAbout.resources
+C:\Users\Александр Макаров\source\repos\Опросник\bin\Release\Student.exe.config
+C:\Users\Александр Макаров\source\repos\Опросник\bin\Release\Student.exe
+C:\Users\Александр Макаров\source\repos\Опросник\bin\Release\Student.pdb
