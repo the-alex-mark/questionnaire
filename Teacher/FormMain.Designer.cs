@@ -31,6 +31,7 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.MainMenu = new System.Windows.Forms.MenuStrip();
             this.mmClose = new System.Windows.Forms.ToolStripMenuItem();
             this.mmMaximum = new System.Windows.Forms.ToolStripMenuItem();
@@ -412,7 +413,7 @@
             // bNext
             // 
             this.bNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bNext.Location = new System.Drawing.Point(-619, 9);
+            this.bNext.Location = new System.Drawing.Point(-679, 9);
             this.bNext.Name = "bNext";
             this.bNext.Size = new System.Drawing.Size(136, 24);
             this.bNext.TabIndex = 27;
@@ -422,7 +423,7 @@
             // bBreak
             // 
             this.bBreak.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bBreak.Location = new System.Drawing.Point(-761, 9);
+            this.bBreak.Location = new System.Drawing.Point(-821, 9);
             this.bBreak.Name = "bBreak";
             this.bBreak.Size = new System.Drawing.Size(136, 24);
             this.bBreak.TabIndex = 28;
@@ -489,6 +490,7 @@
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Опросник";

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.MainMenu = new System.Windows.Forms.MenuStrip();
             this.mmClose = new System.Windows.Forms.ToolStripMenuItem();
             this.mmMaximum = new System.Windows.Forms.ToolStripMenuItem();
@@ -113,6 +114,7 @@
             this.Controls.Add(this.MainMenu);
             this.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Опросник";

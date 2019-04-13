@@ -16,7 +16,7 @@ using ProgLib;
 
 namespace Designer
 {
-    public partial class FormDesigner : Form
+    public partial class FormMain : Form
     {
         #region Import
 
@@ -116,7 +116,7 @@ namespace Designer
 
         #endregion
 
-        public FormDesigner()
+        public FormMain()
         {
             InitializeComponent();
 

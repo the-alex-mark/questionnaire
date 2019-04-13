@@ -16,7 +16,7 @@ namespace Designer
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormDesigner());
+            Application.Run(new FormMain());
         }
     }
 }

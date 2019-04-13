@@ -1,6 +1,6 @@
 ﻿namespace Designer
 {
-    partial class FormDesigner
+    partial class FormMain
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.MainMenu = new System.Windows.Forms.MenuStrip();
             this.mmClose = new System.Windows.Forms.ToolStripMenuItem();
             this.mmMaximum = new System.Windows.Forms.ToolStripMenuItem();
@@ -643,7 +644,7 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Visible = false;
             // 
-            // FormDesigner
+            // FormMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
@@ -658,7 +659,8 @@
             this.Controls.Add(this.MainMenu);
             this.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "FormDesigner";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Конструктор";
             this.Load += new System.EventHandler(this.Designer_Load);
