@@ -1,12 +1,17 @@
-﻿using ProgLib.Network;
+﻿using ProgLib.IO;
+using ProgLib.Network;
 using Questionnaire.Controls;
+using Questionnaire.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Teacher.Data;
@@ -131,35 +136,167 @@ namespace Teacher
             };
             MainMenu.Items["mmClose"].Click += delegate (Object _object, EventArgs _eventArgs)
             {
+                tConnect.Stop();
+                _file = null;
+                _machines = null;
+
                 Close();
             };
         }
 
+        #region Global Variables
+
         private String _file = "";
         private List<String> _machines = new List<String>();
 
+        private Thread _flow;
+        private Socket _server;
+        private Int32 _port;
+
+        #endregion
+
+        #region Methods
+
+        private void Receiver()
+        {
+            try
+            {
+                _server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                _server.Bind(new IPEndPoint(IPAddress.Any, _port));
+                _server.Listen(10);
+
+                while (true)
+                {
+                    // Получение клиентского сокета
+                    Socket _client = _server.Accept();
+
+                    // Получение входящих данных
+                    Byte[] Buffer = new Byte[1024];
+                    do
+                    {
+                        _client.Receive(Buffer);
+
+                        String IP = ((IPEndPoint)_client.RemoteEndPoint).Address.ToString();
+                        String HostName = Dns.GetHostEntry(IP).HostName/*.Remove(Dns.GetHostEntry(IP).HostName.LastIndexOf('.'))*/;
+                        String Data = Encoding.UTF8.GetString(Buffer);
+
+                        if (Data == "Connect")
+                        {
+                            if (_machines.IndexOf(HostName) != -1)
+                            {
+                                _machines.Add(HostName);
+
+                                //BeginInvoke(
+                                //    new MethodInvoker(delegate { _machines.Add(HostName); }));
+                            }
+                        }
+
+
+                    }
+                    while (_client.Available > 0);
+
+                    // Отправка уведомления о получении данных
+                    _client.Send(Encoding.UTF8.GetBytes("Connect"));
+
+                    // Закрытие клиентского сокета
+                    _client.Shutdown(SocketShutdown.Both);
+                    _client.Close();
+                }
+            }
+            catch /*(Exception Error)*/ { /*MessageBox.Show(Error.Message, "Exception");*/ }
+        }
+
+        #endregion
+        
         public Information Connect()
         {
             ShowDialog();
-            return new Information(_file, _machines.ToArray());
+            return (_file != null && _machines != null) ? new Information(new Survey(_file), _machines.ToArray()) : new Information();
         }
+        
 
         private void FormConnect_Load(Object sender, EventArgs e)
+        {
+            IniDocument INI = new IniDocument(Environment.CurrentDirectory + @"\config.ini");
+            _port = Convert.ToInt32(INI.Get("TcpConfig", "Port"));
+
+            _flow = new Thread(new ThreadStart(Receiver));
+            _flow.Start();
+            tConnect.Start();
+        }
+        private void FormConnect_FormClosing(Object sender, FormClosingEventArgs e)
+        {
+            _flow.Interrupt();
+            _server.Close();
+        }
+        private void FormConnect_KeyDown(Object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    bCancel_Click(sender, e);
+                    break;
+
+                default: break;
+            }
+        }
+        
+        // Открытие теста
+        private void bSelectTest_Click(Object sender, EventArgs e)
         {
             OpenFileDialog OFD = new OpenFileDialog
             {
                 Title = "Открытие теста",
                 Filter = "Файл теста (*.xml)|*.xml"
             };
-            
-            _file = (DialogResult.OK == OFD.ShowDialog()) ? OFD.FileName : null;
-            tConnect.Start();
+
+            try
+            {
+                _file = (DialogResult.OK == OFD.ShowDialog()) ? OFD.FileName : null;
+                lTest.ForeColor = Color.Black;
+
+                Survey _survay = new Survey(_file);
+                lTest.Text = (_survay.Name != "") ? _survay.Name : _file;
+            }
+            catch
+            {
+                _file = null;
+                lTest.ForeColor = Color.FromArgb(232, 38, 55);
+
+                MessageBox.Show("Файл имел неверный формат!", "Опросник", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
+        // Далее
+        private void bNext_Click(Object sender, EventArgs e)
+        {
+            if (lTest.Text != "Не выбран!")
+            {
+                if (label1.Text != "0")
+                {
+                    tConnect.Stop();
+                    Close();
+                }
+                else { MessageBox.Show("Список подключённых компьютеров пуст.", "Опросник", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+            }
+            else { MessageBox.Show("Пожалуйста, выберите файл.", "Опросник", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+        }
+
+        // Отмена
+        private void bCancel_Click(Object sender, EventArgs e)
+        {
+            tConnect.Stop();
+            _file = null;
+            _machines = null;
+
+            Close();
+        }
+
+        // Таймер
         private void tConnect_Tick(Object sender, EventArgs e)
         {
-            Int32 Total = LocalNetwork.GetServers(TypeServer.Workstation).Length;
-            Int32 Connected = 0;
+            label2.Text = "из " + LocalNetwork.GetServers(TypeServer.Workstation).Length;
+            label1.Text = _machines.Count.ToString();
         }
     }
 }

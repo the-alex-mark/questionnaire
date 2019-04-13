@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Teacher.Data;
 using Teacher.Properties;
 
 namespace Teacher
@@ -199,11 +200,16 @@ namespace Teacher
         // Начать трансляцию
         private void mStart_Click(Object sender, EventArgs e)
         {
-            mStart.Enabled = false;
-            mStop.Enabled = true;
+            FormConnect FC = new FormConnect();
+            Information Info = FC.Connect();
 
-            FormConnect Connect = new FormConnect();
-            Connect.ShowDialog();
+            if (Info.Survey != null && Info.Machines != null)
+            {
+                mStart.Enabled = false;
+                mStop.Enabled = true;
+
+                MessageBox.Show("Good!");
+            }
         }
 
         // Завершить трансляцию

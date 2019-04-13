@@ -15,9 +15,9 @@ namespace Teacher.Data
             this.Machines = null;
         }
 
-        public Information(String File, String[] Machines)
+        public Information(Survey Survey, String[] Machines)
         {
-            this.Survey = new Survey(File);
+            this.Survey = Survey;
             this.Machines = Machines;
         }
 
