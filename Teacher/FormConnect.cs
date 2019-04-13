@@ -1,4 +1,5 @@
-﻿using ProgLib.IO;
+﻿using ProgLib;
+using ProgLib.IO;
 using ProgLib.Network;
 using Questionnaire.Controls;
 using Questionnaire.Data;
@@ -174,29 +175,34 @@ namespace Teacher
                     Byte[] Buffer = new Byte[1024];
                     do
                     {
-                        _client.Receive(Buffer);
+                        _client.Receive(Buffer, 0, _client.Available, SocketFlags.None);
+                        Byte[] _buffer = Buffer.TakeWhile((v, index) => Buffer.Skip(index).Any(w => w != 0x00)).ToArray();
 
                         String IP = ((IPEndPoint)_client.RemoteEndPoint).Address.ToString();
-                        String HostName = Dns.GetHostEntry(IP).HostName/*.Remove(Dns.GetHostEntry(IP).HostName.LastIndexOf('.'))*/;
-                        String Data = Encoding.UTF8.GetString(Buffer);
+                        String HostName = Dns.GetHostEntry(IP).HostName;
+                        String Data = Encoding.UTF8.GetString(_buffer);
 
-                        if (Data == "Connect")
+                        if (Data.ToLower() == "Connect".ToLower())
                         {
-                            if (_machines.IndexOf(HostName) != -1)
+                            if (_machines.Count != 0)
                             {
-                                _machines.Add(HostName);
-
-                                //BeginInvoke(
-                                //    new MethodInvoker(delegate { _machines.Add(HostName); }));
+                                if (_machines.IndexOf(HostName) < 0)
+                                {
+                                    BeginInvoke(
+                                        new MethodInvoker(delegate { _machines.Add(HostName); }));
+                                }
+                            }
+                            else
+                            {
+                                BeginInvoke(
+                                    new MethodInvoker(delegate { _machines.Add(HostName); }));
                             }
                         }
-
-
                     }
                     while (_client.Available > 0);
 
                     // Отправка уведомления о получении данных
-                    _client.Send(Encoding.UTF8.GetBytes("Connect"));
+                    _client.Send(Encoding.UTF8.GetBytes("OK"));
 
                     // Закрытие клиентского сокета
                     _client.Shutdown(SocketShutdown.Both);
@@ -214,7 +220,6 @@ namespace Teacher
             return (_file != null && _machines != null) ? new Information(new Survey(_file), _machines.ToArray()) : new Information();
         }
         
-
         private void FormConnect_Load(Object sender, EventArgs e)
         {
             IniDocument INI = new IniDocument(Environment.CurrentDirectory + @"\config.ini");

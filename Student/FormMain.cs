@@ -7,7 +7,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -178,17 +180,75 @@ namespace Student
             };
         }
 
+        #region Global Variables
+        
+        private Thread _flow;
+        private Int32 _port;
+        private String _teacher;
+
+        #endregion
+
+        #region Methods
+
+        private void Receiver()
+        {
+            // Инициализация клиентского сокета
+            Socket _client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+
+            while (true)
+            {
+                try
+                {
+
+                    // Подключение к серверу
+                    _client.Connect(_teacher, _port);
+
+                    // Отправление данных на сервер
+                    _client.Send(Encoding.UTF8.GetBytes("Connect"));
+
+                    // Получение ответа от сервера
+                    Byte[] Buffer = new Byte[1024];
+                    String Result = "";
+                    do
+                    {
+                        _client.Receive(Buffer);
+                        Byte[] _buffer = Buffer.TakeWhile((v, index) => Buffer.Skip(index).Any(w => w != 0x00)).ToArray();
+                        Result = Encoding.UTF8.GetString(_buffer);
+                    }
+                    while (_client.Available > 0);
+
+                    if (Result == "OK")
+                    {
+                        // Закрытие клиентского сокета
+                        _client.Shutdown(SocketShutdown.Both);
+                        _client.Close();
+
+                        _flow.Interrupt();
+                    }
+                    else
+                    {
+                        BeginInvoke(
+                            new MethodInvoker(delegate { _flow.Interrupt(); }));
+                    }
+                }
+                catch { }
+            }
+        }
+
+        #endregion
+        
         private void FormMain_Load(Object sender, EventArgs e)
         {
             IniDocument INI = new IniDocument(Environment.CurrentDirectory + @"\config.ini");
-            MessageBox.Show(INI.Get("TcpConfig", "Port"));
-            MessageBox.Show(INI.Get("TcpConfig", "Teacher"));
-
-            //IniDocument INI = new IniDocument(
-            //    new IniSection("SQL-mode", new IniKey("Server", "docsrv"), new IniKey("Base", "docrec_0528"), new IniKey("Schema", "docrec_0528.stack")),
-            //    new IniSection("AppConfig", new IniKey("ProgramName", "Стек-Документооборот")));
-
-            //INI.Save(@"C:\Users\Александр Макаров\Desktop\config.ini");
+            _port = Convert.ToInt32(INI.Get("TcpConfig", "Port"));
+            _teacher = INI.Get("TcpConfig", "Teacher");
+            
+            _flow = new Thread(new ThreadStart(Receiver));
+            _flow.Start();
+        }
+        private void FormMain_FormClosing(Object sender, FormClosingEventArgs e)
+        {
+            _flow.Interrupt();
         }
         private void FormMain_KeyDown(Object sender, KeyEventArgs e)
         {
