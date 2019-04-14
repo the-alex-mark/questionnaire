@@ -137,11 +137,7 @@ namespace Teacher
             };
             MainMenu.Items["mmClose"].Click += delegate (Object _object, EventArgs _eventArgs)
             {
-                tConnect.Stop();
-                _file = null;
-                _machines = null;
-
-                Close();
+                bCancel_Click(_object, _eventArgs);
             };
         }
 
@@ -150,7 +146,8 @@ namespace Teacher
         private String _file = "";
         private List<String> _machines = new List<String>();
 
-        private Thread _flow;
+        private Thread _flowConnect;
+        //private Thread _flowMessage;
         private Socket _server;
         private Int32 _port;
 
@@ -168,6 +165,25 @@ namespace Teacher
 
                 while (true)
                 {
+                    //BeginInvoke(new MethodInvoker(delegate
+                    //{
+                    //    if (_machines.Count > 0)
+                    //    {
+                    //        List<Int32> Indexes = new List<Int32>();
+
+                    //        foreach (String Machine in _machines)
+                    //        {
+                    //            if (!Sender(Machine, "Status"))
+                    //                Indexes.Add(_machines.IndexOf(Machine));
+                    //        }
+                            
+                    //        foreach (Int32 Index in Indexes)
+                    //            _machines.RemoveAt(Index);
+
+                    //        label1.Text = _machines.Count.ToString();
+                    //    }
+                    //}));
+                    
                     // Получение клиентского сокета
                     Socket _client = _server.Accept();
 
@@ -182,28 +198,31 @@ namespace Teacher
                         String HostName = Dns.GetHostEntry(IP).HostName;
                         String Data = Encoding.UTF8.GetString(_buffer);
 
-                        if (Data.ToLower() == "Connect".ToLower())
+                        //BeginInvoke(
+                        //    new MethodInvoker(delegate { MessageBox.Show(ProgLib.Text.Text.EditorialDistance(Data, "Connect").ToString()); }));
+
+                        if (Data == "Connect")
                         {
                             if (_machines.Count != 0)
                             {
                                 if (_machines.IndexOf(HostName) < 0)
                                 {
                                     BeginInvoke(
-                                        new MethodInvoker(delegate { _machines.Add(HostName); }));
+                                        new MethodInvoker(delegate { _machines.Add(HostName); label1.Text = _machines.Count.ToString(); }));
                                 }
                             }
                             else
                             {
                                 BeginInvoke(
-                                    new MethodInvoker(delegate { _machines.Add(HostName); }));
+                                    new MethodInvoker(delegate { _machines.Add(HostName); label1.Text = _machines.Count.ToString(); }));
                             }
+
+                            // Отправка уведомления о получении данных
+                            _client.Send(Encoding.UTF8.GetBytes("OK"));
                         }
                     }
                     while (_client.Available > 0);
-
-                    // Отправка уведомления о получении данных
-                    _client.Send(Encoding.UTF8.GetBytes("OK"));
-
+                    
                     // Закрытие клиентского сокета
                     _client.Shutdown(SocketShutdown.Both);
                     _client.Close();
@@ -212,8 +231,28 @@ namespace Teacher
             catch /*(Exception Error)*/ { /*MessageBox.Show(Error.Message, "Exception");*/ }
         }
 
+        private Boolean Sender(String Machine, String Message)
+        {
+            try
+            {
+                // Инициализация клиентского сокета
+                Socket _client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                _client.Connect(Machine, _port);
+
+                // Отправление данных на сервер
+                _client.Send(Encoding.UTF8.GetBytes("Status"));
+
+                // Закрытие клиентского сокета
+                _client.Shutdown(SocketShutdown.Both);
+                _client.Close();
+
+                return true;
+            }
+            catch (Exception Error) { MessageBox.Show(Error.Message, "Exception"); return false; }
+        }
+
         #endregion
-        
+
         public Information Connect()
         {
             ShowDialog();
@@ -225,13 +264,18 @@ namespace Teacher
             IniDocument INI = new IniDocument(Environment.CurrentDirectory + @"\config.ini");
             _port = Convert.ToInt32(INI.Get("TcpConfig", "Port"));
 
-            _flow = new Thread(new ThreadStart(Receiver));
-            _flow.Start();
-            tConnect.Start();
+            _flowConnect = new Thread(new ThreadStart(Receiver));
+            _flowConnect.Start();
+
+            //_flowMessage = new Thread(new ThreadStart(Receiver));
+            //_flowMessage.Start();
+
+            //tConnect.Start();
         }
         private void FormConnect_FormClosing(Object sender, FormClosingEventArgs e)
         {
-            _flow.Interrupt();
+            _flowConnect.Interrupt();
+            //_flowMessage.Interrupt();
             _server.Close();
         }
         private void FormConnect_KeyDown(Object sender, KeyEventArgs e)
@@ -293,6 +337,10 @@ namespace Teacher
             tConnect.Stop();
             _file = null;
             _machines = null;
+
+            _flowConnect.Interrupt();
+            //_flowMessage.Interrupt();
+            _server.Close();
 
             Close();
         }

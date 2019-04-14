@@ -181,7 +181,10 @@ namespace Student
         }
 
         #region Global Variables
-        
+
+        Boolean _threadStop = false;
+
+        //private Socket _client;
         private Thread _flow;
         private Int32 _port;
         private String _teacher;
@@ -190,19 +193,16 @@ namespace Student
 
         #region Methods
 
-        private void Receiver()
+        private void Sender()
         {
-            // Инициализация клиентского сокета
-            Socket _client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-
-            while (true)
+            while (!_threadStop)
             {
                 try
                 {
-
-                    // Подключение к серверу
+                    // Инициализация клиентского сокета
+                    Socket _client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                     _client.Connect(_teacher, _port);
-
+                        
                     // Отправление данных на сервер
                     _client.Send(Encoding.UTF8.GetBytes("Connect"));
 
@@ -217,21 +217,21 @@ namespace Student
                     }
                     while (_client.Available > 0);
 
-                    if (Result == "OK")
-                    {
+                    //if (Result == "OK")
+                    //{
                         // Закрытие клиентского сокета
                         _client.Shutdown(SocketShutdown.Both);
                         _client.Close();
+                    //}
 
-                        _flow.Interrupt();
-                    }
-                    else
-                    {
-                        BeginInvoke(
-                            new MethodInvoker(delegate { _flow.Interrupt(); }));
-                    }
+                    BeginInvoke(
+                        new MethodInvoker(delegate { MainMenu.Items["mmTitle"].Text = "Опросник"; }));
                 }
-                catch { }
+                catch ///*(Exception Error)*/ { /*MessageBox.Show(Error.Message, "Exception");*/ }
+                {
+                    BeginInvoke(
+                        new MethodInvoker(delegate { MainMenu.Items["mmTitle"].Text = "Опросник (сервер недоступен)"; }));
+                }
             }
         }
 
@@ -242,13 +242,22 @@ namespace Student
             IniDocument INI = new IniDocument(Environment.CurrentDirectory + @"\config.ini");
             _port = Convert.ToInt32(INI.Get("TcpConfig", "Port"));
             _teacher = INI.Get("TcpConfig", "Teacher");
-            
-            _flow = new Thread(new ThreadStart(Receiver));
+
+            // Инициализация клиентского сокета
+            //_client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+
+
+            _flow = new Thread(new ThreadStart(Sender));
             _flow.Start();
         }
         private void FormMain_FormClosing(Object sender, FormClosingEventArgs e)
         {
+            //_client.Disconnect(true);
+            _threadStop = true;
             _flow.Interrupt();
+            //_client.Close();
+            //_client.Shutdown(SocketShutdown.Both);
+            //_client.Dispose();
         }
         private void FormMain_KeyDown(Object sender, KeyEventArgs e)
         {
