@@ -28,13 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.MainMenu = new System.Windows.Forms.MenuStrip();
-            this.mmTitle = new System.Windows.Forms.ToolStripMenuItem();
             this.mmClose = new System.Windows.Forms.ToolStripMenuItem();
             this.mmMaximum = new System.Windows.Forms.ToolStripMenuItem();
             this.mmMinimum = new System.Windows.Forms.ToolStripMenuItem();
-            this.tConnect = new System.Windows.Forms.Timer(this.components);
+            this.mmTitle = new System.Windows.Forms.ToolStripMenuItem();
             this.bSelectTest = new System.Windows.Forms.Button();
             this.bNext = new System.Windows.Forms.Button();
             this.bCancel = new System.Windows.Forms.Button();
@@ -64,13 +62,6 @@
             this.MainMenu.Size = new System.Drawing.Size(567, 24);
             this.MainMenu.TabIndex = 6;
             this.MainMenu.Text = "menuStrip1";
-            // 
-            // mmTitle
-            // 
-            this.mmTitle.Font = new System.Drawing.Font("Segoe UI", 7.5F);
-            this.mmTitle.Name = "mmTitle";
-            this.mmTitle.Size = new System.Drawing.Size(81, 24);
-            this.mmTitle.Text = "Подключение";
             // 
             // mmClose
             // 
@@ -104,9 +95,12 @@
             this.mmMinimum.Size = new System.Drawing.Size(39, 24);
             this.mmMinimum.Visible = false;
             // 
-            // tConnect
+            // mmTitle
             // 
-            this.tConnect.Tick += new System.EventHandler(this.tConnect_Tick);
+            this.mmTitle.Font = new System.Drawing.Font("Segoe UI", 7.5F);
+            this.mmTitle.Name = "mmTitle";
+            this.mmTitle.Size = new System.Drawing.Size(81, 24);
+            this.mmTitle.Text = "Подключение";
             // 
             // bSelectTest
             // 
@@ -243,7 +237,6 @@
         private System.Windows.Forms.ToolStripMenuItem mmMaximum;
         private System.Windows.Forms.ToolStripMenuItem mmMinimum;
         private System.Windows.Forms.ToolStripMenuItem mmTitle;
-        private System.Windows.Forms.Timer tConnect;
         private System.Windows.Forms.Button bSelectTest;
         private System.Windows.Forms.Button bNext;
         private System.Windows.Forms.Button bCancel;

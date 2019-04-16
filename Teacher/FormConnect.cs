@@ -198,9 +198,6 @@ namespace Teacher
                         String HostName = Dns.GetHostEntry(IP).HostName;
                         String Data = Encoding.UTF8.GetString(_buffer);
 
-                        //BeginInvoke(
-                        //    new MethodInvoker(delegate { MessageBox.Show(ProgLib.Text.Text.EditorialDistance(Data, "Connect").ToString()); }));
-
                         if (Data == "Connect")
                         {
                             if (_machines.Count != 0)
@@ -261,21 +258,17 @@ namespace Teacher
         
         private void FormConnect_Load(Object sender, EventArgs e)
         {
+            label2.Text = "из " + LocalNetwork.GetServers(TypeServer.Workstation).Length;
+
             IniDocument INI = new IniDocument(Environment.CurrentDirectory + @"\config.ini");
             _port = Convert.ToInt32(INI.Get("TcpConfig", "Port"));
 
             _flowConnect = new Thread(new ThreadStart(Receiver));
             _flowConnect.Start();
-
-            //_flowMessage = new Thread(new ThreadStart(Receiver));
-            //_flowMessage.Start();
-
-            //tConnect.Start();
         }
         private void FormConnect_FormClosing(Object sender, FormClosingEventArgs e)
         {
             _flowConnect.Interrupt();
-            //_flowMessage.Interrupt();
             _server.Close();
         }
         private void FormConnect_KeyDown(Object sender, KeyEventArgs e)
@@ -323,7 +316,6 @@ namespace Teacher
             {
                 if (label1.Text != "0")
                 {
-                    tConnect.Stop();
                     Close();
                 }
                 else { MessageBox.Show("Список подключённых компьютеров пуст.", "Опросник", MessageBoxButtons.OK, MessageBoxIcon.Information); }
@@ -334,22 +326,13 @@ namespace Teacher
         // Отмена
         private void bCancel_Click(Object sender, EventArgs e)
         {
-            tConnect.Stop();
             _file = null;
             _machines = null;
 
             _flowConnect.Interrupt();
-            //_flowMessage.Interrupt();
             _server.Close();
 
             Close();
-        }
-
-        // Таймер
-        private void tConnect_Tick(Object sender, EventArgs e)
-        {
-            label2.Text = "из " + LocalNetwork.GetServers(TypeServer.Workstation).Length;
-            label1.Text = _machines.Count.ToString();
         }
     }
 }

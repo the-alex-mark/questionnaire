@@ -1,22 +1,16 @@
-﻿using ProgLib.Network;
-using Questionnaire.Controls;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using System;
 using System.Diagnostics;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection;
 using System.Windows.Forms;
-using Teacher.Data;
-using Teacher.Properties;
 
-namespace Teacher
+using Designer.Properties;
+using ProgLib.Data.CSharp;
+using ProgLib.Diagnostics;
+using Questionnaire.Controls;
+
+namespace Setup
 {
-    public partial class FormMain : Form
+    public partial class FormAbout : Form
     {
         #region Import
 
@@ -116,43 +110,10 @@ namespace Teacher
 
         #endregion
 
-        public FormMain()
+        public FormAbout()
         {
             InitializeComponent();
 
-            // Установка максимального размера завёртывания формы
-            MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
-
-            // Растяжение формы
-            MouseMove += delegate (Object _object, MouseEventArgs _mouseEventArgs)
-            {
-                if (WindowState != FormWindowState.Maximized)
-                {
-                    if (_mouseEventArgs.X >= Width - 4 && _mouseEventArgs.Y >= Height - 4) { Cursor = Cursors.SizeNWSE; }
-                    else if (_mouseEventArgs.X >= Width - 4 && _mouseEventArgs.Y > 25) { Cursor = Cursors.SizeWE; }
-                    else if (_mouseEventArgs.Y >= Height - 4) { Cursor = Cursors.SizeNS; }
-                    else { Cursor = Cursors.Default; }
-                }
-            };
-            MouseDown += delegate (Object _object, MouseEventArgs _mouseEventArgs)
-            {
-                if (WindowState != FormWindowState.Maximized)
-                {
-                    uint Param = 0;
-
-                    if (Cursor == Cursors.Default) { Param = 0; }
-                    else
-                    if (Cursor == Cursors.SizeNWSE) { Param = 0xF008; }
-                    else
-                    if (Cursor == Cursors.SizeWE) { Param = 0xF002; }
-                    else
-                    if (Cursor == Cursors.SizeNS) { Param = 0xF006; }
-
-                    ReleaseCapture();
-                    PostMessage(Handle, 0x0112, Param, 0);
-                }
-            };
-            
             // Оформление MainMenu
             MainMenu.Renderer = new MenuRenderer();
             MainMenu.MouseDown += delegate (Object _object, MouseEventArgs _mouseEventArgs)
@@ -160,15 +121,10 @@ namespace Teacher
                 ReleaseCapture();
                 PostMessage(Handle, 0x0112, 0xF012, 0);
             };
-            MainMenu.Items["mmMinimum"].Click += delegate (Object _object, EventArgs _eventArgs)
+            MainMenu.Items["mmTitle"].MouseDown += delegate (Object _object, MouseEventArgs _mouseEventArgs)
             {
-                WindowState = FormWindowState.Minimized;
-            };
-            MainMenu.Items["mmMaximum"].Click += delegate (Object _object, EventArgs _eventArgs)
-            {
-                WindowState = (WindowState == FormWindowState.Maximized)
-                    ? FormWindowState.Normal
-                    : FormWindowState.Maximized;
+                ReleaseCapture();
+                PostMessage(Handle, 0x0112, 0xF012, 0);
             };
             MainMenu.Items["mmClose"].Click += delegate (Object _object, EventArgs _eventArgs)
             {
@@ -176,103 +132,33 @@ namespace Teacher
             };
         }
 
-        #region Global Variables
-
-
-
-        #endregion
-
-        #region Methods
-        
-
-
-        #endregion
-
-        #region Menu
-
-        // Создание нового теста
-        private void mCreate_Click(Object sender, EventArgs e)
+        private void FormAbout_Load(Object sender, EventArgs e)
         {
-            if (File.Exists(Environment.CurrentDirectory + @"\Designer.exe"))
-                Process.Start(Environment.CurrentDirectory + @"\Designer.exe");
+            Property _property = AssemblyInfo.Get(Assembly.GetExecutingAssembly().Location);
+            Title.Text = _property.Title;
+            Version.Text = $"Версия {_property.Version.Major}.{_property.Version.Minor} сборка {_property.FileVersion.Major}";
+            Copyright.Text = _property.Copyright;
+            Developer.Text = Questionnaire.Properties.Resources.Developer;
         }
-
-        // Начать трансляцию
-        private void mStart_Click(Object sender, EventArgs e)
+        private void FormAbout_KeyDown(Object sender, KeyEventArgs e)
         {
-            FormConnect FC = new FormConnect();
-            Information Info = FC.Connect();
-
-            if (Info.Survey != null && Info.Machines != null)
+            switch (e.KeyCode)
             {
-                mStart.Enabled = false;
-                mStop.Enabled = true;
+                case Keys.Escape:
+                    Close();
+                    break;
 
-
-
-                MessageBox.Show("Good!");
+                default: break;
             }
         }
-
-        // Завершить трансляцию
-        private void mStop_Click(Object sender, EventArgs e)
-        {
-            mStart.Enabled = true;
-            mStop.Enabled = false;
-        }
-
-        // Выход
-        private void mExit_Click(Object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        // Вид
-        private void mSurvey_Click(Object sender, EventArgs e)
-        {
-            pbQuestionView_Click(sender, e);
-        }
-        private void mStatistics_Click(Object sender, EventArgs e)
-        {
-            pbStatisticsView_Click(sender, e);
-        }
-
-        // О программе
-        private void mAboutTheProgram_Click(Object sender, EventArgs e)
-        {
-            FormAbout About = new FormAbout();
-            About.ShowDialog();
-        }
-        private void mDeveloper_Click(Object sender, EventArgs e)
+        
+        private void Developer_LinkClicked(Object sender, LinkLabelLinkClickedEventArgs e)
         {
             try
             {
                 Process.Start(Questionnaire.Properties.Resources.Developer);
             }
-            catch { MessageBox.Show("Отсутствует подключение к интернету.", "Опросник", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-        }
-
-        #endregion
-
-        private void FormMain_Load(Object sender, EventArgs e)
-        {
-            // Получение списка компьютеров средствами .Net
-            MessageBox.Show(
-                LocalNetwork.GetMachines().Aggregate("", (S, I) => S += I + "\n"), "Список доступных компьютеров");
-
-            // Получение списка компьютеров средствами WinAPI
-            MessageBox.Show(
-                LocalNetwork.GetServers(TypeServer.Workstation).Aggregate("", (S, I) => S += I + "\n"), "Список доступных компьютеров");
-        }
-
-        // Вид
-        private void pbQuestionView_Click(Object sender, EventArgs e)
-        {
-
-        }
-        private void pbStatisticsView_Click(Object sender, EventArgs e)
-        {
-
+            catch { MessageBox.Show("Отсутствует подключение к интернету.", "Конструктор тестов", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
     }
 }
