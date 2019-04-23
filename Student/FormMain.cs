@@ -214,7 +214,7 @@ namespace Student
         private void FormMain_Load(Object sender, EventArgs e)
         {
             IniDocument INI = new IniDocument(Environment.CurrentDirectory + @"\config.ini");
-            _teacher = INI.Get("TcpConfig", "Teacher");
+            _teacher = INI.Get("TcpConfig", "Server");
             _port = Convert.ToInt32(INI.Get("TcpConfig", "Port"));
             
             // Запуск сервера

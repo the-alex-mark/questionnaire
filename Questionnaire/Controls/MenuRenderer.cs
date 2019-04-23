@@ -9,6 +9,32 @@ using System.Windows.Forms;
 
 namespace Questionnaire.Controls
 {
+    public enum VSCodeTheme
+    {
+        // Светлые темы
+        Light,
+        QuietLight,
+        SolarizedLight,
+
+        // Тёмные темы
+        Abyss,
+        Dark,
+        KimbieDark,
+        Monokai,
+        MonokaiDimmed,
+        Red,
+        SolarizedDark,
+        TomorrowNightBlue
+    }
+
+    public class VSCodeRenderer
+    {
+        public VSCodeRenderer(VSCodeTheme Theme)
+        {
+
+        }
+    }
+
     public class MenuRenderer : ToolStripRenderer
     {
         #region Дополнительные функции

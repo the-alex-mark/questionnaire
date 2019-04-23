@@ -94,7 +94,7 @@ namespace Questionnaire.Network
         #endregion
 
         /// <summary>
-        /// Начинает получение данных от клиентов.
+        /// Запускает процесс получения данных.
         /// </summary>
         public void Start()
         {
@@ -108,20 +108,20 @@ namespace Questionnaire.Network
         /// </summary>
         private void Listener()
         {
-            try
+            while (true)
             {
-                while (true)
+                try
                 {
                     // Получение клиентского сокета
                     Socket _client = _server.Accept();
 
                     // Получение входящих данных
-                    Byte[] Data = new Byte[1024];
+                    Byte[] _data = new Byte[1024];
                     do
                     {
                         // Получение данных, отправленные клиентом
-                        Int32 Count = _client.Receive(Data, 0, _client.Available, SocketFlags.None);
-                        Receiver?.Invoke(this, new TcpEventArgs(_client, Data));
+                        _client.Receive(_data, 0, _client.Available, SocketFlags.None);
+                        Receiver?.Invoke(this, new TcpEventArgs(_client, _data));
                     }
                     while (_client.Available > 0);
 
@@ -129,23 +129,22 @@ namespace Questionnaire.Network
                     _client.Shutdown(SocketShutdown.Both);
                     _client.Close();
                 }
+                catch /*(Exception Error)*/ { /*MessageBox.Show(Error.Message, "Exception");*/ }
             }
-            catch (Exception Error) { /*MessageBox.Show(Error.Message, "Exception");*/ }
         }
 
         /// <summary>
-        /// Отправляет данные клиенту.
+        /// Отправляет данные другому серверу.
         /// </summary>
-        /// <param name="Client">Имя клиентской машины</param>
+        /// <param name="Server">Имя сервера</param>
         /// <param name="Data">Передаваемые данные</param>
-        /// <returns></returns>
-        public void Send(String Client, String Data)
+        public void Send(String Server, String Data)
         {
             try
             {
                 // Инициализация клиентского сокета
                 Socket _client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                _client.Connect(Client, _port);
+                _client.Connect(Server, _port);
 
                 // Отправление данных на сервер
                 _client.Send(TcpServer.GetBytes(Data));
@@ -154,27 +153,22 @@ namespace Questionnaire.Network
                 _client.Shutdown(SocketShutdown.Both);
                 _client.Close();
             }
-            catch (Exception Error)
-            {
-                throw new Exception(Error.Message);
-                //MessageBox.Show(Error.Message, "Exception");
-            }
+            catch (Exception Error) { throw Error; }
         }
 
         /// <summary>
-        /// Отправляет данные клиенту.
+        /// Отправляет данные другому серверу.
         /// </summary>
-        /// <param name="Client">Имя клиентской машины</param>
+        /// <param name="Server">Имя сервера</param>
         /// <param name="Port">Порт, по которому будет осуществляться передача данных</param>
         /// <param name="Data">Передаваемые данные</param>
-        /// <returns></returns>
-        public static void Send(String Client, Int32 Port, String Data)
+        public static void Send(String Server, Int32 Port, String Data)
         {
             try
             {
                 // Инициализация клиентского сокета
                 Socket _client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                _client.Connect(Client, Port);
+                _client.Connect(Server, Port);
 
                 // Отправление данных на сервер
                 _client.Send(TcpServer.GetBytes(Data));
@@ -183,15 +177,11 @@ namespace Questionnaire.Network
                 _client.Shutdown(SocketShutdown.Both);
                 _client.Close();
             }
-            catch (Exception Error)
-            {
-                throw new Exception(Error.Message);
-                //MessageBox.Show(Error.Message, "Exception");
-            }
+            catch (Exception Error) { throw Error; }
         }
 
         /// <summary>
-        /// Завершает получение данных от клиентов.
+        /// Завершает процесс получения данных.
         /// </summary>
         public void Stop()
         {
@@ -200,7 +190,7 @@ namespace Questionnaire.Network
         }
 
         /// <summary>
-        /// Завершает работу сервера.
+        /// Завершает работу сервера и освобождает все связанные ресурсы.
         /// </summary>
         public void Close()
         {
@@ -209,7 +199,7 @@ namespace Questionnaire.Network
         }
 
         /// <summary>
-        /// Завершает работу сервера.
+        /// Освобождает все ресурсы, используемые текущим экземпляром класса <see cref="TcpServer"/>
         /// </summary>
         public void Dispose()
         {
