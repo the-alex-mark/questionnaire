@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.MainMenu = new System.Windows.Forms.MenuStrip();
             this.mmClose = new System.Windows.Forms.ToolStripMenuItem();
             this.mmMaximum = new System.Windows.Forms.ToolStripMenuItem();
@@ -103,31 +103,31 @@
             // 
             this.mmClose.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.mmClose.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.mmClose.Image = global::Teacher.Properties.Resources.mmClose;
+            this.mmClose.Image = ((System.Drawing.Image)(resources.GetObject("mmClose.Image")));
             this.mmClose.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.mmClose.Name = "mmClose";
             this.mmClose.Padding = new System.Windows.Forms.Padding(12, 0, 12, 0);
-            this.mmClose.Size = new System.Drawing.Size(39, 24);
+            this.mmClose.Size = new System.Drawing.Size(33, 24);
             // 
             // mmMaximum
             // 
             this.mmMaximum.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.mmMaximum.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.mmMaximum.Image = global::Teacher.Properties.Resources.mmMaximum;
+            this.mmMaximum.Image = ((System.Drawing.Image)(resources.GetObject("mmMaximum.Image")));
             this.mmMaximum.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.mmMaximum.Name = "mmMaximum";
             this.mmMaximum.Padding = new System.Windows.Forms.Padding(12, 0, 12, 0);
-            this.mmMaximum.Size = new System.Drawing.Size(39, 24);
+            this.mmMaximum.Size = new System.Drawing.Size(33, 24);
             // 
             // mmMinimum
             // 
             this.mmMinimum.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.mmMinimum.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.mmMinimum.Image = global::Teacher.Properties.Resources.mmMinimum;
+            this.mmMinimum.Image = ((System.Drawing.Image)(resources.GetObject("mmMinimum.Image")));
             this.mmMinimum.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.mmMinimum.Name = "mmMinimum";
             this.mmMinimum.Padding = new System.Windows.Forms.Padding(12, 0, 12, 0);
-            this.mmMinimum.Size = new System.Drawing.Size(39, 24);
+            this.mmMinimum.Size = new System.Drawing.Size(33, 24);
             // 
             // mmFile
             // 
@@ -414,7 +414,7 @@
             // bNext
             // 
             this.bNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bNext.Location = new System.Drawing.Point(-919, 9);
+            this.bNext.Location = new System.Drawing.Point(-979, 9);
             this.bNext.Name = "bNext";
             this.bNext.Size = new System.Drawing.Size(136, 24);
             this.bNext.TabIndex = 27;
@@ -424,7 +424,7 @@
             // bBreak
             // 
             this.bBreak.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bBreak.Location = new System.Drawing.Point(-1061, 9);
+            this.bBreak.Location = new System.Drawing.Point(-1121, 9);
             this.bBreak.Name = "bBreak";
             this.bBreak.Size = new System.Drawing.Size(136, 24);
             this.bBreak.TabIndex = 28;

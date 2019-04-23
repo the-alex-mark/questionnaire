@@ -27,17 +27,50 @@ namespace Questionnaire.Controls
         TomorrowNightBlue
     }
 
+    public struct ColorTableRenderer
+    {
+        public Color ColorSeparator { get; set; }
+        //public Color ColorSeparator { get; set; }
+        //public Color ColorSeparator { get; set; }
+        //public Color ColorSeparator { get; set; }
+        //public Color ColorSeparator { get; set; }
+
+        public ColorTableRenderer GetColorTable(VSCodeTheme Theme)
+        {
+            switch (Theme)
+            {
+                case VSCodeTheme.Light:
+                    return new ColorTableRenderer();
+
+                case VSCodeTheme.Dark:
+                    return new ColorTableRenderer();
+
+
+                default:
+                    return new ColorTableRenderer();
+            }
+        }
+    }
+
     public class VSCodeRenderer
     {
         public VSCodeRenderer(VSCodeTheme Theme)
         {
-
+            _colorTable = new ColorTableRenderer().GetColorTable(Theme);
         }
+
+        #region Global Variables
+
+        private ColorTableRenderer _colorTable;
+
+        #endregion
+
+
     }
 
     public class MenuRenderer : ToolStripRenderer
     {
-        #region Дополнительные функции
+        #region Additional method
 
         /// <summary>
         /// Конвертирует список клавиш в <see cref="String"/>
