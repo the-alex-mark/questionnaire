@@ -1,6 +1,7 @@
 ﻿using ProgLib.IO;
 using Questionnaire;
 using Questionnaire.Controls;
+using Questionnaire.Network;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -184,80 +185,67 @@ namespace Student
 
         Boolean _threadStop = false;
 
-        //private Socket _client;
+        private TcpServer _client;
         private Thread _flow;
         private Int32 _port;
         private String _teacher;
 
         #endregion
 
-        #region Methods
-
-        private void Sender()
+        private void Check()
         {
-            while (!_threadStop)
+            while (true)
             {
                 try
                 {
-                    // Инициализация клиентского сокета
-                    Socket _client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                    _client.Connect(_teacher, _port);
-                        
-                    // Отправление данных на сервер
-                    _client.Send(Encoding.UTF8.GetBytes("Connect"));
-
-                    // Получение ответа от сервера
-                    Byte[] Buffer = new Byte[1024];
-                    String Result = "";
-                    do
-                    {
-                        _client.Receive(Buffer);
-                        Byte[] _buffer = Buffer.TakeWhile((v, index) => Buffer.Skip(index).Any(w => w != 0x00)).ToArray();
-                        Result = Encoding.UTF8.GetString(_buffer);
-                    }
-                    while (_client.Available > 0);
-
-                    //if (Result == "OK")
-                    //{
-                        // Закрытие клиентского сокета
-                        _client.Shutdown(SocketShutdown.Both);
-                        _client.Close();
-                    //}
+                    TcpServer.Send(_teacher, _port, "_status:connect");
 
                     BeginInvoke(
                         new MethodInvoker(delegate { MainMenu.Items["mmTitle"].Text = "Опросник"; }));
                 }
-                catch ///*(Exception Error)*/ { /*MessageBox.Show(Error.Message, "Exception");*/ }
+                catch
                 {
                     BeginInvoke(
-                        new MethodInvoker(delegate { MainMenu.Items["mmTitle"].Text = "Опросник (сервер недоступен)"; }));
+                        new MethodInvoker(delegate { MainMenu.Items["mmTitle"].Text = "Опросник (нет подключения)"; }));
                 }
             }
         }
-
-        #endregion
         
         private void FormMain_Load(Object sender, EventArgs e)
         {
             IniDocument INI = new IniDocument(Environment.CurrentDirectory + @"\config.ini");
-            _port = Convert.ToInt32(INI.Get("TcpConfig", "Port"));
             _teacher = INI.Get("TcpConfig", "Teacher");
+            _port = Convert.ToInt32(INI.Get("TcpConfig", "Port"));
+            
+            // Запуск сервера
+            _client = new TcpServer(_port, 50);
+            _client.Receiver += delegate (Object _object, TcpEventArgs _tcpEventArgs)
+            {
+                String Client = TcpServer.GetString(_tcpEventArgs.Data);
+                String Message = TcpServer.GetHostName(_tcpEventArgs.Socket);
 
-            // Инициализация клиентского сокета
-            //_client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                if (Message.StartsWith("_status:"))
+                {
+                    if (Message.Split(':')[1] == "start")
+                    {
+                        _client.Stop();
+                        _client.Dispose();
+                    }
+                }
 
+                //MessageBox.Show(TcpServer.GetString(_tcpEventArgs.Data), TcpServer.GetHostName(_tcpEventArgs.Socket));
+            };
+            _client.Start();
 
-            _flow = new Thread(new ThreadStart(Sender));
+            _flow = new Thread(new ThreadStart(Check));
             _flow.Start();
         }
         private void FormMain_FormClosing(Object sender, FormClosingEventArgs e)
         {
-            //_client.Disconnect(true);
-            _threadStop = true;
             _flow.Interrupt();
-            //_client.Close();
-            //_client.Shutdown(SocketShutdown.Both);
-            //_client.Dispose();
+
+            _client.Stop();
+            _client.Dispose();
         }
         private void FormMain_KeyDown(Object sender, KeyEventArgs e)
         {

@@ -3,6 +3,7 @@ using ProgLib.IO;
 using ProgLib.Network;
 using Questionnaire.Controls;
 using Questionnaire.Data;
+using Questionnaire.Network;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -143,133 +144,77 @@ namespace Teacher
 
         #region Global Variables
 
+        // Расположение выбранного теста
         private String _file = "";
-        private List<String> _machines = new List<String>();
 
-        private Thread _flowConnect;
-        //private Thread _flowMessage;
-        private Socket _server;
+        // Настройки сервера
+        private TcpServer _server;
         private Int32 _port;
-
-        #endregion
-
-        #region Methods
-
-        private void Receiver()
-        {
-            try
-            {
-                _server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                _server.Bind(new IPEndPoint(IPAddress.Any, _port));
-                _server.Listen(10);
-
-                while (true)
-                {
-                    //BeginInvoke(new MethodInvoker(delegate
-                    //{
-                    //    if (_machines.Count > 0)
-                    //    {
-                    //        List<Int32> Indexes = new List<Int32>();
-
-                    //        foreach (String Machine in _machines)
-                    //        {
-                    //            if (!Sender(Machine, "Status"))
-                    //                Indexes.Add(_machines.IndexOf(Machine));
-                    //        }
-                            
-                    //        foreach (Int32 Index in Indexes)
-                    //            _machines.RemoveAt(Index);
-
-                    //        label1.Text = _machines.Count.ToString();
-                    //    }
-                    //}));
-                    
-                    // Получение клиентского сокета
-                    Socket _client = _server.Accept();
-
-                    // Получение входящих данных
-                    Byte[] Buffer = new Byte[1024];
-                    do
-                    {
-                        _client.Receive(Buffer, 0, _client.Available, SocketFlags.None);
-                        Byte[] _buffer = Buffer.TakeWhile((v, index) => Buffer.Skip(index).Any(w => w != 0x00)).ToArray();
-
-                        String IP = ((IPEndPoint)_client.RemoteEndPoint).Address.ToString();
-                        String HostName = Dns.GetHostEntry(IP).HostName;
-                        String Data = Encoding.UTF8.GetString(_buffer);
-
-                        if (Data == "Connect")
-                        {
-                            if (_machines.Count != 0)
-                            {
-                                if (_machines.IndexOf(HostName) < 0)
-                                {
-                                    BeginInvoke(
-                                        new MethodInvoker(delegate { _machines.Add(HostName); label1.Text = _machines.Count.ToString(); }));
-                                }
-                            }
-                            else
-                            {
-                                BeginInvoke(
-                                    new MethodInvoker(delegate { _machines.Add(HostName); label1.Text = _machines.Count.ToString(); }));
-                            }
-
-                            // Отправка уведомления о получении данных
-                            _client.Send(Encoding.UTF8.GetBytes("OK"));
-                        }
-                    }
-                    while (_client.Available > 0);
-                    
-                    // Закрытие клиентского сокета
-                    _client.Shutdown(SocketShutdown.Both);
-                    _client.Close();
-                }
-            }
-            catch /*(Exception Error)*/ { /*MessageBox.Show(Error.Message, "Exception");*/ }
-        }
-
-        private Boolean Sender(String Machine, String Message)
-        {
-            try
-            {
-                // Инициализация клиентского сокета
-                Socket _client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                _client.Connect(Machine, _port);
-
-                // Отправление данных на сервер
-                _client.Send(Encoding.UTF8.GetBytes("Status"));
-
-                // Закрытие клиентского сокета
-                _client.Shutdown(SocketShutdown.Both);
-                _client.Close();
-
-                return true;
-            }
-            catch (Exception Error) { MessageBox.Show(Error.Message, "Exception"); return false; }
-        }
+        private List<String> _clients = new List<String>();
 
         #endregion
 
         public Information Connect()
         {
             ShowDialog();
-            return (_file != null && _machines != null) ? new Information(new Survey(_file), _machines.ToArray()) : new Information();
+            return (_file != null && _clients != null) ? new Information(new Survey(_file), _clients.ToArray()) : new Information();
         }
-        
+
         private void FormConnect_Load(Object sender, EventArgs e)
         {
+            // Получение количества доступных компьютеров в локальной сети
             label2.Text = "из " + LocalNetwork.GetServers(TypeServer.Workstation).Length;
 
+            // Получение настроект сервера
             IniDocument INI = new IniDocument(Environment.CurrentDirectory + @"\config.ini");
             _port = Convert.ToInt32(INI.Get("TcpConfig", "Port"));
+            
+            // Запуск сервера
+            _server = new TcpServer(_port, 50);
+            _server.Receiver += delegate(Object _object, TcpEventArgs _tcpEventArgs)
+            {
+                String Client  = TcpServer.GetHostName(_tcpEventArgs.Socket);
+                String Message = TcpServer.GetString(_tcpEventArgs.Data);
 
-            _flowConnect = new Thread(new ThreadStart(Receiver));
-            _flowConnect.Start();
+                if (Message != "")
+                {
+                    if (Message.StartsWith("_status:"))
+                    {
+                        if (Message.Split(':')[1] == "connect")
+                        {
+                            if (_clients.IndexOf(Client) == -1)
+                                _clients.Add(Client);
+                        }
+                    }
+
+                    if (_clients.Count > 0)
+                    {
+                        List<String> _temp = new List<String>();
+                        foreach (String _client in _clients)
+                        {
+                            try
+                            {
+                                TcpServer.Send(_client, _port, "_status:connect");
+                            }
+                            catch { _temp.Add(_client); }
+                        }
+
+                        foreach (String _client in _temp)
+                            _clients.Remove(_client);
+                    }
+
+                    BeginInvoke(
+                        new MethodInvoker(delegate { label1.Text = _clients.Count.ToString(); }));
+
+                    //MessageBox.Show(Message, Client);
+                }
+            };
+            _server.Start();
         }
         private void FormConnect_FormClosing(Object sender, FormClosingEventArgs e)
         {
-            _flowConnect.Interrupt();
-            _server.Close();
+            _server.Stop();
+            _server.Dispose();
         }
         private void FormConnect_KeyDown(Object sender, KeyEventArgs e)
         {
@@ -292,20 +237,28 @@ namespace Teacher
                 Filter = "Файл теста (*.xml)|*.xml"
             };
 
-            try
+            if (OFD.ShowDialog() == DialogResult.OK)
             {
-                _file = (DialogResult.OK == OFD.ShowDialog()) ? OFD.FileName : null;
-                lTest.ForeColor = Color.Black;
+                try
+                {
+                    _file = OFD.FileName;
+                    lTest.ForeColor = Color.Black;
 
-                Survey _survay = new Survey(_file);
-                lTest.Text = (_survay.Name != "") ? _survay.Name : _file;
+                    Survey _survay = new Survey(_file);
+                    lTest.Text = (_survay.Name != "") ? _survay.Name : _file;
+                }
+                catch
+                {
+                    _file = null;
+                    lTest.ForeColor = Color.FromArgb(232, 38, 55);
+
+                    MessageBox.Show("Файл имел неверный формат!", "Опросник", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            catch
+            else
             {
                 _file = null;
                 lTest.ForeColor = Color.FromArgb(232, 38, 55);
-
-                MessageBox.Show("Файл имел неверный формат!", "Опросник", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -327,10 +280,10 @@ namespace Teacher
         private void bCancel_Click(Object sender, EventArgs e)
         {
             _file = null;
-            _machines = null;
+            _clients = null;
 
-            _flowConnect.Interrupt();
-            _server.Close();
+            //_flow.Interrupt();
+            //_server.Close();
 
             Close();
         }
