@@ -178,7 +178,7 @@ namespace Teacher
 
                 if (Message != "")
                 {
-                    if (Message.StartsWith("_status:"))
+                    if (Message.StartsWith("_request:"))
                     {
                         if (Message.Split(':')[1] == "connect")
                         {
@@ -194,7 +194,7 @@ namespace Teacher
                         {
                             try
                             {
-                                TcpServer.Send(_client, _port, "_status:connect");
+                                TcpServer.Send(_client, _port, "_request:connect");
                             }
                             catch { _temp.Add(_client); }
                         }

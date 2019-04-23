@@ -182,9 +182,7 @@ namespace Student
         }
 
         #region Global Variables
-
-        Boolean _threadStop = false;
-
+        
         private TcpServer _client;
         private Thread _flow;
         private Int32 _port;
@@ -192,13 +190,15 @@ namespace Student
 
         #endregion
 
+        #region Methods
+
         private void Check()
         {
             while (true)
             {
                 try
                 {
-                    TcpServer.Send(_teacher, _port, "_status:connect");
+                    TcpServer.Send(_teacher, _port, "_request:connect");
 
                     BeginInvoke(
                         new MethodInvoker(delegate { MainMenu.Items["mmTitle"].Text = "Опросник"; }));
@@ -210,9 +210,13 @@ namespace Student
                 }
             }
         }
-        
+
+        #endregion
+
         private void FormMain_Load(Object sender, EventArgs e)
         {
+            MainMenu.Items["mmTitle"].Text += " (нет подключения)";
+
             IniDocument INI = new IniDocument(Environment.CurrentDirectory + @"\config.ini");
             _teacher = INI.Get("TcpConfig", "Server");
             _port = Convert.ToInt32(INI.Get("TcpConfig", "Port"));
@@ -224,9 +228,9 @@ namespace Student
                 String Client = TcpServer.GetString(_tcpEventArgs.Data);
                 String Message = TcpServer.GetHostName(_tcpEventArgs.Socket);
 
-                if (Message.StartsWith("_status:"))
+                if (Message.StartsWith("_request:"))
                 {
-                    if (Message.Split(':')[1] == "start")
+                    if (Message.Split(':')[1] == "startTranslation")
                     {
                         _client.Stop();
                         _client.Dispose();
