@@ -344,6 +344,8 @@ namespace Teacher
             // Получение списка компьютеров средствами WinAPI
             //MessageBox.Show(
             //    LocalNetwork.GetServers(TypeServer.Workstation).Aggregate("", (S, I) => S += I + "\n"), "Список доступных компьютеров");
+
+            MessageBox.Show("Здравствуйте Екатерина Владимировна!", "Опросник");
         }
 
         // Вид
