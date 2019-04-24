@@ -1,6 +1,7 @@
 ﻿using ProgLib;
 using ProgLib.IO;
 using ProgLib.Network;
+using Questionnaire;
 using Questionnaire.Controls;
 using Questionnaire.Data;
 using Questionnaire.Network;
@@ -166,15 +167,23 @@ namespace Teacher
             label2.Text = "из " + LocalNetwork.GetServers(TypeServer.Workstation).Length;
 
             // Получение настроект сервера
-            IniDocument INI = new IniDocument(Environment.CurrentDirectory + @"\config.ini");
-            _port = Convert.ToInt32(INI.Get("TcpConfig", "Port"));
+            try
+            {
+                TcpConfig _config = new TcpConfig();
+                _port = _config.Port;
+            }
+            catch (Exception Error)
+            {
+                MessageBox.Show(Error.Message, "Опросник", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // ...
+            }
             
             // Запуск сервера
             _server = new TcpServer(_port, 50);
             _server.Receiver += delegate(Object _object, TcpEventArgs _tcpEventArgs)
             {
                 String Client  = TcpServer.GetHostName(_tcpEventArgs.Socket);
-                String Message = TcpServer.GetString(_tcpEventArgs.Buffer);
+                String Message = TcpServer.GetString(_tcpEventArgs.Buffer, _tcpEventArgs.Length);
 
                 if (Message != "")
                 {

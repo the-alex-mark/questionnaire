@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration.cs" />
     <Compile Include="Controls\MenuRenderer.cs" />
     <Compile Include="Controls\ViewAnswer.cs">
       <SubType>UserControl</SubType>

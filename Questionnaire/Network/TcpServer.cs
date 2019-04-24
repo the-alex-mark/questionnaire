@@ -19,7 +19,7 @@ namespace Questionnaire.Network
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="Port">Порт, по которому будет осуществляться передача данных</param>
+        /// <param name="Port">Номер порта, связанный с адресом, или любой доступный порт</param>
         /// <param name="Backlog">Максимальное количество возможных подключений</param>
         public TcpServer(Int32 Port, Int32 Backlog)
         {

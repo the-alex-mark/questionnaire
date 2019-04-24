@@ -215,12 +215,19 @@ namespace Student
 
         private void FormMain_Load(Object sender, EventArgs e)
         {
-            MainMenu.Items["mmTitle"].Text += " (нет подключения)";
+            // Получение настроект сервера
+            try
+            {
+                TcpConfig _config = new TcpConfig();
+                _teacher = _config.Server;
+                _port = _config.Port;
+            }
+            catch (Exception Error)
+            {
+                MessageBox.Show(Error.Message, "Опросник", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // ...
+            }
 
-            IniDocument INI = new IniDocument(Environment.CurrentDirectory + @"\config.ini");
-            _teacher = INI.Get("TcpConfig", "Server");
-            _port = Convert.ToInt32(INI.Get("TcpConfig", "Port"));
-            
             // Запуск сервера
             _client = new TcpServer(_port, 50);
             _client.Receiver += delegate (Object _object, TcpEventArgs _tcpEventArgs)

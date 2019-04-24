@@ -88,8 +88,8 @@
             // 
             this.mmTitle.Font = new System.Drawing.Font("Segoe UI", 7.5F);
             this.mmTitle.Name = "mmTitle";
-            this.mmTitle.Size = new System.Drawing.Size(65, 24);
-            this.mmTitle.Text = "Опросник";
+            this.mmTitle.Size = new System.Drawing.Size(155, 24);
+            this.mmTitle.Text = "Опросник (нет подключения)";
             // 
             // label1
             // 
