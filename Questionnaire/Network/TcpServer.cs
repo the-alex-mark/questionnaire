@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -36,6 +37,7 @@ namespace Questionnaire.Network
         // Настройки сервера
         private Socket _server;
         private Int32 _port;
+        private String _data = null;
 
         // Внешний поток
         private Thread _flow;
@@ -86,21 +88,33 @@ namespace Questionnaire.Network
         /// <param name="Value"></param>
         /// <param name="Count"></param>
         /// <returns></returns>
-        private static String GetString(Byte[] Value, Int32 Count)
+        public static String GetString(Byte[] Value, Int32 Count)
         {
             return Encoding.UTF8.GetString(Value, 0, Count);
         }
 
         #endregion
-
+        
         /// <summary>
         /// Запускает процесс получения данных.
         /// </summary>
         public void Start()
         {
+            Stop();
+
             _flow = new Thread(new ThreadStart(Listener));
-            //_flow.IsBackground = true;
+            _flow.IsBackground = true;
             _flow.Start();
+        }
+
+        /// <summary>
+        /// Запускает процесс получения и трансляции данных.
+        /// </summary>
+        /// <param name="Data">Транслируемые данные</param>
+        public void Start(String Data)
+        {
+            _data = Data;
+            Start();
         }
 
         /// <summary>
@@ -116,17 +130,23 @@ namespace Questionnaire.Network
                     Socket _client = _server.Accept();
 
                     // Получение входящих данных
-                    Byte[] _data = new Byte[1024];
+                    Byte[] _buffer = new Byte[10000];
                     do
                     {
                         // Получение данных, отправленные клиентом
-                        _client.Receive(_data, 0, _client.Available, SocketFlags.None);
-                        Receiver?.Invoke(this, new TcpEventArgs(_client, _data));
+                        Int32 _length = _client.Receive(_buffer, 0, _client.Available, SocketFlags.None);
+                        Receiver?.Invoke(this, new TcpEventArgs(_client, _buffer, _length));
                     }
                     while (_client.Available > 0);
 
+                    if (_data != "" && _data != null)
+                    {
+                        // Отправка данных клиенту
+                        _client.Send(TcpServer.GetBytes(_data));
+                    }
+
                     // Закрытие клиентского сокета
-                    _client.Shutdown(SocketShutdown.Both);
+                    //_client.Shutdown(SocketShutdown.Both);
                     _client.Close();
                 }
                 catch /*(Exception Error)*/ { /*MessageBox.Show(Error.Message, "Exception");*/ }
@@ -187,6 +207,9 @@ namespace Questionnaire.Network
         {
             if (_flow != null)
                 _flow.Interrupt();
+
+            _flow = null;
+            _data = null;
         }
 
         /// <summary>

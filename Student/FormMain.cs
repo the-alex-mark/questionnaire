@@ -225,8 +225,8 @@ namespace Student
             _client = new TcpServer(_port, 50);
             _client.Receiver += delegate (Object _object, TcpEventArgs _tcpEventArgs)
             {
-                String Client = TcpServer.GetString(_tcpEventArgs.Data);
-                String Message = TcpServer.GetHostName(_tcpEventArgs.Socket);
+                String Client = TcpServer.GetHostName(_tcpEventArgs.Socket);
+                String Message = TcpServer.GetString(_tcpEventArgs.Buffer, _tcpEventArgs.Length);
 
                 if (Message.StartsWith("_request:"))
                 {

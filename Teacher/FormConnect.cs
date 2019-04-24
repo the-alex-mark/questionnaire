@@ -174,7 +174,7 @@ namespace Teacher
             _server.Receiver += delegate(Object _object, TcpEventArgs _tcpEventArgs)
             {
                 String Client  = TcpServer.GetHostName(_tcpEventArgs.Socket);
-                String Message = TcpServer.GetString(_tcpEventArgs.Data);
+                String Message = TcpServer.GetString(_tcpEventArgs.Buffer);
 
                 if (Message != "")
                 {

@@ -29,11 +29,18 @@ namespace Questionnaire.Controls
 
     public struct ColorTableRenderer
     {
-        public Color ColorSeparator { get; set; }
-        //public Color ColorSeparator { get; set; }
-        //public Color ColorSeparator { get; set; }
-        //public Color ColorSeparator { get; set; }
-        //public Color ColorSeparator { get; set; }
+        public Color ForeColor { get; set; }
+        public Color SelectForeColor { get; set; }
+        public Color SelectColor { get; set; }
+        public Color SelectItemColor { get; set; }
+        public Color BackColor { get; set; }
+        public Color BackItemColor { get; set; }
+        public Color SeparatorColor { get; set; }
+        public Color CheckColor { get; set; }
+        public Color ArrowColor { get; set; }
+        public Color CloseColor { get; set; }
+        
+        public Color DisabledForeColor { get; set; }
 
         public ColorTableRenderer GetColorTable(VSCodeTheme Theme)
         {
