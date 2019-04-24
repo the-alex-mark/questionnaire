@@ -60,13 +60,13 @@ namespace Questionnaire.Controls
 
                             case "mmClose":
                                 e.Graphics.FillRectangle(
-                                    new SolidBrush(_colorTable.CloseColor),
+                                    new SolidBrush(_colorTable.MenuStrip_CloseColor),
                                     new Rectangle(0, 0, e.Item.Width, e.Item.Height));
                                 break;
 
                             default:
                                 e.Graphics.FillRectangle(
-                                    new SolidBrush(_colorTable.SelectColor),
+                                    new SolidBrush(_colorTable.MenuStrip_SelectColor),
                                     new Rectangle(0, 0, e.Item.Width, e.Item.Height));
                                 break;
                         }
@@ -75,7 +75,7 @@ namespace Questionnaire.Controls
                     if ((e.Item as ToolStripMenuItem).DropDown.Visible)
                     {
                         e.Graphics.FillRectangle(
-                            new SolidBrush(_colorTable.SelectColor),
+                            new SolidBrush(_colorTable.MenuStrip_SelectColor),
                             new Rectangle(0, 0, e.Item.Width, e.Item.Height));
                     }
                 }
@@ -84,7 +84,7 @@ namespace Questionnaire.Controls
                 if (e.Item.IsOnDropDown && e.Item.Selected)
                 {
                     e.Graphics.FillRectangle(
-                        new SolidBrush(_colorTable.SelectItemColor),
+                        new SolidBrush(_colorTable.MenuStrip_SelectItemColor),
                         new Rectangle(1, 1, e.Item.Width, e.Item.Height));
                 }
 
@@ -105,12 +105,12 @@ namespace Questionnaire.Controls
                 ShortcutKeys,
                 new Font("Segoe UI", 7.5F, FontStyle.Regular)).Width;
 
-            Color _foreColor = _colorTable.ForeColor;
-            Color _selectForeColor = _colorTable.SelectForeColor;
+            Color _foreColor = _colorTable.MenuStrip_ForeColor;
+            Color _selectForeColor = _colorTable.MenuStrip_SelectForeColor;
 
-            Color _selectColor = _colorTable.SelectItemColor;
-            Color _backColor = _colorTable.BackItemColor;
-            Color _disabledFontColor = _colorTable.DisabledForeColor;
+            Color _selectColor = _colorTable.MenuStrip_SelectItemColor;
+            Color _backColor = _colorTable.MenuStrip_BackItemColor;
+            Color _disabledFontColor = _colorTable.MenuStrip_DisabledForeColor;
 
             if (e.Item.IsOnDropDown && e.Item.Selected)
             {
@@ -180,7 +180,7 @@ namespace Questionnaire.Controls
             base.OnRenderSeparator(e);
 
             e.Graphics.FillRectangle(
-                new SolidBrush(_colorTable.SeparatorColor),
+                new SolidBrush(_colorTable.MenuStrip_SeparatorColor),
                 new Rectangle(6, 3, e.Item.Width - 12, 1));
         }
 
@@ -198,7 +198,7 @@ namespace Questionnaire.Controls
             };
 
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-            e.Graphics.DrawLines(new Pen((e.Item.IsOnDropDown && e.Item.Selected) ? _colorTable.SelectArrowColor : _colorTable.ArrowColor), _lines);
+            e.Graphics.DrawLines(new Pen((e.Item.IsOnDropDown && e.Item.Selected) ? _colorTable.MenuStrip_SelectArrowColor : _colorTable.MenuStrip_ArrowColor), _lines);
 
             e.Graphics.SmoothingMode = SmoothingMode.Default;
         }
@@ -217,7 +217,7 @@ namespace Questionnaire.Controls
             };
 
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-            e.Graphics.DrawLines(new Pen((e.Item.IsOnDropDown && e.Item.Selected) ? _colorTable.SelectCheckColor : _colorTable.CheckColor), _lines);
+            e.Graphics.DrawLines(new Pen((e.Item.IsOnDropDown && e.Item.Selected) ? _colorTable.MenuStrip_SelectCheckColor : _colorTable.MenuStrip_CheckColor), _lines);
 
             e.Graphics.SmoothingMode = SmoothingMode.Default;
         }
