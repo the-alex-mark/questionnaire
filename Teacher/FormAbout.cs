@@ -115,7 +115,7 @@ namespace Teacher
             InitializeComponent();
 
             // Оформление MainMenu
-            MainMenu.Renderer = new MenuRenderer();
+            MainMenu.Renderer = new VSCodeRenderer(VSCodeTheme.QuietLight);
             MainMenu.MouseDown += delegate (Object _object, MouseEventArgs _mouseEventArgs)
             {
                 ReleaseCapture();

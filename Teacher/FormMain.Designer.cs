@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.MainMenu = new System.Windows.Forms.MenuStrip();
             this.mmClose = new System.Windows.Forms.ToolStripMenuItem();
             this.mmMaximum = new System.Windows.Forms.ToolStripMenuItem();
@@ -83,7 +83,7 @@
             // 
             // MainMenu
             // 
-            this.MainMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
+            this.MainMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(183)))), ((int)(((byte)(215)))));
             this.MainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mmClose,
             this.mmMaximum,
@@ -103,31 +103,31 @@
             // 
             this.mmClose.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.mmClose.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.mmClose.Image = ((System.Drawing.Image)(resources.GetObject("mmClose.Image")));
+            this.mmClose.Image = global::Teacher.Properties.Resources.mmClose;
             this.mmClose.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.mmClose.Name = "mmClose";
             this.mmClose.Padding = new System.Windows.Forms.Padding(12, 0, 12, 0);
-            this.mmClose.Size = new System.Drawing.Size(33, 24);
+            this.mmClose.Size = new System.Drawing.Size(39, 24);
             // 
             // mmMaximum
             // 
             this.mmMaximum.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.mmMaximum.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.mmMaximum.Image = ((System.Drawing.Image)(resources.GetObject("mmMaximum.Image")));
+            this.mmMaximum.Image = global::Teacher.Properties.Resources.mmMaximum;
             this.mmMaximum.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.mmMaximum.Name = "mmMaximum";
             this.mmMaximum.Padding = new System.Windows.Forms.Padding(12, 0, 12, 0);
-            this.mmMaximum.Size = new System.Drawing.Size(33, 24);
+            this.mmMaximum.Size = new System.Drawing.Size(39, 24);
             // 
             // mmMinimum
             // 
             this.mmMinimum.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.mmMinimum.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.mmMinimum.Image = ((System.Drawing.Image)(resources.GetObject("mmMinimum.Image")));
+            this.mmMinimum.Image = global::Teacher.Properties.Resources.mmMinimum;
             this.mmMinimum.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.mmMinimum.Name = "mmMinimum";
             this.mmMinimum.Padding = new System.Windows.Forms.Padding(12, 0, 12, 0);
-            this.mmMinimum.Size = new System.Drawing.Size(33, 24);
+            this.mmMinimum.Size = new System.Drawing.Size(39, 24);
             // 
             // mmFile
             // 
@@ -145,25 +145,26 @@
             // 
             // mCreate
             // 
+            this.mCreate.BackColor = System.Drawing.SystemColors.Control;
             this.mCreate.Margin = new System.Windows.Forms.Padding(0, 1, 0, 0);
             this.mCreate.Name = "mCreate";
             this.mCreate.Padding = new System.Windows.Forms.Padding(0);
             this.mCreate.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.mCreate.Size = new System.Drawing.Size(151, 20);
+            this.mCreate.Size = new System.Drawing.Size(180, 20);
             this.mCreate.Text = "Создать";
             this.mCreate.Click += new System.EventHandler(this.mCreate_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(148, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // mStart
             // 
             this.mStart.Name = "mStart";
             this.mStart.Padding = new System.Windows.Forms.Padding(0);
             this.mStart.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Q)));
-            this.mStart.Size = new System.Drawing.Size(151, 20);
+            this.mStart.Size = new System.Drawing.Size(180, 20);
             this.mStart.Text = "Начать";
             this.mStart.Click += new System.EventHandler(this.mStart_Click);
             // 
@@ -173,14 +174,14 @@
             this.mStop.Name = "mStop";
             this.mStop.Padding = new System.Windows.Forms.Padding(0);
             this.mStop.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.W)));
-            this.mStop.Size = new System.Drawing.Size(151, 20);
+            this.mStop.Size = new System.Drawing.Size(180, 20);
             this.mStop.Text = "Завершить";
             this.mStop.Click += new System.EventHandler(this.mStop_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(148, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
             // 
             // mExit
             // 
@@ -188,7 +189,7 @@
             this.mExit.Name = "mExit";
             this.mExit.Padding = new System.Windows.Forms.Padding(0);
             this.mExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.mExit.Size = new System.Drawing.Size(151, 20);
+            this.mExit.Size = new System.Drawing.Size(180, 20);
             this.mExit.Text = "Выход";
             this.mExit.Click += new System.EventHandler(this.mExit_Click);
             // 
@@ -211,7 +212,7 @@
             this.mSurvey.Padding = new System.Windows.Forms.Padding(0);
             this.mSurvey.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.O)));
-            this.mSurvey.Size = new System.Drawing.Size(177, 20);
+            this.mSurvey.Size = new System.Drawing.Size(180, 20);
             this.mSurvey.Text = "Опрос";
             this.mSurvey.Click += new System.EventHandler(this.mSurvey_Click);
             // 
@@ -221,14 +222,14 @@
             this.mStatistics.Padding = new System.Windows.Forms.Padding(0);
             this.mStatistics.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.S)));
-            this.mStatistics.Size = new System.Drawing.Size(177, 20);
+            this.mStatistics.Size = new System.Drawing.Size(180, 20);
             this.mStatistics.Text = "Статистика";
             this.mStatistics.Click += new System.EventHandler(this.mStatistics_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(174, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
             this.toolStripSeparator2.Visible = false;
             // 
             // mOptions
@@ -237,7 +238,7 @@
             this.mOptions.Name = "mOptions";
             this.mOptions.Padding = new System.Windows.Forms.Padding(0);
             this.mOptions.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
-            this.mOptions.Size = new System.Drawing.Size(177, 20);
+            this.mOptions.Size = new System.Drawing.Size(180, 20);
             this.mOptions.Text = "Настройки";
             this.mOptions.Visible = false;
             // 
@@ -257,7 +258,7 @@
             this.mAboutTheProgram.Name = "mAboutTheProgram";
             this.mAboutTheProgram.Padding = new System.Windows.Forms.Padding(0);
             this.mAboutTheProgram.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this.mAboutTheProgram.Size = new System.Drawing.Size(155, 20);
+            this.mAboutTheProgram.Size = new System.Drawing.Size(180, 20);
             this.mAboutTheProgram.Text = "О приложении";
             this.mAboutTheProgram.Click += new System.EventHandler(this.mAboutTheProgram_Click);
             // 
@@ -266,13 +267,13 @@
             this.mDeveloper.Margin = new System.Windows.Forms.Padding(0, 0, 0, 1);
             this.mDeveloper.Name = "mDeveloper";
             this.mDeveloper.Padding = new System.Windows.Forms.Padding(0);
-            this.mDeveloper.Size = new System.Drawing.Size(155, 20);
+            this.mDeveloper.Size = new System.Drawing.Size(180, 20);
             this.mDeveloper.Text = "Разработчик";
             this.mDeveloper.Click += new System.EventHandler(this.mDeveloper_Click);
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
             this.panel1.Controls.Add(this.pictureBox3);
             this.panel1.Controls.Add(this.pbStatisticsView);
             this.panel1.Controls.Add(this.pbQuestionView);
@@ -294,7 +295,6 @@
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox3.TabIndex = 2;
             this.pictureBox3.TabStop = false;
-            this.pictureBox3.Visible = false;
             // 
             // pbStatisticsView
             // 
@@ -482,7 +482,7 @@
             // FormMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(950, 500);
             this.Controls.Add(this.panel2);

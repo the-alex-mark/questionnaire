@@ -43,7 +43,7 @@
             // 
             // MainMenu
             // 
-            this.MainMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.MainMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
             this.MainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mmClose,
             this.mmMaximum,

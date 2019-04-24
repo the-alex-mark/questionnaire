@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration.cs" />
+    <Compile Include="Controls\ColorTableRenderer.cs" />
     <Compile Include="Controls\MenuRenderer.cs" />
     <Compile Include="Controls\ViewAnswer.cs">
       <SubType>UserControl</SubType>
@@ -58,6 +59,8 @@
     <Compile Include="Controls\ViewAnswer.Designer.cs">
       <DependentUpon>ViewAnswer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\VSCodeRenderer.cs" />
+    <Compile Include="Controls\VSCodeTheme.cs" />
     <Compile Include="Data\Question.cs" />
     <Compile Include="Data\Result.cs" />
     <Compile Include="Data\Survey.cs" />
