@@ -241,10 +241,10 @@ namespace Teacher
             {
                 try
                 {
+                    Survey _survay = new Survey(OFD.FileName);
+
                     _file = OFD.FileName;
                     lTest.ForeColor = Color.Black;
-
-                    Survey _survay = new Survey(_file);
                     lTest.Text = (_survay.Name != "") ? _survay.Name : _file;
                 }
                 catch

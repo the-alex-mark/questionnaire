@@ -32,6 +32,23 @@ namespace Questionnaire.Network
             _port = Port;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Address">IP</param>
+        /// <param name="Port">Номер порта, связанный с адресом, или любой доступный порт</param>
+        /// <param name="Backlog">Максимальное количество возможных подключений</param>
+        public TcpServer(IPAddress Address, Int32 Port, Int32 Backlog)
+        {
+            // Инициализация сервера
+            _server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            _server.Bind(new IPEndPoint(Address, Port));
+            _server.Listen(Backlog);
+
+            // Получение порта
+            _port = Port;
+        }
+
         #region Global Variables
 
         // Настройки сервера
