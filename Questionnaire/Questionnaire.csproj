@@ -62,6 +62,7 @@
     <Compile Include="Data\Survey.cs" />
     <Compile Include="GlobalEvent.cs" />
     <Compile Include="GlobalEventArgs.cs" />
+    <Compile Include="Hotkey.cs" />
     <Compile Include="Network\TcpEventArgs.cs" />
     <Compile Include="Network\TcpServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

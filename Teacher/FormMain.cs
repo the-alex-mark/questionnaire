@@ -329,13 +329,18 @@ namespace Teacher
         // Вид
         private void pbQuestionView_Click(Object sender, EventArgs e)
         {
-            Program.Config.Theme = VSCodeTheme.Light;
+
         }
         private void pbStatisticsView_Click(Object sender, EventArgs e)
         {
-            Program.Config.Theme = VSCodeTheme.QuietLight;
+
         }
         private void pbSettings_Click(Object sender, EventArgs e)
+        {
+            mOptions_Click(sender, e);
+        }
+
+        private void mOptions_Click(Object sender, EventArgs e)
         {
             FormSettings FS = new FormSettings();
             FS.ShowDialog();

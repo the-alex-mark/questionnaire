@@ -8,6 +8,7 @@ using ProgLib.Data.CSharp;
 using ProgLib.Diagnostics;
 using Questionnaire.Controls;
 using ProgLib.Windows.Forms.VSCode;
+using System.Drawing;
 
 namespace Teacher
 {
@@ -133,8 +134,36 @@ namespace Teacher
             };
         }
 
+        #region Methods
+
+        /// <summary>
+        /// Обновляет цветовую тему.
+        /// </summary>
+        /// <param name="Theme"></param>
+        private void UpdateTheme(VSCodeTheme Theme)
+        {
+            switch (Theme)
+            {
+                case VSCodeTheme.Light:
+                    MainMenu.Renderer = new VSCodeToolStripRenderer(Theme);
+                    MainMenu.BackColor = Color.FromArgb(221, 221, 221);
+                    this.BackColor = Color.FromArgb(250, 250, 250);
+                    break;
+
+                case VSCodeTheme.QuietLight:
+                    MainMenu.Renderer = new VSCodeToolStripRenderer(Theme);
+                    MainMenu.BackColor = Color.FromArgb(196, 183, 215);
+                    this.BackColor = Color.WhiteSmoke;
+                    break;
+            }
+        }
+
+        #endregion
+
         private void FormAbout_Load(Object sender, EventArgs e)
         {
+            UpdateTheme(Program.Config.Theme);
+
             Property _property = AssemblyInfo.Get(Assembly.GetExecutingAssembly().Location);
 
             Title.Text = _property.Title;

@@ -230,7 +230,6 @@
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
-            this.toolStripSeparator2.Visible = false;
             // 
             // mOptions
             // 
@@ -240,7 +239,7 @@
             this.mOptions.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
             this.mOptions.Size = new System.Drawing.Size(180, 20);
             this.mOptions.Text = "Настройки";
-            this.mOptions.Visible = false;
+            this.mOptions.Click += new System.EventHandler(this.mOptions_Click);
             // 
             // mmHelp
             // 
@@ -300,6 +299,7 @@
             // 
             this.pbStatisticsView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbStatisticsView.Enabled = false;
             this.pbStatisticsView.Image = global::Teacher.Properties.Resources.pictureСтатистика_16;
             this.pbStatisticsView.Location = new System.Drawing.Point(0, 32);
             this.pbStatisticsView.Name = "pbStatisticsView";
@@ -313,6 +313,7 @@
             // 
             this.pbQuestionView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbQuestionView.Enabled = false;
             this.pbQuestionView.Image = global::Teacher.Properties.Resources.pictureВопросОтвет_16;
             this.pbQuestionView.Location = new System.Drawing.Point(0, 3);
             this.pbQuestionView.Name = "pbQuestionView";

@@ -138,12 +138,18 @@ namespace Teacher
             };
         }
 
+        #region Global Variables
+
+        private Color _selectColor;
+        private Color _selectForeColor;
+        private Color _foreColor;
+
+        #endregion
+
         #region Methods
 
-
-
         /// <summary>
-        /// Отрисовывает элемент управления <see cref="ListBox"/>
+        /// Отрисовывает элемент управления <see cref="ListBox"/>.
         /// </summary>
         /// <param name="_control"></param>
         private void OnStyleListBox(ListBox _control)
@@ -189,17 +195,19 @@ namespace Teacher
             };
         }
 
+        /// <summary>
+        /// Обновляет цветовую тему.
+        /// </summary>
+        /// <param name="Theme"></param>
         private void UpdateTheme(VSCodeTheme Theme)
         {
-            //MainMenu.Renderer = null;
-
             switch (Theme)
             {
                 case VSCodeTheme.Light:
                     MainMenu.Renderer = new VSCodeToolStripRenderer(Theme);
                     MainMenu.BackColor = Color.FromArgb(221, 221, 221);
                     this.BackColor = Color.FromArgb(250, 250, 250);
-                    menuSettings.BackColor = BackColor;
+                    menuSettings.BackColor = this.BackColor;
                     _selectForeColor = Color.White;
                     _foreColor = Color.Black;
                     selectTheme.SelectForeColor = Color.White;
@@ -209,7 +217,7 @@ namespace Teacher
                     MainMenu.Renderer = new VSCodeToolStripRenderer(Theme);
                     MainMenu.BackColor = Color.FromArgb(196, 183, 215);
                     this.BackColor = Color.WhiteSmoke;
-                    menuSettings.BackColor = BackColor;
+                    menuSettings.BackColor = this.BackColor;
                     _selectForeColor = Color.Black;
                     _foreColor = Color.Black;
                     selectTheme.SelectForeColor = Color.Black;
@@ -220,27 +228,46 @@ namespace Teacher
             _selectColor = Colors.SelectItemColor;
             button1.FlatAppearance.MouseOverBackColor = Colors.SelectItemColor;
             button1.FlatAppearance.MouseDownBackColor = Colors.SelectItemColor;
+            textBox1.BackColor = BackColor;
 
             selectTheme.BackColor = this.BackColor;
             selectTheme.ButtonColor = this.BackColor;
             selectTheme.SelectColor = Colors.SelectItemColor;
+            selectServer.BackColor = this.BackColor;
+            selectServer.ButtonColor = this.BackColor;
         }
-        private Color _selectColor;
-        private Color _selectForeColor;
-        private Color _foreColor;
 
         #endregion
 
         private void FormAbout_Load(Object sender, EventArgs e)
         {
+            pictureBox3.Paint += delegate (Object _object, PaintEventArgs _paintEventArgs)
+            {
+                _paintEventArgs.Graphics.DrawRectangle(new Pen(SystemColors.ControlDark), new Rectangle(0, 0, pictureBox3.Width - 1, pictureBox3.Height - 1));
+            };
+            textBox1.KeyPress += delegate (Object _object, KeyPressEventArgs _keyPressEventArgs)
+            {
+                if (!Char.IsDigit(_keyPressEventArgs.KeyChar) && _keyPressEventArgs.KeyChar != 8)
+                    _keyPressEventArgs.Handled = true;
+            };
+            textBox1.TextChanged += delegate (Object _object, EventArgs _eventArgs)
+            {
+                Program.Config.Port = (textBox1.Text != "") 
+                    ? Convert.ToInt32(textBox1.Text) 
+                    : 1;
+            };
+
+            textBox1.Text = Program.Config.Port.ToString();
+
             List<String> Items = new List<String>();
             foreach (String Item in selectTheme.Items) Items.Add(Item.Replace(" ", ""));
-            //selectTheme.SelectedIndex = Items.IndexOf(Program.Config.Theme.ToString());
             selectTheme.Text = selectTheme.Items[Items.IndexOf(Program.Config.Theme.ToString())].ToString();
 
+            selectServer.Items.Add(Environment.MachineName);
+            selectServer.SelectedIndex = 0;
+            selectServer.Text = Environment.MachineName;
+
             menuSettings.SelectedIndex = 0;
-            //selectTheme.SelectedIndex = selectTheme.Items.IndexOf(Program.Config.Theme);
-            //selectTheme.Text = Program.Config.Theme.ToString();
             checkBox1.Checked = Program.Config.FontRegister;
             
             Program.Config.ThemeManagement += delegate (Object _object, VisualizationEventArgs _vsCodeThemeEventArgs)
@@ -248,7 +275,6 @@ namespace Teacher
                 UpdateTheme(_vsCodeThemeEventArgs.Theme);
             };
             Program.Config.Theme = Program.Config.Theme;
-            //Program.VSCodeManagement.Theme = VSCodeTheme.QuietLight;
 
             foreach (Control Control in Controls)
             {
