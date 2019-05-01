@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 
 using Designer.Data;
+using ProgLib.Windows.Forms.VSCode;
 using Questionnaire.Controls;
 
 namespace Designer
@@ -109,9 +110,9 @@ namespace Designer
         public FormDescription()
         {
             InitializeComponent();
-            
+
             // Оформление MainMenu
-            MainMenu.Renderer = new MenuRenderer();
+            MainMenu.Renderer = new VSCodeToolStripRenderer(VSCodeTheme.Light);
             MainMenu.MouseDown += delegate (Object _object, MouseEventArgs _mouseEventArgs)
             {
                 ReleaseCapture();

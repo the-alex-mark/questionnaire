@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Questionnaire;
+using Questionnaire.VSCode;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,5 +20,8 @@ namespace Teacher
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormMain());
         }
+
+        public static Config Config = new Config();
+        //public static VSCodeManagement VSCodeManagement = new VSCodeManagement();
     }
 }

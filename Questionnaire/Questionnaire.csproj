@@ -51,19 +51,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration.cs" />
-    <Compile Include="Controls\ColorTableRenderer.cs" />
-    <Compile Include="Controls\MenuRenderer.cs" />
     <Compile Include="Controls\ViewAnswer.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controls\ViewAnswer.Designer.cs">
       <DependentUpon>ViewAnswer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\VSCodeRenderer.cs" />
-    <Compile Include="Controls\VSCodeTheme.cs" />
     <Compile Include="Data\Question.cs" />
     <Compile Include="Data\Result.cs" />
     <Compile Include="Data\Survey.cs" />
+    <Compile Include="GlobalEvent.cs" />
+    <Compile Include="GlobalEventArgs.cs" />
     <Compile Include="Network\TcpEventArgs.cs" />
     <Compile Include="Network\TcpServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,6 +70,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="VSCode\VSCodeManagement.cs" />
+    <Compile Include="VSCodeThemeEventArgs.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Controls\ViewAnswer.resx">

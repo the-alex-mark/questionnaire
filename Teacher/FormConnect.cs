@@ -1,6 +1,7 @@
 ﻿using ProgLib;
 using ProgLib.IO;
 using ProgLib.Network;
+using ProgLib.Windows.Forms.VSCode;
 using Questionnaire;
 using Questionnaire.Controls;
 using Questionnaire.Data;
@@ -126,7 +127,7 @@ namespace Teacher
             InitializeComponent();
 
             // Оформление MainMenu
-            MainMenu.Renderer = new VSCodeRenderer(VSCodeTheme.QuietLight);
+            MainMenu.Renderer = new VSCodeToolStripRenderer(VSCodeTheme.QuietLight);
             MainMenu.MouseDown += delegate (Object _object, MouseEventArgs _mouseEventArgs)
             {
                 ReleaseCapture();
@@ -169,8 +170,7 @@ namespace Teacher
             // Получение настроект сервера
             try
             {
-                TcpConfig _config = new TcpConfig();
-                _port = _config.Port;
+                _port = Program.Config.Port;
             }
             catch (Exception Error)
             {

@@ -1,4 +1,5 @@
 ﻿using ProgLib.IO;
+using ProgLib.Windows.Forms.VSCode;
 using Questionnaire;
 using Questionnaire.Controls;
 using Questionnaire.Network;
@@ -154,7 +155,7 @@ namespace Student
             };
 
             // Оформление MainMenu
-            MainMenu.Renderer = new MenuRenderer();
+            MainMenu.Renderer = new VSCodeToolStripRenderer(VSCodeTheme.Light);
             MainMenu.MouseDown += delegate (Object _object, MouseEventArgs _mouseEventArgs)
             {
                 ReleaseCapture();
@@ -218,7 +219,7 @@ namespace Student
             // Получение настроект сервера
             try
             {
-                TcpConfig _config = new TcpConfig();
+                Config _config = new Config();
                 _teacher = _config.Server;
                 _port = _config.Port;
             }

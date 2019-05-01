@@ -51,8 +51,8 @@
             this.mmHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mAboutTheProgram = new System.Windows.Forms.ToolStripMenuItem();
             this.mDeveloper = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.sideBar = new System.Windows.Forms.Panel();
+            this.pbSettings = new System.Windows.Forms.PictureBox();
             this.pbStatisticsView = new System.Windows.Forms.PictureBox();
             this.pbQuestionView = new System.Windows.Forms.PictureBox();
             this.Statistics = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -68,8 +68,8 @@
             this.panelStatistics = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.MainMenu.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.sideBar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSettings)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbStatisticsView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbQuestionView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Statistics)).BeginInit();
@@ -271,36 +271,35 @@
             this.mDeveloper.Text = "Разработчик";
             this.mDeveloper.Click += new System.EventHandler(this.mDeveloper_Click);
             // 
-            // panel1
+            // sideBar
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
-            this.panel1.Controls.Add(this.pictureBox3);
-            this.panel1.Controls.Add(this.pbStatisticsView);
-            this.panel1.Controls.Add(this.pbQuestionView);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Enabled = false;
-            this.panel1.Location = new System.Drawing.Point(0, 24);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(38, 476);
-            this.panel1.TabIndex = 21;
+            this.sideBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(237)))), ((int)(((byte)(245)))));
+            this.sideBar.Controls.Add(this.pbSettings);
+            this.sideBar.Controls.Add(this.pbStatisticsView);
+            this.sideBar.Controls.Add(this.pbQuestionView);
+            this.sideBar.Dock = System.Windows.Forms.DockStyle.Left;
+            this.sideBar.Location = new System.Drawing.Point(0, 24);
+            this.sideBar.Name = "sideBar";
+            this.sideBar.Size = new System.Drawing.Size(38, 476);
+            this.sideBar.TabIndex = 21;
             // 
-            // pictureBox3
+            // pbSettings
             // 
-            this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.pbSettings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox3.Image = global::Teacher.Properties.Resources.pictureНастройки_16;
-            this.pictureBox3.Location = new System.Drawing.Point(0, 443);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(38, 30);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox3.TabIndex = 2;
-            this.pictureBox3.TabStop = false;
+            this.pbSettings.Image = global::Teacher.Properties.Resources.pictureНастройки_16;
+            this.pbSettings.Location = new System.Drawing.Point(0, 443);
+            this.pbSettings.Name = "pbSettings";
+            this.pbSettings.Size = new System.Drawing.Size(38, 30);
+            this.pbSettings.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbSettings.TabIndex = 2;
+            this.pbSettings.TabStop = false;
+            this.pbSettings.Click += new System.EventHandler(this.pbSettings_Click);
             // 
             // pbStatisticsView
             // 
             this.pbStatisticsView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbStatisticsView.Enabled = false;
             this.pbStatisticsView.Image = global::Teacher.Properties.Resources.pictureСтатистика_16;
             this.pbStatisticsView.Location = new System.Drawing.Point(0, 32);
             this.pbStatisticsView.Name = "pbStatisticsView";
@@ -314,7 +313,6 @@
             // 
             this.pbQuestionView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbQuestionView.Enabled = false;
             this.pbQuestionView.Image = global::Teacher.Properties.Resources.pictureВопросОтвет_16;
             this.pbQuestionView.Location = new System.Drawing.Point(0, 3);
             this.pbQuestionView.Name = "pbQuestionView";
@@ -414,7 +412,7 @@
             // bNext
             // 
             this.bNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bNext.Location = new System.Drawing.Point(-1099, 9);
+            this.bNext.Location = new System.Drawing.Point(-1279, 9);
             this.bNext.Name = "bNext";
             this.bNext.Size = new System.Drawing.Size(136, 24);
             this.bNext.TabIndex = 27;
@@ -424,7 +422,7 @@
             // bBreak
             // 
             this.bBreak.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bBreak.Location = new System.Drawing.Point(-1241, 9);
+            this.bBreak.Location = new System.Drawing.Point(-1421, 9);
             this.bBreak.Name = "bBreak";
             this.bBreak.Size = new System.Drawing.Size(136, 24);
             this.bBreak.TabIndex = 28;
@@ -486,7 +484,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(950, 500);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.sideBar);
             this.Controls.Add(this.MainMenu);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -498,8 +496,8 @@
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.MainMenu.ResumeLayout(false);
             this.MainMenu.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.sideBar.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbSettings)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbStatisticsView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbQuestionView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Statistics)).EndInit();
@@ -535,8 +533,8 @@
         private System.Windows.Forms.ToolStripMenuItem mOptions;
         private System.Windows.Forms.ToolStripMenuItem mAboutTheProgram;
         private System.Windows.Forms.ToolStripMenuItem mDeveloper;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Panel sideBar;
+        private System.Windows.Forms.PictureBox pbSettings;
         private System.Windows.Forms.PictureBox pbStatisticsView;
         private System.Windows.Forms.PictureBox pbQuestionView;
         private System.Windows.Forms.DataVisualization.Charting.Chart Statistics;

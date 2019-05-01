@@ -7,6 +7,7 @@ using Student.Properties;
 using ProgLib.Data.CSharp;
 using ProgLib.Diagnostics;
 using Questionnaire.Controls;
+using ProgLib.Windows.Forms.VSCode;
 
 namespace Student
 {
@@ -115,7 +116,7 @@ namespace Student
             InitializeComponent();
 
             // Оформление MainMenu
-            MainMenu.Renderer = new VSCodeRenderer(VSCodeTheme.QuietLight);
+            MainMenu.Renderer = new VSCodeToolStripRenderer(VSCodeTheme.Light);
             MainMenu.MouseDown += delegate (Object _object, MouseEventArgs _mouseEventArgs)
             {
                 ReleaseCapture();

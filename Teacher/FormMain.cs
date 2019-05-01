@@ -1,5 +1,8 @@
-﻿using Questionnaire.Controls;
+﻿using ProgLib.Windows.Forms.VSCode;
+using Questionnaire;
+using Questionnaire.Controls;
 using Questionnaire.Network;
+using Questionnaire.VSCode;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -157,7 +160,7 @@ namespace Teacher
             };
             
             // Оформление MainMenu
-            MainMenu.Renderer = new VSCodeRenderer(VSCodeTheme.QuietLight);
+            //MainMenu.Renderer = new VSCodeRenderer(VSCodeTheme.QuietLight);
             MainMenu.MouseDown += delegate (Object _object, MouseEventArgs _mouseEventArgs)
             {
                 ReleaseCapture();
@@ -186,6 +189,56 @@ namespace Teacher
         private TcpServer _server;
         private Int32 _port;
         private List<String> _clients = new List<String>();
+
+        #endregion
+
+        #region Additional method
+
+        private void UpdateTheme(VSCodeTheme Theme)
+        {
+            //MainMenu.Renderer = null;
+
+            switch (Theme)
+            {
+                case VSCodeTheme.Light:
+                    MainMenu.Renderer = new VSCodeToolStripRenderer(Theme);
+                    MainMenu.BackColor = Color.FromArgb(221, 221, 221);
+                    this.BackColor = Color.FromArgb(250, 250, 250);
+                    sideBar.BackColor = Color.FromArgb(243, 243, 243);
+                    break;
+
+                case VSCodeTheme.QuietLight:
+                    MainMenu.Renderer = new VSCodeToolStripRenderer(Theme);
+                    MainMenu.BackColor = Color.FromArgb(196, 183, 215);
+                    this.BackColor = Color.WhiteSmoke;
+                    sideBar.BackColor = Color.FromArgb(237, 237, 245);
+                    break;
+            }
+        }
+
+        private void UpdateFontRegister(Boolean FontRegister)
+        {
+            String ToFirstUpper(String Value)
+            {
+                if (Value.Length > 0)
+                {
+                    String Temp = Value.ToLower();
+                    return Temp[0].ToString().ToUpper() + Temp.Substring(1);
+                }
+                else return Value;
+            }
+
+            if (FontRegister)
+            {
+                foreach (ToolStripMenuItem Item in MainMenu.Items)
+                    Item.Text = Item.Text.ToUpper();
+            }
+            else
+            {
+                foreach (ToolStripMenuItem Item in MainMenu.Items)
+                    Item.Text = ToFirstUpper(Item.Text);
+            }
+        }
 
         #endregion
 
@@ -257,6 +310,13 @@ namespace Teacher
 
         private void FormMain_Load(Object sender, EventArgs e)
         {
+            Program.Config.ThemeManagement += delegate (Object _object, VisualizationEventArgs _vsCodeThemeEventArgs)
+            {
+                UpdateTheme(_vsCodeThemeEventArgs.Theme);
+                UpdateFontRegister(_vsCodeThemeEventArgs.FontRegister);
+            };
+            Program.Config.Theme = Program.Config.Theme;
+            
             // Получение списка компьютеров средствами .Net
             //MessageBox.Show(
             //    LocalNetwork.GetMachines().Aggregate("", (S, I) => S += I + "\n"), "Список доступных компьютеров");
@@ -269,11 +329,16 @@ namespace Teacher
         // Вид
         private void pbQuestionView_Click(Object sender, EventArgs e)
         {
-
+            Program.Config.Theme = VSCodeTheme.Light;
         }
         private void pbStatisticsView_Click(Object sender, EventArgs e)
         {
-
+            Program.Config.Theme = VSCodeTheme.QuietLight;
+        }
+        private void pbSettings_Click(Object sender, EventArgs e)
+        {
+            FormSettings FS = new FormSettings();
+            FS.ShowDialog();
         }
     }
 }
