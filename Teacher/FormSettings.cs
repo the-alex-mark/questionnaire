@@ -121,7 +121,6 @@ namespace Teacher
             InitializeComponent();
 
             // Оформление MainMenu
-            //MainMenu.Renderer = new VSCodeToolStripRenderer(VSCodeTheme.QuietLight);
             MainMenu.MouseDown += delegate (Object _object, MouseEventArgs _mouseEventArgs)
             {
                 ReleaseCapture();
@@ -204,78 +203,42 @@ namespace Teacher
             switch (Theme)
             {
                 case VSCodeTheme.Light:
-                    MainMenu.Renderer = new VSCodeToolStripRenderer(Theme);
                     MainMenu.BackColor = Color.FromArgb(221, 221, 221);
                     this.BackColor = Color.FromArgb(250, 250, 250);
                     menuSettings.BackColor = this.BackColor;
                     _selectForeColor = Color.White;
                     _foreColor = Color.Black;
-                    selectTheme.SelectForeColor = Color.White;
+                    vTheme.SelectForeColor = Color.White;
                     break;
 
                 case VSCodeTheme.QuietLight:
-                    MainMenu.Renderer = new VSCodeToolStripRenderer(Theme);
                     MainMenu.BackColor = Color.FromArgb(196, 183, 215);
                     this.BackColor = Color.WhiteSmoke;
                     menuSettings.BackColor = this.BackColor;
                     _selectForeColor = Color.Black;
                     _foreColor = Color.Black;
-                    selectTheme.SelectForeColor = Color.Black;
+                    vTheme.SelectForeColor = Color.Black;
                     break;
             }
 
+            MainMenu.Renderer = new VSCodeToolStripRenderer(Theme);
             VSCodeMenuStripColors Colors = new VSCodeMenuStripColors(Theme);
             _selectColor = Colors.SelectItemColor;
-            button1.FlatAppearance.MouseOverBackColor = Colors.SelectItemColor;
-            button1.FlatAppearance.MouseDownBackColor = Colors.SelectItemColor;
-            textBox1.BackColor = BackColor;
-
-            selectTheme.BackColor = this.BackColor;
-            selectTheme.ButtonColor = this.BackColor;
-            selectTheme.SelectColor = Colors.SelectItemColor;
-            selectServer.BackColor = this.BackColor;
-            selectServer.ButtonColor = this.BackColor;
+            mOK.FlatAppearance.MouseOverBackColor = Colors.SelectItemColor;
+            mOK.FlatAppearance.MouseDownBackColor = Colors.SelectItemColor;
+            vPort.BackColor = BackColor;
+            vTheme.BackColor = this.BackColor;
+            vTheme.ButtonColor = this.BackColor;
+            vTheme.SelectColor = Colors.SelectItemColor;
+            vServer.BackColor = this.BackColor;
+            vServer.ButtonColor = this.BackColor;
         }
 
         #endregion
 
         private void FormAbout_Load(Object sender, EventArgs e)
         {
-            pictureBox3.Paint += delegate (Object _object, PaintEventArgs _paintEventArgs)
-            {
-                _paintEventArgs.Graphics.DrawRectangle(new Pen(SystemColors.ControlDark), new Rectangle(0, 0, pictureBox3.Width - 1, pictureBox3.Height - 1));
-            };
-            textBox1.KeyPress += delegate (Object _object, KeyPressEventArgs _keyPressEventArgs)
-            {
-                if (!Char.IsDigit(_keyPressEventArgs.KeyChar) && _keyPressEventArgs.KeyChar != 8)
-                    _keyPressEventArgs.Handled = true;
-            };
-            textBox1.TextChanged += delegate (Object _object, EventArgs _eventArgs)
-            {
-                Program.Config.Port = (textBox1.Text != "") 
-                    ? Convert.ToInt32(textBox1.Text) 
-                    : 1;
-            };
-
-            textBox1.Text = Program.Config.Port.ToString();
-
-            List<String> Items = new List<String>();
-            foreach (String Item in selectTheme.Items) Items.Add(Item.Replace(" ", ""));
-            selectTheme.Text = selectTheme.Items[Items.IndexOf(Program.Config.Theme.ToString())].ToString();
-
-            selectServer.Items.Add(Environment.MachineName);
-            selectServer.SelectedIndex = 0;
-            selectServer.Text = Environment.MachineName;
-
-            menuSettings.SelectedIndex = 0;
-            checkBox1.Checked = Program.Config.FontRegister;
-            
-            Program.Config.ThemeManagement += delegate (Object _object, VisualizationEventArgs _vsCodeThemeEventArgs)
-            {
-                UpdateTheme(_vsCodeThemeEventArgs.Theme);
-            };
-            Program.Config.Theme = Program.Config.Theme;
-
+            // Отрисовка элементов
             foreach (Control Control in Controls)
             {
                 if (Control is Button)
@@ -290,8 +253,33 @@ namespace Teacher
                     };
                 }
             }
+            pictureBox3.Paint += delegate (Object _object, PaintEventArgs _paintEventArgs)
+            {
+                _paintEventArgs.Graphics.DrawRectangle(new Pen(SystemColors.ControlDark), new Rectangle(0, 0, pictureBox3.Width - 1, pictureBox3.Height - 1));
+            };
 
+            // Вывод данных
+            Program.Config.ThemeManagement += delegate (Object _object, VisualizationEventArgs _vsCodeThemeEventArgs)
+            {
+                UpdateTheme(_vsCodeThemeEventArgs.Theme);
+            };
+            Program.Config.Theme = Program.Config.Theme;
+
+            List<String> Items = new List<String>();
+            foreach (String Item in vTheme.Items) Items.Add(Item.Replace(" ", ""));
+            vTheme.Text = vTheme.Items[Items.IndexOf(Program.Config.Theme.ToString())].ToString();
+
+            vPort.Text = Program.Config.Port.ToString();
+            
+            vServer.Items.Add(Environment.MachineName);
+            vServer.SelectedIndex = 0;
+            vServer.Text = Environment.MachineName;
+
+            menuSettings.SelectedIndex = 0;
+            vFontRegister.Checked = Program.Config.FontRegister;
+            
             OnStyleListBox(menuSettings);
+            
         }
         private void FormAbout_KeyDown(Object sender, KeyEventArgs e)
         {
@@ -305,19 +293,9 @@ namespace Teacher
             }
         }
 
-        private void Developer_LinkClicked(Object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            try
-            {
-                Process.Start(Questionnaire.Properties.Resources.Developer);
-            }
-            catch { MessageBox.Show("Отсутствует подключение к интернету.", "Опросник", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-        }
-
+        // Выбор меню
         private void menuSettings_SelectedIndexChanged(Object sender, EventArgs e)
         {
-            //Program.Config.Theme = (Program.Config.Theme == VSCodeTheme.Light) ? VSCodeTheme.QuietLight : VSCodeTheme.Light;
-
             switch (menuSettings.Items[menuSettings.SelectedIndex])
             {
                 case "Визуальное оформление":
@@ -331,21 +309,38 @@ namespace Teacher
                     break;
             }
         }
-
-        private void selectTheme_SelectedIndexChanged(Object sender, EventArgs e)
+        
+        // Выбор темы
+        private void vTheme_SelectedIndexChanged(Object sender, EventArgs e)
         {
             List<String> Themes = Enum.GetNames(typeof(VSCodeTheme)).ToList();
-            Program.Config.Theme = (VSCodeTheme)Convert.ToInt32(Themes.IndexOf(selectTheme.Items[selectTheme.SelectedIndex].ToString().Replace(" ", "")));
+            Program.Config.Theme = (VSCodeTheme)Convert.ToInt32(Themes.IndexOf(vTheme.Items[vTheme.SelectedIndex].ToString().Replace(" ", "")));
         }
 
-        private void checkBox1_CheckedChanged(Object sender, EventArgs e)
+        // Смена регистра меню
+        private void vFontRegister_CheckedChanged(Object sender, EventArgs e)
         {
-            Program.Config.FontRegister = checkBox1.Checked;
+            Program.Config.FontRegister = vFontRegister.Checked;
         }
 
-        private void button1_Click(Object sender, EventArgs e)
+        // Настройка порта
+        private void vPort_TextChanged(Object sender, EventArgs e)
+        {
+            Program.Config.Port = (vPort.Text != "")
+                    ? Convert.ToInt32(vPort.Text)
+                    : 1;
+        }
+        private void vPort_KeyPress(Object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != 8)
+                e.Handled = true;
+        }
+
+        // ОК
+        private void mOK_Click(Object sender, EventArgs e)
         {
             Close();
         }
+
     }
 }

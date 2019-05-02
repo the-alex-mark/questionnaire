@@ -22,6 +22,5 @@ namespace Teacher
         }
 
         public static Config Config = new Config();
-        //public static VSCodeManagement VSCodeManagement = new VSCodeManagement();
     }
 }

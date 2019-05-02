@@ -37,25 +37,25 @@
             this.menuSettings = new System.Windows.Forms.ListBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pNetwork = new System.Windows.Forms.Panel();
+            this.vPort = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.vServer = new ProgLib.Windows.Forms.Minimal.MinimalComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pVisualization = new System.Windows.Forms.Panel();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.vFontRegister = new System.Windows.Forms.CheckBox();
+            this.vTheme = new ProgLib.Windows.Forms.Minimal.MinimalComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.mOK = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.selectTheme = new ProgLib.Windows.Forms.Minimal.MinimalComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.selectServer = new ProgLib.Windows.Forms.Minimal.MinimalComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.MainMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pNetwork.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.pVisualization.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // MainMenu
@@ -130,8 +130,8 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.pNetwork);
             this.panel1.Controls.Add(this.pVisualization);
+            this.panel1.Controls.Add(this.pNetwork);
             this.panel1.Location = new System.Drawing.Point(187, 31);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(431, 253);
@@ -139,9 +139,9 @@
             // 
             // pNetwork
             // 
-            this.pNetwork.Controls.Add(this.textBox1);
+            this.pNetwork.Controls.Add(this.vPort);
             this.pNetwork.Controls.Add(this.label3);
-            this.pNetwork.Controls.Add(this.selectServer);
+            this.pNetwork.Controls.Add(this.vServer);
             this.pNetwork.Controls.Add(this.label2);
             this.pNetwork.Controls.Add(this.pictureBox3);
             this.pNetwork.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -150,26 +150,110 @@
             this.pNetwork.Size = new System.Drawing.Size(431, 253);
             this.pNetwork.TabIndex = 1;
             // 
+            // vPort
+            // 
+            this.vPort.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.vPort.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.vPort.ForeColor = System.Drawing.Color.Black;
+            this.vPort.Location = new System.Drawing.Point(99, 54);
+            this.vPort.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.vPort.Name = "vPort";
+            this.vPort.Size = new System.Drawing.Size(306, 14);
+            this.vPort.TabIndex = 4;
+            this.vPort.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.vPort.TextChanged += new System.EventHandler(this.vPort_TextChanged);
+            this.vPort.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.vPort_KeyPress);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(17, 54);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(68, 12);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Номер порта:";
+            // 
+            // vServer
+            // 
+            this.vServer.ArrowColor = System.Drawing.SystemColors.ControlDark;
+            this.vServer.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.vServer.BorderColor = System.Drawing.SystemColors.ControlDark;
+            this.vServer.ButtonColor = System.Drawing.Color.WhiteSmoke;
+            this.vServer.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.vServer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.vServer.Enabled = false;
+            this.vServer.ForeColor = System.Drawing.Color.Black;
+            this.vServer.FormattingEnabled = true;
+            this.vServer.ItemHeight = 18;
+            this.vServer.Items.AddRange(new object[] {
+            "Light",
+            "Quiet Light"});
+            this.vServer.Location = new System.Drawing.Point(176, 17);
+            this.vServer.Name = "vServer";
+            this.vServer.SelectColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.vServer.SelectForeColor = System.Drawing.SystemColors.GrayText;
+            this.vServer.Size = new System.Drawing.Size(239, 24);
+            this.vServer.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(17, 23);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(153, 12);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Преподавательский компьютер:";
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Location = new System.Drawing.Point(90, 47);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(325, 24);
+            this.pictureBox3.TabIndex = 5;
+            this.pictureBox3.TabStop = false;
+            // 
             // pVisualization
             // 
-            this.pVisualization.Controls.Add(this.checkBox1);
-            this.pVisualization.Controls.Add(this.selectTheme);
+            this.pVisualization.Controls.Add(this.vFontRegister);
+            this.pVisualization.Controls.Add(this.vTheme);
             this.pVisualization.Controls.Add(this.label1);
             this.pVisualization.Location = new System.Drawing.Point(3, 3);
             this.pVisualization.Name = "pVisualization";
             this.pVisualization.Size = new System.Drawing.Size(100, 100);
             this.pVisualization.TabIndex = 0;
             // 
-            // checkBox1
+            // vFontRegister
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(19, 47);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(234, 16);
-            this.checkBox1.TabIndex = 2;
-            this.checkBox1.Text = "Применить регистр заголовка к строке меню";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.vFontRegister.AutoSize = true;
+            this.vFontRegister.Location = new System.Drawing.Point(19, 47);
+            this.vFontRegister.Name = "vFontRegister";
+            this.vFontRegister.Size = new System.Drawing.Size(234, 16);
+            this.vFontRegister.TabIndex = 2;
+            this.vFontRegister.Text = "Применить регистр заголовка к строке меню";
+            this.vFontRegister.UseVisualStyleBackColor = true;
+            this.vFontRegister.CheckedChanged += new System.EventHandler(this.vFontRegister_CheckedChanged);
+            // 
+            // vTheme
+            // 
+            this.vTheme.ArrowColor = System.Drawing.SystemColors.ControlDark;
+            this.vTheme.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.vTheme.BorderColor = System.Drawing.SystemColors.ControlDark;
+            this.vTheme.ButtonColor = System.Drawing.Color.WhiteSmoke;
+            this.vTheme.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.vTheme.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.vTheme.ForeColor = System.Drawing.Color.Black;
+            this.vTheme.FormattingEnabled = true;
+            this.vTheme.ItemHeight = 18;
+            this.vTheme.Items.AddRange(new object[] {
+            "Light",
+            "Quiet Light"});
+            this.vTheme.Location = new System.Drawing.Point(96, 17);
+            this.vTheme.Name = "vTheme";
+            this.vTheme.SelectColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.vTheme.SelectForeColor = System.Drawing.SystemColors.GrayText;
+            this.vTheme.Size = new System.Drawing.Size(319, 24);
+            this.vTheme.TabIndex = 1;
+            this.vTheme.SelectedIndexChanged += new System.EventHandler(this.vTheme_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -189,20 +273,20 @@
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
             // 
-            // button1
+            // mOK
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(478, 297);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(140, 23);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "ОК";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.mOK.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
+            this.mOK.FlatAppearance.BorderSize = 0;
+            this.mOK.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
+            this.mOK.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
+            this.mOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.mOK.Location = new System.Drawing.Point(478, 297);
+            this.mOK.Name = "mOK";
+            this.mOK.Size = new System.Drawing.Size(140, 23);
+            this.mOK.TabIndex = 10;
+            this.mOK.Text = "ОК";
+            this.mOK.UseVisualStyleBackColor = false;
+            this.mOK.Click += new System.EventHandler(this.mOK_Click);
             // 
             // pictureBox2
             // 
@@ -213,95 +297,13 @@
             this.pictureBox2.TabIndex = 11;
             this.pictureBox2.TabStop = false;
             // 
-            // selectTheme
-            // 
-            this.selectTheme.ArrowColor = System.Drawing.SystemColors.ControlDark;
-            this.selectTheme.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.selectTheme.BorderColor = System.Drawing.SystemColors.ControlDark;
-            this.selectTheme.ButtonColor = System.Drawing.Color.WhiteSmoke;
-            this.selectTheme.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.selectTheme.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.selectTheme.ForeColor = System.Drawing.Color.Black;
-            this.selectTheme.FormattingEnabled = true;
-            this.selectTheme.ItemHeight = 18;
-            this.selectTheme.Items.AddRange(new object[] {
-            "Light",
-            "Quiet Light"});
-            this.selectTheme.Location = new System.Drawing.Point(96, 17);
-            this.selectTheme.Name = "selectTheme";
-            this.selectTheme.SelectColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.selectTheme.SelectForeColor = System.Drawing.SystemColors.GrayText;
-            this.selectTheme.Size = new System.Drawing.Size(319, 24);
-            this.selectTheme.TabIndex = 1;
-            this.selectTheme.SelectedIndexChanged += new System.EventHandler(this.selectTheme_SelectedIndexChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(17, 23);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(153, 12);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Преподавательский компьютер:";
-            // 
-            // selectServer
-            // 
-            this.selectServer.ArrowColor = System.Drawing.SystemColors.ControlDark;
-            this.selectServer.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.selectServer.BorderColor = System.Drawing.SystemColors.ControlDark;
-            this.selectServer.ButtonColor = System.Drawing.Color.WhiteSmoke;
-            this.selectServer.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.selectServer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.selectServer.Enabled = false;
-            this.selectServer.ForeColor = System.Drawing.Color.Black;
-            this.selectServer.FormattingEnabled = true;
-            this.selectServer.ItemHeight = 18;
-            this.selectServer.Items.AddRange(new object[] {
-            "Light",
-            "Quiet Light"});
-            this.selectServer.Location = new System.Drawing.Point(176, 17);
-            this.selectServer.Name = "selectServer";
-            this.selectServer.SelectColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.selectServer.SelectForeColor = System.Drawing.SystemColors.GrayText;
-            this.selectServer.Size = new System.Drawing.Size(239, 24);
-            this.selectServer.TabIndex = 2;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(17, 54);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(68, 12);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Номер порта:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.ForeColor = System.Drawing.Color.Black;
-            this.textBox1.Location = new System.Drawing.Point(99, 54);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(306, 14);
-            this.textBox1.TabIndex = 4;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Location = new System.Drawing.Point(90, 47);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(325, 24);
-            this.pictureBox3.TabIndex = 5;
-            this.pictureBox3.TabStop = false;
-            // 
             // FormSettings
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(630, 332);
             this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.mOK);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuSettings);
@@ -322,11 +324,11 @@
             this.panel1.ResumeLayout(false);
             this.pNetwork.ResumeLayout(false);
             this.pNetwork.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.pVisualization.ResumeLayout(false);
             this.pVisualization.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -344,15 +346,15 @@
         private System.Windows.Forms.Panel pNetwork;
         private System.Windows.Forms.Panel pVisualization;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private ProgLib.Windows.Forms.Minimal.MinimalComboBox selectTheme;
+        private System.Windows.Forms.Button mOK;
+        private System.Windows.Forms.CheckBox vFontRegister;
+        private ProgLib.Windows.Forms.Minimal.MinimalComboBox vTheme;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private ProgLib.Windows.Forms.Minimal.MinimalComboBox selectServer;
+        private ProgLib.Windows.Forms.Minimal.MinimalComboBox vServer;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox vPort;
         private System.Windows.Forms.Label label3;
     }
 }
