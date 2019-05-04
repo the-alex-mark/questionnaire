@@ -36,24 +36,24 @@
             this.mmTitle = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSettings = new System.Windows.Forms.ListBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pVisualization = new System.Windows.Forms.Panel();
+            this.vFontRegister = new System.Windows.Forms.CheckBox();
+            this.vTheme = new ProgLib.Windows.Forms.Minimal.MinimalComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.pNetwork = new System.Windows.Forms.Panel();
             this.vPort = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.vServer = new ProgLib.Windows.Forms.Minimal.MinimalComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pVisualization = new System.Windows.Forms.Panel();
-            this.vFontRegister = new System.Windows.Forms.CheckBox();
-            this.vTheme = new ProgLib.Windows.Forms.Minimal.MinimalComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.mOK = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.MainMenu.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.pVisualization.SuspendLayout();
             this.pNetwork.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            this.pVisualization.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -137,6 +137,60 @@
             this.panel1.Size = new System.Drawing.Size(431, 253);
             this.panel1.TabIndex = 8;
             // 
+            // pVisualization
+            // 
+            this.pVisualization.Controls.Add(this.vFontRegister);
+            this.pVisualization.Controls.Add(this.vTheme);
+            this.pVisualization.Controls.Add(this.label1);
+            this.pVisualization.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pVisualization.Location = new System.Drawing.Point(0, 0);
+            this.pVisualization.Name = "pVisualization";
+            this.pVisualization.Size = new System.Drawing.Size(431, 253);
+            this.pVisualization.TabIndex = 0;
+            // 
+            // vFontRegister
+            // 
+            this.vFontRegister.AutoSize = true;
+            this.vFontRegister.Location = new System.Drawing.Point(19, 47);
+            this.vFontRegister.Name = "vFontRegister";
+            this.vFontRegister.Size = new System.Drawing.Size(234, 16);
+            this.vFontRegister.TabIndex = 2;
+            this.vFontRegister.Text = "Применить регистр заголовка к строке меню";
+            this.vFontRegister.UseVisualStyleBackColor = true;
+            this.vFontRegister.CheckedChanged += new System.EventHandler(this.vFontRegister_CheckedChanged);
+            // 
+            // vTheme
+            // 
+            this.vTheme.ArrowColor = System.Drawing.SystemColors.ControlDark;
+            this.vTheme.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.vTheme.BorderColor = System.Drawing.SystemColors.ControlDark;
+            this.vTheme.ButtonColor = System.Drawing.Color.WhiteSmoke;
+            this.vTheme.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.vTheme.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.vTheme.ForeColor = System.Drawing.Color.Black;
+            this.vTheme.FormattingEnabled = true;
+            this.vTheme.ItemHeight = 18;
+            this.vTheme.Items.AddRange(new object[] {
+            "Light",
+            "Quiet Light",
+            "Solarized Light"});
+            this.vTheme.Location = new System.Drawing.Point(96, 17);
+            this.vTheme.Name = "vTheme";
+            this.vTheme.SelectColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.vTheme.SelectForeColor = System.Drawing.SystemColors.GrayText;
+            this.vTheme.Size = new System.Drawing.Size(319, 24);
+            this.vTheme.TabIndex = 1;
+            this.vTheme.SelectedIndexChanged += new System.EventHandler(this.vTheme_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(17, 23);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(73, 12);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Цветовая тема:";
+            // 
             // pNetwork
             // 
             this.pNetwork.Controls.Add(this.vPort);
@@ -144,10 +198,9 @@
             this.pNetwork.Controls.Add(this.vServer);
             this.pNetwork.Controls.Add(this.label2);
             this.pNetwork.Controls.Add(this.pictureBox3);
-            this.pNetwork.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pNetwork.Location = new System.Drawing.Point(0, 0);
+            this.pNetwork.Location = new System.Drawing.Point(109, 3);
             this.pNetwork.Name = "pNetwork";
-            this.pNetwork.Size = new System.Drawing.Size(431, 253);
+            this.pNetwork.Size = new System.Drawing.Size(100, 100);
             this.pNetwork.TabIndex = 1;
             // 
             // vPort
@@ -212,58 +265,6 @@
             this.pictureBox3.TabIndex = 5;
             this.pictureBox3.TabStop = false;
             // 
-            // pVisualization
-            // 
-            this.pVisualization.Controls.Add(this.vFontRegister);
-            this.pVisualization.Controls.Add(this.vTheme);
-            this.pVisualization.Controls.Add(this.label1);
-            this.pVisualization.Location = new System.Drawing.Point(3, 3);
-            this.pVisualization.Name = "pVisualization";
-            this.pVisualization.Size = new System.Drawing.Size(100, 100);
-            this.pVisualization.TabIndex = 0;
-            // 
-            // vFontRegister
-            // 
-            this.vFontRegister.AutoSize = true;
-            this.vFontRegister.Location = new System.Drawing.Point(19, 47);
-            this.vFontRegister.Name = "vFontRegister";
-            this.vFontRegister.Size = new System.Drawing.Size(234, 16);
-            this.vFontRegister.TabIndex = 2;
-            this.vFontRegister.Text = "Применить регистр заголовка к строке меню";
-            this.vFontRegister.UseVisualStyleBackColor = true;
-            this.vFontRegister.CheckedChanged += new System.EventHandler(this.vFontRegister_CheckedChanged);
-            // 
-            // vTheme
-            // 
-            this.vTheme.ArrowColor = System.Drawing.SystemColors.ControlDark;
-            this.vTheme.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.vTheme.BorderColor = System.Drawing.SystemColors.ControlDark;
-            this.vTheme.ButtonColor = System.Drawing.Color.WhiteSmoke;
-            this.vTheme.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.vTheme.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.vTheme.ForeColor = System.Drawing.Color.Black;
-            this.vTheme.FormattingEnabled = true;
-            this.vTheme.ItemHeight = 18;
-            this.vTheme.Items.AddRange(new object[] {
-            "Light",
-            "Quiet Light"});
-            this.vTheme.Location = new System.Drawing.Point(96, 17);
-            this.vTheme.Name = "vTheme";
-            this.vTheme.SelectColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.vTheme.SelectForeColor = System.Drawing.SystemColors.GrayText;
-            this.vTheme.Size = new System.Drawing.Size(319, 24);
-            this.vTheme.TabIndex = 1;
-            this.vTheme.SelectedIndexChanged += new System.EventHandler(this.vTheme_SelectedIndexChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(17, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 12);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Цветовая тема:";
-            // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
@@ -322,11 +323,11 @@
             this.MainMenu.ResumeLayout(false);
             this.MainMenu.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.pVisualization.ResumeLayout(false);
+            this.pVisualization.PerformLayout();
             this.pNetwork.ResumeLayout(false);
             this.pNetwork.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            this.pVisualization.ResumeLayout(false);
-            this.pVisualization.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);

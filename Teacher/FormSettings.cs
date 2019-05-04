@@ -200,38 +200,23 @@ namespace Teacher
         /// <param name="Theme"></param>
         private void UpdateTheme(VSCodeTheme Theme)
         {
-            switch (Theme)
-            {
-                case VSCodeTheme.Light:
-                    MainMenu.BackColor = Color.FromArgb(221, 221, 221);
-                    this.BackColor = Color.FromArgb(250, 250, 250);
-                    menuSettings.BackColor = this.BackColor;
-                    _selectForeColor = Color.White;
-                    _foreColor = Color.Black;
-                    vTheme.SelectForeColor = Color.White;
-                    break;
+            VSCodeToolStripRenderer _renderer = new VSCodeToolStripRenderer(Theme, true);
+            MainMenu.Renderer = _renderer;
 
-                case VSCodeTheme.QuietLight:
-                    MainMenu.BackColor = Color.FromArgb(196, 183, 215);
-                    this.BackColor = Color.WhiteSmoke;
-                    menuSettings.BackColor = this.BackColor;
-                    _selectForeColor = Color.Black;
-                    _foreColor = Color.Black;
-                    vTheme.SelectForeColor = Color.Black;
-                    break;
-            }
-
-            MainMenu.Renderer = new VSCodeToolStripRenderer(Theme);
-            VSCodeMenuStripColors Colors = new VSCodeMenuStripColors(Theme);
-            _selectColor = Colors.SelectItemColor;
-            mOK.FlatAppearance.MouseOverBackColor = Colors.SelectItemColor;
-            mOK.FlatAppearance.MouseDownBackColor = Colors.SelectItemColor;
-            vPort.BackColor = BackColor;
-            vTheme.BackColor = this.BackColor;
-            vTheme.ButtonColor = this.BackColor;
-            vTheme.SelectColor = Colors.SelectItemColor;
-            vServer.BackColor = this.BackColor;
-            vServer.ButtonColor = this.BackColor;
+            BackColor = _renderer.WindowBackColor;
+            _selectColor = _renderer.DropDownMenuSelectColor;
+            mOK.FlatAppearance.MouseOverBackColor = _renderer.DropDownMenuSelectColor;
+            mOK.FlatAppearance.MouseDownBackColor = _renderer.DropDownMenuSelectColor;
+            vPort.BackColor = _renderer.WindowBackColor;
+            vTheme.BackColor = _renderer.WindowBackColor;
+            vTheme.ButtonColor = _renderer.WindowBackColor;
+            vTheme.SelectColor = _renderer.DropDownMenuSelectColor;
+            vTheme.SelectForeColor = _renderer.DropDownMenuSelectForeColor;
+            vServer.BackColor = _renderer.WindowBackColor;
+            vServer.ButtonColor = _renderer.WindowBackColor;
+            menuSettings.BackColor = _renderer.WindowBackColor;
+            _foreColor = _renderer.DropDownMenuForeColor;
+            _selectForeColor = _renderer.DropDownMenuSelectForeColor;
         }
 
         #endregion

@@ -142,20 +142,10 @@ namespace Teacher
         /// <param name="Theme"></param>
         private void UpdateTheme(VSCodeTheme Theme)
         {
-            switch (Theme)
-            {
-                case VSCodeTheme.Light:
-                    MainMenu.Renderer = new VSCodeToolStripRenderer(Theme);
-                    MainMenu.BackColor = Color.FromArgb(221, 221, 221);
-                    this.BackColor = Color.FromArgb(250, 250, 250);
-                    break;
+            VSCodeToolStripRenderer _renderer = new VSCodeToolStripRenderer(Theme, true);
+            MainMenu.Renderer = _renderer;
 
-                case VSCodeTheme.QuietLight:
-                    MainMenu.Renderer = new VSCodeToolStripRenderer(Theme);
-                    MainMenu.BackColor = Color.FromArgb(196, 183, 215);
-                    this.BackColor = Color.WhiteSmoke;
-                    break;
-            }
+            BackColor = _renderer.WindowBackColor;
         }
 
         #endregion

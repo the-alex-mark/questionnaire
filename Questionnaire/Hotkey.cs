@@ -29,6 +29,11 @@ namespace Questionnaire
         #endregion
 
         /// <summary>
+        /// Набор горячих клавиш
+        /// </summary>
+        public Keys Keys { get; set; }
+
+        /// <summary>
         /// Название
         /// </summary>
         public String Name { get; set; }

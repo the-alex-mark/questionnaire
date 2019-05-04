@@ -196,24 +196,11 @@ namespace Teacher
 
         private void UpdateTheme(VSCodeTheme Theme)
         {
-            //MainMenu.Renderer = null;
+            VSCodeToolStripRenderer _renderer = new VSCodeToolStripRenderer(Theme, true);
+            MainMenu.Renderer = _renderer;
 
-            switch (Theme)
-            {
-                case VSCodeTheme.Light:
-                    MainMenu.Renderer = new VSCodeToolStripRenderer(Theme);
-                    MainMenu.BackColor = Color.FromArgb(221, 221, 221);
-                    this.BackColor = Color.FromArgb(250, 250, 250);
-                    sideBar.BackColor = Color.FromArgb(243, 243, 243);
-                    break;
-
-                case VSCodeTheme.QuietLight:
-                    MainMenu.Renderer = new VSCodeToolStripRenderer(Theme);
-                    MainMenu.BackColor = Color.FromArgb(196, 183, 215);
-                    this.BackColor = Color.WhiteSmoke;
-                    sideBar.BackColor = Color.FromArgb(237, 237, 245);
-                    break;
-            }
+            BackColor = _renderer.WindowBackColor;
+            sideBar.BackColor = _renderer.SidebarBackColor;
         }
 
         private void UpdateFontRegister(Boolean FontRegister)
