@@ -154,9 +154,6 @@ namespace Teacher
         private Int32 _port;
         private List<String> _clients = new List<String>();
 
-        //private Color _selectColor;
-        //private Color _selectForeColor;
-        //private Color _foreColor;
         private Color _errorColor;
 
         #endregion
@@ -181,9 +178,6 @@ namespace Teacher
             {
                 if (Control is Button)
                 {
-                    //_foreColor = _renderer.DropDownMenuForeColor;
-                    //_selectForeColor = _renderer.DropDownMenuSelectForeColor;
-
                     (Control as Button).FlatStyle = FlatStyle.Flat;
                     (Control as Button).FlatAppearance.BorderSize = 0;
                     (Control as Button).FlatAppearance.MouseOverBackColor = _renderer.DropDownMenuSelectColor;
