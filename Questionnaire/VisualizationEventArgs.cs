@@ -9,13 +9,15 @@ namespace Questionnaire
 {
     public class VisualizationEventArgs : EventArgs
     {
-        public VisualizationEventArgs(VSCodeTheme Theme, Boolean FontRegister)
+        public VisualizationEventArgs(VSCodeTheme Theme, VSCodeIconTheme IconTheme, Boolean FontRegister)
         {
             this.Theme = Theme;
+            this.IconTheme = IconTheme;
             this.FontRegister = FontRegister;
         }
 
         public VSCodeTheme Theme { get; set; }
+        public VSCodeIconTheme IconTheme { get; set; }
         public Boolean FontRegister { get; set; }
     }
 }

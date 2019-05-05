@@ -1,11 +1,11 @@
 ﻿using ProgLib;
 using ProgLib.IO;
 using ProgLib.Network;
+using ProgLib.Network.Tcp;
 using ProgLib.Windows.Forms.VSCode;
 using Questionnaire;
 using Questionnaire.Controls;
 using Questionnaire.Data;
-using Questionnaire.Network;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -154,6 +154,54 @@ namespace Teacher
         private Int32 _port;
         private List<String> _clients = new List<String>();
 
+        //private Color _selectColor;
+        //private Color _selectForeColor;
+        //private Color _foreColor;
+        private Color _errorColor;
+
+        #endregion
+
+        #region Methods
+
+        private void UpdateTheme(VSCodeTheme Theme, VSCodeIconTheme IconTheme)
+        {
+            VSCodeToolStripRenderer _renderer = new VSCodeToolStripRenderer(Theme, IconTheme);
+            MainMenu.Renderer = _renderer;
+
+            BackColor = _renderer.WindowBackColor;
+            label1.ForeColor = _renderer.ForeColor;
+            label2.ForeColor = _renderer.ForeColor;
+            label3.ForeColor = _renderer.ForeColor;
+            pictureBox1.BackColor = _renderer.ForeColor;
+            pictureBox2.BackColor = _renderer.ForeColor;
+            _errorColor = _renderer.CloseColor;
+
+            // Отрисовка элементов
+            foreach (Control Control in Controls)
+            {
+                if (Control is Button)
+                {
+                    //_foreColor = _renderer.DropDownMenuForeColor;
+                    //_selectForeColor = _renderer.DropDownMenuSelectForeColor;
+
+                    (Control as Button).FlatStyle = FlatStyle.Flat;
+                    (Control as Button).FlatAppearance.BorderSize = 0;
+                    (Control as Button).FlatAppearance.MouseOverBackColor = _renderer.DropDownMenuSelectColor;
+                    (Control as Button).FlatAppearance.MouseDownBackColor = _renderer.DropDownMenuSelectColor;
+                    (Control as Button).BackColor = Color.FromArgb(221, 221, 221);
+
+                    Control.MouseEnter += delegate (Object _object, EventArgs _eventArgs)
+                    {
+                        Control.ForeColor = _renderer.DropDownMenuSelectForeColor;
+                    };
+                    Control.MouseLeave += delegate (Object _object, EventArgs _eventArgs)
+                    {
+                        Control.ForeColor = _renderer.DropDownMenuForeColor;
+                    };
+                }
+            }
+        }
+
         #endregion
 
         public Information Connect()
@@ -164,6 +212,10 @@ namespace Teacher
 
         private void FormConnect_Load(Object sender, EventArgs e)
         {
+            UpdateTheme(Program.Config.Theme, Program.Config.IconTheme);
+
+            
+            
             // Получение количества доступных компьютеров в локальной сети
             label2.Text = "из " + LocalNetwork.GetServers(TypeServer.Workstation).Length;
 
@@ -259,7 +311,7 @@ namespace Teacher
                 catch
                 {
                     _file = null;
-                    lTest.ForeColor = Color.FromArgb(232, 38, 55);
+                    lTest.ForeColor = _errorColor;
 
                     MessageBox.Show("Файл имел неверный формат!", "Опросник", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }

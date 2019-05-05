@@ -150,21 +150,21 @@
             this.mCreate.Name = "mCreate";
             this.mCreate.Padding = new System.Windows.Forms.Padding(0);
             this.mCreate.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.mCreate.Size = new System.Drawing.Size(180, 20);
+            this.mCreate.Size = new System.Drawing.Size(151, 20);
             this.mCreate.Text = "Создать";
             this.mCreate.Click += new System.EventHandler(this.mCreate_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(148, 6);
             // 
             // mStart
             // 
             this.mStart.Name = "mStart";
             this.mStart.Padding = new System.Windows.Forms.Padding(0);
             this.mStart.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Q)));
-            this.mStart.Size = new System.Drawing.Size(180, 20);
+            this.mStart.Size = new System.Drawing.Size(151, 20);
             this.mStart.Text = "Начать";
             this.mStart.Click += new System.EventHandler(this.mStart_Click);
             // 
@@ -174,14 +174,14 @@
             this.mStop.Name = "mStop";
             this.mStop.Padding = new System.Windows.Forms.Padding(0);
             this.mStop.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.W)));
-            this.mStop.Size = new System.Drawing.Size(180, 20);
+            this.mStop.Size = new System.Drawing.Size(151, 20);
             this.mStop.Text = "Завершить";
             this.mStop.Click += new System.EventHandler(this.mStop_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(148, 6);
             // 
             // mExit
             // 
@@ -189,7 +189,7 @@
             this.mExit.Name = "mExit";
             this.mExit.Padding = new System.Windows.Forms.Padding(0);
             this.mExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.mExit.Size = new System.Drawing.Size(180, 20);
+            this.mExit.Size = new System.Drawing.Size(151, 20);
             this.mExit.Text = "Выход";
             this.mExit.Click += new System.EventHandler(this.mExit_Click);
             // 
@@ -212,7 +212,7 @@
             this.mSurvey.Padding = new System.Windows.Forms.Padding(0);
             this.mSurvey.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.O)));
-            this.mSurvey.Size = new System.Drawing.Size(180, 20);
+            this.mSurvey.Size = new System.Drawing.Size(177, 20);
             this.mSurvey.Text = "Опрос";
             this.mSurvey.Click += new System.EventHandler(this.mSurvey_Click);
             // 
@@ -222,14 +222,14 @@
             this.mStatistics.Padding = new System.Windows.Forms.Padding(0);
             this.mStatistics.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.S)));
-            this.mStatistics.Size = new System.Drawing.Size(180, 20);
+            this.mStatistics.Size = new System.Drawing.Size(177, 20);
             this.mStatistics.Text = "Статистика";
             this.mStatistics.Click += new System.EventHandler(this.mStatistics_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(174, 6);
             // 
             // mOptions
             // 
@@ -237,7 +237,7 @@
             this.mOptions.Name = "mOptions";
             this.mOptions.Padding = new System.Windows.Forms.Padding(0);
             this.mOptions.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
-            this.mOptions.Size = new System.Drawing.Size(180, 20);
+            this.mOptions.Size = new System.Drawing.Size(177, 20);
             this.mOptions.Text = "Настройки";
             this.mOptions.Click += new System.EventHandler(this.mOptions_Click);
             // 
@@ -257,7 +257,7 @@
             this.mAboutTheProgram.Name = "mAboutTheProgram";
             this.mAboutTheProgram.Padding = new System.Windows.Forms.Padding(0);
             this.mAboutTheProgram.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this.mAboutTheProgram.Size = new System.Drawing.Size(180, 20);
+            this.mAboutTheProgram.Size = new System.Drawing.Size(155, 20);
             this.mAboutTheProgram.Text = "О приложении";
             this.mAboutTheProgram.Click += new System.EventHandler(this.mAboutTheProgram_Click);
             // 
@@ -266,7 +266,7 @@
             this.mDeveloper.Margin = new System.Windows.Forms.Padding(0, 0, 0, 1);
             this.mDeveloper.Name = "mDeveloper";
             this.mDeveloper.Padding = new System.Windows.Forms.Padding(0);
-            this.mDeveloper.Size = new System.Drawing.Size(180, 20);
+            this.mDeveloper.Size = new System.Drawing.Size(155, 20);
             this.mDeveloper.Text = "Разработчик";
             this.mDeveloper.Click += new System.EventHandler(this.mDeveloper_Click);
             // 
@@ -413,7 +413,7 @@
             // bNext
             // 
             this.bNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bNext.Location = new System.Drawing.Point(-1279, 9);
+            this.bNext.Location = new System.Drawing.Point(-1399, 9);
             this.bNext.Name = "bNext";
             this.bNext.Size = new System.Drawing.Size(136, 24);
             this.bNext.TabIndex = 27;
@@ -423,7 +423,7 @@
             // bBreak
             // 
             this.bBreak.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bBreak.Location = new System.Drawing.Point(-1421, 9);
+            this.bBreak.Location = new System.Drawing.Point(-1541, 9);
             this.bBreak.Name = "bBreak";
             this.bBreak.Size = new System.Drawing.Size(136, 24);
             this.bBreak.TabIndex = 28;

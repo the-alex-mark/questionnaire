@@ -140,7 +140,7 @@ namespace Teacher
         /// Обновляет цветовую тему.
         /// </summary>
         /// <param name="Theme"></param>
-        private void UpdateTheme(VSCodeTheme Theme)
+        private void UpdateTheme(VSCodeTheme Theme, VSCodeIconTheme IconTheme)
         {
             VSCodeToolStripRenderer _renderer = new VSCodeToolStripRenderer(Theme, true);
             MainMenu.Renderer = _renderer;
@@ -152,7 +152,7 @@ namespace Teacher
 
         private void FormAbout_Load(Object sender, EventArgs e)
         {
-            UpdateTheme(Program.Config.Theme);
+            UpdateTheme(Program.Config.Theme, Program.Config.IconTheme);
 
             Property _property = AssemblyInfo.Get(Assembly.GetExecutingAssembly().Location);
 

@@ -3,8 +3,6 @@ using ProgLib.Windows.Forms.VSCode;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Questionnaire
 {
@@ -73,7 +71,24 @@ namespace Questionnaire
             set
             {
                 INI.Set("Design", "Theme", value.ToString());
-                ThemeManagement?.Invoke(this, new VisualizationEventArgs(value, this.FontRegister));
+                ThemeManagement?.Invoke(this, new VisualizationEventArgs(value, this.IconTheme, this.FontRegister));
+            }
+        }
+
+        /// <summary>
+        /// Стиль иконок
+        /// </summary>
+        public VSCodeIconTheme IconTheme
+        {
+            get
+            {
+                List<String> Themes = Enum.GetNames(typeof(VSCodeIconTheme)).ToList();
+                return (VSCodeIconTheme)Convert.ToInt32(Themes.IndexOf(INI.Get("Design", "IconTheme")));
+            }
+            set
+            {
+                INI.Set("Design", "IconTheme", value.ToString());
+                ThemeManagement?.Invoke(this, new VisualizationEventArgs(this.Theme, value, this.FontRegister));
             }
         }
 
@@ -96,7 +111,7 @@ namespace Questionnaire
             set
             {
                 INI.Set("Design", "FontRegister", value.ToString());
-                ThemeManagement?.Invoke(this, new VisualizationEventArgs(this.Theme, value));
+                ThemeManagement?.Invoke(this, new VisualizationEventArgs(this.Theme, this.IconTheme, value));
             }
         }
 
@@ -108,7 +123,9 @@ namespace Questionnaire
         public void Create(String Server, Int32 Port)
         {
             IniDocument INI = new IniDocument(
-                new IniSection("TcpConfig", new IniKey("Server", Server), new IniKey("Port", Port.ToString())));
+                new IniSection("TcpConfig", new IniKey("Server", Environment.CurrentDirectory), new IniKey("Port", "900")),
+                new IniSection("Design", new IniKey("Theme", "Light"), new IniKey("IconTheme", "Classic"), new IniKey("FontRegister", "False")));
+
             INI.Save(Environment.CurrentDirectory + @"\config.ini");
         }
     }

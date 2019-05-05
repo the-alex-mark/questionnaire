@@ -1,8 +1,6 @@
 ﻿using ProgLib.Windows.Forms.VSCode;
 using Questionnaire;
 using Questionnaire.Controls;
-using Questionnaire.Network;
-using Questionnaire.VSCode;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,6 +17,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Teacher.Data;
 using Teacher.Properties;
+using ProgLib;
+using ProgLib.Network.Tcp;
 
 namespace Teacher
 {
@@ -92,10 +92,10 @@ namespace Teacher
                         DwmSetWindowAttribute(this.Handle, 2, ref v, 4);
                         MARGINS margins = new MARGINS()
                         {
-                            bottomHeight = 1,
+                            bottomHeight = 0,
                             leftWidth = 0,
                             rightWidth = 0,
-                            topHeight = 0
+                            topHeight = 1
                         };
                         DwmExtendFrameIntoClientArea(this.Handle, ref margins);
                     }
@@ -194,9 +194,9 @@ namespace Teacher
 
         #region Additional method
 
-        private void UpdateTheme(VSCodeTheme Theme)
+        private void UpdateTheme(VSCodeTheme Theme, VSCodeIconTheme IconTheme)
         {
-            VSCodeToolStripRenderer _renderer = new VSCodeToolStripRenderer(Theme, true);
+            VSCodeToolStripRenderer _renderer = new VSCodeToolStripRenderer(Theme, IconTheme);
             MainMenu.Renderer = _renderer;
 
             BackColor = _renderer.WindowBackColor;
@@ -299,11 +299,20 @@ namespace Teacher
         {
             Program.Config.ThemeManagement += delegate (Object _object, VisualizationEventArgs _vsCodeThemeEventArgs)
             {
-                UpdateTheme(_vsCodeThemeEventArgs.Theme);
+                UpdateTheme(_vsCodeThemeEventArgs.Theme, _vsCodeThemeEventArgs.IconTheme);
                 UpdateFontRegister(_vsCodeThemeEventArgs.FontRegister);
             };
             Program.Config.Theme = Program.Config.Theme;
-            
+
+            //Image Min = Image.FromFile(@"C:\Users\Александр Макаров\Desktop\Minimum.png");
+            //Image Max = Image.FromFile(@"C:\Users\Александр Макаров\Desktop\Maximum.png");
+            //Image Cl = Image.FromFile(@"C:\Users\Александр Макаров\Desktop\Close.png");
+
+            //Clipboard.SetText(Min.ToBase64String() + "\n\n" + Max.ToBase64String() + "\n\n" + Cl.ToBase64String());
+
+            //Image Min = Image.FromFile(@"C:\Users\Александр Макаров\Desktop\mmMaximizedDark.png");
+            //Clipboard.SetText(Min.ToBase64String());
+
             // Получение списка компьютеров средствами .Net
             //MessageBox.Show(
             //    LocalNetwork.GetMachines().Aggregate("", (S, I) => S += I + "\n"), "Список доступных компьютеров");

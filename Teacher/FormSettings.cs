@@ -9,7 +9,6 @@ using ProgLib.Diagnostics;
 using Questionnaire.Controls;
 using ProgLib.Windows.Forms.VSCode;
 using System.Drawing;
-using Questionnaire.VSCode;
 using Questionnaire;
 using System.Collections.Generic;
 using System.Linq;
@@ -198,9 +197,9 @@ namespace Teacher
         /// Обновляет цветовую тему.
         /// </summary>
         /// <param name="Theme"></param>
-        private void UpdateTheme(VSCodeTheme Theme)
+        private void UpdateTheme(VSCodeTheme Theme, VSCodeIconTheme IconTheme)
         {
-            VSCodeToolStripRenderer _renderer = new VSCodeToolStripRenderer(Theme, true);
+            VSCodeToolStripRenderer _renderer = new VSCodeToolStripRenderer(Theme, IconTheme);
             MainMenu.Renderer = _renderer;
 
             BackColor = _renderer.WindowBackColor;
@@ -212,6 +211,10 @@ namespace Teacher
             vTheme.ButtonColor = _renderer.WindowBackColor;
             vTheme.SelectColor = _renderer.DropDownMenuSelectColor;
             vTheme.SelectForeColor = _renderer.DropDownMenuSelectForeColor;
+            vIconTheme.BackColor = _renderer.WindowBackColor;
+            vIconTheme.ButtonColor = _renderer.WindowBackColor;
+            vIconTheme.SelectColor = _renderer.DropDownMenuSelectColor;
+            vIconTheme.SelectForeColor = _renderer.DropDownMenuSelectForeColor;
             vServer.BackColor = _renderer.WindowBackColor;
             vServer.ButtonColor = _renderer.WindowBackColor;
             menuSettings.BackColor = _renderer.WindowBackColor;
@@ -246,13 +249,18 @@ namespace Teacher
             // Вывод данных
             Program.Config.ThemeManagement += delegate (Object _object, VisualizationEventArgs _vsCodeThemeEventArgs)
             {
-                UpdateTheme(_vsCodeThemeEventArgs.Theme);
+                UpdateTheme(_vsCodeThemeEventArgs.Theme, _vsCodeThemeEventArgs.IconTheme);
             };
             Program.Config.Theme = Program.Config.Theme;
+            Program.Config.IconTheme = Program.Config.IconTheme;
 
-            List<String> Items = new List<String>();
-            foreach (String Item in vTheme.Items) Items.Add(Item.Replace(" ", ""));
-            vTheme.Text = vTheme.Items[Items.IndexOf(Program.Config.Theme.ToString())].ToString();
+            List<String> Themes = new List<String>();
+            foreach (String Item in vTheme.Items) Themes.Add(Item.Replace(" ", ""));
+            vTheme.Text = vTheme.Items[Themes.IndexOf(Program.Config.Theme.ToString())].ToString();
+
+            List<String> IconThemes = new List<String>();
+            foreach (String Item in vIconTheme.Items) IconThemes.Add(Item.Replace(" ", ""));
+            vIconTheme.Text = vIconTheme.Items[IconThemes.IndexOf(Program.Config.IconTheme.ToString())].ToString();
 
             vPort.Text = Program.Config.Port.ToString();
             
@@ -264,7 +272,6 @@ namespace Teacher
             vFontRegister.Checked = Program.Config.FontRegister;
             
             OnStyleListBox(menuSettings);
-            
         }
         private void FormAbout_KeyDown(Object sender, KeyEventArgs e)
         {
@@ -327,5 +334,10 @@ namespace Teacher
             Close();
         }
 
+        private void vIconTheme_SelectedIndexChanged(Object sender, EventArgs e)
+        {
+            List<String> Items = Enum.GetNames(typeof(VSCodeIconTheme)).ToList();
+            Program.Config.IconTheme = (VSCodeIconTheme)Convert.ToInt32(Items.IndexOf(vIconTheme.Items[vIconTheme.SelectedIndex].ToString().Replace(" ", "")));
+        }
     }
 }

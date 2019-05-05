@@ -1,8 +1,8 @@
 ﻿using ProgLib.IO;
+using ProgLib.Network.Tcp;
 using ProgLib.Windows.Forms.VSCode;
 using Questionnaire;
 using Questionnaire.Controls;
-using Questionnaire.Network;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
