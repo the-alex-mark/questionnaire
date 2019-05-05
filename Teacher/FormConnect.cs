@@ -268,7 +268,7 @@ namespace Teacher
         }
         private void FormConnect_FormClosing(Object sender, FormClosingEventArgs e)
         {
-            _server.Stop();
+            //_server.Stop();
             _server.Dispose();
         }
         private void FormConnect_KeyDown(Object sender, KeyEventArgs e)
