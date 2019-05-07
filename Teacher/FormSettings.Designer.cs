@@ -37,20 +37,20 @@
             this.menuSettings = new System.Windows.Forms.ListBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pVisualization = new System.Windows.Forms.Panel();
+            this.vIconTheme = new ProgLib.Windows.Forms.Minimal.MinimalComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.vFontRegister = new System.Windows.Forms.CheckBox();
+            this.vTheme = new ProgLib.Windows.Forms.Minimal.MinimalComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pNetwork = new System.Windows.Forms.Panel();
             this.vPort = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.vServer = new ProgLib.Windows.Forms.Minimal.MinimalComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.mOK = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.vTheme = new ProgLib.Windows.Forms.Minimal.MinimalComboBox();
-            this.vServer = new ProgLib.Windows.Forms.Minimal.MinimalComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.vIconTheme = new ProgLib.Windows.Forms.Minimal.MinimalComboBox();
             this.MainMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pVisualization.SuspendLayout();
@@ -152,6 +152,37 @@
             this.pVisualization.Size = new System.Drawing.Size(431, 253);
             this.pVisualization.TabIndex = 0;
             // 
+            // vIconTheme
+            // 
+            this.vIconTheme.ArrowColor = System.Drawing.SystemColors.ControlDark;
+            this.vIconTheme.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.vIconTheme.BorderColor = System.Drawing.SystemColors.ControlDark;
+            this.vIconTheme.ButtonColor = System.Drawing.Color.WhiteSmoke;
+            this.vIconTheme.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.vIconTheme.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.vIconTheme.ForeColor = System.Drawing.Color.Black;
+            this.vIconTheme.FormattingEnabled = true;
+            this.vIconTheme.ItemHeight = 18;
+            this.vIconTheme.Items.AddRange(new object[] {
+            "Classic",
+            "Minimal"});
+            this.vIconTheme.Location = new System.Drawing.Point(96, 47);
+            this.vIconTheme.Name = "vIconTheme";
+            this.vIconTheme.SelectColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.vIconTheme.SelectForeColor = System.Drawing.SystemColors.GrayText;
+            this.vIconTheme.Size = new System.Drawing.Size(319, 24);
+            this.vIconTheme.TabIndex = 4;
+            this.vIconTheme.SelectedIndexChanged += new System.EventHandler(this.vIconTheme_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(17, 53);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(70, 12);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Стиль иконок:";
+            // 
             // vFontRegister
             // 
             this.vFontRegister.AutoSize = true;
@@ -162,6 +193,29 @@
             this.vFontRegister.Text = "Применить регистр заголовка к строке меню";
             this.vFontRegister.UseVisualStyleBackColor = true;
             this.vFontRegister.CheckedChanged += new System.EventHandler(this.vFontRegister_CheckedChanged);
+            // 
+            // vTheme
+            // 
+            this.vTheme.ArrowColor = System.Drawing.SystemColors.ControlDark;
+            this.vTheme.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.vTheme.BorderColor = System.Drawing.SystemColors.ControlDark;
+            this.vTheme.ButtonColor = System.Drawing.Color.WhiteSmoke;
+            this.vTheme.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.vTheme.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.vTheme.ForeColor = System.Drawing.Color.Black;
+            this.vTheme.FormattingEnabled = true;
+            this.vTheme.ItemHeight = 18;
+            this.vTheme.Items.AddRange(new object[] {
+            "Light",
+            "Quiet Light",
+            "Solarized Light"});
+            this.vTheme.Location = new System.Drawing.Point(96, 17);
+            this.vTheme.Name = "vTheme";
+            this.vTheme.SelectColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.vTheme.SelectForeColor = System.Drawing.SystemColors.GrayText;
+            this.vTheme.Size = new System.Drawing.Size(319, 24);
+            this.vTheme.TabIndex = 1;
+            this.vTheme.SelectedIndexChanged += new System.EventHandler(this.vTheme_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -206,6 +260,28 @@
             this.label3.Size = new System.Drawing.Size(68, 12);
             this.label3.TabIndex = 3;
             this.label3.Text = "Номер порта:";
+            // 
+            // vServer
+            // 
+            this.vServer.ArrowColor = System.Drawing.SystemColors.ControlDark;
+            this.vServer.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.vServer.BorderColor = System.Drawing.SystemColors.ControlDark;
+            this.vServer.ButtonColor = System.Drawing.Color.WhiteSmoke;
+            this.vServer.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.vServer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.vServer.Enabled = false;
+            this.vServer.ForeColor = System.Drawing.Color.Black;
+            this.vServer.FormattingEnabled = true;
+            this.vServer.ItemHeight = 18;
+            this.vServer.Items.AddRange(new object[] {
+            "Light",
+            "Quiet Light"});
+            this.vServer.Location = new System.Drawing.Point(176, 17);
+            this.vServer.Name = "vServer";
+            this.vServer.SelectColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.vServer.SelectForeColor = System.Drawing.SystemColors.GrayText;
+            this.vServer.Size = new System.Drawing.Size(239, 24);
+            this.vServer.TabIndex = 2;
             // 
             // label2
             // 
@@ -256,82 +332,6 @@
             this.pictureBox2.Size = new System.Drawing.Size(1, 252);
             this.pictureBox2.TabIndex = 11;
             this.pictureBox2.TabStop = false;
-            // 
-            // vTheme
-            // 
-            this.vTheme.ArrowColor = System.Drawing.SystemColors.ControlDark;
-            this.vTheme.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.vTheme.BorderColor = System.Drawing.SystemColors.ControlDark;
-            this.vTheme.ButtonColor = System.Drawing.Color.WhiteSmoke;
-            this.vTheme.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.vTheme.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.vTheme.ForeColor = System.Drawing.Color.Black;
-            this.vTheme.FormattingEnabled = true;
-            this.vTheme.ItemHeight = 18;
-            this.vTheme.Items.AddRange(new object[] {
-            "Light",
-            "Quiet Light",
-            "Solarized Light"});
-            this.vTheme.Location = new System.Drawing.Point(96, 17);
-            this.vTheme.Name = "vTheme";
-            this.vTheme.SelectColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.vTheme.SelectForeColor = System.Drawing.SystemColors.GrayText;
-            this.vTheme.Size = new System.Drawing.Size(319, 24);
-            this.vTheme.TabIndex = 1;
-            this.vTheme.SelectedIndexChanged += new System.EventHandler(this.vTheme_SelectedIndexChanged);
-            // 
-            // vServer
-            // 
-            this.vServer.ArrowColor = System.Drawing.SystemColors.ControlDark;
-            this.vServer.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.vServer.BorderColor = System.Drawing.SystemColors.ControlDark;
-            this.vServer.ButtonColor = System.Drawing.Color.WhiteSmoke;
-            this.vServer.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.vServer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.vServer.Enabled = false;
-            this.vServer.ForeColor = System.Drawing.Color.Black;
-            this.vServer.FormattingEnabled = true;
-            this.vServer.ItemHeight = 18;
-            this.vServer.Items.AddRange(new object[] {
-            "Light",
-            "Quiet Light"});
-            this.vServer.Location = new System.Drawing.Point(176, 17);
-            this.vServer.Name = "vServer";
-            this.vServer.SelectColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.vServer.SelectForeColor = System.Drawing.SystemColors.GrayText;
-            this.vServer.Size = new System.Drawing.Size(239, 24);
-            this.vServer.TabIndex = 2;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(17, 53);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(70, 12);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Стиль иконок:";
-            // 
-            // vIconTheme
-            // 
-            this.vIconTheme.ArrowColor = System.Drawing.SystemColors.ControlDark;
-            this.vIconTheme.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.vIconTheme.BorderColor = System.Drawing.SystemColors.ControlDark;
-            this.vIconTheme.ButtonColor = System.Drawing.Color.WhiteSmoke;
-            this.vIconTheme.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.vIconTheme.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.vIconTheme.ForeColor = System.Drawing.Color.Black;
-            this.vIconTheme.FormattingEnabled = true;
-            this.vIconTheme.ItemHeight = 18;
-            this.vIconTheme.Items.AddRange(new object[] {
-            "Classic",
-            "Custom"});
-            this.vIconTheme.Location = new System.Drawing.Point(96, 47);
-            this.vIconTheme.Name = "vIconTheme";
-            this.vIconTheme.SelectColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.vIconTheme.SelectForeColor = System.Drawing.SystemColors.GrayText;
-            this.vIconTheme.Size = new System.Drawing.Size(319, 24);
-            this.vIconTheme.TabIndex = 4;
-            this.vIconTheme.SelectedIndexChanged += new System.EventHandler(this.vIconTheme_SelectedIndexChanged);
             // 
             // FormSettings
             // 
