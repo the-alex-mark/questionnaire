@@ -117,7 +117,6 @@ namespace Teacher
             InitializeComponent();
 
             // Оформление MainMenu
-            MainMenu.Renderer = new VSCodeToolStripRenderer(VSCodeTheme.QuietLight);
             MainMenu.MouseDown += delegate (Object _object, MouseEventArgs _mouseEventArgs)
             {
                 ReleaseCapture();
@@ -142,7 +141,7 @@ namespace Teacher
         /// <param name="Theme"></param>
         private void UpdateTheme(VSCodeTheme Theme, VSCodeIconTheme IconTheme)
         {
-            VSCodeToolStripRenderer _renderer = new VSCodeToolStripRenderer(Theme, true);
+            VSCodeToolStripRenderer _renderer = new VSCodeToolStripRenderer(Theme, new VSCodeToolStripSettings(this, MainMenu, IconTheme));
             MainMenu.Renderer = _renderer;
 
             BackColor = _renderer.WindowBackColor;

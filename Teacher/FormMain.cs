@@ -186,8 +186,8 @@ namespace Teacher
 
         private String _file = "";
 
-        private TcpServer _server;
-        private Int32 _port;
+        //private TcpServer _server;
+        //private Int32 _port;
         private List<String> _clients = new List<String>();
 
         #endregion
@@ -196,11 +196,71 @@ namespace Teacher
 
         private void UpdateTheme(VSCodeTheme Theme, VSCodeIconTheme IconTheme)
         {
-            VSCodeToolStripRenderer _renderer = new VSCodeToolStripRenderer(Theme, IconTheme);
+            VSCodeToolStripRenderer _renderer = new VSCodeToolStripRenderer(Theme, new VSCodeToolStripSettings(this, MainMenu, IconTheme));
             MainMenu.Renderer = _renderer;
 
             BackColor = _renderer.WindowBackColor;
             sideBar.BackColor = _renderer.SidebarBackColor;
+        }
+
+        /// <summary>
+        /// Возвращает копию этой строки, с переверённой первой буквой в верхний регистр.
+        /// </summary>
+        /// <param name="Value"></param>
+        /// <returns></returns>
+        private String ToFirstUpper(String Value)
+        {
+            if (Value.Length > 0)
+            {
+                String Temp = Value.ToLower();
+                return Temp[0].ToString().ToUpper() + Temp.Substring(1);
+            }
+
+            else return Value;
+        }
+
+        /// <summary>
+        /// Возвращает копию этой строки, с переведённой каждой первой буквой слова в верхний регистр.
+        /// </summary>
+        /// <param name="Value"></param>
+        /// <returns></returns>
+        private String ToFirstsUpper(String Value)
+        {
+            String Result = Value;
+
+            if (Value.Length > 0)
+            {
+                Result = "";
+
+                String[] Words = Value.ToLower().Split(' ');
+                foreach (String Word in Words)
+                    Result += Word[0].ToString().ToUpper() + Word.Substring(1) + " ";
+
+                return Result;
+            }
+
+            else return Result;
+        }
+
+        /// <summary>
+        /// Возвращает копию этой строки, изменяя регистр каждого символа на обратный.
+        /// </summary>
+        /// <param name="Value"></param>
+        /// <returns></returns>
+        private String TransformRegister(String Value)
+        {
+            String Result = Value;
+
+            if (Value.Length > 0)
+            {
+                Result = "";
+                foreach (Char Symbol in Value)
+                    Result += (Char.IsLower(Symbol)) ? Symbol.ToString().ToUpper() : Symbol.ToString().ToLower();
+                
+                return Result;
+            }
+
+            else return Result;
         }
 
         private void UpdateFontRegister(Boolean FontRegister)
@@ -304,15 +364,6 @@ namespace Teacher
             };
             Program.Config.Theme = Program.Config.Theme;
 
-            //Image Min = Image.FromFile(@"C:\Users\Александр Макаров\Desktop\Minimum.png");
-            //Image Max = Image.FromFile(@"C:\Users\Александр Макаров\Desktop\Maximum.png");
-            //Image Cl = Image.FromFile(@"C:\Users\Александр Макаров\Desktop\Close.png");
-
-            //Clipboard.SetText(Min.ToBase64String() + "\n\n" + Max.ToBase64String() + "\n\n" + Cl.ToBase64String());
-
-            //Image Min = Image.FromFile(@"C:\Users\Александр Макаров\Desktop\mmMaximizedDark.png");
-            //Clipboard.SetText(Min.ToBase64String());
-
             // Получение списка компьютеров средствами .Net
             //MessageBox.Show(
             //    LocalNetwork.GetMachines().Aggregate("", (S, I) => S += I + "\n"), "Список доступных компьютеров");
@@ -320,6 +371,16 @@ namespace Teacher
             // Получение списка компьютеров средствами WinAPI
             //MessageBox.Show(
             //    LocalNetwork.GetServers(TypeServer.Workstation).Aggregate("", (S, I) => S += I + "\n"), "Список доступных компьютеров");
+        }
+        private void FormMain_FormClosing(Object sender, FormClosingEventArgs e)
+        {
+            if (_clients.Count > 0)
+            {
+                foreach (String Client in _clients)
+                    Program.TcpServer.Send(Client, "_request:stop");
+            }
+
+            Program.TcpServer.Dispose();
         }
 
         // Вид

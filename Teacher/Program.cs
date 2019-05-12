@@ -1,4 +1,5 @@
-﻿using Questionnaire;
+﻿using ProgLib.Network.Tcp;
+using Questionnaire;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,5 +22,6 @@ namespace Teacher
         }
 
         public static Config Config = new Config();
+        public static TcpServer TcpServer = new TcpServer(Config.Port, 50);
     }
 }

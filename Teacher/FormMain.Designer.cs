@@ -42,12 +42,12 @@
             this.mStart = new System.Windows.Forms.ToolStripMenuItem();
             this.mStop = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.gfhfvtnhsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.mExit = new System.Windows.Forms.ToolStripMenuItem();
             this.mmView = new System.Windows.Forms.ToolStripMenuItem();
             this.mSurvey = new System.Windows.Forms.ToolStripMenuItem();
             this.mStatistics = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.mOptions = new System.Windows.Forms.ToolStripMenuItem();
             this.mmHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mAboutTheProgram = new System.Windows.Forms.ToolStripMenuItem();
             this.mDeveloper = new System.Windows.Forms.ToolStripMenuItem();
@@ -137,6 +137,8 @@
             this.mStart,
             this.mStop,
             this.toolStripSeparator3,
+            this.gfhfvtnhsToolStripMenuItem,
+            this.toolStripSeparator4,
             this.mExit});
             this.mmFile.Font = new System.Drawing.Font("Segoe UI", 7.5F);
             this.mmFile.Name = "mmFile";
@@ -183,6 +185,18 @@
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(148, 6);
             // 
+            // gfhfvtnhsToolStripMenuItem
+            // 
+            this.gfhfvtnhsToolStripMenuItem.Name = "gfhfvtnhsToolStripMenuItem";
+            this.gfhfvtnhsToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.gfhfvtnhsToolStripMenuItem.Text = "Параметры";
+            this.gfhfvtnhsToolStripMenuItem.Click += new System.EventHandler(this.mOptions_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(148, 6);
+            // 
             // mExit
             // 
             this.mExit.Margin = new System.Windows.Forms.Padding(0, 0, 0, 1);
@@ -197,13 +211,11 @@
             // 
             this.mmView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mSurvey,
-            this.mStatistics,
-            this.toolStripSeparator2,
-            this.mOptions});
+            this.mStatistics});
             this.mmView.Font = new System.Drawing.Font("Segoe UI", 7.5F);
             this.mmView.Name = "mmView";
-            this.mmView.Size = new System.Drawing.Size(34, 24);
-            this.mmView.Text = "Вид";
+            this.mmView.Size = new System.Drawing.Size(42, 24);
+            this.mmView.Text = "Окно";
             // 
             // mSurvey
             // 
@@ -225,21 +237,6 @@
             this.mStatistics.Size = new System.Drawing.Size(177, 20);
             this.mStatistics.Text = "Статистика";
             this.mStatistics.Click += new System.EventHandler(this.mStatistics_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(174, 6);
-            // 
-            // mOptions
-            // 
-            this.mOptions.Margin = new System.Windows.Forms.Padding(0, 0, 0, 1);
-            this.mOptions.Name = "mOptions";
-            this.mOptions.Padding = new System.Windows.Forms.Padding(0);
-            this.mOptions.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
-            this.mOptions.Size = new System.Drawing.Size(177, 20);
-            this.mOptions.Text = "Настройки";
-            this.mOptions.Click += new System.EventHandler(this.mOptions_Click);
             // 
             // mmHelp
             // 
@@ -413,7 +410,7 @@
             // bNext
             // 
             this.bNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bNext.Location = new System.Drawing.Point(-1639, 9);
+            this.bNext.Location = new System.Drawing.Point(-1819, 9);
             this.bNext.Name = "bNext";
             this.bNext.Size = new System.Drawing.Size(136, 24);
             this.bNext.TabIndex = 27;
@@ -423,7 +420,7 @@
             // bBreak
             // 
             this.bBreak.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bBreak.Location = new System.Drawing.Point(-1781, 9);
+            this.bBreak.Location = new System.Drawing.Point(-1961, 9);
             this.bBreak.Name = "bBreak";
             this.bBreak.Size = new System.Drawing.Size(136, 24);
             this.bBreak.TabIndex = 28;
@@ -494,6 +491,7 @@
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Опросник";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.MainMenu.ResumeLayout(false);
             this.MainMenu.PerformLayout();
@@ -530,8 +528,6 @@
         private System.Windows.Forms.ToolStripMenuItem mmHelp;
         private System.Windows.Forms.ToolStripMenuItem mSurvey;
         private System.Windows.Forms.ToolStripMenuItem mStatistics;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripMenuItem mOptions;
         private System.Windows.Forms.ToolStripMenuItem mAboutTheProgram;
         private System.Windows.Forms.ToolStripMenuItem mDeveloper;
         private System.Windows.Forms.Panel sideBar;
@@ -550,6 +546,8 @@
         private System.Windows.Forms.PictureBox pImage;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ToolStripMenuItem gfhfvtnhsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
     }
 }
 

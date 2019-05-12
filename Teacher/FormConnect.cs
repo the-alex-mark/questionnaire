@@ -150,8 +150,8 @@ namespace Teacher
         private String _file = "";
 
         // Настройки сервера
-        private TcpServer _server;
-        private Int32 _port;
+        //private TcpServer _server;
+        //private Int32 _port;
         private List<String> _clients = new List<String>();
 
         private Color _errorColor;
@@ -162,7 +162,7 @@ namespace Teacher
 
         private void UpdateTheme(VSCodeTheme Theme, VSCodeIconTheme IconTheme)
         {
-            VSCodeToolStripRenderer _renderer = new VSCodeToolStripRenderer(Theme, IconTheme);
+            VSCodeToolStripRenderer _renderer = new VSCodeToolStripRenderer(Theme, new VSCodeToolStripSettings(this, MainMenu, IconTheme));
             MainMenu.Renderer = _renderer;
 
             BackColor = _renderer.WindowBackColor;
@@ -207,26 +207,24 @@ namespace Teacher
         private void FormConnect_Load(Object sender, EventArgs e)
         {
             UpdateTheme(Program.Config.Theme, Program.Config.IconTheme);
-
-            
             
             // Получение количества доступных компьютеров в локальной сети
             label2.Text = "из " + LocalNetwork.GetServers(TypeServer.Workstation).Length;
 
-            // Получение настроект сервера
-            try
-            {
-                _port = Program.Config.Port;
-            }
-            catch (Exception Error)
-            {
-                MessageBox.Show(Error.Message, "Опросник", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                // ...
-            }
+            //// Получение настроект сервера
+            //try
+            //{
+            //    _port = Program.Config.Port;
+            //}
+            //catch (Exception Error)
+            //{
+            //    MessageBox.Show(Error.Message, "Опросник", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    // ...
+            //}
             
             // Запуск сервера
-            _server = new TcpServer(_port, 50);
-            _server.Receiver += delegate(Object _object, TcpEventArgs _tcpEventArgs)
+            //_server = new TcpServer(_port, 50);
+            Program.TcpServer.Receiver += delegate(Object _object, TcpEventArgs _tcpEventArgs)
             {
                 String Client  = TcpServer.GetHostName(_tcpEventArgs.Socket);
                 String Message = TcpServer.GetString(_tcpEventArgs.Buffer, _tcpEventArgs.Length);
@@ -249,7 +247,7 @@ namespace Teacher
                         {
                             try
                             {
-                                TcpServer.Send(_client, _port, "_request:connect");
+                                TcpServer.Send(_client, Program.Config.Port, "_request:connect");
                             }
                             catch { _temp.Add(_client); }
                         }
@@ -264,12 +262,12 @@ namespace Teacher
                     //MessageBox.Show(Message, Client);
                 }
             };
-            _server.Start();
+            Program.TcpServer.Start();
         }
         private void FormConnect_FormClosing(Object sender, FormClosingEventArgs e)
         {
             //_server.Stop();
-            _server.Dispose();
+            //_server.Dispose();
         }
         private void FormConnect_KeyDown(Object sender, KeyEventArgs e)
         {

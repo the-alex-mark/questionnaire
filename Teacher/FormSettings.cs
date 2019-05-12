@@ -199,7 +199,7 @@ namespace Teacher
         /// <param name="Theme"></param>
         private void UpdateTheme(VSCodeTheme Theme, VSCodeIconTheme IconTheme)
         {
-            VSCodeToolStripRenderer _renderer = new VSCodeToolStripRenderer(Theme, IconTheme);
+            VSCodeToolStripRenderer _renderer = new VSCodeToolStripRenderer(Theme, new VSCodeToolStripSettings(this, MainMenu, IconTheme));
             MainMenu.Renderer = _renderer;
 
             BackColor = _renderer.WindowBackColor;
