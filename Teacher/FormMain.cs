@@ -182,7 +182,7 @@ namespace Teacher
             };
         }
 
-        #region Global Variables
+        #region Variables
 
         private String _file = "";
 
@@ -192,7 +192,7 @@ namespace Teacher
 
         #endregion
 
-        #region Additional method
+        #region Method
 
         private void UpdateTheme(VSCodeTheme Theme, VSCodeIconTheme IconTheme)
         {
@@ -201,6 +201,9 @@ namespace Teacher
 
             BackColor = _renderer.WindowBackColor;
             sideBar.BackColor = _renderer.SidebarBackColor;
+            pStartPage.BackColor = _renderer.WindowBackColor;
+            pQuestion.BackColor = _renderer.WindowBackColor;
+            pStatistics.BackColor = _renderer.WindowBackColor;
         }
 
         /// <summary>
@@ -386,12 +389,14 @@ namespace Teacher
         // Вид
         private void pbQuestionView_Click(Object sender, EventArgs e)
         {
-
+            materialTabControl1.SelectTab(pQuestion);
         }
         private void pbStatisticsView_Click(Object sender, EventArgs e)
         {
-
+            materialTabControl1.SelectTab(pStatistics);
         }
+
+        // Настройки
         private void pbSettings_Click(Object sender, EventArgs e)
         {
             mOptions_Click(sender, e);
