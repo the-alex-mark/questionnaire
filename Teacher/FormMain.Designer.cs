@@ -469,10 +469,10 @@
             this.pStatistics.Controls.Add(this.pictureBox4);
             this.pStatistics.Controls.Add(this.button3);
             this.pStatistics.Controls.Add(this.label2);
-            this.pStatistics.Location = new System.Drawing.Point(4, 22);
+            this.pStatistics.Location = new System.Drawing.Point(4, 21);
             this.pStatistics.Name = "pStatistics";
             this.pStatistics.Padding = new System.Windows.Forms.Padding(3);
-            this.pStatistics.Size = new System.Drawing.Size(904, 450);
+            this.pStatistics.Size = new System.Drawing.Size(904, 451);
             this.pStatistics.TabIndex = 1;
             this.pStatistics.Text = "Статистика";
             this.pStatistics.UseVisualStyleBackColor = true;
@@ -482,7 +482,7 @@
             this.pictureBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
-            this.pictureBox4.Location = new System.Drawing.Point(6, 413);
+            this.pictureBox4.Location = new System.Drawing.Point(6, 414);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(890, 1);
             this.pictureBox4.TabIndex = 24;
@@ -496,7 +496,7 @@
             this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
             this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(766, 420);
+            this.button3.Location = new System.Drawing.Point(766, 421);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(130, 23);
             this.button3.TabIndex = 22;

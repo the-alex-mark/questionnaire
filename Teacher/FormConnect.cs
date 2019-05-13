@@ -144,14 +144,12 @@ namespace Teacher
             };
         }
 
-        #region Global Variables
+        #region Variables
 
         // Расположение выбранного теста
         private String _file = "";
 
-        // Настройки сервера
-        //private TcpServer _server;
-        //private Int32 _port;
+        // Список клиентов
         private List<String> _clients = new List<String>();
 
         private Color _errorColor;
@@ -160,7 +158,7 @@ namespace Teacher
 
         #region Methods
 
-        private void UpdateTheme(VSCodeTheme Theme, VSCodeIconTheme IconTheme)
+        private void UTheme(VSCodeTheme Theme, VSCodeIconTheme IconTheme)
         {
             VSCodeToolStripRenderer _renderer = new VSCodeToolStripRenderer(Theme, new VSCodeToolStripSettings(this, MainMenu, IconTheme));
             MainMenu.Renderer = _renderer;
@@ -196,14 +194,6 @@ namespace Teacher
             }
         }
 
-        #endregion
-
-        public Information Connect()
-        {
-            ShowDialog();
-            return (_file != null && _clients != null) ? new Information(new Survey(_file), _clients.ToArray()) : new Information();
-        }
-
         private void OnReceiver(Object _object, TcpEventArgs _tcpEventArgs)
         {
             String Client = TcpServer.GetHostName(_tcpEventArgs.Socket);
@@ -211,13 +201,10 @@ namespace Teacher
 
             if (Message != "")
             {
-                if (Message.StartsWith("_request:"))
+                if (Message.IsConnect())
                 {
-                    if (Message.Split(':')[1] == "connect")
-                    {
-                        if (_clients.IndexOf(Client) == -1)
-                            _clients.Add(Client);
-                    }
+                    if (_clients.IndexOf(Client) == -1)
+                        _clients.Add(Client);
                 }
 
                 if (_clients.Count > 0)
@@ -227,7 +214,7 @@ namespace Teacher
                     {
                         try
                         {
-                            TcpServer.Send(_client, Program.Config.Port, "_request:connect");
+                            TcpServer.Send(_client, Program.Config.Port, TcpRequest.Connect);
                         }
                         catch { _temp.Add(_client); }
                     }
@@ -238,39 +225,33 @@ namespace Teacher
 
                 BeginInvoke(
                     new MethodInvoker(delegate { label1.Text = _clients.Count.ToString(); }));
-
-                //MessageBox.Show(Message, Client);
             }
         }
 
+        #endregion
+
+        public Information Connect()
+        {
+            ShowDialog();
+
+            return (_file != null && _clients != null) 
+                ? new Information(new Survey(_file), _clients.ToArray()) 
+                : new Information();
+        }
+        
         private void FormConnect_Load(Object sender, EventArgs e)
         {
-            UpdateTheme(Program.Config.Theme, Program.Config.IconTheme);
+            // Обработка интерфейса приложения
+            UTheme(Program.Config.Theme, Program.Config.IconTheme);
             
             // Получение количества доступных компьютеров в локальной сети
             label2.Text = "из " + LocalNetwork.GetServers(TypeServer.Workstation).Length;
-
-            //// Получение настроект сервера
-            //try
-            //{
-            //    _port = Program.Config.Port;
-            //}
-            //catch (Exception Error)
-            //{
-            //    MessageBox.Show(Error.Message, "Опросник", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    // ...
-            //}
-
-            // Запуск сервера
-            //_server = new TcpServer(_port, 50);
+            
+            // Обработка полученных данных
             Program.TcpServer.Receiver += OnReceiver;
-            Program.TcpServer.Start();
         }
         private void FormConnect_FormClosing(Object sender, FormClosingEventArgs e)
         {
-            //_server.Stop();
-            //_server.Dispose();
-
             Program.TcpServer.Receiver -= OnReceiver;
         }
         private void FormConnect_KeyDown(Object sender, KeyEventArgs e)
@@ -324,12 +305,12 @@ namespace Teacher
         {
             if (lTest.Text != "Не выбран!")
             {
-                //if (label1.Text != "0")
-                //{
+                if (label1.Text != "0")
+                {
                     Close();
-                //}
-                //else { MessageBox.Show("Список подключённых компьютеров пуст.", "Опросник", MessageBoxButtons.OK, MessageBoxIcon.Information); }
             }
+            else { MessageBox.Show("Список подключённых компьютеров пуст.", "Опросник", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+        }
             else { MessageBox.Show("Пожалуйста, выберите файл.", "Опросник", MessageBoxButtons.OK, MessageBoxIcon.Information); }
         }
 
@@ -338,9 +319,6 @@ namespace Teacher
         {
             _file = null;
             _clients = null;
-
-            //_flow.Interrupt();
-            //_server.Close();
 
             Close();
         }

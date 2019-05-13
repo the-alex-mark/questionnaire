@@ -17,9 +17,17 @@ namespace Student
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMain());
+            if (Program.Config.Server == Environment.MachineName)
+            {
+                MessageBox.Show("Запуск приложения не возможен!", "Опросник");
+                Application.Exit();
+            }
+            else
+            {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new FormMain());
+            }
         }
 
         public static Config Config = new Config();

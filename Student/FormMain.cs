@@ -155,7 +155,7 @@ namespace Student
             };
 
             // Оформление MainMenu
-            MainMenu.Renderer = new VSCodeToolStripRenderer(VSCodeTheme.Light);
+            //MainMenu.Renderer = new VSCodeToolStripRenderer(VSCodeTheme.Light);
             MainMenu.MouseDown += delegate (Object _object, MouseEventArgs _mouseEventArgs)
             {
                 ReleaseCapture();
@@ -193,7 +193,15 @@ namespace Student
 
         #region Methods
 
-        private void Check()
+        private void UTheme(VSCodeTheme Theme, VSCodeIconTheme IconTheme)
+        {
+            VSCodeToolStripRenderer _renderer = new VSCodeToolStripRenderer(Theme, new VSCodeToolStripSettings(this, MainMenu, IconTheme));
+            MainMenu.Renderer = _renderer;
+
+            BackColor = _renderer.WindowBackColor;
+        }
+
+        private void CheckConnect()
         {
             while (true)
             {
@@ -216,21 +224,10 @@ namespace Student
 
         private void FormMain_Load(Object sender, EventArgs e)
         {
-            // Получение настроект сервера
-            //try
-            //{
-            //    Config _config = new Config();
-            //    _teacher = _config.Server;
-            //    _port = _config.Port;
-            //}
-            //catch (Exception Error)
-            //{
-            //    MessageBox.Show(Error.Message, "Опросник", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    // ...
-            //}
+            // Обновление темы оформления
+            UTheme(Program.Config.Theme, Program.Config.IconTheme);
 
             // Запуск сервера
-            //_client = new TcpServer(_port, 50);
             Program.TcpServer.Receiver += delegate (Object _object, TcpEventArgs _tcpEventArgs)
             {
                 String Client = TcpServer.GetHostName(_tcpEventArgs.Socket);
@@ -243,22 +240,20 @@ namespace Student
                     //    _client.Stop();
                     //    _client.Dispose();
                     //}
-
                 }
-                    label1.Text = Message;
 
-                //MessageBox.Show(TcpServer.GetString(_tcpEventArgs.Data), TcpServer.GetHostName(_tcpEventArgs.Socket));
+                label1.Text = Message;
             };
             Program.TcpServer.Start();
 
-            _flow = new Thread(new ThreadStart(Check));
+            _flow = new Thread(new ThreadStart(CheckConnect));
             _flow.Start();
         }
         private void FormMain_FormClosing(Object sender, FormClosingEventArgs e)
         {
-            _flow.Interrupt();
+            if (_flow != null)
+                _flow.Interrupt();
 
-            //_client.Stop();
             Program.TcpServer.Dispose();
         }
         private void FormMain_KeyDown(Object sender, KeyEventArgs e)

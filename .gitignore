@@ -1,2 +1,30 @@
+### Windows ###
+# Windows thumbnail cache files
+# Файлы кэша миниатюр Windows
+Thumbs.db
+ehthumbs.db
+ehthumbs_vista.db
 
-*.db
+# Dump file
+# Файл дампа
+*.stackdump
+
+# Folder config file
+# Файл конфигурации папки
+[Dd]esktop.ini
+
+# Recycle Bin used on file shares
+# Корзина, используемая в общих файловых ресурсах
+$RECYCLE.BIN/
+
+# Windows Installer files
+# Файлы установщика Windows 
+# *.cab
+# *.msi
+# *.msix
+# *.msm
+# *.msp
+
+# Windows shortcuts
+# Ярлыки Windows
+# *.lnk

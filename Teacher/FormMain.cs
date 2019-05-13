@@ -196,7 +196,7 @@ namespace Teacher
 
         #region Method
 
-        private void UpdateTheme(VSCodeTheme Theme, VSCodeIconTheme IconTheme)
+        private void UTheme(VSCodeTheme Theme, VSCodeIconTheme IconTheme)
         {
             VSCodeToolStripRenderer _renderer = new VSCodeToolStripRenderer(Theme, new VSCodeToolStripSettings(this, MainMenu, IconTheme));
             MainMenu.Renderer = _renderer;
@@ -208,85 +208,8 @@ namespace Teacher
             pStatistics.BackColor = _renderer.WindowBackColor;
         }
 
-        private void UpdateQuestion(Question Question)
+        private void UFontRegister(Boolean FontRegister)
         {
-            label3.Text = Question.Name;
-            pictureBox1.Image = Question.Image;
-            pictureBox1.Visible = (Question.Image != null) ? true : false;
-        }
-
-        /// <summary>
-        /// Возвращает копию этой строки, с переверённой первой буквой в верхний регистр.
-        /// </summary>
-        /// <param name="Value"></param>
-        /// <returns></returns>
-        private String ToFirstUpper(String Value)
-        {
-            if (Value.Length > 0)
-            {
-                String Temp = Value.ToLower();
-                return Temp[0].ToString().ToUpper() + Temp.Substring(1);
-            }
-
-            else return Value;
-        }
-
-        /// <summary>
-        /// Возвращает копию этой строки, с переведённой каждой первой буквой слова в верхний регистр.
-        /// </summary>
-        /// <param name="Value"></param>
-        /// <returns></returns>
-        private String ToFirstsUpper(String Value)
-        {
-            String Result = Value;
-
-            if (Value.Length > 0)
-            {
-                Result = "";
-
-                String[] Words = Value.ToLower().Split(' ');
-                foreach (String Word in Words)
-                    Result += Word[0].ToString().ToUpper() + Word.Substring(1) + " ";
-
-                return Result;
-            }
-
-            else return Result;
-        }
-
-        /// <summary>
-        /// Возвращает копию этой строки, изменяя регистр каждого символа на обратный.
-        /// </summary>
-        /// <param name="Value"></param>
-        /// <returns></returns>
-        private String TransformRegister(String Value)
-        {
-            String Result = Value;
-
-            if (Value.Length > 0)
-            {
-                Result = "";
-                foreach (Char Symbol in Value)
-                    Result += (Char.IsLower(Symbol)) ? Symbol.ToString().ToUpper() : Symbol.ToString().ToLower();
-                
-                return Result;
-            }
-
-            else return Result;
-        }
-
-        private void UpdateFontRegister(Boolean FontRegister)
-        {
-            String ToFirstUpper(String Value)
-            {
-                if (Value.Length > 0)
-                {
-                    String Temp = Value.ToLower();
-                    return Temp[0].ToString().ToUpper() + Temp.Substring(1);
-                }
-                else return Value;
-            }
-
             if (FontRegister)
             {
                 foreach (ToolStripMenuItem Item in MainMenu.Items)
@@ -295,10 +218,17 @@ namespace Teacher
             else
             {
                 foreach (ToolStripMenuItem Item in MainMenu.Items)
-                    Item.Text = ToFirstUpper(Item.Text);
+                    Item.Text = Item.Text.ToFirstUpper();
             }
         }
 
+        private void UQuestion(Question Question)
+        {
+            label3.Text = Question.Name;
+            pictureBox1.Image = Question.Image;
+            pictureBox1.Visible = (Question.Image != null) ? true : false;
+        }
+        
         #endregion
 
         #region Menu
@@ -322,7 +252,7 @@ namespace Teacher
                 mStop.Enabled = true;
 
                 _info = Info;
-                UpdateQuestion(_info.Survey.Questions[_index = 0]);
+                UQuestion(_info.Survey.Questions[_index = 0]);
                 materialTabControl1.SelectTab(pQuestion);
             }
         }
@@ -369,13 +299,6 @@ namespace Teacher
 
         private void FormMain_Load(Object sender, EventArgs e)
         {
-            Program.Config.ThemeManagement += delegate (Object _object, VisualizationEventArgs _vsCodeThemeEventArgs)
-            {
-                UpdateTheme(_vsCodeThemeEventArgs.Theme, _vsCodeThemeEventArgs.IconTheme);
-                UpdateFontRegister(_vsCodeThemeEventArgs.FontRegister);
-            };
-            Program.Config.Theme = Program.Config.Theme;
-
             // Получение списка компьютеров средствами .Net
             //MessageBox.Show(
             //    LocalNetwork.GetMachines().Aggregate("", (S, I) => S += I + "\n"), "Список доступных компьютеров");
@@ -383,6 +306,17 @@ namespace Teacher
             // Получение списка компьютеров средствами WinAPI
             //MessageBox.Show(
             //    LocalNetwork.GetServers(TypeServer.Workstation).Aggregate("", (S, I) => S += I + "\n"), "Список доступных компьютеров");
+
+            // Обработка интерфейса приложения
+            Program.Config.ThemeManagement += delegate (Object _object, VisualizationEventArgs _vsCodeThemeEventArgs)
+            {
+                UTheme(_vsCodeThemeEventArgs.Theme, _vsCodeThemeEventArgs.IconTheme);
+                UFontRegister(_vsCodeThemeEventArgs.FontRegister);
+            };
+            UTheme(Program.Config.Theme, Program.Config.IconTheme);
+
+            // Запуск сервера
+            Program.TcpServer.Start();
         }
         private void FormMain_FormClosing(Object sender, FormClosingEventArgs e)
         {
@@ -422,15 +356,13 @@ namespace Teacher
             if (_index < _info.Survey.Questions.Count - 1)
             {
                 _index++;
-                UpdateQuestion(_info.Survey.Questions[_index]);
-                MessageBox.Show("Отправилось!");
+                UQuestion(_info.Survey.Questions[_index]);
 
                 if (_info.Machines.Length > 0)
                 {
                     foreach (String Client in _info.Machines)
                     {
                         Program.TcpServer.Send(Client, _info.Survey.Questions[_index].ToString());
-                        MessageBox.Show("Отправилось!", Client);
                     }
                 }
             }

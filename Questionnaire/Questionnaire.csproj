@@ -67,6 +67,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="TcpRequest.cs" />
     <Compile Include="VisualizationEventArgs.cs" />
   </ItemGroup>
   <ItemGroup>
