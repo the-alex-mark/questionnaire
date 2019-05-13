@@ -161,7 +161,6 @@ namespace Teacher
             };
             
             // Оформление MainMenu
-            //MainMenu.Renderer = new VSCodeRenderer(VSCodeTheme.QuietLight);
             MainMenu.MouseDown += delegate (Object _object, MouseEventArgs _mouseEventArgs)
             {
                 ReleaseCapture();
@@ -191,7 +190,7 @@ namespace Teacher
 
         //private TcpServer _server;
         //private Int32 _port;
-        private List<String> _clients = new List<String>();
+        //private List<String> _clients = new List<String>();
 
         #endregion
 
@@ -387,9 +386,9 @@ namespace Teacher
         }
         private void FormMain_FormClosing(Object sender, FormClosingEventArgs e)
         {
-            if (_clients.Count > 0)
+            if (_info.Machines.Length > 0)
             {
-                foreach (String Client in _clients)
+                foreach (String Client in _info.Machines)
                     Program.TcpServer.Send(Client, "_request:stop");
             }
 
@@ -424,11 +423,15 @@ namespace Teacher
             {
                 _index++;
                 UpdateQuestion(_info.Survey.Questions[_index]);
-                
-                if (_clients.Count > 0)
+                MessageBox.Show("Отправилось!");
+
+                if (_info.Machines.Length > 0)
                 {
-                    foreach (String Client in _clients)
+                    foreach (String Client in _info.Machines)
+                    {
                         Program.TcpServer.Send(Client, _info.Survey.Questions[_index].ToString());
+                        MessageBox.Show("Отправилось!", Client);
+                    }
                 }
             }
         }

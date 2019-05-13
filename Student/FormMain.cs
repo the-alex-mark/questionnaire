@@ -244,8 +244,8 @@ namespace Student
                     //    _client.Dispose();
                     //}
 
-                    label1.Text = Message;
                 }
+                    label1.Text = Message;
 
                 //MessageBox.Show(TcpServer.GetString(_tcpEventArgs.Data), TcpServer.GetHostName(_tcpEventArgs.Socket));
             };

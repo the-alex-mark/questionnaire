@@ -362,7 +362,7 @@
             this.pQuestion.Padding = new System.Windows.Forms.Padding(3);
             this.pQuestion.Size = new System.Drawing.Size(904, 451);
             this.pQuestion.TabIndex = 0;
-            this.pQuestion.Text = "Вопросы";
+            this.pQuestion.Text = "Опрос";
             this.pQuestion.UseVisualStyleBackColor = true;
             // 
             // panel1
@@ -375,7 +375,7 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Location = new System.Drawing.Point(9, 66);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(887, 342);
+            this.panel1.Size = new System.Drawing.Size(887, 344);
             this.panel1.TabIndex = 21;
             // 
             // label3
@@ -384,7 +384,7 @@
             this.label3.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.Location = new System.Drawing.Point(0, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(359, 342);
+            this.label3.Size = new System.Drawing.Size(359, 344);
             this.label3.TabIndex = 2;
             this.label3.Text = "...";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -394,7 +394,7 @@
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Right;
             this.pictureBox2.Location = new System.Drawing.Point(359, 0);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(10, 342);
+            this.pictureBox2.Size = new System.Drawing.Size(10, 344);
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Visible = false;
@@ -404,7 +404,7 @@
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
             this.pictureBox1.Location = new System.Drawing.Point(369, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(518, 342);
+            this.pictureBox1.Size = new System.Drawing.Size(518, 344);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -426,7 +426,7 @@
             this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
-            this.pictureBox3.Location = new System.Drawing.Point(6, 415);
+            this.pictureBox3.Location = new System.Drawing.Point(6, 417);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(890, 1);
             this.pictureBox3.TabIndex = 19;
@@ -440,7 +440,7 @@
             this.m_End.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
             this.m_End.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
             this.m_End.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.m_End.Location = new System.Drawing.Point(630, 422);
+            this.m_End.Location = new System.Drawing.Point(630, 424);
             this.m_End.Name = "m_End";
             this.m_End.Size = new System.Drawing.Size(130, 23);
             this.m_End.TabIndex = 10;
@@ -455,7 +455,7 @@
             this.m_Next.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
             this.m_Next.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
             this.m_Next.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.m_Next.Location = new System.Drawing.Point(766, 422);
+            this.m_Next.Location = new System.Drawing.Point(766, 424);
             this.m_Next.Name = "m_Next";
             this.m_Next.Size = new System.Drawing.Size(130, 23);
             this.m_Next.TabIndex = 9;

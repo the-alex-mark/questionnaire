@@ -204,6 +204,45 @@ namespace Teacher
             return (_file != null && _clients != null) ? new Information(new Survey(_file), _clients.ToArray()) : new Information();
         }
 
+        private void OnReceiver(Object _object, TcpEventArgs _tcpEventArgs)
+        {
+            String Client = TcpServer.GetHostName(_tcpEventArgs.Socket);
+            String Message = TcpServer.GetString(_tcpEventArgs.Buffer, _tcpEventArgs.Length);
+
+            if (Message != "")
+            {
+                if (Message.StartsWith("_request:"))
+                {
+                    if (Message.Split(':')[1] == "connect")
+                    {
+                        if (_clients.IndexOf(Client) == -1)
+                            _clients.Add(Client);
+                    }
+                }
+
+                if (_clients.Count > 0)
+                {
+                    List<String> _temp = new List<String>();
+                    foreach (String _client in _clients)
+                    {
+                        try
+                        {
+                            TcpServer.Send(_client, Program.Config.Port, "_request:connect");
+                        }
+                        catch { _temp.Add(_client); }
+                    }
+
+                    foreach (String _client in _temp)
+                        _clients.Remove(_client);
+                }
+
+                BeginInvoke(
+                    new MethodInvoker(delegate { label1.Text = _clients.Count.ToString(); }));
+
+                //MessageBox.Show(Message, Client);
+            }
+        }
+
         private void FormConnect_Load(Object sender, EventArgs e)
         {
             UpdateTheme(Program.Config.Theme, Program.Config.IconTheme);
@@ -221,53 +260,18 @@ namespace Teacher
             //    MessageBox.Show(Error.Message, "Опросник", MessageBoxButtons.OK, MessageBoxIcon.Error);
             //    // ...
             //}
-            
+
             // Запуск сервера
             //_server = new TcpServer(_port, 50);
-            Program.TcpServer.Receiver += delegate(Object _object, TcpEventArgs _tcpEventArgs)
-            {
-                String Client  = TcpServer.GetHostName(_tcpEventArgs.Socket);
-                String Message = TcpServer.GetString(_tcpEventArgs.Buffer, _tcpEventArgs.Length);
-
-                if (Message != "")
-                {
-                    if (Message.StartsWith("_request:"))
-                    {
-                        if (Message.Split(':')[1] == "connect")
-                        {
-                            if (_clients.IndexOf(Client) == -1)
-                                _clients.Add(Client);
-                        }
-                    }
-
-                    if (_clients.Count > 0)
-                    {
-                        List<String> _temp = new List<String>();
-                        foreach (String _client in _clients)
-                        {
-                            try
-                            {
-                                TcpServer.Send(_client, Program.Config.Port, "_request:connect");
-                            }
-                            catch { _temp.Add(_client); }
-                        }
-
-                        foreach (String _client in _temp)
-                            _clients.Remove(_client);
-                    }
-
-                    BeginInvoke(
-                        new MethodInvoker(delegate { label1.Text = _clients.Count.ToString(); }));
-
-                    //MessageBox.Show(Message, Client);
-                }
-            };
+            Program.TcpServer.Receiver += OnReceiver;
             Program.TcpServer.Start();
         }
         private void FormConnect_FormClosing(Object sender, FormClosingEventArgs e)
         {
             //_server.Stop();
             //_server.Dispose();
+
+            Program.TcpServer.Receiver -= OnReceiver;
         }
         private void FormConnect_KeyDown(Object sender, KeyEventArgs e)
         {
