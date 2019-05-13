@@ -248,11 +248,8 @@ namespace Teacher
 
                 _info = Info;
                 
-                if (_info.Machines.Length > 0)
-                {
-                    foreach (String Client in _info.Machines)
-                        Program.TcpServer.Send(Client, "_request:start");
-                }
+                foreach (String Client in _info.Machines)
+                    Program.TcpServer.Send(Client, "_request:start");
 
                 _index = -1;
                 m_Next_Click(sender, e);
@@ -361,14 +358,9 @@ namespace Teacher
             {
                 _index++;
                 UQuestion(_info.Survey.Questions[_index]);
-
-                if (_info.Machines.Length > 0)
-                {
-                    foreach (String Client in _info.Machines)
-                    {
-                        Program.TcpServer.Send(Client, _info.Survey.Questions[_index].ToString());
-                    }
-                }
+                
+                foreach (String Client in _info.Machines)
+                    Program.TcpServer.Send(Client, _info.Survey.Questions[_index].ToString());
             }
         }
         private void m_End_Click(Object sender, EventArgs e)

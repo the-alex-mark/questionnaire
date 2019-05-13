@@ -223,6 +223,40 @@ namespace Student
 
         private Boolean _translation = false;
 
+        private void OnReceiver(Object _object, TcpEventArgs _tcpEventArgs)
+        {
+            String Client = TcpServer.GetHostName(_tcpEventArgs.Socket);
+            String Message = TcpServer.GetString(_tcpEventArgs.Buffer, _tcpEventArgs.Length);
+
+            if (Message.IsStart())
+            {
+                Program.TcpServer.Receiver += OnListener;
+                Program.TcpServer.Receiver -= OnReceiver;
+            }
+
+            else if (Message.IsStop())
+            {
+                label1.Text = "Ожидайте ..." + Environment.NewLine + "Вопросы появяться у вас на экране!";
+            }
+        }
+
+        private void OnListener(Object _object, TcpEventArgs _tcpEventArgs)
+        {
+            String Client = TcpServer.GetHostName(_tcpEventArgs.Socket);
+            String Message = TcpServer.GetString(_tcpEventArgs.Buffer, _tcpEventArgs.Length);
+            
+            if (Message.IsStop())
+            {
+                Program.TcpServer.Receiver -= OnListener;
+                Program.TcpServer.Receiver += OnReceiver;
+            }
+            else
+            {
+                Question _question = new Question(XElement.Parse(Message));
+                label1.Text = _question.Name;
+            }
+        }
+
         private void FormMain_Load(Object sender, EventArgs e)
         {
             // Обновление темы оформления
