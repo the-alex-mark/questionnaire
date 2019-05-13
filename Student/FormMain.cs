@@ -3,6 +3,7 @@ using ProgLib.Network.Tcp;
 using ProgLib.Windows.Forms.VSCode;
 using Questionnaire;
 using Questionnaire.Controls;
+using Questionnaire.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +15,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace Student
 {
@@ -183,11 +185,8 @@ namespace Student
         }
 
         #region Variables
-
-        //private TcpServer _client;
+        
         private Thread _flow;
-        //private Int32 _port;
-        //private String _teacher;
 
         #endregion
 
@@ -242,7 +241,14 @@ namespace Student
                     label1.Text = "Ожидайте ..." + Environment.NewLine + "Вопросы появяться у вас на экране!";
                 }
 
-                if (_translation) label1.Text = Message;
+                if (_translation)
+                {
+                    if (!Message.IsStart())
+                    {
+                        Question _question = new Question(XElement.Parse(Message));
+                        label1.Text = _question.Name;
+                    }
+                }
             };
             Program.TcpServer.Start();
 
