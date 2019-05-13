@@ -320,11 +320,11 @@ namespace Teacher
         {
             if (lTest.Text != "Не выбран!")
             {
-                if (label1.Text != "0")
-                {
+                //if (label1.Text != "0")
+                //{
                     Close();
-                }
-                else { MessageBox.Show("Список подключённых компьютеров пуст.", "Опросник", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+                //}
+                //else { MessageBox.Show("Список подключённых компьютеров пуст.", "Опросник", MessageBoxButtons.OK, MessageBoxIcon.Information); }
             }
             else { MessageBox.Show("Пожалуйста, выберите файл.", "Опросник", MessageBoxButtons.OK, MessageBoxIcon.Information); }
         }

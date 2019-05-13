@@ -182,12 +182,12 @@ namespace Student
             };
         }
 
-        #region Global Variables
-        
-        private TcpServer _client;
+        #region Variables
+
+        //private TcpServer _client;
         private Thread _flow;
-        private Int32 _port;
-        private String _teacher;
+        //private Int32 _port;
+        //private String _teacher;
 
         #endregion
 
@@ -199,7 +199,7 @@ namespace Student
             {
                 try
                 {
-                    TcpServer.Send(_teacher, _port, "_request:connect");
+                    TcpServer.Send(Program.Config.Server, Program.Config.Port, "_request:connect");
 
                     BeginInvoke(
                         new MethodInvoker(delegate { MainMenu.Items["mmTitle"].Text = "Опросник"; }));
@@ -217,37 +217,39 @@ namespace Student
         private void FormMain_Load(Object sender, EventArgs e)
         {
             // Получение настроект сервера
-            try
-            {
-                Config _config = new Config();
-                _teacher = _config.Server;
-                _port = _config.Port;
-            }
-            catch (Exception Error)
-            {
-                MessageBox.Show(Error.Message, "Опросник", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                // ...
-            }
+            //try
+            //{
+            //    Config _config = new Config();
+            //    _teacher = _config.Server;
+            //    _port = _config.Port;
+            //}
+            //catch (Exception Error)
+            //{
+            //    MessageBox.Show(Error.Message, "Опросник", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    // ...
+            //}
 
             // Запуск сервера
-            _client = new TcpServer(_port, 50);
-            _client.Receiver += delegate (Object _object, TcpEventArgs _tcpEventArgs)
+            //_client = new TcpServer(_port, 50);
+            Program.TcpServer.Receiver += delegate (Object _object, TcpEventArgs _tcpEventArgs)
             {
                 String Client = TcpServer.GetHostName(_tcpEventArgs.Socket);
                 String Message = TcpServer.GetString(_tcpEventArgs.Buffer, _tcpEventArgs.Length);
 
                 if (Message.StartsWith("_request:"))
                 {
-                    if (Message.Split(':')[1] == "startTranslation")
-                    {
-                        _client.Stop();
-                        _client.Dispose();
-                    }
+                    //if (Message.Split(':')[1] == "startTranslation")
+                    //{
+                    //    _client.Stop();
+                    //    _client.Dispose();
+                    //}
+
+                    label1.Text = Message;
                 }
 
                 //MessageBox.Show(TcpServer.GetString(_tcpEventArgs.Data), TcpServer.GetHostName(_tcpEventArgs.Socket));
             };
-            _client.Start();
+            Program.TcpServer.Start();
 
             _flow = new Thread(new ThreadStart(Check));
             _flow.Start();
@@ -256,8 +258,8 @@ namespace Student
         {
             _flow.Interrupt();
 
-            _client.Stop();
-            _client.Dispose();
+            //_client.Stop();
+            Program.TcpServer.Dispose();
         }
         private void FormMain_KeyDown(Object sender, KeyEventArgs e)
         {

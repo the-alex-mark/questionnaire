@@ -53,20 +53,20 @@
             this.pbStatisticsView = new System.Windows.Forms.PictureBox();
             this.pbQuestionView = new System.Windows.Forms.PictureBox();
             this.materialTabControl1 = new ProgLib.Windows.Forms.Material.MaterialTabControl();
-            this.pQuestion = new System.Windows.Forms.TabPage();
-            this.pStatistics = new System.Windows.Forms.TabPage();
-            this.bNext = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.pStartPage = new System.Windows.Forms.TabPage();
+            this.pQuestion = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.m_End = new System.Windows.Forms.Button();
+            this.m_Next = new System.Windows.Forms.Button();
+            this.pStatistics = new System.Windows.Forms.TabPage();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.button3 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.MainMenu.SuspendLayout();
             this.sideBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSettings)).BeginInit();
@@ -74,11 +74,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbQuestionView)).BeginInit();
             this.materialTabControl1.SuspendLayout();
             this.pQuestion.SuspendLayout();
-            this.pStatistics.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.pStatistics.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
@@ -225,7 +225,7 @@
             this.mSurvey.Padding = new System.Windows.Forms.Padding(0);
             this.mSurvey.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.O)));
-            this.mSurvey.Size = new System.Drawing.Size(180, 20);
+            this.mSurvey.Size = new System.Drawing.Size(177, 20);
             this.mSurvey.Text = "Опрос";
             this.mSurvey.Click += new System.EventHandler(this.mSurvey_Click);
             // 
@@ -235,7 +235,7 @@
             this.mStatistics.Padding = new System.Windows.Forms.Padding(0);
             this.mStatistics.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.S)));
-            this.mStatistics.Size = new System.Drawing.Size(180, 20);
+            this.mStatistics.Size = new System.Drawing.Size(177, 20);
             this.mStatistics.Text = "Статистика";
             this.mStatistics.Click += new System.EventHandler(this.mStatistics_Click);
             // 
@@ -337,99 +337,6 @@
             this.materialTabControl1.Size = new System.Drawing.Size(912, 476);
             this.materialTabControl1.TabIndex = 22;
             // 
-            // pQuestion
-            // 
-            this.pQuestion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pQuestion.Controls.Add(this.panel1);
-            this.pQuestion.Controls.Add(this.label1);
-            this.pQuestion.Controls.Add(this.pictureBox3);
-            this.pQuestion.Controls.Add(this.button1);
-            this.pQuestion.Controls.Add(this.bNext);
-            this.pQuestion.Location = new System.Drawing.Point(4, 21);
-            this.pQuestion.Name = "pQuestion";
-            this.pQuestion.Padding = new System.Windows.Forms.Padding(3);
-            this.pQuestion.Size = new System.Drawing.Size(904, 451);
-            this.pQuestion.TabIndex = 0;
-            this.pQuestion.Text = "Вопросы";
-            this.pQuestion.UseVisualStyleBackColor = true;
-            // 
-            // pStatistics
-            // 
-            this.pStatistics.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pStatistics.Controls.Add(this.pictureBox4);
-            this.pStatistics.Controls.Add(this.button3);
-            this.pStatistics.Controls.Add(this.label2);
-            this.pStatistics.Location = new System.Drawing.Point(4, 21);
-            this.pStatistics.Name = "pStatistics";
-            this.pStatistics.Padding = new System.Windows.Forms.Padding(3);
-            this.pStatistics.Size = new System.Drawing.Size(904, 451);
-            this.pStatistics.TabIndex = 1;
-            this.pStatistics.Text = "Статистика";
-            this.pStatistics.UseVisualStyleBackColor = true;
-            // 
-            // bNext
-            // 
-            this.bNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bNext.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
-            this.bNext.FlatAppearance.BorderSize = 0;
-            this.bNext.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
-            this.bNext.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
-            this.bNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bNext.Location = new System.Drawing.Point(766, 420);
-            this.bNext.Name = "bNext";
-            this.bNext.Size = new System.Drawing.Size(130, 23);
-            this.bNext.TabIndex = 9;
-            this.bNext.Text = "Далее";
-            this.bNext.UseVisualStyleBackColor = false;
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(630, 420);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(130, 23);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Завершить";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
-            this.pictureBox3.Location = new System.Drawing.Point(6, 413);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(890, 1);
-            this.pictureBox3.TabIndex = 19;
-            this.pictureBox3.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(3, 3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(898, 60);
-            this.label1.TabIndex = 20;
-            this.label1.Text = "Опрос";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label2
-            // 
-            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(3, 3);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(898, 60);
-            this.label2.TabIndex = 21;
-            this.label2.Text = "Статистика";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // pStartPage
             // 
             this.pStartPage.BackgroundImage = global::Teacher.Properties.Resources.pictureФон_100;
@@ -442,36 +349,34 @@
             this.pStartPage.Text = "Начальная страница";
             this.pStartPage.UseVisualStyleBackColor = true;
             // 
+            // pQuestion
+            // 
+            this.pQuestion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pQuestion.Controls.Add(this.panel1);
+            this.pQuestion.Controls.Add(this.label1);
+            this.pQuestion.Controls.Add(this.pictureBox3);
+            this.pQuestion.Controls.Add(this.m_End);
+            this.pQuestion.Controls.Add(this.m_Next);
+            this.pQuestion.Location = new System.Drawing.Point(4, 21);
+            this.pQuestion.Name = "pQuestion";
+            this.pQuestion.Padding = new System.Windows.Forms.Padding(3);
+            this.pQuestion.Size = new System.Drawing.Size(904, 451);
+            this.pQuestion.TabIndex = 0;
+            this.pQuestion.Text = "Вопросы";
+            this.pQuestion.UseVisualStyleBackColor = true;
+            // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Location = new System.Drawing.Point(9, 66);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(887, 341);
+            this.panel1.Size = new System.Drawing.Size(887, 342);
             this.panel1.TabIndex = 21;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pictureBox1.Location = new System.Drawing.Point(563, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(324, 341);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Visible = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pictureBox2.Location = new System.Drawing.Point(553, 0);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(10, 341);
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Visible = false;
             // 
             // label3
             // 
@@ -479,10 +384,98 @@
             this.label3.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.Location = new System.Drawing.Point(0, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(553, 341);
+            this.label3.Size = new System.Drawing.Size(359, 342);
             this.label3.TabIndex = 2;
             this.label3.Text = "...";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pictureBox2.Location = new System.Drawing.Point(359, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(10, 342);
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Visible = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pictureBox1.Location = new System.Drawing.Point(369, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(518, 342);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(3, 3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(898, 60);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "Опрос";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
+            this.pictureBox3.Location = new System.Drawing.Point(6, 415);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(890, 1);
+            this.pictureBox3.TabIndex = 19;
+            this.pictureBox3.TabStop = false;
+            // 
+            // m_End
+            // 
+            this.m_End.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.m_End.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
+            this.m_End.FlatAppearance.BorderSize = 0;
+            this.m_End.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
+            this.m_End.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
+            this.m_End.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.m_End.Location = new System.Drawing.Point(630, 422);
+            this.m_End.Name = "m_End";
+            this.m_End.Size = new System.Drawing.Size(130, 23);
+            this.m_End.TabIndex = 10;
+            this.m_End.Text = "Завершить";
+            this.m_End.UseVisualStyleBackColor = false;
+            // 
+            // m_Next
+            // 
+            this.m_Next.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.m_Next.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
+            this.m_Next.FlatAppearance.BorderSize = 0;
+            this.m_Next.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
+            this.m_Next.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
+            this.m_Next.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.m_Next.Location = new System.Drawing.Point(766, 422);
+            this.m_Next.Name = "m_Next";
+            this.m_Next.Size = new System.Drawing.Size(130, 23);
+            this.m_Next.TabIndex = 9;
+            this.m_Next.Text = "Далее";
+            this.m_Next.UseVisualStyleBackColor = false;
+            this.m_Next.Click += new System.EventHandler(this.m_Next_Click);
+            // 
+            // pStatistics
+            // 
+            this.pStatistics.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pStatistics.Controls.Add(this.pictureBox4);
+            this.pStatistics.Controls.Add(this.button3);
+            this.pStatistics.Controls.Add(this.label2);
+            this.pStatistics.Location = new System.Drawing.Point(4, 22);
+            this.pStatistics.Name = "pStatistics";
+            this.pStatistics.Padding = new System.Windows.Forms.Padding(3);
+            this.pStatistics.Size = new System.Drawing.Size(904, 450);
+            this.pStatistics.TabIndex = 1;
+            this.pStatistics.Text = "Статистика";
+            this.pStatistics.UseVisualStyleBackColor = true;
             // 
             // pictureBox4
             // 
@@ -510,6 +503,17 @@
             this.button3.Text = "Подробнее";
             this.button3.UseVisualStyleBackColor = false;
             // 
+            // label2
+            // 
+            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(3, 3);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(898, 60);
+            this.label2.TabIndex = 21;
+            this.label2.Text = "Статистика";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // FormMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -536,11 +540,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbQuestionView)).EndInit();
             this.materialTabControl1.ResumeLayout(false);
             this.pQuestion.ResumeLayout(false);
-            this.pStatistics.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.pStatistics.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -575,8 +579,8 @@
         private ProgLib.Windows.Forms.Material.MaterialTabControl materialTabControl1;
         private System.Windows.Forms.TabPage pQuestion;
         private System.Windows.Forms.TabPage pStatistics;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button bNext;
+        private System.Windows.Forms.Button m_End;
+        private System.Windows.Forms.Button m_Next;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;

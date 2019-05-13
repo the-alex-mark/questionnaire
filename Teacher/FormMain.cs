@@ -1,5 +1,6 @@
 ﻿using ProgLib.Windows.Forms.VSCode;
 using Questionnaire;
+using Questionnaire.Data;
 using Questionnaire.Controls;
 using System;
 using System.Collections.Generic;
@@ -184,7 +185,9 @@ namespace Teacher
 
         #region Variables
 
-        private String _file = "";
+        //private String _file = "";
+        private Information _info;
+        private Int32 _index;
 
         //private TcpServer _server;
         //private Int32 _port;
@@ -204,6 +207,13 @@ namespace Teacher
             pStartPage.BackColor = _renderer.WindowBackColor;
             pQuestion.BackColor = _renderer.WindowBackColor;
             pStatistics.BackColor = _renderer.WindowBackColor;
+        }
+
+        private void UpdateQuestion(Question Question)
+        {
+            label3.Text = Question.Name;
+            pictureBox1.Image = Question.Image;
+            pictureBox1.Visible = (Question.Image != null) ? true : false;
         }
 
         /// <summary>
@@ -312,9 +322,9 @@ namespace Teacher
                 mStart.Enabled = false;
                 mStop.Enabled = true;
 
-
-
-                MessageBox.Show("Good!");
+                _info = Info;
+                UpdateQuestion(_info.Survey.Questions[_index = 0]);
+                materialTabControl1.SelectTab(pQuestion);
             }
         }
 
@@ -406,6 +416,21 @@ namespace Teacher
         {
             FormSettings FS = new FormSettings();
             FS.ShowDialog();
+        }
+
+        private void m_Next_Click(Object sender, EventArgs e)
+        {
+            if (_index < _info.Survey.Questions.Count - 1)
+            {
+                _index++;
+                UpdateQuestion(_info.Survey.Questions[_index]);
+                
+                if (_clients.Count > 0)
+                {
+                    foreach (String Client in _clients)
+                        Program.TcpServer.Send(Client, _info.Survey.Questions[_index].ToString());
+                }
+            }
         }
     }
 }
