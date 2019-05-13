@@ -252,7 +252,20 @@ namespace Student
             }
             else
             {
-                Question _question = new Question(XElement.Parse(Message));
+                String F = Message.Split(new Char[] { '\r', '\n' }).FirstOrDefault();
+                String[] D = Message.Split(new Char[] { '\r', '\n' });
+
+                String S = "<question type=\"Выбор одного правильного ответа\" name=\"Высокая скорость передачи данных является отличительной особенностью...\" true=\"1\" image=\"\"";
+                foreach (var g in D)
+                {
+                    if (!g.StartsWith("<question"))
+                    {
+                        S += "\n" + g;
+                    }
+                }
+                S += "\n" + "</question>";
+                
+                Question _question = new Question(XElement.Parse(S));
                 label1.Text = _question.Name;
             }
         }
