@@ -183,14 +183,9 @@ namespace Teacher
         }
 
         #region Variables
-
-        //private String _file = "";
+        
         private Information _info;
         private Int32 _index;
-
-        //private TcpServer _server;
-        //private Int32 _port;
-        //private List<String> _clients = new List<String>();
 
         #endregion
 
@@ -252,7 +247,15 @@ namespace Teacher
                 mStop.Enabled = true;
 
                 _info = Info;
-                UQuestion(_info.Survey.Questions[_index = 0]);
+                
+                if (_info.Machines.Length > 0)
+                {
+                    foreach (String Client in _info.Machines)
+                        Program.TcpServer.Send(Client, "_request:start");
+                }
+
+                _index = -1;
+                m_Next_Click(sender, e);
                 materialTabControl1.SelectTab(pQuestion);
             }
         }
@@ -262,6 +265,13 @@ namespace Teacher
         {
             mStart.Enabled = true;
             mStop.Enabled = false;
+        }
+
+        // Параметры
+        private void mOptions_Click(Object sender, EventArgs e)
+        {
+            FormSettings FS = new FormSettings();
+            FS.ShowDialog();
         }
 
         // Выход
@@ -344,13 +354,7 @@ namespace Teacher
         {
             mOptions_Click(sender, e);
         }
-
-        private void mOptions_Click(Object sender, EventArgs e)
-        {
-            FormSettings FS = new FormSettings();
-            FS.ShowDialog();
-        }
-
+        
         private void m_Next_Click(Object sender, EventArgs e)
         {
             if (_index < _info.Survey.Questions.Count - 1)
@@ -366,6 +370,10 @@ namespace Teacher
                     }
                 }
             }
+        }
+        private void m_End_Click(Object sender, EventArgs e)
+        {
+            mStop_Click(sender, e);
         }
     }
 }

@@ -222,6 +222,8 @@ namespace Student
 
         #endregion
 
+        private Boolean _translation = false;
+
         private void FormMain_Load(Object sender, EventArgs e)
         {
             // Обновление темы оформления
@@ -232,17 +234,15 @@ namespace Student
             {
                 String Client = TcpServer.GetHostName(_tcpEventArgs.Socket);
                 String Message = TcpServer.GetString(_tcpEventArgs.Buffer, _tcpEventArgs.Length);
-
-                if (Message.StartsWith("_request:"))
+                
+                if (Message.IsStart()) { _translation = true; }
+                else if (Message.IsStop())
                 {
-                    //if (Message.Split(':')[1] == "startTranslation")
-                    //{
-                    //    _client.Stop();
-                    //    _client.Dispose();
-                    //}
+                    _translation = false;
+                    label1.Text = "Ожидайте ..." + Environment.NewLine + "Вопросы появяться у вас на экране!";
                 }
 
-                label1.Text = Message;
+                if (_translation) label1.Text = Message;
             };
             Program.TcpServer.Start();
 

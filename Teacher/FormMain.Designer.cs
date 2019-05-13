@@ -446,6 +446,7 @@
             this.m_End.TabIndex = 10;
             this.m_End.Text = "Завершить";
             this.m_End.UseVisualStyleBackColor = false;
+            this.m_End.Click += new System.EventHandler(this.m_End_Click);
             // 
             // m_Next
             // 
