@@ -280,7 +280,7 @@ namespace Student
             //{
             //    String Client = TcpServer.GetHostName(_tcpEventArgs.Socket);
             //    String Message = TcpServer.GetString(_tcpEventArgs.Buffer, _tcpEventArgs.Length);
-                
+
             //    if (Message.IsStart()) { _translation = true; }
             //    else if (Message.IsStop())
             //    {
@@ -297,6 +297,7 @@ namespace Student
             //        }
             //    }
             //};
+            Program.TcpServer.Receiver += OnListener;
             Program.TcpServer.Start();
 
             _flow = new Thread(new ThreadStart(CheckConnect));
