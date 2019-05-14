@@ -245,7 +245,7 @@ namespace Student
             //    label1.Text = _question.Name;
             //}
 
-            label1.Text = Message.Substring(0, 20);
+            label1.Text = Message.Substring(20, 50);
         }
 
         private void OnListener(Object _object, TcpEventArgs _tcpEventArgs)
