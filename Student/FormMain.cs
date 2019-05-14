@@ -276,27 +276,27 @@ namespace Student
             UTheme(Program.Config.Theme, Program.Config.IconTheme);
 
             // Запуск сервера
-            Program.TcpServer.Receiver += delegate (Object _object, TcpEventArgs _tcpEventArgs)
-            {
-                String Client = TcpServer.GetHostName(_tcpEventArgs.Socket);
-                String Message = TcpServer.GetString(_tcpEventArgs.Buffer, _tcpEventArgs.Length);
+            //Program.TcpServer.Receiver += delegate (Object _object, TcpEventArgs _tcpEventArgs)
+            //{
+            //    String Client = TcpServer.GetHostName(_tcpEventArgs.Socket);
+            //    String Message = TcpServer.GetString(_tcpEventArgs.Buffer, _tcpEventArgs.Length);
                 
-                if (Message.IsStart()) { _translation = true; }
-                else if (Message.IsStop())
-                {
-                    _translation = false;
-                    label1.Text = "Ожидайте ..." + Environment.NewLine + "Вопросы появяться у вас на экране!";
-                }
+            //    if (Message.IsStart()) { _translation = true; }
+            //    else if (Message.IsStop())
+            //    {
+            //        _translation = false;
+            //        label1.Text = "Ожидайте ..." + Environment.NewLine + "Вопросы появяться у вас на экране!";
+            //    }
 
-                if (_translation)
-                {
-                    if (!Message.IsStart())
-                    {
-                        Question _question = new Question(XElement.Parse(Message));
-                        label1.Text = _question.Name;
-                    }
-                }
-            };
+            //    if (_translation)
+            //    {
+            //        if (!Message.IsStart())
+            //        {
+            //            Question _question = new Question(XElement.Parse(Message));
+            //            label1.Text = _question.Name;
+            //        }
+            //    }
+            //};
             Program.TcpServer.Start();
 
             _flow = new Thread(new ThreadStart(CheckConnect));
