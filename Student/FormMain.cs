@@ -228,24 +228,24 @@ namespace Student
             String Client = TcpServer.GetHostName(_tcpEventArgs.Socket);
             String Message = TcpServer.GetString(_tcpEventArgs.Buffer, _tcpEventArgs.Length);
 
-            //if (Message.IsStart())
-            //{
-            //    //Program.TcpServer.Receiver += OnListener;
-            //    //Program.TcpServer.Receiver -= OnReceiver;
-            //}
+            if (Message.IsStart())
+            {
+                //Program.TcpServer.Receiver += OnListener;
+                //Program.TcpServer.Receiver -= OnReceiver;
+            }
 
-            //else if (Message.IsStop())
-            //{
-            //    label1.Text = "Ожидайте ..." + Environment.NewLine + "Вопросы появяться у вас на экране!";
-            //}
+            else if (Message.IsStop())
+            {
+                label1.Text = "Ожидайте ..." + Environment.NewLine + "Вопросы появяться у вас на экране!";
+            }
 
-            //else
-            //{
-            //    Question _question = new Question(XElement.Parse(Message));
-            //    label1.Text = _question.Name;
-            //}
+            else
+            {
+                Question _question = new Question(XElement.Parse(Message));
+                label1.Text = _question.Name;
+            }
 
-            label1.Text = Message.Substring(0, 20);
+            //label1.Text = Message.Substring(0, 20);
         }
 
         private void OnListener(Object _object, TcpEventArgs _tcpEventArgs)
@@ -305,7 +305,7 @@ namespace Student
             //        }
             //    }
             //};
-            Program.TcpServer.Receiver += OnListener;
+            Program.TcpServer.Receiver += OnReceiver;
             Program.TcpServer.Start();
 
             _flow = new Thread(new ThreadStart(CheckConnect));
