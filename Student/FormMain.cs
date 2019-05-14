@@ -230,13 +230,19 @@ namespace Student
 
             if (Message.IsStart())
             {
-                Program.TcpServer.Receiver += OnListener;
-                Program.TcpServer.Receiver -= OnReceiver;
+                //Program.TcpServer.Receiver += OnListener;
+                //Program.TcpServer.Receiver -= OnReceiver;
             }
 
             else if (Message.IsStop())
             {
                 label1.Text = "Ожидайте ..." + Environment.NewLine + "Вопросы появяться у вас на экране!";
+            }
+
+            else
+            {
+                Question _question = new Question(XElement.Parse(Message));
+                label1.Text = _question.Name;
             }
         }
 
