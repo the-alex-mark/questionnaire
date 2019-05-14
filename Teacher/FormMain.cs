@@ -359,6 +359,7 @@ namespace Teacher
                 _index++;
                 UQuestion(_info.Survey.Questions[_index]);
                 //Clipboard.SetText(_info.Survey.Questions[_index].ToString());
+                MessageBox.Show(Encoding.UTF8.GetBytes(_info.Survey.Questions[_index].ToString()).Length.ToString());
                 
                 foreach (String Client in _info.Machines)
                     Program.TcpServer.Send(Client, _info.Survey.Questions[_index].ToString());
