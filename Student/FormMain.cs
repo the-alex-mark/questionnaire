@@ -277,6 +277,7 @@ namespace Student
                         case "Выбор одного правильного ответа":
                             panel3.Visible = true;
                             panel4.Visible = false;
+                            panel2.Height = 200;
                             panel4.Dock = DockStyle.Left;
 
                             listBox1.Items.Clear();
@@ -287,6 +288,8 @@ namespace Student
                             panel3.Visible = false;
                             panel4.Visible = true;
                             panel4.Dock = DockStyle.Fill;
+                            panel2.Height = 100;
+                            //panel2.MaximumSize = new Size(panel2.Width, 100);
                             break;
                     }
 

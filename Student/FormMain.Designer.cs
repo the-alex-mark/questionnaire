@@ -186,7 +186,7 @@
             this.label3.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.Location = new System.Drawing.Point(0, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(436, 199);
+            this.label3.Size = new System.Drawing.Size(436, 203);
             this.label3.TabIndex = 2;
             this.label3.Text = "...";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -196,7 +196,7 @@
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Right;
             this.pictureBox2.Location = new System.Drawing.Point(436, 0);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(10, 199);
+            this.pictureBox2.Size = new System.Drawing.Size(10, 203);
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Visible = false;
@@ -206,7 +206,7 @@
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
             this.pictureBox1.Location = new System.Drawing.Point(446, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(439, 199);
+            this.pictureBox1.Size = new System.Drawing.Size(439, 203);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -218,9 +218,9 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 199);
+            this.panel2.Location = new System.Drawing.Point(0, 203);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(885, 204);
+            this.panel2.Size = new System.Drawing.Size(885, 200);
             this.panel2.TabIndex = 3;
             // 
             // panel3
@@ -230,17 +230,18 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(442, 204);
+            this.panel3.Size = new System.Drawing.Size(442, 200);
             this.panel3.TabIndex = 0;
             // 
             // panel4
             // 
+            this.panel4.BackColor = System.Drawing.Color.Transparent;
             this.panel4.Controls.Add(this.pictureBox4);
             this.panel4.Controls.Add(this.textBox1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel4.Location = new System.Drawing.Point(442, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(443, 204);
+            this.panel4.Size = new System.Drawing.Size(443, 200);
             this.panel4.TabIndex = 1;
             // 
             // listBox1
@@ -250,16 +251,16 @@
             this.listBox1.ItemHeight = 12;
             this.listBox1.Location = new System.Drawing.Point(0, 10);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(442, 194);
+            this.listBox1.Size = new System.Drawing.Size(442, 190);
             this.listBox1.TabIndex = 0;
             // 
             // textBox1
             // 
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(22, 166);
+            this.textBox1.Location = new System.Drawing.Point(48, 136);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(400, 21);
+            this.textBox1.Size = new System.Drawing.Size(350, 21);
             this.textBox1.TabIndex = 0;
             // 
             // pictureBox3
