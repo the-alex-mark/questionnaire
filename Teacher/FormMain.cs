@@ -246,6 +246,10 @@ namespace Teacher
                 mStart.Enabled = false;
                 mStop.Enabled = true;
 
+                pbQuestionView.Enabled = true;
+                pbStatisticsView.Enabled = true;
+                pbSettings.Enabled = false;
+
                 _info = Info;
                 
                 foreach (String Client in _info.Machines)
@@ -265,6 +269,10 @@ namespace Teacher
         {
             mStart.Enabled = true;
             mStop.Enabled = false;
+
+            pbQuestionView.Enabled = false;
+            pbStatisticsView.Enabled = false;
+            pbSettings.Enabled = true;
         }
 
         // Параметры

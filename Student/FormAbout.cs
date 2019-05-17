@@ -133,8 +133,25 @@ namespace Student
             };
         }
 
+        #region Methods
+
+        /// <summary>
+        /// Обновляет цветовую тему.
+        /// </summary>
+        /// <param name="Theme"></param>
+        private void UTheme(VSCodeTheme Theme, VSCodeIconTheme IconTheme)
+        {
+            VSCodeToolStripRenderer _renderer = new VSCodeToolStripRenderer(Theme, new VSCodeToolStripSettings(this, MainMenu, IconTheme));
+            MainMenu.Renderer = _renderer;
+
+            BackColor = _renderer.WindowBackColor;
+        }
+
+        #endregion
+
         private void FormAbout_Load(Object sender, EventArgs e)
         {
+            UTheme(Program.Config.Theme, Program.Config.IconTheme);
             Property _property = AssemblyInfo.Get(Assembly.GetExecutingAssembly().Location);
 
             Title.Text = _property.Title;

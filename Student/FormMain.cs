@@ -187,11 +187,17 @@ namespace Student
         #region Variables
         
         private Thread _flow;
+        private Boolean _translation = false;
 
         #endregion
 
         #region Methods
 
+        /// <summary>
+        /// Обновляет цветовую тему.
+        /// </summary>
+        /// <param name="Theme"></param>
+        /// <param name="IconTheme"></param>
         private void UTheme(VSCodeTheme Theme, VSCodeIconTheme IconTheme)
         {
             VSCodeToolStripRenderer _renderer = new VSCodeToolStripRenderer(Theme, new VSCodeToolStripSettings(this, MainMenu, IconTheme));
@@ -202,7 +208,10 @@ namespace Student
             pQuestion.BackColor = _renderer.WindowBackColor;
         }
 
-        private void CheckConnect()
+        /// <summary>
+        /// Проверяет доступность сервера.
+        /// </summary>
+        private void OnCheckConnect()
         {
             while (true)
             {
@@ -225,47 +234,55 @@ namespace Student
             }
         }
 
-        #endregion
-
-        private Boolean _translation = false;
-
+        /// <summary>
+        /// Получает данные сервера.
+        /// </summary>
+        /// <param name="_object"></param>
+        /// <param name="_tcpEventArgs"></param>
         private void OnReceiver(Object _object, TcpReceiverEventArgs _tcpEventArgs)
         {
             String Client = TcpServer.GetHostName(_tcpEventArgs.Socket);
-            String Message = Encoding.UTF8.GetString(_tcpEventArgs.Buffer/*, 0, _tcpEventArgs.Length*/);
-            
-            if (Message.IsStart())
-            {
-                _translation = true;
+            String Message = Encoding.UTF8.GetString(_tcpEventArgs.Buffer, 0, _tcpEventArgs.Length);
 
-                //Program.TcpServer.Receiver += OnListener;
-                //Program.TcpServer.Receiver -= OnReceiver;
-            }
-
-            else if (Message.IsStop())
+            BeginInvoke(new MethodInvoker(delegate
             {
-                label1.Text = "Ожидайте ..." + Environment.NewLine + "Вопросы появяться у вас на экране!";
-                _translation = true;
-            }
+                if (Message.IsConnect()) { }
 
-            else if (Message.IsDisconnect())
-            {
-                BeginInvoke(new MethodInvoker(delegate
+                else if (Message.IsStart()) { }
+
+                else if (Message.IsStop())
                 {
-                    label1.Text = "Ожидайте ..." + Environment.NewLine + "Вопросы появяться у вас на экране!";
+                    materialTabControl1.SelectTab(pStartPage);
+                }
+
+                else if (Message.IsDisconnect())
+                {
                     MainMenu.Items["mmTitle"].Text = "Опросник (нет подключения)";
-                    _translation = true;
-                }));
-            }
+                    materialTabControl1.SelectTab(pStartPage);
+                }
 
-            else
-            {
-                Question _question = new Question(XElement.Parse(Message));
-                label1.Text = _question.Name;
-            }
+                else
+                {
+                    Question _question = new Question(XElement.Parse(Message));
+                    label3.Text = _question.Name;
+                    if (_question.Image != null)
+                    {
+                        pictureBox1.Image = _question.Image;
+                        pictureBox1.Visible = true;
+                        pictureBox2.Visible = true;
+                    }
+                    else
+                    {
+                        pictureBox1.Visible = false;
+                        pictureBox2.Visible = false;
+                    }
 
-            //label1.Text = Message.Substring(20, 50);
+                    materialTabControl1.SelectTab(pQuestion);
+                }
+            }));
         }
+
+        #endregion
         
         private void FormMain_Load(Object sender, EventArgs e)
         {
@@ -276,7 +293,7 @@ namespace Student
             Program.Server.Receiver += OnReceiver;
             Program.Server.Start();
 
-            _flow = new Thread(new ThreadStart(CheckConnect));
+            _flow = new Thread(new ThreadStart(OnCheckConnect));
             _flow.Start();
         }
         private void FormMain_FormClosing(Object sender, FormClosingEventArgs e)
@@ -295,6 +312,15 @@ namespace Student
                     FormAbout About = new FormAbout();
                     About.ShowDialog();
                     break;
+
+                case Keys.F2:
+                    materialTabControl1.SelectTab(pStartPage);
+                    break;
+
+                case Keys.F3:
+                    materialTabControl1.SelectTab(pQuestion);
+                    break;
+
 
                 default: break;
             }
