@@ -179,8 +179,8 @@ namespace Student
             };
             MainMenu.Items["mmClose"].Click += delegate (Object _object, EventArgs _eventArgs)
             {
-                //Close();
-                Application.Exit();
+                Close();
+                //Application.Exit();
             };
         }
 
@@ -215,22 +215,16 @@ namespace Student
         {
             while (true)
             {
-                if (_translation == false)
-                {
-                    try
-                    {
-                        Byte[] Request = Encoding.UTF8.GetBytes(TcpRequest.Connect);
-                        Program.Server.Send(Program.Config.Server, Program.Config.Port, Request);
+                //if (_translation == false)
+                //{
+                    Byte[] Request = Encoding.UTF8.GetBytes(TcpRequest.Connect);
+                    Boolean Result = Program.Server.Send(Program.Config.Server, Program.Config.Port, Request);
 
-                        BeginInvoke(
-                            new MethodInvoker(delegate { MainMenu.Items["mmTitle"].Text = "Опросник"; }));
-                    }
-                    catch
+                    BeginInvoke(new MethodInvoker(delegate 
                     {
-                        BeginInvoke(
-                            new MethodInvoker(delegate { MainMenu.Items["mmTitle"].Text = "Опросник (нет подключения)"; }));
-                    }
-                }
+                        MainMenu.Items["mmTitle"].Text = (Result) ? "Опросник" : "Опросник (нет подключения)";
+                    }));
+                //}
             }
         }
 
@@ -246,25 +240,56 @@ namespace Student
 
             BeginInvoke(new MethodInvoker(delegate
             {
-                if (Message.IsConnect()) { }
+                if (Message.IsConnect())
+                {
+                    MainMenu.Items["mmTitle"].Text = "Опросник";
+                }
 
-                else if (Message.IsStart()) { }
+                else if (Message.IsStart())
+                {
+                    MainMenu.Items["mmTitle"].Text = "Опросник";
+                    mmMinimum.Enabled = false;
+                    mmClose.Enabled = false;
+                }
 
                 else if (Message.IsStop())
                 {
                     materialTabControl1.SelectTab(pStartPage);
+                    mmMinimum.Enabled = true;
+                    mmClose.Enabled = true;
                 }
 
                 else if (Message.IsDisconnect())
                 {
                     MainMenu.Items["mmTitle"].Text = "Опросник (нет подключения)";
                     materialTabControl1.SelectTab(pStartPage);
+                    mmMinimum.Enabled = true;
+                    mmClose.Enabled = true;
                 }
 
                 else
                 {
                     Question _question = new Question(XElement.Parse(Message));
                     label3.Text = _question.Name;
+
+                    switch (_question.Type)
+                    {
+                        case "Выбор одного правильного ответа":
+                            panel3.Visible = true;
+                            panel4.Visible = false;
+                            panel4.Dock = DockStyle.Left;
+
+                            listBox1.Items.Clear();
+                            foreach (String Answer in _question.Answers) listBox1.Items.Add(Answer);
+                            break;
+
+                        case "Свободный ответ":
+                            panel3.Visible = false;
+                            panel4.Visible = true;
+                            panel4.Dock = DockStyle.Fill;
+                            break;
+                    }
+
                     if (_question.Image != null)
                     {
                         pictureBox1.Image = _question.Image;
@@ -299,7 +324,10 @@ namespace Student
         private void FormMain_FormClosing(Object sender, FormClosingEventArgs e)
         {
             if (_flow != null)
+            {
+                _flow.Interrupt();
                 _flow.Abort();
+            }
 
             Program.Server.Receiver -= OnReceiver;
             Program.Server.Dispose();
