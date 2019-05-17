@@ -22,6 +22,6 @@ namespace Teacher
         }
 
         public static Config Config = new Config();
-        public static TcpServer TcpServer = new TcpServer(Config.Port, 50);
+        public static TcpServer Server = new TcpServer(Config.Port, 50);
     }
 }

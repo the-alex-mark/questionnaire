@@ -6,6 +6,7 @@ using System.Windows.Forms;
 
 using Questionnaire;
 using ProgLib.Network.Tcp;
+using System.Threading;
 
 namespace Student
 {
@@ -19,7 +20,7 @@ namespace Student
         {
             if (Program.Config.Server == Environment.MachineName)
             {
-                MessageBox.Show("Запуск приложения не возможен!", "Опросник");
+                MessageBox.Show("Запуск приложения не возможен!", "Опросник", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 Application.Exit();
             }
             else
@@ -30,7 +31,28 @@ namespace Student
             }
         }
 
+        static Boolean IsSingleInstance
+        {
+            get
+            {
+                try
+                {
+                    // Проверяем на наличие мутекса в системе
+                    Mutex.OpenExisting("MY_UNIQUE_MUTEX_NAME");
+                }
+                catch
+                {
+                    // Если получили исключение значит такого мутекса нет, и его нужно создать
+                    Mutex mutex = new Mutex(true, "MY_UNIQUE_MUTEX_NAME");
+                    return true;
+                }
+
+                // Если исключения не было, то процесс с таким мутексом уже запущен
+                return false;
+            }
+        }
+
         public static Config Config = new Config();
-        public static TcpServer TcpServer = new TcpServer(Config.Port, 50);
+        public static TcpServer Server = new TcpServer(Config.Port, 50);
     }
 }

@@ -194,10 +194,10 @@ namespace Teacher
             }
         }
 
-        private void OnReceiver(Object _object, TcpEventArgs _tcpEventArgs)
+        private void OnReceiver(Object _object, TcpReceiverEventArgs _tcpEventArgs)
         {
             String Client = TcpServer.GetHostName(_tcpEventArgs.Socket);
-            String Message = TcpServer.GetString(_tcpEventArgs.Buffer, _tcpEventArgs.Length);
+            String Message = Encoding.UTF8.GetString(_tcpEventArgs.Buffer, 0, _tcpEventArgs.Length);
 
             if (Message != "")
             {
@@ -214,7 +214,8 @@ namespace Teacher
                     {
                         try
                         {
-                            TcpServer.Send(_client, Program.Config.Port, TcpRequest.Connect);
+                            Byte[] Request = Encoding.UTF8.GetBytes(TcpRequest.Connect);
+                            Program.Server.Send(_client, Program.Config.Port, Request);
                         }
                         catch { _temp.Add(_client); }
                     }
@@ -248,11 +249,11 @@ namespace Teacher
             label2.Text = "из " + LocalNetwork.GetServers(TypeServer.Workstation).Length;
             
             // Обработка полученных данных
-            Program.TcpServer.Receiver += OnReceiver;
+            Program.Server.Receiver += OnReceiver;
         }
         private void FormConnect_FormClosing(Object sender, FormClosingEventArgs e)
         {
-            Program.TcpServer.Receiver -= OnReceiver;
+            Program.Server.Receiver -= OnReceiver;
         }
         private void FormConnect_KeyDown(Object sender, KeyEventArgs e)
         {

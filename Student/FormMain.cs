@@ -157,7 +157,6 @@ namespace Student
             };
 
             // Оформление MainMenu
-            //MainMenu.Renderer = new VSCodeToolStripRenderer(VSCodeTheme.Light);
             MainMenu.MouseDown += delegate (Object _object, MouseEventArgs _mouseEventArgs)
             {
                 ReleaseCapture();
@@ -180,7 +179,8 @@ namespace Student
             };
             MainMenu.Items["mmClose"].Click += delegate (Object _object, EventArgs _eventArgs)
             {
-                Close();
+                //Close();
+                Application.Exit();
             };
         }
 
@@ -198,23 +198,29 @@ namespace Student
             MainMenu.Renderer = _renderer;
 
             BackColor = _renderer.WindowBackColor;
+            pStartPage.BackColor = _renderer.WindowBackColor;
+            pQuestion.BackColor = _renderer.WindowBackColor;
         }
 
         private void CheckConnect()
         {
             while (true)
             {
-                try
+                if (_translation == false)
                 {
-                    TcpServer.Send(Program.Config.Server, Program.Config.Port, "_request:connect");
+                    try
+                    {
+                        Byte[] Request = Encoding.UTF8.GetBytes(TcpRequest.Connect);
+                        Program.Server.Send(Program.Config.Server, Program.Config.Port, Request);
 
-                    BeginInvoke(
-                        new MethodInvoker(delegate { MainMenu.Items["mmTitle"].Text = "Опросник"; }));
-                }
-                catch
-                {
-                    BeginInvoke(
-                        new MethodInvoker(delegate { MainMenu.Items["mmTitle"].Text = "Опросник (нет подключения)"; }));
+                        BeginInvoke(
+                            new MethodInvoker(delegate { MainMenu.Items["mmTitle"].Text = "Опросник"; }));
+                    }
+                    catch
+                    {
+                        BeginInvoke(
+                            new MethodInvoker(delegate { MainMenu.Items["mmTitle"].Text = "Опросник (нет подключения)"; }));
+                    }
                 }
             }
         }
@@ -223,13 +229,15 @@ namespace Student
 
         private Boolean _translation = false;
 
-        private void OnReceiver(Object _object, TcpEventArgs _tcpEventArgs)
+        private void OnReceiver(Object _object, TcpReceiverEventArgs _tcpEventArgs)
         {
             String Client = TcpServer.GetHostName(_tcpEventArgs.Socket);
-            String Message = TcpServer.GetString(_tcpEventArgs.Buffer, _tcpEventArgs.Length);
-
+            String Message = Encoding.UTF8.GetString(_tcpEventArgs.Buffer/*, 0, _tcpEventArgs.Length*/);
+            
             if (Message.IsStart())
             {
+                _translation = true;
+
                 //Program.TcpServer.Receiver += OnListener;
                 //Program.TcpServer.Receiver -= OnReceiver;
             }
@@ -237,6 +245,17 @@ namespace Student
             else if (Message.IsStop())
             {
                 label1.Text = "Ожидайте ..." + Environment.NewLine + "Вопросы появяться у вас на экране!";
+                _translation = true;
+            }
+
+            else if (Message.IsDisconnect())
+            {
+                BeginInvoke(new MethodInvoker(delegate
+                {
+                    label1.Text = "Ожидайте ..." + Environment.NewLine + "Вопросы появяться у вас на экране!";
+                    MainMenu.Items["mmTitle"].Text = "Опросник (нет подключения)";
+                    _translation = true;
+                }));
             }
 
             else
@@ -247,66 +266,15 @@ namespace Student
 
             //label1.Text = Message.Substring(20, 50);
         }
-
-        private void OnListener(Object _object, TcpEventArgs _tcpEventArgs)
-        {
-            String Client = TcpServer.GetHostName(_tcpEventArgs.Socket);
-            String Message = TcpServer.GetString(_tcpEventArgs.Buffer, _tcpEventArgs.Length);
-            
-            if (Message.IsStop())
-            {
-                Program.TcpServer.Receiver -= OnListener;
-                Program.TcpServer.Receiver += OnReceiver;
-            }
-            else
-            {
-                //String F = Message.Split(new Char[] { '\r', '\n' }).FirstOrDefault();
-                //String[] D = Message.Split(new Char[] { '\r', '\n' });
-
-                //String S = "<question type=\"Выбор одного правильного ответа\" name=\"Высокая скорость передачи данных является отличительной особенностью...\" true=\"1\" image=\"\"";
-                //foreach (var g in D)
-                //{
-                //    if (!g.StartsWith("<question"))
-                //    {
-                //        S += "\n" + g;
-                //    }
-                //}
-                //S += "\n" + "</question>";
-                
-                Question _question = new Question(XElement.Parse(Message));
-                label1.Text = _question.Name;
-            }
-        }
-
+        
         private void FormMain_Load(Object sender, EventArgs e)
         {
             // Обновление темы оформления
             UTheme(Program.Config.Theme, Program.Config.IconTheme);
 
             // Запуск сервера
-            //Program.TcpServer.Receiver += delegate (Object _object, TcpEventArgs _tcpEventArgs)
-            //{
-            //    String Client = TcpServer.GetHostName(_tcpEventArgs.Socket);
-            //    String Message = TcpServer.GetString(_tcpEventArgs.Buffer, _tcpEventArgs.Length);
-
-            //    if (Message.IsStart()) { _translation = true; }
-            //    else if (Message.IsStop())
-            //    {
-            //        _translation = false;
-            //        label1.Text = "Ожидайте ..." + Environment.NewLine + "Вопросы появяться у вас на экране!";
-            //    }
-
-            //    if (_translation)
-            //    {
-            //        if (!Message.IsStart())
-            //        {
-            //            Question _question = new Question(XElement.Parse(Message));
-            //            label1.Text = _question.Name;
-            //        }
-            //    }
-            //};
-            Program.TcpServer.Receiver += OnReceiver;
-            Program.TcpServer.Start();
+            Program.Server.Receiver += OnReceiver;
+            Program.Server.Start();
 
             _flow = new Thread(new ThreadStart(CheckConnect));
             _flow.Start();
@@ -314,9 +282,10 @@ namespace Student
         private void FormMain_FormClosing(Object sender, FormClosingEventArgs e)
         {
             if (_flow != null)
-                _flow.Interrupt();
+                _flow.Abort();
 
-            Program.TcpServer.Dispose();
+            Program.Server.Receiver -= OnReceiver;
+            Program.Server.Dispose();
         }
         private void FormMain_KeyDown(Object sender, KeyEventArgs e)
         {

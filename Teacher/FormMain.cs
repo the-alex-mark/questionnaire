@@ -249,7 +249,10 @@ namespace Teacher
                 _info = Info;
                 
                 foreach (String Client in _info.Machines)
-                    Program.TcpServer.Send(Client, "_request:start");
+                {
+                    Byte[] Request = Encoding.UTF8.GetBytes("_request:start");
+                    Program.Server.Send(Client, Request);
+                }
 
                 _index = -1;
                 m_Next_Click(sender, e);
@@ -323,17 +326,23 @@ namespace Teacher
             UTheme(Program.Config.Theme, Program.Config.IconTheme);
 
             // Запуск сервера
-            Program.TcpServer.Start();
+            Program.Server.Start();
         }
         private void FormMain_FormClosing(Object sender, FormClosingEventArgs e)
         {
-            if (_info.Machines.Length > 0)
+            if (_info != null)
             {
-                foreach (String Client in _info.Machines)
-                    Program.TcpServer.Send(Client, "_request:stop");
+                if (_info.Machines.Length > 0)
+                {
+                    foreach (String Client in _info.Machines)
+                    {
+                        Byte[] Request = Encoding.UTF8.GetBytes(TcpRequest.Disconnect);
+                        Program.Server.Send(Client, Request);
+                    }
+                }
             }
-
-            Program.TcpServer.Dispose();
+            
+            Program.Server.Dispose();
         }
 
         // Вид
@@ -358,15 +367,23 @@ namespace Teacher
             {
                 _index++;
                 UQuestion(_info.Survey.Questions[_index]);
-                //Clipboard.SetText(_info.Survey.Questions[_index].ToString());
-                MessageBox.Show(Encoding.UTF8.GetBytes(_info.Survey.Questions[_index].ToString()).Length.ToString());
-                
+
+                Byte[] Question = Encoding.UTF8.GetBytes(_info.Survey.Questions[_index].ToString());
                 foreach (String Client in _info.Machines)
-                    Program.TcpServer.Send(Client, _info.Survey.Questions[_index].ToString());
+                    Program.Server.Send(Client, Question);
             }
         }
         private void m_End_Click(Object sender, EventArgs e)
         {
+            if (_info.Machines.Length > 0)
+            {
+                foreach (String Client in _info.Machines)
+                {
+                    Byte[] Request = Encoding.UTF8.GetBytes(TcpRequest.Stop);
+                    Program.Server.Send(Client, Request);
+                }
+            }
+
             mStop_Click(sender, e);
         }
     }
