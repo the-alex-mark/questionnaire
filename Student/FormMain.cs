@@ -1,4 +1,6 @@
-﻿using ProgLib.IO;
+﻿using ProgLib.Drawing;
+using ProgLib.Drawing.Drawing2D;
+using ProgLib.IO;
 using ProgLib.Network.Tcp;
 using ProgLib.Windows.Forms.VSCode;
 using Questionnaire;
@@ -9,6 +11,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
@@ -185,7 +188,14 @@ namespace Student
         }
 
         #region Variables
-        
+
+        private Question _question;
+
+        private Color _selectColor;
+        private Color _foreColor;
+        private Color _selectForeColor;
+        private Color _separatorColor;
+
         private Thread _flow;
         private Boolean _translation = false;
 
@@ -206,6 +216,13 @@ namespace Student
             BackColor = _renderer.WindowBackColor;
             pStartPage.BackColor = _renderer.WindowBackColor;
             pQuestion.BackColor = _renderer.WindowBackColor;
+
+            listAnswers.BackColor = _renderer.WindowBackColor;
+            _selectColor = _renderer.DropDownMenuSelectColor;
+            _foreColor = _renderer.DropDownMenuForeColor;
+            _selectForeColor = _renderer.DropDownMenuSelectForeColor;
+            _separatorColor = _renderer.SeparatorColor;
+            textBox1.BackColor = _renderer.WindowBackColor;
         }
 
         /// <summary>
@@ -215,8 +232,8 @@ namespace Student
         {
             while (true)
             {
-                //if (_translation == false)
-                //{
+                if (_translation == false)
+                {
                     Byte[] Request = Encoding.UTF8.GetBytes(TcpRequest.Connect);
                     Boolean Result = Program.Server.Send(Program.Config.Server, Program.Config.Port, Request);
 
@@ -224,7 +241,7 @@ namespace Student
                     {
                         MainMenu.Items["mmTitle"].Text = (Result) ? "Опросник" : "Опросник (нет подключения)";
                     }));
-                //}
+                }
             }
         }
 
@@ -240,72 +257,79 @@ namespace Student
 
             BeginInvoke(new MethodInvoker(delegate
             {
-                if (Message.IsConnect())
+                switch (Message)
                 {
-                    MainMenu.Items["mmTitle"].Text = "Опросник";
-                }
+                    case "_request:connect":
+                        MainMenu.Items["mmTitle"].Text = "Опросник";
+                        break;
 
-                else if (Message.IsStart())
-                {
-                    MainMenu.Items["mmTitle"].Text = "Опросник";
-                    mmMinimum.Enabled = false;
-                    mmClose.Enabled = false;
-                }
+                    case "_request:start":
+                        MainMenu.Items["mmTitle"].Text = "Опросник";
+                        mmMinimum.Enabled = false;
+                        mmClose.Enabled = false;
+                        _translation = true;
+                        break;
 
-                else if (Message.IsStop())
-                {
-                    materialTabControl1.SelectTab(pStartPage);
-                    mmMinimum.Enabled = true;
-                    mmClose.Enabled = true;
-                }
+                    case "_request:stop":
+                        materialTabControl1.SelectTab(pStartPage);
+                        mmMinimum.Enabled = true;
+                        mmClose.Enabled = true;
+                        _translation = false;
+                        break;
 
-                else if (Message.IsDisconnect())
-                {
-                    MainMenu.Items["mmTitle"].Text = "Опросник (нет подключения)";
-                    materialTabControl1.SelectTab(pStartPage);
-                    mmMinimum.Enabled = true;
-                    mmClose.Enabled = true;
-                }
+                    case "_request:disconnect":
+                        MainMenu.Items["mmTitle"].Text = "Опросник (нет подключения)";
+                        materialTabControl1.SelectTab(pStartPage);
+                        mmMinimum.Enabled = true;
+                        mmClose.Enabled = true;
+                        _translation = false;
+                        break;
 
-                else
-                {
-                    Question _question = new Question(XElement.Parse(Message));
-                    label3.Text = _question.Name;
+                    default:
+                        try
+                        {
+                            _question = new Question(XElement.Parse(Message));
+                            label3.Text = _question.Name;
 
-                    switch (_question.Type)
-                    {
-                        case "Выбор одного правильного ответа":
-                            panel3.Visible = true;
-                            panel4.Visible = false;
-                            panel2.Height = 200;
-                            panel4.Dock = DockStyle.Left;
+                            switch (_question.Type)
+                            {
+                                case "Выбор одного правильного ответа":
+                                    panel3.Visible = true;
+                                    panel4.Visible = false;
+                                    panel2.Height = 200;
+                                    panel4.Dock = DockStyle.Left;
 
-                            listBox1.Items.Clear();
-                            foreach (String Answer in _question.Answers) listBox1.Items.Add(Answer);
-                            break;
+                                    listAnswers.Items.Clear();
+                                    foreach (String Answer in _question.Answers) listAnswers.Items.Add(Answer);
+                                    break;
 
-                        case "Свободный ответ":
-                            panel3.Visible = false;
-                            panel4.Visible = true;
-                            panel4.Dock = DockStyle.Fill;
-                            panel2.Height = 100;
-                            //panel2.MaximumSize = new Size(panel2.Width, 100);
-                            break;
-                    }
+                                case "Свободный ответ":
+                                    panel3.Visible = false;
+                                    panel4.Visible = true;
+                                    panel4.Dock = DockStyle.Fill;
+                                    panel2.Height = 100;
+                                    break;
+                            }
 
-                    if (_question.Image != null)
-                    {
-                        pictureBox1.Image = _question.Image;
-                        pictureBox1.Visible = true;
-                        pictureBox2.Visible = true;
-                    }
-                    else
-                    {
-                        pictureBox1.Visible = false;
-                        pictureBox2.Visible = false;
-                    }
+                            if (_question.Image != null)
+                            {
+                                pictureBox1.Image = _question.Image;
+                                pictureBox1.Visible = true;
+                                pictureBox2.Visible = true;
+                            }
+                            else
+                            {
+                                pictureBox1.Visible = false;
+                                pictureBox2.Visible = false;
+                            }
 
-                    materialTabControl1.SelectTab(pQuestion);
+                            listAnswers.Enabled = true;
+                            textBox1.Enabled = true;
+                            m_Send.Enabled = true;
+                            materialTabControl1.SelectTab(pQuestion);
+                        }
+                        catch { }
+                        break;
                 }
             }));
         }
@@ -355,6 +379,75 @@ namespace Student
 
                 default: break;
             }
+        }
+
+        private void listAnswers_DrawItem(Object sender, DrawItemEventArgs e)
+        {
+            if (e.Index < 0) return;
+            Color foreColor = _foreColor;
+
+            // Отрисовка выбора Item
+            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+            {
+                e = new DrawItemEventArgs(e.Graphics,
+                                          e.Font,
+                                          e.Bounds,
+                                          e.Index,
+                                          e.State ^ DrawItemState.Selected,
+                                          e.ForeColor,
+                                          _selectColor);
+
+                foreColor = _selectForeColor;
+            }
+            e.DrawBackground();
+            e.DrawFocusRectangle();
+
+            // Отрисовка номера ответа
+            e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+            Rectangle Bounds = new Rectangle(4, e.Bounds.Y + 4, e.Bounds.Height - 9, e.Bounds.Height - 9);
+            e.Graphics.DrawPath(new Pen(foreColor), Figure.Superellipse(new Radius(5), Bounds));
+            TextRenderer.DrawText(
+                e.Graphics,
+                (e.Index + 1).ToString(),
+                new Font(listAnswers.Font.Name, listAnswers.Font.Size - 2, listAnswers.Font.Style),
+                new Rectangle(Bounds.X + 1, Bounds.Y, Bounds.Width, Bounds.Width),
+                foreColor,
+                TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter | TextFormatFlags.LeftAndRightPadding);
+
+            e.Graphics.SmoothingMode = SmoothingMode.Default;
+
+            // Отрисовка текста
+            TextRenderer.DrawText(
+                e.Graphics,
+                listAnswers.Items[e.Index].ToString(),
+                listAnswers.Font,
+                new Rectangle(27, e.Bounds.Top, e.Bounds.Width - 1, e.Bounds.Height - 1),
+                foreColor,
+                TextFormatFlags.Left | TextFormatFlags.VerticalCenter | TextFormatFlags.LeftAndRightPadding | TextFormatFlags.EndEllipsis);
+        }
+
+        private void listAnswers_SelectedIndexChanged(Object sender, EventArgs e)
+        {
+            Result _result = new Result(Environment.MachineName, _question, listAnswers.Items[listAnswers.SelectedIndex].ToString());
+            Byte[] Buffer = Encoding.UTF8.GetBytes(_result.ToString());
+            listAnswers.Enabled = false;
+
+            Program.Server.Send(Program.Config.Server, Program.Config.Port, Buffer);
+        }
+
+        private void m_Send_Click(Object sender, EventArgs e)
+        {
+            Result _result = new Result(Environment.MachineName, _question, textBox1.Text);
+            Byte[] Buffer = Encoding.UTF8.GetBytes(_result.ToString());
+            textBox1.Enabled = false;
+            m_Send.Enabled = false;
+
+            Program.Server.Send(Program.Config.Server, Program.Config.Port, Buffer);
+        }
+
+        private void panel5_Paint(Object sender, PaintEventArgs e)
+        {
+            e.Graphics.DrawPath(new Pen(_foreColor), Figure.Superellipse(new Radius(5), new Rectangle(0, 0, panel5.Width - 1, panel5.Height - 1)));
         }
     }
 }

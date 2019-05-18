@@ -263,6 +263,10 @@ namespace Teacher
                     bCancel_Click(sender, e);
                     break;
 
+                case Keys.Control | Keys.O:
+                    bSelectTest_Click(sender, e);
+                    break;
+
                 default: break;
             }
         }
