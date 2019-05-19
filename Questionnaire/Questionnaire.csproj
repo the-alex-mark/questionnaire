@@ -52,7 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration.cs" />
+    <Compile Include="Config.cs" />
     <Compile Include="Controls\ViewAnswer.cs">
       <SubType>UserControl</SubType>
     </Compile>

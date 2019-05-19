@@ -36,6 +36,8 @@
             this.mmTitle = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSettings = new System.Windows.Forms.ListBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pStatistics = new System.Windows.Forms.Panel();
+            this.vGeneralStatistics = new System.Windows.Forms.CheckBox();
             this.pVisualization = new System.Windows.Forms.Panel();
             this.vIconTheme = new ProgLib.Windows.Forms.Minimal.MinimalComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -53,6 +55,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.MainMenu.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.pStatistics.SuspendLayout();
             this.pVisualization.SuspendLayout();
             this.pNetwork.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -123,7 +126,8 @@
             this.menuSettings.ItemHeight = 12;
             this.menuSettings.Items.AddRange(new object[] {
             "Визуальное оформление",
-            "Сетевое взаимодействие"});
+            "Сетевое взаимодействие",
+            "Статистика"});
             this.menuSettings.Location = new System.Drawing.Point(12, 31);
             this.menuSettings.Name = "menuSettings";
             this.menuSettings.Size = new System.Drawing.Size(162, 216);
@@ -132,12 +136,32 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.pStatistics);
             this.panel1.Controls.Add(this.pVisualization);
             this.panel1.Controls.Add(this.pNetwork);
             this.panel1.Location = new System.Drawing.Point(187, 31);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(431, 253);
             this.panel1.TabIndex = 8;
+            // 
+            // pStatistics
+            // 
+            this.pStatistics.Controls.Add(this.vGeneralStatistics);
+            this.pStatistics.Location = new System.Drawing.Point(215, 3);
+            this.pStatistics.Name = "pStatistics";
+            this.pStatistics.Size = new System.Drawing.Size(100, 100);
+            this.pStatistics.TabIndex = 6;
+            // 
+            // vGeneralStatistics
+            // 
+            this.vGeneralStatistics.AutoSize = true;
+            this.vGeneralStatistics.Location = new System.Drawing.Point(19, 22);
+            this.vGeneralStatistics.Name = "vGeneralStatistics";
+            this.vGeneralStatistics.Size = new System.Drawing.Size(239, 16);
+            this.vGeneralStatistics.TabIndex = 3;
+            this.vGeneralStatistics.Text = "Вывод статистики после прохождения опроса";
+            this.vGeneralStatistics.UseVisualStyleBackColor = true;
+            this.vGeneralStatistics.CheckedChanged += new System.EventHandler(this.vGeneralStatistics_CheckedChanged);
             // 
             // pVisualization
             // 
@@ -146,10 +170,9 @@
             this.pVisualization.Controls.Add(this.vFontRegister);
             this.pVisualization.Controls.Add(this.vTheme);
             this.pVisualization.Controls.Add(this.label1);
-            this.pVisualization.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pVisualization.Location = new System.Drawing.Point(0, 0);
+            this.pVisualization.Location = new System.Drawing.Point(3, 3);
             this.pVisualization.Name = "pVisualization";
-            this.pVisualization.Size = new System.Drawing.Size(431, 253);
+            this.pVisualization.Size = new System.Drawing.Size(100, 100);
             this.pVisualization.TabIndex = 0;
             // 
             // vIconTheme
@@ -358,6 +381,8 @@
             this.MainMenu.ResumeLayout(false);
             this.MainMenu.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.pStatistics.ResumeLayout(false);
+            this.pStatistics.PerformLayout();
             this.pVisualization.ResumeLayout(false);
             this.pVisualization.PerformLayout();
             this.pNetwork.ResumeLayout(false);
@@ -394,5 +419,7 @@
         private System.Windows.Forms.Label label3;
         private ProgLib.Windows.Forms.Minimal.MinimalComboBox vIconTheme;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel pStatistics;
+        private System.Windows.Forms.CheckBox vGeneralStatistics;
     }
 }

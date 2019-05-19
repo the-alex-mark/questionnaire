@@ -264,6 +264,9 @@ namespace Teacher
                 mStart.Enabled = false;
                 mStop.Enabled = true;
 
+                mSurvey.Enabled = true;
+                mStatistics.Enabled = true;
+
                 pbQuestionView.Enabled = true;
                 pbStatisticsView.Enabled = true;
                 pbSettings.Enabled = false;
@@ -293,6 +296,9 @@ namespace Teacher
 
             mStart.Enabled = true;
             mStop.Enabled = false;
+
+            mSurvey.Enabled = false;
+            mStatistics.Enabled = false;
 
             pbQuestionView.Enabled = false;
             pbStatisticsView.Enabled = false;
@@ -439,8 +445,11 @@ namespace Teacher
                 
                 mStop_Click(sender, e);
 
-                FormGeneralStatistics GeneralStatistics = new FormGeneralStatistics();
-                GeneralStatistics.ShowGeneralStatistics(_statistics);
+                if (Program.Config.GeneralStatistics)
+                {
+                    FormGeneralStatistics GeneralStatistics = new FormGeneralStatistics();
+                    GeneralStatistics.ShowGeneralStatistics(_statistics);
+                }
             }
         }
 

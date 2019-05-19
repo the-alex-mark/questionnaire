@@ -270,7 +270,8 @@ namespace Teacher
 
             menuSettings.SelectedIndex = 0;
             vFontRegister.Checked = Program.Config.FontRegister;
-            
+            vGeneralStatistics.Checked = Program.Config.GeneralStatistics;
+
             OnStyleListBox(menuSettings);
         }
         private void FormAbout_KeyDown(Object sender, KeyEventArgs e)
@@ -298,6 +299,11 @@ namespace Teacher
                 case "Сетевое взаимодействие":
                     pNetwork.BringToFront();
                     pNetwork.Dock = DockStyle.Fill;
+                    break;
+
+                case "Статистика":
+                    pStatistics.BringToFront();
+                    pStatistics.Dock = DockStyle.Fill;
                     break;
             }
         }
@@ -338,6 +344,11 @@ namespace Teacher
         {
             List<String> Items = Enum.GetNames(typeof(VSCodeIconTheme)).ToList();
             Program.Config.IconTheme = (VSCodeIconTheme)Convert.ToInt32(Items.IndexOf(vIconTheme.Items[vIconTheme.SelectedIndex].ToString().Replace(" ", "")));
+        }
+
+        private void vGeneralStatistics_CheckedChanged(Object sender, EventArgs e)
+        {
+            Program.Config.GeneralStatistics = vGeneralStatistics.Checked;
         }
     }
 }

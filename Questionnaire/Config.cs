@@ -116,6 +116,28 @@ namespace Questionnaire
         }
 
         /// <summary>
+        /// Вывод статистики после прохождения опроса
+        /// </summary>
+        public Boolean GeneralStatistics
+        {
+            get
+            {
+                switch (INI.Get("Statistics", "GeneralStatistics").ToLower())
+                {
+                    case "true":
+                        return true;
+
+                    default:
+                        return false;
+                }
+            }
+            set
+            {
+                INI.Set("Statistics", "GeneralStatistics", value.ToString());
+            }
+        }
+
+        /// <summary>
         /// Создаёт файл конфигурации в папке с программой.
         /// </summary>
         /// <param name="Server">Имя сервера</param>
