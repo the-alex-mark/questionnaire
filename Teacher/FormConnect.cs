@@ -1,24 +1,18 @@
-﻿using ProgLib;
-using ProgLib.IO;
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+
+using Teacher.Data;
+
+using Questionnaire;
+using Questionnaire.Data;
+
 using ProgLib.Network;
 using ProgLib.Network.Tcp;
 using ProgLib.Windows.Forms.VSCode;
-using Questionnaire;
-using Questionnaire.Controls;
-using Questionnaire.Data;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Net;
-using System.Net.Sockets;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Teacher.Data;
 
 namespace Teacher
 {

@@ -6,20 +6,20 @@ using System.Linq;
 
 namespace Questionnaire
 {
+    /// <summary>
+    /// Отвечает за конфигурацию приложения.
+    /// </summary>
     public class Config
     {
         public Config()
         {
-            if (System.IO.File.Exists(Environment.CurrentDirectory + @"\config.ini"))
-            {
-                INI = new IniDocument(Environment.CurrentDirectory + @"\config.ini");
-                this.Server = INI.Get("TcpConfig", "Server");
-                this.Port = Convert.ToInt32(INI.Get("TcpConfig", "Port"));
-            }
-            else { throw new Exception("Файл конфигурации не найден!"); }
+            if (!System.IO.File.Exists(Environment.CurrentDirectory + @"\config.ini"))
+                this.Create();
+            
+            INI = new IniDocument(Environment.CurrentDirectory + @"\config.ini");
         }
 
-        #region Global Variables
+        #region Variables
 
         private IniDocument INI;
 
@@ -142,11 +142,12 @@ namespace Questionnaire
         /// </summary>
         /// <param name="Server">Имя сервера</param>
         /// <param name="Port">Номер порта, связанный с адресом, или любой доступный порт</param>
-        public void Create(String Server, Int32 Port)
+        public void Create()
         {
             IniDocument INI = new IniDocument(
                 new IniSection("TcpConfig", new IniKey("Server", Environment.CurrentDirectory), new IniKey("Port", "900")),
-                new IniSection("Design", new IniKey("Theme", "Light"), new IniKey("IconTheme", "Classic"), new IniKey("FontRegister", "False")));
+                new IniSection("Design", new IniKey("Theme", "Light"), new IniKey("IconTheme", "Classic"), new IniKey("FontRegister", "True")),
+                new IniSection("Statistics", new IniKey("GeneralStatistics", "True")));
 
             INI.Save(Environment.CurrentDirectory + @"\config.ini");
         }

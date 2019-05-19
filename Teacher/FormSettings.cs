@@ -1,17 +1,12 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Reflection;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
-using Teacher.Properties;
-using ProgLib.Data.CSharp;
-using ProgLib.Diagnostics;
-using Questionnaire.Controls;
-using ProgLib.Windows.Forms.VSCode;
-using System.Drawing;
 using Questionnaire;
-using System.Collections.Generic;
-using System.Linq;
+
+using ProgLib.Windows.Forms.VSCode;
 
 namespace Teacher
 {
@@ -136,7 +131,7 @@ namespace Teacher
             };
         }
 
-        #region Global Variables
+        #region Variables
 
         private Color _selectColor;
         private Color _selectForeColor;
@@ -314,6 +309,11 @@ namespace Teacher
             List<String> Themes = Enum.GetNames(typeof(VSCodeTheme)).ToList();
             Program.Config.Theme = (VSCodeTheme)Convert.ToInt32(Themes.IndexOf(vTheme.Items[vTheme.SelectedIndex].ToString().Replace(" ", "")));
         }
+        private void vIconTheme_SelectedIndexChanged(Object sender, EventArgs e)
+        {
+            List<String> Items = Enum.GetNames(typeof(VSCodeIconTheme)).ToList();
+            Program.Config.IconTheme = (VSCodeIconTheme)Convert.ToInt32(Items.IndexOf(vIconTheme.Items[vIconTheme.SelectedIndex].ToString().Replace(" ", "")));
+        }
 
         // Смена регистра меню
         private void vFontRegister_CheckedChanged(Object sender, EventArgs e)
@@ -334,21 +334,16 @@ namespace Teacher
                 e.Handled = true;
         }
 
+        // Настройка общей статистики
+        private void vGeneralStatistics_CheckedChanged(Object sender, EventArgs e)
+        {
+            Program.Config.GeneralStatistics = vGeneralStatistics.Checked;
+        }
+
         // ОК
         private void mOK_Click(Object sender, EventArgs e)
         {
             Close();
-        }
-
-        private void vIconTheme_SelectedIndexChanged(Object sender, EventArgs e)
-        {
-            List<String> Items = Enum.GetNames(typeof(VSCodeIconTheme)).ToList();
-            Program.Config.IconTheme = (VSCodeIconTheme)Convert.ToInt32(Items.IndexOf(vIconTheme.Items[vIconTheme.SelectedIndex].ToString().Replace(" ", "")));
-        }
-
-        private void vGeneralStatistics_CheckedChanged(Object sender, EventArgs e)
-        {
-            Program.Config.GeneralStatistics = vGeneralStatistics.Checked;
         }
     }
 }

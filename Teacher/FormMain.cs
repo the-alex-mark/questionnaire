@@ -1,27 +1,19 @@
-﻿using ProgLib.Windows.Forms.VSCode;
-using Questionnaire;
-using Questionnaire.Data;
-using Questionnaire.Controls;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Net;
-using System.Net.Sockets;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
+
 using Teacher.Data;
-using Teacher.Properties;
+
+using Questionnaire;
+using Questionnaire.Data;
+
 using ProgLib;
 using ProgLib.Network.Tcp;
-using System.Xml.Linq;
-using ProgLib.Drawing;
+using ProgLib.Windows.Forms.VSCode;
 
 namespace Teacher
 {
@@ -186,11 +178,12 @@ namespace Teacher
 
         #region Variables
 
+        private Information _info;
         private Statistics _statistics;
 
-        private Information _info;
         private Int32 _index;
         private Color _closeColor;
+        private Boolean _next = true;
 
         #endregion
 
@@ -213,7 +206,7 @@ namespace Teacher
 
         private void UFontRegister(Boolean FontRegister)
         {
-            if (FontRegister)
+            if (!FontRegister)
             {
                 foreach (ToolStripMenuItem Item in MainMenu.Items)
                     Item.Text = Item.Text.ToUpper();
@@ -281,7 +274,7 @@ namespace Teacher
                 
                 _index = -1;
                 _statistics = new Statistics(ref chart1);
-                Next = true;
+                _next = true;
                 m_Next_Click(sender, e);
                 materialTabControl1.SelectTab(pQuestion);
             }
@@ -362,6 +355,7 @@ namespace Teacher
                 UFontRegister(_vsCodeThemeEventArgs.FontRegister);
             };
             UTheme(Program.Config.Theme, Program.Config.IconTheme);
+            UFontRegister(Program.Config.FontRegister);
 
             // Запуск сервера
             Program.Server.Start();
@@ -383,7 +377,7 @@ namespace Teacher
             Program.Server.Dispose();
         }
 
-        // Вид
+        // Вид и Настройки
         private void pbQuestionView_Click(Object sender, EventArgs e)
         {
             materialTabControl1.SelectTab(pQuestion);
@@ -392,19 +386,17 @@ namespace Teacher
         {
             materialTabControl1.SelectTab(pStatistics);
         }
-
-        // Настройки
         private void pbSettings_Click(Object sender, EventArgs e)
         {
             mOptions_Click(sender, e);
         }
 
-        private Boolean Next = true;
+        // Кнопки, отвечающие за переключение вопросов
         private void m_Next_Click(Object sender, EventArgs e)
         {
-            if (Next)
+            if (_next)
             {
-                Next = false;
+                _next = false;
                 goto A;
             }
 
@@ -452,17 +444,16 @@ namespace Teacher
                 }
             }
         }
-
         private void button2_Click(Object sender, EventArgs e)
         {
             m_Next_Click(sender, e);
         }
-
         private void button1_Click(Object sender, EventArgs e)
         {
             m_End_Click(sender, e);
         }
 
+        // Открытие статистики в виде таблицы
         private void m_MoreDetailed_Click(Object sender, EventArgs e)
         {
             FormMoreDetailed MoreDetailed = new FormMoreDetailed();
