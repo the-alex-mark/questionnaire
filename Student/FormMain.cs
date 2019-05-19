@@ -92,10 +92,10 @@ namespace Student
                         DwmSetWindowAttribute(this.Handle, 2, ref v, 4);
                         MARGINS margins = new MARGINS()
                         {
-                            bottomHeight = 1,
+                            bottomHeight = 0,
                             leftWidth = 0,
                             rightWidth = 0,
-                            topHeight = 0
+                            topHeight = 1
                         };
                         DwmExtendFrameIntoClientArea(this.Handle, ref margins);
                     }

@@ -22,3 +22,4 @@ C:\Users\Александр Макаров\source\repos\Опросник\Teacher
 C:\Users\Александр Макаров\source\repos\Опросник\Teacher\obj\Release\Teacher.FormConnect.resources
 C:\Users\Александр Макаров\source\repos\Опросник\Teacher\obj\Release\Teacher.FormSettings.resources
 C:\Users\Александр Макаров\source\repos\Опросник\Teacher\obj\Release\Teacher.FormMain.resources
+C:\Users\Александр Макаров\source\repos\Опросник\Teacher\obj\Release\Teacher.FormMoreDetailed.resources

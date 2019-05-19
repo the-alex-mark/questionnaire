@@ -33,9 +33,6 @@
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.MainMenu = new System.Windows.Forms.MenuStrip();
-            this.mmClose = new System.Windows.Forms.ToolStripMenuItem();
-            this.mmMaximum = new System.Windows.Forms.ToolStripMenuItem();
-            this.mmMinimum = new System.Windows.Forms.ToolStripMenuItem();
             this.mmFile = new System.Windows.Forms.ToolStripMenuItem();
             this.mCreate = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -52,41 +49,44 @@
             this.mAboutTheProgram = new System.Windows.Forms.ToolStripMenuItem();
             this.mDeveloper = new System.Windows.Forms.ToolStripMenuItem();
             this.sideBar = new System.Windows.Forms.Panel();
-            this.pbSettings = new System.Windows.Forms.PictureBox();
-            this.pbStatisticsView = new System.Windows.Forms.PictureBox();
-            this.pbQuestionView = new System.Windows.Forms.PictureBox();
             this.materialTabControl1 = new ProgLib.Windows.Forms.Material.MaterialTabControl();
-            this.pStartPage = new System.Windows.Forms.TabPage();
             this.pQuestion = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.m_End = new System.Windows.Forms.Button();
             this.m_Next = new System.Windows.Forms.Button();
             this.pStatistics = new System.Windows.Forms.TabPage();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.m_MoreDetailed = new System.Windows.Forms.Button();
+            this.pStartPage = new System.Windows.Forms.TabPage();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pbSettings = new System.Windows.Forms.PictureBox();
+            this.pbStatisticsView = new System.Windows.Forms.PictureBox();
+            this.pbQuestionView = new System.Windows.Forms.PictureBox();
+            this.mmClose = new System.Windows.Forms.ToolStripMenuItem();
+            this.mmMaximum = new System.Windows.Forms.ToolStripMenuItem();
+            this.mmMinimum = new System.Windows.Forms.ToolStripMenuItem();
             this.MainMenu.SuspendLayout();
             this.sideBar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbSettings)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbStatisticsView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbQuestionView)).BeginInit();
             this.materialTabControl1.SuspendLayout();
             this.pQuestion.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.pStatistics.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            this.pStatistics.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSettings)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbStatisticsView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbQuestionView)).BeginInit();
             this.SuspendLayout();
             // 
             // MainMenu
@@ -106,36 +106,6 @@
             this.MainMenu.Size = new System.Drawing.Size(950, 24);
             this.MainMenu.TabIndex = 5;
             this.MainMenu.Text = "menuStrip1";
-            // 
-            // mmClose
-            // 
-            this.mmClose.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.mmClose.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.mmClose.Image = global::Teacher.Properties.Resources.mmClose;
-            this.mmClose.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.mmClose.Name = "mmClose";
-            this.mmClose.Padding = new System.Windows.Forms.Padding(12, 0, 12, 0);
-            this.mmClose.Size = new System.Drawing.Size(39, 24);
-            // 
-            // mmMaximum
-            // 
-            this.mmMaximum.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.mmMaximum.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.mmMaximum.Image = global::Teacher.Properties.Resources.mmMaximum;
-            this.mmMaximum.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.mmMaximum.Name = "mmMaximum";
-            this.mmMaximum.Padding = new System.Windows.Forms.Padding(12, 0, 12, 0);
-            this.mmMaximum.Size = new System.Drawing.Size(39, 24);
-            // 
-            // mmMinimum
-            // 
-            this.mmMinimum.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.mmMinimum.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.mmMinimum.Image = global::Teacher.Properties.Resources.mmMinimum;
-            this.mmMinimum.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.mmMinimum.Name = "mmMinimum";
-            this.mmMinimum.Padding = new System.Windows.Forms.Padding(12, 0, 12, 0);
-            this.mmMinimum.Size = new System.Drawing.Size(39, 24);
             // 
             // mmFile
             // 
@@ -160,21 +130,21 @@
             this.mCreate.Name = "mCreate";
             this.mCreate.Padding = new System.Windows.Forms.Padding(0);
             this.mCreate.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.mCreate.Size = new System.Drawing.Size(180, 20);
+            this.mCreate.Size = new System.Drawing.Size(151, 20);
             this.mCreate.Text = "Создать";
             this.mCreate.Click += new System.EventHandler(this.mCreate_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(148, 6);
             // 
             // mStart
             // 
             this.mStart.Name = "mStart";
             this.mStart.Padding = new System.Windows.Forms.Padding(0);
             this.mStart.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Q)));
-            this.mStart.Size = new System.Drawing.Size(180, 20);
+            this.mStart.Size = new System.Drawing.Size(151, 20);
             this.mStart.Text = "Начать";
             this.mStart.Click += new System.EventHandler(this.mStart_Click);
             // 
@@ -184,26 +154,26 @@
             this.mStop.Name = "mStop";
             this.mStop.Padding = new System.Windows.Forms.Padding(0);
             this.mStop.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.W)));
-            this.mStop.Size = new System.Drawing.Size(180, 20);
+            this.mStop.Size = new System.Drawing.Size(151, 20);
             this.mStop.Text = "Завершить";
             this.mStop.Click += new System.EventHandler(this.mStop_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(148, 6);
             // 
             // gfhfvtnhsToolStripMenuItem
             // 
             this.gfhfvtnhsToolStripMenuItem.Name = "gfhfvtnhsToolStripMenuItem";
-            this.gfhfvtnhsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.gfhfvtnhsToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.gfhfvtnhsToolStripMenuItem.Text = "Параметры";
             this.gfhfvtnhsToolStripMenuItem.Click += new System.EventHandler(this.mOptions_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(148, 6);
             // 
             // mExit
             // 
@@ -211,7 +181,7 @@
             this.mExit.Name = "mExit";
             this.mExit.Padding = new System.Windows.Forms.Padding(0);
             this.mExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.mExit.Size = new System.Drawing.Size(180, 20);
+            this.mExit.Size = new System.Drawing.Size(151, 20);
             this.mExit.Text = "Выход";
             this.mExit.Click += new System.EventHandler(this.mExit_Click);
             // 
@@ -285,6 +255,265 @@
             this.sideBar.Size = new System.Drawing.Size(38, 476);
             this.sideBar.TabIndex = 21;
             // 
+            // materialTabControl1
+            // 
+            this.materialTabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.materialTabControl1.Controls.Add(this.pStartPage);
+            this.materialTabControl1.Controls.Add(this.pQuestion);
+            this.materialTabControl1.Controls.Add(this.pStatistics);
+            this.materialTabControl1.Depth = 0;
+            this.materialTabControl1.Location = new System.Drawing.Point(44, 30);
+            this.materialTabControl1.MouseState = ProgLib.Windows.Forms.Material.MouseState.HOVER;
+            this.materialTabControl1.Name = "materialTabControl1";
+            this.materialTabControl1.SelectedIndex = 0;
+            this.materialTabControl1.Size = new System.Drawing.Size(894, 458);
+            this.materialTabControl1.TabIndex = 22;
+            // 
+            // pQuestion
+            // 
+            this.pQuestion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pQuestion.Controls.Add(this.panel1);
+            this.pQuestion.Controls.Add(this.label1);
+            this.pQuestion.Controls.Add(this.pictureBox3);
+            this.pQuestion.Controls.Add(this.m_End);
+            this.pQuestion.Controls.Add(this.m_Next);
+            this.pQuestion.Location = new System.Drawing.Point(4, 21);
+            this.pQuestion.Name = "pQuestion";
+            this.pQuestion.Padding = new System.Windows.Forms.Padding(3);
+            this.pQuestion.Size = new System.Drawing.Size(886, 433);
+            this.pQuestion.TabIndex = 0;
+            this.pQuestion.Text = "Опрос";
+            this.pQuestion.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.pictureBox2);
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Location = new System.Drawing.Point(9, 66);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(869, 330);
+            this.panel1.TabIndex = 21;
+            // 
+            // label3
+            // 
+            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(0, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(341, 330);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "...";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label1
+            // 
+            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(3, 3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(880, 60);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "Опрос";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // m_End
+            // 
+            this.m_End.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.m_End.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
+            this.m_End.FlatAppearance.BorderSize = 0;
+            this.m_End.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
+            this.m_End.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
+            this.m_End.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.m_End.Location = new System.Drawing.Point(612, 409);
+            this.m_End.Name = "m_End";
+            this.m_End.Size = new System.Drawing.Size(130, 23);
+            this.m_End.TabIndex = 10;
+            this.m_End.Text = "Завершить";
+            this.m_End.UseVisualStyleBackColor = false;
+            this.m_End.Click += new System.EventHandler(this.m_End_Click);
+            // 
+            // m_Next
+            // 
+            this.m_Next.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.m_Next.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
+            this.m_Next.FlatAppearance.BorderSize = 0;
+            this.m_Next.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
+            this.m_Next.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
+            this.m_Next.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.m_Next.Location = new System.Drawing.Point(748, 409);
+            this.m_Next.Name = "m_Next";
+            this.m_Next.Size = new System.Drawing.Size(130, 23);
+            this.m_Next.TabIndex = 9;
+            this.m_Next.Text = "Далее";
+            this.m_Next.UseVisualStyleBackColor = false;
+            this.m_Next.Click += new System.EventHandler(this.m_Next_Click);
+            // 
+            // pStatistics
+            // 
+            this.pStatistics.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pStatistics.Controls.Add(this.m_MoreDetailed);
+            this.pStatistics.Controls.Add(this.button1);
+            this.pStatistics.Controls.Add(this.button2);
+            this.pStatistics.Controls.Add(this.chart1);
+            this.pStatistics.Controls.Add(this.pictureBox4);
+            this.pStatistics.Controls.Add(this.label2);
+            this.pStatistics.Location = new System.Drawing.Point(4, 21);
+            this.pStatistics.Name = "pStatistics";
+            this.pStatistics.Padding = new System.Windows.Forms.Padding(3);
+            this.pStatistics.Size = new System.Drawing.Size(886, 433);
+            this.pStatistics.TabIndex = 1;
+            this.pStatistics.Text = "Статистика";
+            this.pStatistics.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(3, 3);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(880, 60);
+            this.label2.TabIndex = 21;
+            this.label2.Text = "Статистика";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // chart1
+            // 
+            this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.chart1.BackColor = System.Drawing.Color.Transparent;
+            chartArea1.BackColor = System.Drawing.Color.Transparent;
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Alignment = System.Drawing.StringAlignment.Center;
+            legend1.BackColor = System.Drawing.Color.Transparent;
+            legend1.IsTextAutoFit = false;
+            legend1.Name = "Legend1";
+            legend1.TitleAlignment = System.Drawing.StringAlignment.Far;
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(8, 66);
+            this.chart1.Name = "chart1";
+            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SemiTransparent;
+            series1.BorderColor = System.Drawing.Color.White;
+            series1.BorderWidth = 4;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(870, 330);
+            this.chart1.TabIndex = 25;
+            this.chart1.Text = "Статистика";
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(612, 409);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(130, 23);
+            this.button1.TabIndex = 27;
+            this.button1.Text = "Завершить";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Location = new System.Drawing.Point(748, 409);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(130, 23);
+            this.button2.TabIndex = 26;
+            this.button2.Text = "Далее";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // m_MoreDetailed
+            // 
+            this.m_MoreDetailed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.m_MoreDetailed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
+            this.m_MoreDetailed.FlatAppearance.BorderSize = 0;
+            this.m_MoreDetailed.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
+            this.m_MoreDetailed.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
+            this.m_MoreDetailed.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.m_MoreDetailed.Location = new System.Drawing.Point(8, 409);
+            this.m_MoreDetailed.Name = "m_MoreDetailed";
+            this.m_MoreDetailed.Size = new System.Drawing.Size(130, 23);
+            this.m_MoreDetailed.TabIndex = 28;
+            this.m_MoreDetailed.Text = "Подробнее";
+            this.m_MoreDetailed.UseVisualStyleBackColor = false;
+            this.m_MoreDetailed.Click += new System.EventHandler(this.m_MoreDetailed_Click);
+            // 
+            // pStartPage
+            // 
+            this.pStartPage.BackgroundImage = global::Teacher.Properties.Resources.pictureФон_100;
+            this.pStartPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pStartPage.Location = new System.Drawing.Point(4, 21);
+            this.pStartPage.Name = "pStartPage";
+            this.pStartPage.Padding = new System.Windows.Forms.Padding(3);
+            this.pStartPage.Size = new System.Drawing.Size(886, 433);
+            this.pStartPage.TabIndex = 2;
+            this.pStartPage.Text = "Начальная страница";
+            this.pStartPage.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pictureBox2.Location = new System.Drawing.Point(341, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(10, 330);
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Visible = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pictureBox1.Location = new System.Drawing.Point(351, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(518, 330);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
+            this.pictureBox3.Location = new System.Drawing.Point(6, 402);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(872, 1);
+            this.pictureBox3.TabIndex = 19;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
+            this.pictureBox4.Location = new System.Drawing.Point(8, 402);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(870, 1);
+            this.pictureBox4.TabIndex = 24;
+            this.pictureBox4.TabStop = false;
+            // 
             // pbSettings
             // 
             this.pbSettings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -326,264 +555,35 @@
             this.pbQuestionView.TabStop = false;
             this.pbQuestionView.Click += new System.EventHandler(this.pbQuestionView_Click);
             // 
-            // materialTabControl1
+            // mmClose
             // 
-            this.materialTabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialTabControl1.Controls.Add(this.pStartPage);
-            this.materialTabControl1.Controls.Add(this.pQuestion);
-            this.materialTabControl1.Controls.Add(this.pStatistics);
-            this.materialTabControl1.Depth = 0;
-            this.materialTabControl1.Location = new System.Drawing.Point(44, 30);
-            this.materialTabControl1.MouseState = ProgLib.Windows.Forms.Material.MouseState.HOVER;
-            this.materialTabControl1.Name = "materialTabControl1";
-            this.materialTabControl1.SelectedIndex = 0;
-            this.materialTabControl1.Size = new System.Drawing.Size(894, 458);
-            this.materialTabControl1.TabIndex = 22;
+            this.mmClose.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.mmClose.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.mmClose.Image = global::Teacher.Properties.Resources.mmClose;
+            this.mmClose.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.mmClose.Name = "mmClose";
+            this.mmClose.Padding = new System.Windows.Forms.Padding(12, 0, 12, 0);
+            this.mmClose.Size = new System.Drawing.Size(39, 24);
             // 
-            // pStartPage
+            // mmMaximum
             // 
-            this.pStartPage.BackgroundImage = global::Teacher.Properties.Resources.pictureФон_100;
-            this.pStartPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pStartPage.Location = new System.Drawing.Point(4, 21);
-            this.pStartPage.Name = "pStartPage";
-            this.pStartPage.Padding = new System.Windows.Forms.Padding(3);
-            this.pStartPage.Size = new System.Drawing.Size(886, 433);
-            this.pStartPage.TabIndex = 2;
-            this.pStartPage.Text = "Начальная страница";
-            this.pStartPage.UseVisualStyleBackColor = true;
+            this.mmMaximum.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.mmMaximum.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.mmMaximum.Image = global::Teacher.Properties.Resources.mmMaximum;
+            this.mmMaximum.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.mmMaximum.Name = "mmMaximum";
+            this.mmMaximum.Padding = new System.Windows.Forms.Padding(12, 0, 12, 0);
+            this.mmMaximum.Size = new System.Drawing.Size(39, 24);
             // 
-            // pQuestion
+            // mmMinimum
             // 
-            this.pQuestion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pQuestion.Controls.Add(this.panel1);
-            this.pQuestion.Controls.Add(this.label1);
-            this.pQuestion.Controls.Add(this.pictureBox3);
-            this.pQuestion.Controls.Add(this.m_End);
-            this.pQuestion.Controls.Add(this.m_Next);
-            this.pQuestion.Location = new System.Drawing.Point(4, 21);
-            this.pQuestion.Name = "pQuestion";
-            this.pQuestion.Padding = new System.Windows.Forms.Padding(3);
-            this.pQuestion.Size = new System.Drawing.Size(886, 433);
-            this.pQuestion.TabIndex = 0;
-            this.pQuestion.Text = "Опрос";
-            this.pQuestion.UseVisualStyleBackColor = true;
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.pictureBox2);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(9, 66);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(869, 332);
-            this.panel1.TabIndex = 21;
-            // 
-            // label3
-            // 
-            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(0, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(341, 332);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "...";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pictureBox2.Location = new System.Drawing.Point(341, 0);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(10, 332);
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Visible = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pictureBox1.Location = new System.Drawing.Point(351, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(518, 332);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Visible = false;
-            // 
-            // label1
-            // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(3, 3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(880, 60);
-            this.label1.TabIndex = 20;
-            this.label1.Text = "Опрос";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
-            this.pictureBox3.Location = new System.Drawing.Point(6, 405);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(872, 1);
-            this.pictureBox3.TabIndex = 19;
-            this.pictureBox3.TabStop = false;
-            // 
-            // m_End
-            // 
-            this.m_End.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.m_End.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
-            this.m_End.FlatAppearance.BorderSize = 0;
-            this.m_End.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
-            this.m_End.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
-            this.m_End.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.m_End.Location = new System.Drawing.Point(612, 412);
-            this.m_End.Name = "m_End";
-            this.m_End.Size = new System.Drawing.Size(130, 23);
-            this.m_End.TabIndex = 10;
-            this.m_End.Text = "Завершить";
-            this.m_End.UseVisualStyleBackColor = false;
-            this.m_End.Click += new System.EventHandler(this.m_End_Click);
-            // 
-            // m_Next
-            // 
-            this.m_Next.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.m_Next.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
-            this.m_Next.FlatAppearance.BorderSize = 0;
-            this.m_Next.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
-            this.m_Next.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
-            this.m_Next.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.m_Next.Location = new System.Drawing.Point(748, 412);
-            this.m_Next.Name = "m_Next";
-            this.m_Next.Size = new System.Drawing.Size(130, 23);
-            this.m_Next.TabIndex = 9;
-            this.m_Next.Text = "Далее";
-            this.m_Next.UseVisualStyleBackColor = false;
-            this.m_Next.Click += new System.EventHandler(this.m_Next_Click);
-            // 
-            // pStatistics
-            // 
-            this.pStatistics.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pStatistics.Controls.Add(this.m_MoreDetailed);
-            this.pStatistics.Controls.Add(this.button1);
-            this.pStatistics.Controls.Add(this.button2);
-            this.pStatistics.Controls.Add(this.chart1);
-            this.pStatistics.Controls.Add(this.pictureBox4);
-            this.pStatistics.Controls.Add(this.label2);
-            this.pStatistics.Location = new System.Drawing.Point(4, 21);
-            this.pStatistics.Name = "pStatistics";
-            this.pStatistics.Padding = new System.Windows.Forms.Padding(3);
-            this.pStatistics.Size = new System.Drawing.Size(886, 433);
-            this.pStatistics.TabIndex = 1;
-            this.pStatistics.Text = "Статистика";
-            this.pStatistics.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
-            this.pictureBox4.Location = new System.Drawing.Point(8, 403);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(870, 1);
-            this.pictureBox4.TabIndex = 24;
-            this.pictureBox4.TabStop = false;
-            // 
-            // label2
-            // 
-            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(3, 3);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(880, 60);
-            this.label2.TabIndex = 21;
-            this.label2.Text = "Статистика";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // chart1
-            // 
-            this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.chart1.BackColor = System.Drawing.Color.Transparent;
-            chartArea1.BackColor = System.Drawing.Color.Transparent;
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Alignment = System.Drawing.StringAlignment.Center;
-            legend1.BackColor = System.Drawing.Color.Transparent;
-            legend1.IsTextAutoFit = false;
-            legend1.Name = "Legend1";
-            legend1.TitleAlignment = System.Drawing.StringAlignment.Far;
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(8, 66);
-            this.chart1.Name = "chart1";
-            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SemiTransparent;
-            series1.BorderColor = System.Drawing.Color.White;
-            series1.BorderWidth = 4;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(870, 331);
-            this.chart1.TabIndex = 25;
-            this.chart1.Text = "Статистика";
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(612, 410);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(130, 23);
-            this.button1.TabIndex = 27;
-            this.button1.Text = "Завершить";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(748, 410);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(130, 23);
-            this.button2.TabIndex = 26;
-            this.button2.Text = "Далее";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // m_MoreDetailed
-            // 
-            this.m_MoreDetailed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.m_MoreDetailed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
-            this.m_MoreDetailed.FlatAppearance.BorderSize = 0;
-            this.m_MoreDetailed.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
-            this.m_MoreDetailed.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
-            this.m_MoreDetailed.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.m_MoreDetailed.Location = new System.Drawing.Point(8, 410);
-            this.m_MoreDetailed.Name = "m_MoreDetailed";
-            this.m_MoreDetailed.Size = new System.Drawing.Size(130, 23);
-            this.m_MoreDetailed.TabIndex = 28;
-            this.m_MoreDetailed.Text = "Подробнее";
-            this.m_MoreDetailed.UseVisualStyleBackColor = false;
-            this.m_MoreDetailed.Click += new System.EventHandler(this.m_MoreDetailed_Click);
+            this.mmMinimum.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.mmMinimum.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.mmMinimum.Image = global::Teacher.Properties.Resources.mmMinimum;
+            this.mmMinimum.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.mmMinimum.Name = "mmMinimum";
+            this.mmMinimum.Padding = new System.Windows.Forms.Padding(12, 0, 12, 0);
+            this.mmMinimum.Size = new System.Drawing.Size(39, 24);
             // 
             // FormMain
             // 
@@ -606,18 +606,18 @@
             this.MainMenu.ResumeLayout(false);
             this.MainMenu.PerformLayout();
             this.sideBar.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbSettings)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbStatisticsView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbQuestionView)).EndInit();
             this.materialTabControl1.ResumeLayout(false);
             this.pQuestion.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.pStatistics.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            this.pStatistics.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSettings)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbStatisticsView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbQuestionView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

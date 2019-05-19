@@ -1,10 +1,4 @@
-﻿using ProgLib;
-using ProgLib.IO;
-using ProgLib.Network;
-using ProgLib.Network.Tcp;
-using ProgLib.Windows.Forms.VSCode;
-using Questionnaire;
-using Questionnaire.Controls;
+﻿using ProgLib.Windows.Forms.VSCode;
 using Questionnaire.Data;
 using System;
 using System.Collections.Generic;
@@ -12,17 +6,14 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Net;
-using System.Net.Sockets;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Teacher.Data;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Teacher
 {
-    public partial class FormConnect : Form
+    public partial class FormMoreDetailed : Form
     {
         #region Import
 
@@ -92,10 +83,10 @@ namespace Teacher
                         DwmSetWindowAttribute(this.Handle, 2, ref v, 4);
                         MARGINS margins = new MARGINS()
                         {
-                            bottomHeight = 1,
+                            bottomHeight = 0,
                             leftWidth = 0,
                             rightWidth = 0,
-                            topHeight = 0
+                            topHeight = 1
                         };
                         DwmExtendFrameIntoClientArea(this.Handle, ref margins);
                     }
@@ -122,7 +113,7 @@ namespace Teacher
 
         #endregion
 
-        public FormConnect()
+        public FormMoreDetailed()
         {
             InitializeComponent();
 
@@ -139,36 +130,24 @@ namespace Teacher
             };
             MainMenu.Items["mmClose"].Click += delegate (Object _object, EventArgs _eventArgs)
             {
-                bCancel_Click(_object, _eventArgs);
+                Close();
             };
         }
 
         #region Variables
 
-        // Расположение выбранного теста
-        private String _file = "";
-
-        // Список клиентов
-        private List<String> _clients = new List<String>();
-
-        private Color _errorColor;
+        private Statistics _statistics;
 
         #endregion
 
         #region Methods
 
-        private void UTheme(VSCodeTheme Theme, VSCodeIconTheme IconTheme)
+        public void UTheme(VSCodeTheme Theme, VSCodeIconTheme IconTheme)
         {
             VSCodeToolStripRenderer _renderer = new VSCodeToolStripRenderer(Theme, new VSCodeToolStripSettings(this, MainMenu, IconTheme));
             MainMenu.Renderer = _renderer;
 
             BackColor = _renderer.WindowBackColor;
-            label1.ForeColor = _renderer.ForeColor;
-            label2.ForeColor = _renderer.ForeColor;
-            label3.ForeColor = _renderer.ForeColor;
-            pictureBox1.BackColor = _renderer.ForeColor;
-            pictureBox2.BackColor = _renderer.ForeColor;
-            _errorColor = _renderer.CloseColor;
 
             // Отрисовка элементов
             foreach (Control Control in Controls)
@@ -193,138 +172,45 @@ namespace Teacher
             }
         }
 
-        private void OnReceiver(Object _object, TcpReceiverEventArgs _tcpEventArgs)
+        public void ShowMoreDetailed(ref Statistics Statistics)
         {
-            String Client = TcpServer.GetHostName(_tcpEventArgs.Socket);
-            String Message = Encoding.UTF8.GetString(_tcpEventArgs.Buffer, 0, _tcpEventArgs.Length);
-
-            if (Message != "")
-            {
-                if (Message.IsConnect())
-                {
-                    if (_clients.IndexOf(Client) == -1)
-                        _clients.Add(Client);
-                }
-
-                if (_clients.Count > 0)
-                {
-                    List<String> _temp = new List<String>();
-                    foreach (String _client in _clients)
-                    {
-                        try
-                        {
-                            Byte[] Request = Encoding.UTF8.GetBytes(TcpRequest.Connect);
-                            Program.Server.Send(_client, Program.Config.Port, Request);
-                        }
-                        catch { _temp.Add(_client); }
-                    }
-
-                    foreach (String _client in _temp)
-                        _clients.Remove(_client);
-                }
-
-                BeginInvoke(
-                    new MethodInvoker(delegate { label1.Text = _clients.Count.ToString(); }));
-            }
+            _statistics = Statistics;
+            t_UpdateMoreDetailed.Start();
+            ShowDialog();
         }
 
         #endregion
-
-        public Information Connect()
-        {
-            ShowDialog();
-
-            return (_file != null && _clients != null) 
-                ? new Information(new Survey(_file), _clients.ToArray()) 
-                : new Information();
-        }
         
-        private void FormConnect_Load(Object sender, EventArgs e)
+        private void FormMoreDetailed_Load(Object sender, EventArgs e)
         {
             // Обработка интерфейса приложения
             UTheme(Program.Config.Theme, Program.Config.IconTheme);
 
-            // Получение количества доступных компьютеров в локальной сети
-            List<String> Machines = LocalNetwork.GetServers(TypeServer.Workstation).ToList();
-            label2.Text = "из " + ((Machines.IndexOf(Environment.MachineName) > -1) ? Machines.Count - 1 : Machines.Count);
+            t_UpdateMoreDetailed_Tick(sender, e);
+        }
+        private void FormMoreDetailed_FormClosing(Object sender, FormClosingEventArgs e)
+        {
+            t_UpdateMoreDetailed.Stop();
+        }
+
+        private void t_UpdateMoreDetailed_Tick(Object sender, EventArgs e)
+        {
+            dataGridView1.Rows.Clear();
+            Color Blue = Color.FromArgb(170, Color.Blue);
+            Color Red = Color.FromArgb(210, 232, 38, 55);
             
-            // Обработка полученных данных
-            Program.Server.Receiver += OnReceiver;
-        }
-        private void FormConnect_FormClosing(Object sender, FormClosingEventArgs e)
-        {
-            Program.Server.Receiver -= OnReceiver;
-        }
-        private void FormConnect_KeyDown(Object sender, KeyEventArgs e)
-        {
-            switch (e.KeyCode)
+            for (int i = 0; i < _statistics.Result.Rows.Count; i++)
             {
-                case Keys.Escape:
-                    bCancel_Click(sender, e);
-                    break;
+                dataGridView1.Rows.Add(
+                    new Object[] { (i + 1).ToString(), " " + _statistics.Result.Rows[i].ItemArray[0], _statistics.Result.Rows[i].ItemArray[1] });
 
-                case Keys.Control | Keys.O:
-                    bSelectTest_Click(sender, e);
-                    break;
-
-                default: break;
-            }
-        }
-        
-        // Открытие теста
-        private void bSelectTest_Click(Object sender, EventArgs e)
-        {
-            OpenFileDialog OFD = new OpenFileDialog
-            {
-                Title = "Открытие теста",
-                Filter = "Файл теста (*.xml)|*.xml"
-            };
-
-            if (OFD.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    Survey _survay = new Survey(OFD.FileName);
-
-                    _file = OFD.FileName;
-                    lTest.ForeColor = Color.Black;
-                    lTest.Text = (_survay.Name != "") ? _survay.Name : _file;
-                }
-                catch
-                {
-                    _file = null;
-                    lTest.ForeColor = _errorColor;
-
-                    MessageBox.Show("Файл имел неверный формат!", "Опросник", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else
-            {
-                _file = null;
-                lTest.ForeColor = Color.FromArgb(232, 38, 55);
+                Color C = (_statistics.Result.Rows[i].ItemArray[1].ToString() == "Правильно") ? Blue : Red;
+                dataGridView1.Rows[i].Cells["Answer"].Style = new DataGridViewCellStyle { ForeColor = C, SelectionForeColor = C };
             }
         }
 
-        // Далее
-        private void bNext_Click(Object sender, EventArgs e)
+        private void m_Cancel_Click(Object sender, EventArgs e)
         {
-            if (lTest.Text != "Не выбран!")
-            {
-                if (label1.Text != "0")
-                {
-                    Close();
-            }
-            else { MessageBox.Show("Список подключённых компьютеров пуст.", "Опросник", MessageBoxButtons.OK, MessageBoxIcon.Information); }
-        }
-            else { MessageBox.Show("Пожалуйста, выберите файл.", "Опросник", MessageBoxButtons.OK, MessageBoxIcon.Information); }
-        }
-
-        // Отмена
-        private void bCancel_Click(Object sender, EventArgs e)
-        {
-            _file = null;
-            _clients = null;
-
             Close();
         }
     }

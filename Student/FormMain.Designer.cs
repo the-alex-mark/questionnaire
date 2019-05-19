@@ -161,10 +161,10 @@
             // 
             this.pQuestion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pQuestion.Controls.Add(this.panel1);
-            this.pQuestion.Location = new System.Drawing.Point(4, 22);
+            this.pQuestion.Location = new System.Drawing.Point(4, 21);
             this.pQuestion.Name = "pQuestion";
             this.pQuestion.Padding = new System.Windows.Forms.Padding(3);
-            this.pQuestion.Size = new System.Drawing.Size(918, 432);
+            this.pQuestion.Size = new System.Drawing.Size(918, 433);
             this.pQuestion.TabIndex = 0;
             this.pQuestion.Text = "Опрос";
             this.pQuestion.UseVisualStyleBackColor = true;
@@ -180,7 +180,7 @@
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Location = new System.Drawing.Point(17, 16);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(885, 404);
+            this.panel1.Size = new System.Drawing.Size(885, 405);
             this.panel1.TabIndex = 22;
             // 
             // label3
@@ -189,7 +189,7 @@
             this.label3.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.Location = new System.Drawing.Point(0, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(436, 204);
+            this.label3.Size = new System.Drawing.Size(436, 205);
             this.label3.TabIndex = 2;
             this.label3.Text = "...";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -199,7 +199,7 @@
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Right;
             this.pictureBox2.Location = new System.Drawing.Point(436, 0);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(10, 204);
+            this.pictureBox2.Size = new System.Drawing.Size(10, 205);
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Visible = false;
@@ -209,7 +209,7 @@
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
             this.pictureBox1.Location = new System.Drawing.Point(446, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(439, 204);
+            this.pictureBox1.Size = new System.Drawing.Size(439, 205);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -221,7 +221,7 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 204);
+            this.panel2.Location = new System.Drawing.Point(0, 205);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(885, 200);
             this.panel2.TabIndex = 3;

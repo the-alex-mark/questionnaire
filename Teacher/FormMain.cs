@@ -447,7 +447,8 @@ namespace Teacher
 
         private void m_MoreDetailed_Click(Object sender, EventArgs e)
         {
-
+            FormMoreDetailed MoreDetailed = new FormMoreDetailed();
+            MoreDetailed.ShowMoreDetailed(ref _statistics);
         }
     }
 }
