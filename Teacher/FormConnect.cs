@@ -244,9 +244,10 @@ namespace Teacher
         {
             // Обработка интерфейса приложения
             UTheme(Program.Config.Theme, Program.Config.IconTheme);
-            
+
             // Получение количества доступных компьютеров в локальной сети
-            label2.Text = "из " + LocalNetwork.GetServers(TypeServer.Workstation).Length;
+            List<String> Machines = LocalNetwork.GetServers(TypeServer.Workstation).ToList();
+            label2.Text = "из " + ((Machines.IndexOf(Environment.MachineName) > -1) ? Machines.Count - 1 : Machines.Count);
             
             // Обработка полученных данных
             Program.Server.Receiver += OnReceiver;

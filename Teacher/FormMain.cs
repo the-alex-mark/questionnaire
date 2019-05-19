@@ -278,6 +278,7 @@ namespace Teacher
                 
                 _index = -1;
                 _statistics = new Statistics(ref chart1);
+                Next = true;
                 m_Next_Click(sender, e);
                 materialTabControl1.SelectTab(pQuestion);
             }
@@ -391,9 +392,23 @@ namespace Teacher
         {
             mOptions_Click(sender, e);
         }
-        
+
+        private Boolean Next = true;
         private void m_Next_Click(Object sender, EventArgs e)
         {
+            if (Next)
+            {
+                Next = false;
+                goto A;
+            }
+
+            if (_statistics.Count == _info.Machines.Length)
+            {
+                goto A;
+            }
+            else { return; }
+
+            A:
             if (_index < _info.Survey.Questions.Count - 1)
             {
                 _statistics.Clear();
@@ -418,6 +433,21 @@ namespace Teacher
             }
 
             mStop_Click(sender, e);
+        }
+
+        private void button2_Click(Object sender, EventArgs e)
+        {
+            m_Next_Click(sender, e);
+        }
+
+        private void button1_Click(Object sender, EventArgs e)
+        {
+            m_End_Click(sender, e);
+        }
+
+        private void m_MoreDetailed_Click(Object sender, EventArgs e)
+        {
+
         }
     }
 }
