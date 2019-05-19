@@ -420,19 +420,28 @@ namespace Teacher
                 foreach (String Client in _info.Machines)
                     Program.Server.Send(Client, Question);
             }
+            else { m_End_Click(sender, e); }
         }
         private void m_End_Click(Object sender, EventArgs e)
         {
-            if (_info.Machines.Length > 0)
+            if (_statistics.Count == _info.Machines.Length)
             {
-                foreach (String Client in _info.Machines)
-                {
-                    Byte[] Request = Encoding.UTF8.GetBytes(TcpRequest.Stop);
-                    Program.Server.Send(Client, Request);
-                }
-            }
+                materialTabControl1.SelectTab(pStartPage);
 
-            mStop_Click(sender, e);
+                if (_info.Machines.Length > 0)
+                {
+                    foreach (String Client in _info.Machines)
+                    {
+                        Byte[] Request = Encoding.UTF8.GetBytes(TcpRequest.Stop);
+                        Program.Server.Send(Client, Request);
+                    }
+                }
+                
+                mStop_Click(sender, e);
+
+                FormGeneralStatistics GeneralStatistics = new FormGeneralStatistics();
+                GeneralStatistics.ShowGeneralStatistics(_statistics);
+            }
         }
 
         private void button2_Click(Object sender, EventArgs e)

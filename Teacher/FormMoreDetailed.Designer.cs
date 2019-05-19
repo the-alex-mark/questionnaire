@@ -39,12 +39,12 @@
             this.mmMinimum = new System.Windows.Forms.ToolStripMenuItem();
             this.mmTitle = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.m_Cancel = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.t_UpdateMoreDetailed = new System.Windows.Forms.Timer(this.components);
             this.Number = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Computer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Answer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.m_Cancel = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.t_UpdateMoreDetailed = new System.Windows.Forms.Timer(this.components);
             this.MainMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -148,36 +148,6 @@
             this.dataGridView1.TabIndex = 7;
             this.dataGridView1.TabStop = false;
             // 
-            // m_Cancel
-            // 
-            this.m_Cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.m_Cancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
-            this.m_Cancel.FlatAppearance.BorderSize = 0;
-            this.m_Cancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
-            this.m_Cancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
-            this.m_Cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.m_Cancel.Location = new System.Drawing.Point(419, 275);
-            this.m_Cancel.Name = "m_Cancel";
-            this.m_Cancel.Size = new System.Drawing.Size(136, 23);
-            this.m_Cancel.TabIndex = 8;
-            this.m_Cancel.Text = "Отмена";
-            this.m_Cancel.UseVisualStyleBackColor = false;
-            this.m_Cancel.Click += new System.EventHandler(this.m_Cancel_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
-            this.pictureBox1.Location = new System.Drawing.Point(12, 268);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(543, 1);
-            this.pictureBox1.TabIndex = 16;
-            this.pictureBox1.TabStop = false;
-            // 
-            // t_UpdateMoreDetailed
-            // 
-            this.t_UpdateMoreDetailed.Interval = 5000;
-            this.t_UpdateMoreDetailed.Tick += new System.EventHandler(this.t_UpdateMoreDetailed_Tick);
-            // 
             // Number
             // 
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -209,6 +179,36 @@
             this.Answer.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Answer.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
+            // m_Cancel
+            // 
+            this.m_Cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.m_Cancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
+            this.m_Cancel.FlatAppearance.BorderSize = 0;
+            this.m_Cancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
+            this.m_Cancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
+            this.m_Cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.m_Cancel.Location = new System.Drawing.Point(419, 275);
+            this.m_Cancel.Name = "m_Cancel";
+            this.m_Cancel.Size = new System.Drawing.Size(136, 23);
+            this.m_Cancel.TabIndex = 8;
+            this.m_Cancel.Text = "Назад";
+            this.m_Cancel.UseVisualStyleBackColor = false;
+            this.m_Cancel.Click += new System.EventHandler(this.m_Cancel_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
+            this.pictureBox1.Location = new System.Drawing.Point(12, 268);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(543, 1);
+            this.pictureBox1.TabIndex = 16;
+            this.pictureBox1.TabStop = false;
+            // 
+            // t_UpdateMoreDetailed
+            // 
+            this.t_UpdateMoreDetailed.Interval = 5000;
+            this.t_UpdateMoreDetailed.Tick += new System.EventHandler(this.t_UpdateMoreDetailed_Tick);
+            // 
             // FormMoreDetailed
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -228,6 +228,7 @@
             this.Text = "Подробнее";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMoreDetailed_FormClosing);
             this.Load += new System.EventHandler(this.FormMoreDetailed_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormMoreDetailed_KeyDown);
             this.MainMenu.ResumeLayout(false);
             this.MainMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

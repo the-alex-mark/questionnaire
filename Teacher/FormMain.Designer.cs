@@ -57,11 +57,11 @@
             this.m_End = new System.Windows.Forms.Button();
             this.m_Next = new System.Windows.Forms.Button();
             this.pStatistics = new System.Windows.Forms.TabPage();
-            this.label2 = new System.Windows.Forms.Label();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.m_MoreDetailed = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.m_MoreDetailed = new System.Windows.Forms.Button();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.label2 = new System.Windows.Forms.Label();
             this.pStartPage = new System.Windows.Forms.TabPage();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -297,7 +297,7 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Location = new System.Drawing.Point(9, 66);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(869, 330);
+            this.panel1.Size = new System.Drawing.Size(869, 331);
             this.panel1.TabIndex = 21;
             // 
             // label3
@@ -306,7 +306,7 @@
             this.label3.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.Location = new System.Drawing.Point(0, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(341, 330);
+            this.label3.Size = new System.Drawing.Size(341, 331);
             this.label3.TabIndex = 2;
             this.label3.Text = "...";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -330,7 +330,7 @@
             this.m_End.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
             this.m_End.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
             this.m_End.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.m_End.Location = new System.Drawing.Point(612, 409);
+            this.m_End.Location = new System.Drawing.Point(612, 410);
             this.m_End.Name = "m_End";
             this.m_End.Size = new System.Drawing.Size(130, 23);
             this.m_End.TabIndex = 10;
@@ -346,7 +346,7 @@
             this.m_Next.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
             this.m_Next.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
             this.m_Next.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.m_Next.Location = new System.Drawing.Point(748, 409);
+            this.m_Next.Location = new System.Drawing.Point(748, 410);
             this.m_Next.Name = "m_Next";
             this.m_Next.Size = new System.Drawing.Size(130, 23);
             this.m_Next.TabIndex = 9;
@@ -361,8 +361,8 @@
             this.pStatistics.Controls.Add(this.button1);
             this.pStatistics.Controls.Add(this.button2);
             this.pStatistics.Controls.Add(this.chart1);
-            this.pStatistics.Controls.Add(this.pictureBox4);
             this.pStatistics.Controls.Add(this.label2);
+            this.pStatistics.Controls.Add(this.pictureBox4);
             this.pStatistics.Location = new System.Drawing.Point(4, 21);
             this.pStatistics.Name = "pStatistics";
             this.pStatistics.Padding = new System.Windows.Forms.Padding(3);
@@ -371,16 +371,53 @@
             this.pStatistics.Text = "Статистика";
             this.pStatistics.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // m_MoreDetailed
             // 
-            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(3, 3);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(880, 60);
-            this.label2.TabIndex = 21;
-            this.label2.Text = "Статистика";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.m_MoreDetailed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.m_MoreDetailed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
+            this.m_MoreDetailed.FlatAppearance.BorderSize = 0;
+            this.m_MoreDetailed.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
+            this.m_MoreDetailed.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
+            this.m_MoreDetailed.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.m_MoreDetailed.Location = new System.Drawing.Point(8, 410);
+            this.m_MoreDetailed.Name = "m_MoreDetailed";
+            this.m_MoreDetailed.Size = new System.Drawing.Size(130, 23);
+            this.m_MoreDetailed.TabIndex = 28;
+            this.m_MoreDetailed.Text = "Подробнее";
+            this.m_MoreDetailed.UseVisualStyleBackColor = false;
+            this.m_MoreDetailed.Click += new System.EventHandler(this.m_MoreDetailed_Click);
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(612, 410);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(130, 23);
+            this.button1.TabIndex = 27;
+            this.button1.Text = "Завершить";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Location = new System.Drawing.Point(748, 410);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(130, 23);
+            this.button2.TabIndex = 26;
+            this.button2.Text = "Далее";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // chart1
             // 
@@ -407,57 +444,20 @@
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(870, 330);
+            this.chart1.Size = new System.Drawing.Size(870, 331);
             this.chart1.TabIndex = 25;
             this.chart1.Text = "Статистика";
             // 
-            // button1
+            // label2
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(612, 409);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(130, 23);
-            this.button1.TabIndex = 27;
-            this.button1.Text = "Завершить";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(748, 409);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(130, 23);
-            this.button2.TabIndex = 26;
-            this.button2.Text = "Далее";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // m_MoreDetailed
-            // 
-            this.m_MoreDetailed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.m_MoreDetailed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
-            this.m_MoreDetailed.FlatAppearance.BorderSize = 0;
-            this.m_MoreDetailed.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
-            this.m_MoreDetailed.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
-            this.m_MoreDetailed.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.m_MoreDetailed.Location = new System.Drawing.Point(8, 409);
-            this.m_MoreDetailed.Name = "m_MoreDetailed";
-            this.m_MoreDetailed.Size = new System.Drawing.Size(130, 23);
-            this.m_MoreDetailed.TabIndex = 28;
-            this.m_MoreDetailed.Text = "Подробнее";
-            this.m_MoreDetailed.UseVisualStyleBackColor = false;
-            this.m_MoreDetailed.Click += new System.EventHandler(this.m_MoreDetailed_Click);
+            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(3, 3);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(880, 60);
+            this.label2.TabIndex = 21;
+            this.label2.Text = "Статистика";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pStartPage
             // 
@@ -476,7 +476,7 @@
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Right;
             this.pictureBox2.Location = new System.Drawing.Point(341, 0);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(10, 330);
+            this.pictureBox2.Size = new System.Drawing.Size(10, 331);
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Visible = false;
@@ -486,7 +486,7 @@
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
             this.pictureBox1.Location = new System.Drawing.Point(351, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(518, 330);
+            this.pictureBox1.Size = new System.Drawing.Size(518, 331);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -497,7 +497,7 @@
             this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
-            this.pictureBox3.Location = new System.Drawing.Point(6, 402);
+            this.pictureBox3.Location = new System.Drawing.Point(6, 403);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(872, 1);
             this.pictureBox3.TabIndex = 19;
@@ -508,7 +508,7 @@
             this.pictureBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
-            this.pictureBox4.Location = new System.Drawing.Point(8, 402);
+            this.pictureBox4.Location = new System.Drawing.Point(8, 403);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(870, 1);
             this.pictureBox4.TabIndex = 24;

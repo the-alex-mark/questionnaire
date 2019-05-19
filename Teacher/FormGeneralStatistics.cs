@@ -9,11 +9,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Teacher
 {
-    public partial class FormMoreDetailed : Form
+    public partial class FormGeneralStatistics : Form
     {
         #region Import
 
@@ -113,7 +112,7 @@ namespace Teacher
 
         #endregion
 
-        public FormMoreDetailed()
+        public FormGeneralStatistics()
         {
             InitializeComponent();
 
@@ -172,23 +171,23 @@ namespace Teacher
             }
         }
 
-        public void ShowMoreDetailed(ref Statistics Statistics)
+        public void ShowGeneralStatistics(Statistics Statistics)
         {
             _statistics = Statistics;
-            t_UpdateMoreDetailed.Start();
             ShowDialog();
         }
 
         #endregion
-        
-        private void FormMoreDetailed_Load(Object sender, EventArgs e)
+
+        private void FormGeneralStatistics_Load(Object sender, EventArgs e)
         {
             // Обработка интерфейса приложения
             UTheme(Program.Config.Theme, Program.Config.IconTheme);
 
-            t_UpdateMoreDetailed_Tick(sender, e);
+            // Вывод общих результатов в виде диаграммы
+            Statistics.Set(ref chart1, _statistics.GeneralTrue, _statistics.GeneralFalse);
         }
-        private void FormMoreDetailed_KeyDown(Object sender, KeyEventArgs e)
+        private void FormGeneralStatistics_KeyDown(Object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
             {
@@ -199,32 +198,10 @@ namespace Teacher
                 default: break;
             }
         }
-        private void FormMoreDetailed_FormClosing(Object sender, FormClosingEventArgs e)
-        {
-            t_UpdateMoreDetailed.Stop();
-        }
 
-        private void t_UpdateMoreDetailed_Tick(Object sender, EventArgs e)
-        {
-            dataGridView1.Rows.Clear();
-            Color Blue = Color.FromArgb(170, Color.Blue);
-            Color Red = Color.FromArgb(210, 232, 38, 55);
-            
-            for (int i = 0; i < _statistics.Result.Rows.Count; i++)
-            {
-                dataGridView1.Rows.Add(
-                    new Object[] { (i + 1).ToString(), " " + _statistics.Result.Rows[i].ItemArray[0], _statistics.Result.Rows[i].ItemArray[1] });
-
-                Color C = (_statistics.Result.Rows[i].ItemArray[1].ToString() == "Правильно") ? Blue : Red;
-                dataGridView1.Rows[i].Cells["Answer"].Style = new DataGridViewCellStyle { ForeColor = C, SelectionForeColor = C };
-            }
-        }
-
-        private void m_Cancel_Click(Object sender, EventArgs e)
+        private void m_OK_Click(Object sender, EventArgs e)
         {
             Close();
         }
-
-        
     }
 }

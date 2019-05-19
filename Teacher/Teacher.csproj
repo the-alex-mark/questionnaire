@@ -53,6 +53,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormGeneralStatistics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormGeneralStatistics.Designer.cs">
+      <DependentUpon>FormGeneralStatistics.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMoreDetailed.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +92,9 @@
     <Compile Include="Data\Information.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormGeneralStatistics.resx">
+      <DependentUpon>FormGeneralStatistics.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
