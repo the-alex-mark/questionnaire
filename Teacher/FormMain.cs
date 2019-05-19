@@ -207,6 +207,7 @@ namespace Teacher
             pQuestion.BackColor = _renderer.WindowBackColor;
             pStatistics.BackColor = _renderer.WindowBackColor;
 
+            chart1.Series[0].BorderColor = _renderer.WindowBackColor;
             _closeColor = _renderer.CloseColor;
         }
 
@@ -236,46 +237,9 @@ namespace Teacher
             String Client = TcpServer.GetHostName(_tcpReceiverEventArgs.Socket);
             String Message = Encoding.UTF8.GetString(_tcpReceiverEventArgs.Buffer, 0, _tcpReceiverEventArgs.Length);
 
-            Result _result = new Result(XElement.Parse(Message));
-
-            switch (_result.Question.Type)
-            {
-                case "Выбор одного правильного ответа":
-                    //Statistics.Series[0].Points.AddXY(
-                    //    5,
-                    //    (_result.Question.Answers[_result.Question.True] == _result.Answer) ? "Правильно" : "Не правильно");
-                    
-                    if (_result.Question.Answers[_result.Question.True] == _result.Answer)
-                    {
-                        _statistics.True.Add(new RAnswer(_result.Student, _result.Answer));
-
-                        //Statistics.Series[0].Points.AddXY("Правильно", 1);
-                        //Statistics.Series[0].Points[1].Color = Color.FromArgb(200, MetroColors.Blue);
-                    }
-                    else
-                    {
-                        _statistics.True.Add(new RAnswer(_result.Student, _result.Answer));
-
-                        //Statistics.Series[0].Points.AddXY("Не правильно", 1);
-                        //Statistics.Series[0].Points[0].Color = _closeColor;
-                    }
-
-                    Statistics.Series[0].Points.Clear();
-
-                    Statistics.Series[0].Points.AddXY("Не правильно", _statistics.False.Count);
-                    Statistics.Series[0].Points[0].Color = _closeColor;
-
-                    Statistics.Series[0].Points.AddXY("Правильно", _statistics.False.Count);
-                    Statistics.Series[0].Points[1].Color = Color.FromArgb(200, MetroColors.Blue);
-
-                    Statistics.Update();
-                    break;
-
-                case "Свободный ответ":
-                    break;
-            }
-
-            //MessageBox.Show(_result.Answer);
+            QuestionResult _result = new QuestionResult(XElement.Parse(Message));
+            _statistics.Add(_result);
+            //_statistics.SetChart(ref chart1);
         }
 
         #endregion
@@ -313,6 +277,7 @@ namespace Teacher
                 }
                 
                 _index = -1;
+                _statistics = new Statistics(ref chart1);
                 m_Next_Click(sender, e);
                 materialTabControl1.SelectTab(pQuestion);
             }
@@ -431,15 +396,14 @@ namespace Teacher
         {
             if (_index < _info.Survey.Questions.Count - 1)
             {
+                _statistics.Clear();
+
                 _index++;
                 UQuestion(_info.Survey.Questions[_index]);
 
                 Byte[] Question = Encoding.UTF8.GetBytes(_info.Survey.Questions[_index].ToString());
                 foreach (String Client in _info.Machines)
                     Program.Server.Send(Client, Question);
-
-                Statistics.Series[0].Points.Clear();
-                _statistics = new Statistics();
             }
         }
         private void m_End_Click(Object sender, EventArgs e)
@@ -455,29 +419,5 @@ namespace Teacher
 
             mStop_Click(sender, e);
         }
-    }
-
-    public class Statistics
-    {
-        public Statistics()
-        {
-            this.True = new List<RAnswer>();
-            this.False = new List<RAnswer>();
-        }
-
-        public List<RAnswer> True { get; set; }
-        public List<RAnswer> False { get; set; }
-    }
-
-    public class RAnswer
-    {
-        public RAnswer(String Name, String Answer)
-        {
-            this.Name = Name;
-            this.Answer = Answer;
-        }
-
-        public String Name { get; }
-        public String Answer { get; }
     }
 }

@@ -47,10 +47,10 @@
             this.listAnswers = new System.Windows.Forms.ListBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.m_Send = new System.Windows.Forms.Button();
-            this.panel5 = new System.Windows.Forms.Panel();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.MainMenu.SuspendLayout();
             this.materialTabControl1.SuspendLayout();
             this.pStartPage.SuspendLayout();
@@ -62,8 +62,8 @@
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // MainMenu
@@ -154,17 +154,17 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(912, 427);
             this.label1.TabIndex = 7;
-            this.label1.Text = "Ожидайте ...\r\nВопросы появяться у вас на экране!";
+            this.label1.Text = "Ожидайте ...\r\nВопросы появятся у вас на экране!";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pQuestion
             // 
             this.pQuestion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pQuestion.Controls.Add(this.panel1);
-            this.pQuestion.Location = new System.Drawing.Point(4, 21);
+            this.pQuestion.Location = new System.Drawing.Point(4, 22);
             this.pQuestion.Name = "pQuestion";
             this.pQuestion.Padding = new System.Windows.Forms.Padding(3);
-            this.pQuestion.Size = new System.Drawing.Size(918, 433);
+            this.pQuestion.Size = new System.Drawing.Size(918, 432);
             this.pQuestion.TabIndex = 0;
             this.pQuestion.Text = "Опрос";
             this.pQuestion.UseVisualStyleBackColor = true;
@@ -272,14 +272,16 @@
             this.panel4.Size = new System.Drawing.Size(443, 200);
             this.panel4.TabIndex = 1;
             // 
-            // pictureBox4
+            // panel5
             // 
-            this.pictureBox4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pictureBox4.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(443, 10);
-            this.pictureBox4.TabIndex = 2;
-            this.pictureBox4.TabStop = false;
+            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel5.Controls.Add(this.textBox1);
+            this.panel5.Location = new System.Drawing.Point(52, 127);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(346, 30);
+            this.panel5.TabIndex = 12;
+            this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel5_Paint);
             // 
             // textBox1
             // 
@@ -308,16 +310,14 @@
             this.m_Send.UseVisualStyleBackColor = false;
             this.m_Send.Click += new System.EventHandler(this.m_Send_Click);
             // 
-            // panel5
+            // pictureBox4
             // 
-            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel5.Controls.Add(this.textBox1);
-            this.panel5.Location = new System.Drawing.Point(52, 127);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(346, 30);
-            this.panel5.TabIndex = 12;
-            this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel5_Paint);
+            this.pictureBox4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pictureBox4.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(443, 10);
+            this.pictureBox4.TabIndex = 2;
+            this.pictureBox4.TabStop = false;
             // 
             // FormMain
             // 
@@ -348,9 +348,9 @@
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

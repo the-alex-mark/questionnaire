@@ -67,10 +67,10 @@
             this.m_End = new System.Windows.Forms.Button();
             this.m_Next = new System.Windows.Forms.Button();
             this.pStatistics = new System.Windows.Forms.TabPage();
-            this.Statistics = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.button3 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.MainMenu.SuspendLayout();
             this.sideBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSettings)).BeginInit();
@@ -83,8 +83,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.pStatistics.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Statistics)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // MainMenu
@@ -158,21 +158,21 @@
             this.mCreate.Name = "mCreate";
             this.mCreate.Padding = new System.Windows.Forms.Padding(0);
             this.mCreate.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.mCreate.Size = new System.Drawing.Size(151, 20);
+            this.mCreate.Size = new System.Drawing.Size(180, 20);
             this.mCreate.Text = "Создать";
             this.mCreate.Click += new System.EventHandler(this.mCreate_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(148, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // mStart
             // 
             this.mStart.Name = "mStart";
             this.mStart.Padding = new System.Windows.Forms.Padding(0);
             this.mStart.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Q)));
-            this.mStart.Size = new System.Drawing.Size(151, 20);
+            this.mStart.Size = new System.Drawing.Size(180, 20);
             this.mStart.Text = "Начать";
             this.mStart.Click += new System.EventHandler(this.mStart_Click);
             // 
@@ -182,26 +182,26 @@
             this.mStop.Name = "mStop";
             this.mStop.Padding = new System.Windows.Forms.Padding(0);
             this.mStop.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.W)));
-            this.mStop.Size = new System.Drawing.Size(151, 20);
+            this.mStop.Size = new System.Drawing.Size(180, 20);
             this.mStop.Text = "Завершить";
             this.mStop.Click += new System.EventHandler(this.mStop_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(148, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
             // 
             // gfhfvtnhsToolStripMenuItem
             // 
             this.gfhfvtnhsToolStripMenuItem.Name = "gfhfvtnhsToolStripMenuItem";
-            this.gfhfvtnhsToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.gfhfvtnhsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.gfhfvtnhsToolStripMenuItem.Text = "Параметры";
             this.gfhfvtnhsToolStripMenuItem.Click += new System.EventHandler(this.mOptions_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(148, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(177, 6);
             // 
             // mExit
             // 
@@ -209,7 +209,7 @@
             this.mExit.Name = "mExit";
             this.mExit.Padding = new System.Windows.Forms.Padding(0);
             this.mExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.mExit.Size = new System.Drawing.Size(151, 20);
+            this.mExit.Size = new System.Drawing.Size(180, 20);
             this.mExit.Text = "Выход";
             this.mExit.Click += new System.EventHandler(this.mExit_Click);
             // 
@@ -360,10 +360,10 @@
             this.pQuestion.Controls.Add(this.pictureBox3);
             this.pQuestion.Controls.Add(this.m_End);
             this.pQuestion.Controls.Add(this.m_Next);
-            this.pQuestion.Location = new System.Drawing.Point(4, 22);
+            this.pQuestion.Location = new System.Drawing.Point(4, 21);
             this.pQuestion.Name = "pQuestion";
             this.pQuestion.Padding = new System.Windows.Forms.Padding(3);
-            this.pQuestion.Size = new System.Drawing.Size(886, 432);
+            this.pQuestion.Size = new System.Drawing.Size(886, 433);
             this.pQuestion.TabIndex = 0;
             this.pQuestion.Text = "Опрос";
             this.pQuestion.UseVisualStyleBackColor = true;
@@ -378,7 +378,7 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Location = new System.Drawing.Point(9, 66);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(869, 331);
+            this.panel1.Size = new System.Drawing.Size(869, 332);
             this.panel1.TabIndex = 21;
             // 
             // label3
@@ -387,7 +387,7 @@
             this.label3.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.Location = new System.Drawing.Point(0, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(341, 331);
+            this.label3.Size = new System.Drawing.Size(341, 332);
             this.label3.TabIndex = 2;
             this.label3.Text = "...";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -397,7 +397,7 @@
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Right;
             this.pictureBox2.Location = new System.Drawing.Point(341, 0);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(10, 331);
+            this.pictureBox2.Size = new System.Drawing.Size(10, 332);
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Visible = false;
@@ -407,7 +407,7 @@
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
             this.pictureBox1.Location = new System.Drawing.Point(351, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(518, 331);
+            this.pictureBox1.Size = new System.Drawing.Size(518, 332);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -429,7 +429,7 @@
             this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
-            this.pictureBox3.Location = new System.Drawing.Point(6, 404);
+            this.pictureBox3.Location = new System.Drawing.Point(6, 405);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(872, 1);
             this.pictureBox3.TabIndex = 19;
@@ -443,7 +443,7 @@
             this.m_End.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
             this.m_End.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
             this.m_End.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.m_End.Location = new System.Drawing.Point(612, 411);
+            this.m_End.Location = new System.Drawing.Point(612, 412);
             this.m_End.Name = "m_End";
             this.m_End.Size = new System.Drawing.Size(130, 23);
             this.m_End.TabIndex = 10;
@@ -459,7 +459,7 @@
             this.m_Next.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
             this.m_Next.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
             this.m_Next.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.m_Next.Location = new System.Drawing.Point(748, 411);
+            this.m_Next.Location = new System.Drawing.Point(748, 412);
             this.m_Next.Name = "m_Next";
             this.m_Next.Size = new System.Drawing.Size(130, 23);
             this.m_Next.TabIndex = 9;
@@ -470,7 +470,7 @@
             // pStatistics
             // 
             this.pStatistics.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pStatistics.Controls.Add(this.Statistics);
+            this.pStatistics.Controls.Add(this.chart1);
             this.pStatistics.Controls.Add(this.pictureBox4);
             this.pStatistics.Controls.Add(this.button3);
             this.pStatistics.Controls.Add(this.label2);
@@ -482,44 +482,12 @@
             this.pStatistics.Text = "Статистика";
             this.pStatistics.UseVisualStyleBackColor = true;
             // 
-            // Statistics
-            // 
-            this.Statistics.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Statistics.BackColor = System.Drawing.Color.Transparent;
-            this.Statistics.BorderlineColor = System.Drawing.Color.DimGray;
-            chartArea1.Name = "ChartArea1";
-            this.Statistics.ChartAreas.Add(chartArea1);
-            legend1.Alignment = System.Drawing.StringAlignment.Center;
-            legend1.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            legend1.IsTextAutoFit = false;
-            legend1.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Column;
-            legend1.Name = "Legend1";
-            legend1.TitleAlignment = System.Drawing.StringAlignment.Far;
-            legend1.TitleFont = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Statistics.Legends.Add(legend1);
-            this.Statistics.Location = new System.Drawing.Point(8, 66);
-            this.Statistics.Name = "Statistics";
-            this.Statistics.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry;
-            series1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            series1.BorderWidth = 4;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series1.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.Statistics.Series.Add(series1);
-            this.Statistics.Size = new System.Drawing.Size(870, 334);
-            this.Statistics.TabIndex = 23;
-            this.Statistics.Text = "Статистика";
-            // 
             // pictureBox4
             // 
             this.pictureBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
-            this.pictureBox4.Location = new System.Drawing.Point(8, 406);
+            this.pictureBox4.Location = new System.Drawing.Point(8, 407);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(870, 1);
             this.pictureBox4.TabIndex = 24;
@@ -533,7 +501,7 @@
             this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
             this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(748, 413);
+            this.button3.Location = new System.Drawing.Point(748, 414);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(130, 23);
             this.button3.TabIndex = 22;
@@ -550,6 +518,35 @@
             this.label2.TabIndex = 21;
             this.label2.Text = "Статистика";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // chart1
+            // 
+            this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.chart1.BackColor = System.Drawing.Color.Transparent;
+            chartArea1.BackColor = System.Drawing.Color.Transparent;
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Alignment = System.Drawing.StringAlignment.Center;
+            legend1.BackColor = System.Drawing.Color.Transparent;
+            legend1.IsTextAutoFit = false;
+            legend1.Name = "Legend1";
+            legend1.TitleAlignment = System.Drawing.StringAlignment.Far;
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(8, 66);
+            this.chart1.Name = "chart1";
+            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SemiTransparent;
+            series1.BorderColor = System.Drawing.Color.White;
+            series1.BorderWidth = 4;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(870, 335);
+            this.chart1.TabIndex = 25;
+            this.chart1.Text = "Статистика";
             // 
             // FormMain
             // 
@@ -582,8 +579,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.pStatistics.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Statistics)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -629,7 +626,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.DataVisualization.Charting.Chart Statistics;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }
 

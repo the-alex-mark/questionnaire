@@ -308,6 +308,9 @@ namespace Student
                                     panel4.Visible = true;
                                     panel4.Dock = DockStyle.Fill;
                                     panel2.Height = 100;
+
+                                    textBox1.Text = "";
+                                    textBox1.Focus();
                                     break;
                             }
 
@@ -428,7 +431,7 @@ namespace Student
 
         private void listAnswers_SelectedIndexChanged(Object sender, EventArgs e)
         {
-            Result _result = new Result(Environment.MachineName, _question, listAnswers.Items[listAnswers.SelectedIndex].ToString());
+            QuestionResult _result = new QuestionResult(Environment.MachineName, _question, listAnswers.Items[listAnswers.SelectedIndex].ToString());
             Byte[] Buffer = Encoding.UTF8.GetBytes(_result.ToString());
             listAnswers.Enabled = false;
 
@@ -437,7 +440,7 @@ namespace Student
 
         private void m_Send_Click(Object sender, EventArgs e)
         {
-            Result _result = new Result(Environment.MachineName, _question, textBox1.Text);
+            QuestionResult _result = new QuestionResult(Environment.MachineName, _question, textBox1.Text);
             Byte[] Buffer = Encoding.UTF8.GetBytes(_result.ToString());
             textBox1.Enabled = false;
             m_Send.Enabled = false;
