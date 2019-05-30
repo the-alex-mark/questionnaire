@@ -153,7 +153,7 @@ namespace Teacher
         {
             UTheme(Program.Config.Theme, Program.Config.IconTheme);
 
-            Property _property = AssemblyInfo.Get(Assembly.GetExecutingAssembly().Location);
+            AssemblyInfo _property = AssemblyInfo.Load(Assembly.GetExecutingAssembly().Location);
 
             Title.Text = _property.Title;
             Version.Text = $"Версия \"Teacher\" {_property.Version.Major}.{_property.Version.Minor} сборка {_property.FileVersion.Major}";

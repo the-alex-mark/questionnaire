@@ -38,32 +38,34 @@
             this.pStartPage = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.pQuestion = new System.Windows.Forms.TabPage();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.m_Send = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.materialTabControl2 = new ProgLib.Windows.Forms.Material.MaterialTabControl();
+            this.pSingleAnswerSelection = new System.Windows.Forms.TabPage();
             this.listAnswers = new System.Windows.Forms.ListBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.pFreeAnswer = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.m_Send = new System.Windows.Forms.Button();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.MainMenu.SuspendLayout();
             this.materialTabControl1.SuspendLayout();
             this.pStartPage.SuspendLayout();
             this.pQuestion.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            this.panel4.SuspendLayout();
+            this.materialTabControl2.SuspendLayout();
+            this.pSingleAnswerSelection.SuspendLayout();
+            this.pFreeAnswer.SuspendLayout();
             this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // MainMenu
@@ -160,6 +162,8 @@
             // pQuestion
             // 
             this.pQuestion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pQuestion.Controls.Add(this.pictureBox4);
+            this.pQuestion.Controls.Add(this.m_Send);
             this.pQuestion.Controls.Add(this.panel1);
             this.pQuestion.Location = new System.Drawing.Point(4, 21);
             this.pQuestion.Name = "pQuestion";
@@ -168,6 +172,33 @@
             this.pQuestion.TabIndex = 0;
             this.pQuestion.Text = "Опрос";
             this.pQuestion.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
+            this.pictureBox4.Location = new System.Drawing.Point(8, 403);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(902, 1);
+            this.pictureBox4.TabIndex = 25;
+            this.pictureBox4.TabStop = false;
+            // 
+            // m_Send
+            // 
+            this.m_Send.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.m_Send.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
+            this.m_Send.FlatAppearance.BorderSize = 0;
+            this.m_Send.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
+            this.m_Send.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
+            this.m_Send.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.m_Send.Location = new System.Drawing.Point(780, 410);
+            this.m_Send.Name = "m_Send";
+            this.m_Send.Size = new System.Drawing.Size(130, 23);
+            this.m_Send.TabIndex = 11;
+            this.m_Send.Text = "Готово";
+            this.m_Send.UseVisualStyleBackColor = false;
+            this.m_Send.Click += new System.EventHandler(this.m_Send_Click);
             // 
             // panel1
             // 
@@ -178,9 +209,9 @@
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Location = new System.Drawing.Point(17, 16);
+            this.panel1.Location = new System.Drawing.Point(8, 16);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(885, 405);
+            this.panel1.Size = new System.Drawing.Size(902, 382);
             this.panel1.TabIndex = 22;
             // 
             // label3
@@ -189,7 +220,7 @@
             this.label3.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.Location = new System.Drawing.Point(0, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(436, 205);
+            this.label3.Size = new System.Drawing.Size(453, 182);
             this.label3.TabIndex = 2;
             this.label3.Text = "...";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -197,9 +228,9 @@
             // pictureBox2
             // 
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pictureBox2.Location = new System.Drawing.Point(436, 0);
+            this.pictureBox2.Location = new System.Drawing.Point(453, 0);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(10, 205);
+            this.pictureBox2.Size = new System.Drawing.Size(10, 182);
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Visible = false;
@@ -207,9 +238,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pictureBox1.Location = new System.Drawing.Point(446, 0);
+            this.pictureBox1.Location = new System.Drawing.Point(463, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(439, 205);
+            this.pictureBox1.Size = new System.Drawing.Size(439, 182);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -218,23 +249,37 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Transparent;
-            this.panel2.Controls.Add(this.panel3);
-            this.panel2.Controls.Add(this.panel4);
+            this.panel2.Controls.Add(this.materialTabControl2);
+            this.panel2.Controls.Add(this.pictureBox3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 205);
+            this.panel2.Location = new System.Drawing.Point(0, 182);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(885, 200);
+            this.panel2.Size = new System.Drawing.Size(902, 200);
             this.panel2.TabIndex = 3;
             // 
-            // panel3
+            // materialTabControl2
             // 
-            this.panel3.Controls.Add(this.listAnswers);
-            this.panel3.Controls.Add(this.pictureBox3);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(442, 200);
-            this.panel3.TabIndex = 0;
+            this.materialTabControl2.Controls.Add(this.pSingleAnswerSelection);
+            this.materialTabControl2.Controls.Add(this.pFreeAnswer);
+            this.materialTabControl2.Depth = 0;
+            this.materialTabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.materialTabControl2.Location = new System.Drawing.Point(0, 10);
+            this.materialTabControl2.MouseState = ProgLib.Windows.Forms.Material.MouseState.HOVER;
+            this.materialTabControl2.Name = "materialTabControl2";
+            this.materialTabControl2.SelectedIndex = 0;
+            this.materialTabControl2.Size = new System.Drawing.Size(902, 190);
+            this.materialTabControl2.TabIndex = 0;
+            // 
+            // pSingleAnswerSelection
+            // 
+            this.pSingleAnswerSelection.Controls.Add(this.listAnswers);
+            this.pSingleAnswerSelection.Location = new System.Drawing.Point(4, 21);
+            this.pSingleAnswerSelection.Name = "pSingleAnswerSelection";
+            this.pSingleAnswerSelection.Padding = new System.Windows.Forms.Padding(3);
+            this.pSingleAnswerSelection.Size = new System.Drawing.Size(894, 165);
+            this.pSingleAnswerSelection.TabIndex = 0;
+            this.pSingleAnswerSelection.Text = "Выбор одного правильного ответа";
+            this.pSingleAnswerSelection.UseVisualStyleBackColor = true;
             // 
             // listAnswers
             // 
@@ -244,42 +289,32 @@
             this.listAnswers.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.listAnswers.FormattingEnabled = true;
             this.listAnswers.ItemHeight = 30;
-            this.listAnswers.Location = new System.Drawing.Point(0, 10);
+            this.listAnswers.Location = new System.Drawing.Point(3, 3);
             this.listAnswers.Name = "listAnswers";
-            this.listAnswers.Size = new System.Drawing.Size(442, 190);
+            this.listAnswers.Size = new System.Drawing.Size(888, 159);
             this.listAnswers.TabIndex = 0;
             this.listAnswers.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listAnswers_DrawItem);
             this.listAnswers.SelectedIndexChanged += new System.EventHandler(this.listAnswers_SelectedIndexChanged);
             // 
-            // pictureBox3
+            // pFreeAnswer
             // 
-            this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pictureBox3.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(442, 10);
-            this.pictureBox3.TabIndex = 1;
-            this.pictureBox3.TabStop = false;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.Transparent;
-            this.panel4.Controls.Add(this.panel5);
-            this.panel4.Controls.Add(this.m_Send);
-            this.panel4.Controls.Add(this.pictureBox4);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(442, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(443, 200);
-            this.panel4.TabIndex = 1;
+            this.pFreeAnswer.Controls.Add(this.panel5);
+            this.pFreeAnswer.Location = new System.Drawing.Point(4, 22);
+            this.pFreeAnswer.Name = "pFreeAnswer";
+            this.pFreeAnswer.Padding = new System.Windows.Forms.Padding(3);
+            this.pFreeAnswer.Size = new System.Drawing.Size(894, 164);
+            this.pFreeAnswer.TabIndex = 1;
+            this.pFreeAnswer.Text = "Свободный ответ";
+            this.pFreeAnswer.UseVisualStyleBackColor = true;
             // 
             // panel5
             // 
             this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel5.Controls.Add(this.textBox1);
-            this.panel5.Location = new System.Drawing.Point(52, 127);
+            this.panel5.Location = new System.Drawing.Point(38, 114);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(346, 30);
+            this.panel5.Size = new System.Drawing.Size(817, 30);
             this.panel5.TabIndex = 12;
             this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel5_Paint);
             // 
@@ -291,33 +326,17 @@
             this.textBox1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBox1.Location = new System.Drawing.Point(8, 7);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(330, 16);
+            this.textBox1.Size = new System.Drawing.Size(801, 16);
             this.textBox1.TabIndex = 0;
             // 
-            // m_Send
+            // pictureBox3
             // 
-            this.m_Send.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.m_Send.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(221)))), ((int)(((byte)(221)))));
-            this.m_Send.FlatAppearance.BorderSize = 0;
-            this.m_Send.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
-            this.m_Send.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(217)))), ((int)(((byte)(177)))));
-            this.m_Send.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.m_Send.Location = new System.Drawing.Point(268, 163);
-            this.m_Send.Name = "m_Send";
-            this.m_Send.Size = new System.Drawing.Size(130, 23);
-            this.m_Send.TabIndex = 11;
-            this.m_Send.Text = "Готово";
-            this.m_Send.UseVisualStyleBackColor = false;
-            this.m_Send.Click += new System.EventHandler(this.m_Send_Click);
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pictureBox4.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(443, 10);
-            this.pictureBox4.TabIndex = 2;
-            this.pictureBox4.TabStop = false;
+            this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pictureBox3.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(902, 10);
+            this.pictureBox3.TabIndex = 1;
+            this.pictureBox3.TabStop = false;
             // 
             // FormMain
             // 
@@ -341,16 +360,17 @@
             this.materialTabControl1.ResumeLayout(false);
             this.pStartPage.ResumeLayout(false);
             this.pQuestion.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            this.panel4.ResumeLayout(false);
+            this.materialTabControl2.ResumeLayout(false);
+            this.pSingleAnswerSelection.ResumeLayout(false);
+            this.pFreeAnswer.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -371,15 +391,16 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ListBox listAnswers;
-        private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Button m_Send;
         private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panel2;
+        private ProgLib.Windows.Forms.Material.MaterialTabControl materialTabControl2;
+        private System.Windows.Forms.TabPage pSingleAnswerSelection;
+        private System.Windows.Forms.TabPage pFreeAnswer;
+        private System.Windows.Forms.PictureBox pictureBox4;
     }
 }
 

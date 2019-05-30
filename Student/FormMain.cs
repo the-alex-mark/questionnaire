@@ -210,6 +210,8 @@ namespace Student
             BackColor = _renderer.WindowBackColor;
             pStartPage.BackColor = _renderer.WindowBackColor;
             pQuestion.BackColor = _renderer.WindowBackColor;
+            pSingleAnswerSelection.BackColor = _renderer.WindowBackColor;
+            pFreeAnswer.BackColor = _renderer.WindowBackColor;
 
             listAnswers.BackColor = _renderer.WindowBackColor;
             _selectColor = _renderer.DropDownMenuSelectColor;
@@ -288,19 +290,15 @@ namespace Student
                             switch (_question.Type)
                             {
                                 case "Выбор одного правильного ответа":
-                                    panel3.Visible = true;
-                                    panel4.Visible = false;
+                                    materialTabControl2.SelectTab(pSingleAnswerSelection);
                                     panel2.Height = 200;
-                                    panel4.Dock = DockStyle.Left;
 
                                     listAnswers.Items.Clear();
                                     foreach (String Answer in _question.Answers) listAnswers.Items.Add(Answer);
                                     break;
 
                                 case "Свободный ответ":
-                                    panel3.Visible = false;
-                                    panel4.Visible = true;
-                                    panel4.Dock = DockStyle.Fill;
+                                    materialTabControl2.SelectTab(pFreeAnswer);
                                     panel2.Height = 100;
 
                                     textBox1.Text = "";
@@ -320,8 +318,9 @@ namespace Student
                                 pictureBox2.Visible = false;
                             }
 
-                            listAnswers.Enabled = true;
-                            textBox1.Enabled = true;
+                            //listAnswers.Enabled = true;
+                            //textBox1.Enabled = true;
+                            materialTabControl2.Enabled = true;
                             m_Send.Enabled = true;
                             materialTabControl1.SelectTab(pQuestion);
                         }
@@ -425,21 +424,46 @@ namespace Student
 
         private void listAnswers_SelectedIndexChanged(Object sender, EventArgs e)
         {
-            QuestionResult _result = new QuestionResult(Environment.MachineName, _question, listAnswers.Items[listAnswers.SelectedIndex].ToString());
-            Byte[] Buffer = Encoding.UTF8.GetBytes(_result.ToString());
-            listAnswers.Enabled = false;
+            //QuestionResult _result = new QuestionResult(Environment.MachineName, _question, listAnswers.Items[listAnswers.SelectedIndex].ToString());
+            //Byte[] Buffer = Encoding.UTF8.GetBytes(_result.ToString());
+            //listAnswers.Enabled = false;
 
-            Program.Server.Send(Program.Config.Server, Program.Config.Port, Buffer);
+            //Program.Server.Send(Program.Config.Server, Program.Config.Port, Buffer);
         }
 
         private void m_Send_Click(Object sender, EventArgs e)
         {
-            QuestionResult _result = new QuestionResult(Environment.MachineName, _question, textBox1.Text);
-            Byte[] Buffer = Encoding.UTF8.GetBytes(_result.ToString());
-            textBox1.Enabled = false;
-            m_Send.Enabled = false;
+            // Создание экземпляра результата ответа студента
+            QuestionResult _result = new QuestionResult(Environment.MachineName, _question, "");
 
-            Program.Server.Send(Program.Config.Server, Program.Config.Port, Buffer);
+            // Инициализация результата в зависимости от типа вопроса
+            switch (materialTabControl2.SelectedIndex)
+            {
+                case 0:
+                    if (listAnswers.SelectedIndex > -1)
+                    {
+                        _result.Answer = listAnswers.Items[listAnswers.SelectedIndex].ToString();
+                        m_Send.Enabled = false;
+                    }
+                    break;
+
+                case 1:
+                    if (textBox1.Text != "")
+                    {
+                        _result.Answer = textBox1.Text;
+                        m_Send.Enabled = false;
+                    }
+                    break;
+            }
+            
+            if (!m_Send.Enabled)
+            {
+                // Отправка данных преподавателю
+                Byte[] Buffer = Encoding.UTF8.GetBytes(_result.ToString());
+                Program.Server.Send(Program.Config.Server, Program.Config.Port, Buffer);
+
+                materialTabControl2.Enabled = false;
+            }
         }
 
         private void panel5_Paint(Object sender, PaintEventArgs e)

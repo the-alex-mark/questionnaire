@@ -82,7 +82,7 @@ namespace Questionnaire.Data
                             break;
 
                         case "Свободный ответ":
-                            if (Text.EditorialDistance(Question.Answers[0], Answer) <= 3)
+                            if (Text.LevenshteinDistance(Question.Answers[0], Answer) <= 3)
                                 return true;
                             break;
                     }

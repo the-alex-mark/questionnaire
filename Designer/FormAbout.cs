@@ -135,7 +135,7 @@ namespace Designer
 
         private void FormAbout_Load(Object sender, EventArgs e)
         {
-            Property _property = AssemblyInfo.Get(Assembly.GetExecutingAssembly().Location);
+            AssemblyInfo _property = AssemblyInfo.Load(Assembly.GetExecutingAssembly().Location);
             Title.Text = _property.Title;
             Version.Text = $"Версия {_property.Version.Major}.{_property.Version.Minor} сборка {_property.FileVersion.Major}";
             Copyright.Text = _property.Copyright;
