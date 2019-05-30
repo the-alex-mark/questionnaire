@@ -158,7 +158,6 @@ namespace Teacher
 
             BackColor = _renderer.WindowBackColor;
             label1.ForeColor = _renderer.ForeColor;
-            label2.ForeColor = _renderer.ForeColor;
             label3.ForeColor = _renderer.ForeColor;
             pictureBox1.BackColor = _renderer.ForeColor;
             pictureBox2.BackColor = _renderer.ForeColor;
@@ -237,11 +236,7 @@ namespace Teacher
         {
             // Обработка интерфейса приложения
             UTheme(Program.Config.Theme, Program.Config.IconTheme);
-
-            // Получение количества доступных компьютеров в локальной сети
-            List<String> Machines = LocalNetwork.GetServers(TypeServer.Workstation).ToList();
-            label2.Text = "из " + ((Machines.IndexOf(Environment.MachineName) > -1) ? Machines.Count - 1 : Machines.Count);
-            
+                        
             // Обработка полученных данных
             Program.Server.Receiver += OnReceiver;
         }

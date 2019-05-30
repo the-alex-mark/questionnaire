@@ -42,7 +42,7 @@
             this.mStart = new System.Windows.Forms.ToolStripMenuItem();
             this.mStop = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.gfhfvtnhsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mOptions = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.mExit = new System.Windows.Forms.ToolStripMenuItem();
             this.mmView = new System.Windows.Forms.ToolStripMenuItem();
@@ -145,7 +145,7 @@
             this.mStart,
             this.mStop,
             this.toolStripSeparator3,
-            this.gfhfvtnhsToolStripMenuItem,
+            this.mOptions,
             this.toolStripSeparator4,
             this.mExit});
             this.mmFile.Font = new System.Drawing.Font("Segoe UI", 7.5F);
@@ -160,21 +160,21 @@
             this.mCreate.Name = "mCreate";
             this.mCreate.Padding = new System.Windows.Forms.Padding(0);
             this.mCreate.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.mCreate.Size = new System.Drawing.Size(151, 20);
+            this.mCreate.Size = new System.Drawing.Size(180, 20);
             this.mCreate.Text = "Создать";
             this.mCreate.Click += new System.EventHandler(this.mCreate_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(148, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // mStart
             // 
             this.mStart.Name = "mStart";
             this.mStart.Padding = new System.Windows.Forms.Padding(0);
             this.mStart.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Q)));
-            this.mStart.Size = new System.Drawing.Size(151, 20);
+            this.mStart.Size = new System.Drawing.Size(180, 20);
             this.mStart.Text = "Начать";
             this.mStart.Click += new System.EventHandler(this.mStart_Click);
             // 
@@ -184,26 +184,26 @@
             this.mStop.Name = "mStop";
             this.mStop.Padding = new System.Windows.Forms.Padding(0);
             this.mStop.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.W)));
-            this.mStop.Size = new System.Drawing.Size(151, 20);
+            this.mStop.Size = new System.Drawing.Size(180, 20);
             this.mStop.Text = "Завершить";
             this.mStop.Click += new System.EventHandler(this.mStop_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(148, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
             // 
-            // gfhfvtnhsToolStripMenuItem
+            // mOptions
             // 
-            this.gfhfvtnhsToolStripMenuItem.Name = "gfhfvtnhsToolStripMenuItem";
-            this.gfhfvtnhsToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
-            this.gfhfvtnhsToolStripMenuItem.Text = "Параметры";
-            this.gfhfvtnhsToolStripMenuItem.Click += new System.EventHandler(this.mOptions_Click);
+            this.mOptions.Name = "mOptions";
+            this.mOptions.Size = new System.Drawing.Size(180, 22);
+            this.mOptions.Text = "Параметры";
+            this.mOptions.Click += new System.EventHandler(this.mOptions_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(148, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(177, 6);
             // 
             // mExit
             // 
@@ -211,7 +211,7 @@
             this.mExit.Name = "mExit";
             this.mExit.Padding = new System.Windows.Forms.Padding(0);
             this.mExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.mExit.Size = new System.Drawing.Size(151, 20);
+            this.mExit.Size = new System.Drawing.Size(180, 20);
             this.mExit.Text = "Выход";
             this.mExit.Click += new System.EventHandler(this.mExit_Click);
             // 
@@ -362,10 +362,10 @@
             this.pQuestion.Controls.Add(this.pictureBox3);
             this.pQuestion.Controls.Add(this.m_End);
             this.pQuestion.Controls.Add(this.m_Next);
-            this.pQuestion.Location = new System.Drawing.Point(4, 21);
+            this.pQuestion.Location = new System.Drawing.Point(4, 22);
             this.pQuestion.Name = "pQuestion";
             this.pQuestion.Padding = new System.Windows.Forms.Padding(3);
-            this.pQuestion.Size = new System.Drawing.Size(886, 433);
+            this.pQuestion.Size = new System.Drawing.Size(886, 432);
             this.pQuestion.TabIndex = 0;
             this.pQuestion.Text = "Опрос";
             this.pQuestion.UseVisualStyleBackColor = true;
@@ -478,10 +478,10 @@
             this.pStatistics.Controls.Add(this.chart1);
             this.pStatistics.Controls.Add(this.label2);
             this.pStatistics.Controls.Add(this.pictureBox4);
-            this.pStatistics.Location = new System.Drawing.Point(4, 21);
+            this.pStatistics.Location = new System.Drawing.Point(4, 22);
             this.pStatistics.Name = "pStatistics";
             this.pStatistics.Padding = new System.Windows.Forms.Padding(3);
-            this.pStatistics.Size = new System.Drawing.Size(886, 433);
+            this.pStatistics.Size = new System.Drawing.Size(886, 432);
             this.pStatistics.TabIndex = 1;
             this.pStatistics.Text = "Статистика";
             this.pStatistics.UseVisualStyleBackColor = true;
@@ -646,7 +646,7 @@
         private System.Windows.Forms.PictureBox pbSettings;
         private System.Windows.Forms.PictureBox pbStatisticsView;
         private System.Windows.Forms.PictureBox pbQuestionView;
-        private System.Windows.Forms.ToolStripMenuItem gfhfvtnhsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mOptions;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private ProgLib.Windows.Forms.Material.MaterialTabControl materialTabControl1;
         private System.Windows.Forms.TabPage pQuestion;

@@ -263,6 +263,7 @@ namespace Teacher
                 pbQuestionView.Enabled = true;
                 pbStatisticsView.Enabled = true;
                 pbSettings.Enabled = false;
+                mOptions.Enabled = false;
 
                 _info = Info;
                 
@@ -296,6 +297,7 @@ namespace Teacher
             pbQuestionView.Enabled = false;
             pbStatisticsView.Enabled = false;
             pbSettings.Enabled = true;
+            mOptions.Enabled = true;
         }
 
         // Параметры
@@ -340,14 +342,6 @@ namespace Teacher
 
         private void FormMain_Load(Object sender, EventArgs e)
         {
-            // Получение списка компьютеров средствами .Net
-            //MessageBox.Show(
-            //    LocalNetwork.GetMachines().Aggregate("", (S, I) => S += I + "\n"), "Список доступных компьютеров");
-
-            // Получение списка компьютеров средствами WinAPI
-            //MessageBox.Show(
-            //    LocalNetwork.GetServers(TypeServer.Workstation).Aggregate("", (S, I) => S += I + "\n"), "Список доступных компьютеров");
-
             // Обработка интерфейса приложения
             Program.Config.ThemeManagement += delegate (Object _object, VisualizationEventArgs _vsCodeThemeEventArgs)
             {
