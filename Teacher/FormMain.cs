@@ -206,15 +206,13 @@ namespace Teacher
 
         private void UFontRegister(Boolean FontRegister)
         {
-            if (!FontRegister)
+            if (MainMenu.Items.Count > 0)
             {
                 foreach (ToolStripMenuItem Item in MainMenu.Items)
-                    Item.Text = Item.Text.ToUpper();
-            }
-            else
-            {
-                foreach (ToolStripMenuItem Item in MainMenu.Items)
-                    Item.Text = Item.Text.ToFirstUpper();
+                {
+                    if (Item.Text.Length > 0)
+                        Item.Text = (!FontRegister) ? Item.Text.ToUpper() : Item.Text.ToFirstUpper();
+                }
             }
         }
 
