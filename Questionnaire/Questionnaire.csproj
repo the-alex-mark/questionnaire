@@ -53,6 +53,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config.cs" />
+    <Compile Include="Controls\FormAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\FormAbout.Designer.cs">
+      <DependentUpon>FormAbout.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ViewAnswer.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -73,6 +79,9 @@
     <Compile Include="VisualizationEventArgs.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controls\FormAbout.resx">
+      <DependentUpon>FormAbout.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\ViewAnswer.resx">
       <DependentUpon>ViewAnswer.cs</DependentUpon>
     </EmbeddedResource>

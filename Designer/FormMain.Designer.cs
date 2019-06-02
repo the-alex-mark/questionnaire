@@ -559,6 +559,7 @@
             this.tQuestion.Size = new System.Drawing.Size(461, 134);
             this.tQuestion.TabIndex = 0;
             this.tQuestion.TextChanged += new System.EventHandler(this.tQuestion_TextChanged);
+            this.tQuestion.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tQuestion_KeyUp);
             // 
             // label2
             // 

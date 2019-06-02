@@ -98,9 +98,11 @@
             // 
             // Title
             // 
+            this.Title.AutoEllipsis = true;
             this.Title.AutoSize = true;
             this.Title.Font = new System.Drawing.Font("Century Gothic", 17F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Title.Location = new System.Drawing.Point(11, 45);
+            this.Title.MaximumSize = new System.Drawing.Size(396, 27);
             this.Title.Name = "Title";
             this.Title.Size = new System.Drawing.Size(251, 27);
             this.Title.TabIndex = 7;
@@ -108,19 +110,23 @@
             // 
             // Version
             // 
+            this.Version.AutoEllipsis = true;
             this.Version.AutoSize = true;
             this.Version.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Version.Location = new System.Drawing.Point(15, 71);
+            this.Version.MaximumSize = new System.Drawing.Size(396, 12);
             this.Version.Name = "Version";
-            this.Version.Size = new System.Drawing.Size(97, 12);
+            this.Version.Size = new System.Drawing.Size(117, 12);
             this.Version.TabIndex = 8;
-            this.Version.Text = "Версия 2.0 сборка 2";
+            this.Version.Text = "ыЖЩШиЫЭшЫЭмыЭзи\\";
             // 
             // Copyright
             // 
+            this.Copyright.AutoEllipsis = true;
             this.Copyright.AutoSize = true;
             this.Copyright.Font = new System.Drawing.Font("Segoe UI", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Copyright.Location = new System.Drawing.Point(15, 124);
+            this.Copyright.MaximumSize = new System.Drawing.Size(396, 12);
             this.Copyright.Name = "Copyright";
             this.Copyright.Size = new System.Drawing.Size(159, 12);
             this.Copyright.TabIndex = 9;
@@ -128,8 +134,10 @@
             // 
             // Developer
             // 
+            this.Developer.AutoEllipsis = true;
             this.Developer.AutoSize = true;
             this.Developer.Location = new System.Drawing.Point(15, 136);
+            this.Developer.MaximumSize = new System.Drawing.Size(396, 12);
             this.Developer.Name = "Developer";
             this.Developer.Size = new System.Drawing.Size(134, 12);
             this.Developer.TabIndex = 10;

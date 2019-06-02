@@ -77,6 +77,24 @@ namespace Questionnaire.Controls
         {
             TrueChanged?.Invoke(this, new EventArgs());
         }
+        
+        private void textBox1_KeyUp(Object sender, KeyEventArgs e)
+        {
+            switch (e.KeyData)
+            {
+                case Keys.Control | Keys.A:
+                    (sender as TextBox).SelectAll();
+                    break;
+
+                case Keys.Control | Keys.V:
+                    (sender as TextBox).Paste();
+                    break;
+
+                case Keys.Control | Keys.C:
+                    (sender as TextBox).Copy();
+                    break;
+            }
+        }
 
         #endregion
     }

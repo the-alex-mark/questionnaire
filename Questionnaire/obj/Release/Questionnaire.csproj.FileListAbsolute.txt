@@ -11,3 +11,4 @@ C:\Users\Александр Макаров\source\repos\Опросник\Questio
 C:\Users\Александр Макаров\source\repos\Опросник\Questionnaire\bin\Release\ProgLib.pdb
 C:\Users\Александр Макаров\source\repos\Опросник\Questionnaire\obj\Release\Questionnaire.Controls.ViewAnswer.resources
 C:\Users\Александр Макаров\source\repos\Опросник\Questionnaire\bin\Release\ProgLib.xml
+C:\Users\Александр Макаров\source\repos\Опросник\Questionnaire\obj\Release\Questionnaire.Controls.FormAbout.resources

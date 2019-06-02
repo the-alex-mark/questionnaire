@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Questionnaire;
+using System;
 using System.Windows.Forms;
 
 namespace Designer
@@ -18,5 +16,7 @@ namespace Designer
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormMain());
         }
+
+        public static Config Config = new Config();
     }
 }

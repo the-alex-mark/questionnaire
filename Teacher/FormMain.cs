@@ -14,6 +14,8 @@ using Questionnaire.Data;
 using ProgLib;
 using ProgLib.Network.Tcp;
 using ProgLib.Windows.Forms.VSCode;
+using ProgLib.Diagnostics;
+using System.Reflection;
 
 namespace Teacher
 {

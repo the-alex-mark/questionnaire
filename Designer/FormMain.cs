@@ -87,10 +87,10 @@ namespace Designer
                         DwmSetWindowAttribute(this.Handle, 2, ref v, 4);
                         MARGINS margins = new MARGINS()
                         {
-                            bottomHeight = 1,
+                            bottomHeight = 0,
                             leftWidth = 0,
                             rightWidth = 0,
-                            topHeight = 0
+                            topHeight = 1
                         };
                         DwmExtendFrameIntoClientArea(this.Handle, ref margins);
                     }
@@ -155,7 +155,7 @@ namespace Designer
             };
 
             // Оформление MainMenu
-            MainMenu.Renderer = new VSCodeToolStripRenderer(VSCodeTheme.Light);
+            MainMenu.Renderer = new VSCodeToolStripRenderer(VSCodeTheme.Light, new VSCodeToolStripSettings(this, MainMenu, Program.Config.IconTheme));
             MainMenu.MouseDown += delegate (Object _object, MouseEventArgs _mouseEventArgs)
             {
                 ReleaseCapture();
@@ -236,10 +236,11 @@ namespace Designer
                 ViewAnswer viewAnswer = new ViewAnswer
                 {
                     Text = Question.Answers[i - 1],
-                    Size = new Size(panel2.Width, 69),
+                    Size = new Size(panel2.Width, 72),
                     //MaximumSize = new Size(1000, 69),
-                    Location = new Point(0, Y += 80),
+                    //Location = new Point(0, Y += 80),
                     Margin = new Padding(0, 0, 0, 0),
+                    Padding = new Padding(0, 3, 0, 0),
                     Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right,
                     TabIndex = i + 2,
                     Dock = DockStyle.Top,
@@ -274,7 +275,7 @@ namespace Designer
                     True(Question);
 
                     addAnswer.Visible = true;
-                    addImage.Visible = true;
+                    addImage.Location = new Point(419, 465);
 
                     mSingleAnswerSelection.Checked = true;
                     mFreeAnswer.Checked = false;
@@ -285,7 +286,7 @@ namespace Designer
                         Answer.VisibleTrue = Answer.VisibleDelete = false;
 
                     addAnswer.Visible = false;
-                    addImage.Visible = false;
+                    addImage.Location = addAnswer.Location;
 
                     mSingleAnswerSelection.Checked = false;
                     mFreeAnswer.Checked = true;
@@ -567,6 +568,8 @@ namespace Designer
         }
         private void mSaveAs_Click(Object sender, EventArgs e)
         {
+            listQuestions_SelectedIndexChanged(sender, e);
+
             SaveFileDialog SFD = new SaveFileDialog
             {
                 Title = "Сохранение теста",
@@ -699,9 +702,12 @@ namespace Designer
         // Добавление вопроса
         private void mAddQuestion_Click(Object sender, EventArgs e)
         {
-            _survey.Questions.Add(new Question());
-            listQuestions.Items.Add("");
+            listQuestions_SelectedIndexChanged(sender, e);
 
+            listQuestions.Items.Add("");
+            _survey.Questions.Add(new Question("Выбор одного правильного ответа", "", -1, null, new String[] { "", "" }));
+
+            //Update(_survey.Questions[_survey.Questions.Count - 1]);
             listQuestions.SelectedIndex = listQuestions.Items.Count - 1;
         }
 
@@ -928,6 +934,25 @@ namespace Designer
                 }
             }
         }
+
+        private void tQuestion_KeyUp(Object sender, KeyEventArgs e)
+        {
+            switch (e.KeyData)
+            {
+                case Keys.Control | Keys.A:
+                    (sender as TextBox).SelectAll();
+                    break;
+
+                case Keys.Control | Keys.V:
+                    (sender as TextBox).Paste();
+                    break;
+
+                case Keys.Control | Keys.C:
+                    (sender as TextBox).Copy();
+                    break;
+            }
+        }
+
         private void addImage_Click(Object sender, EventArgs e)
         {
             mAddImage_Click(sender, e);

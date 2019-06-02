@@ -45,6 +45,7 @@
             this.textBox1.Size = new System.Drawing.Size(580, 47);
             this.textBox1.TabIndex = 0;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
             // 
             // radioButton1
             // 
@@ -69,6 +70,7 @@
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(41, 12);
             this.linkLabel1.TabIndex = 9999;
+            this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Удалить";
             this.linkLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.linkLabel1.VisitedLinkColor = System.Drawing.Color.Blue;
