@@ -519,7 +519,7 @@ namespace Designer
                         _rewrite = false;
                         listQuestions.SelectedIndex = 0;
                     }
-                    catch (Exception Error) { MessageBox.Show(Error.Message, "Ошибка"); }
+                    catch (Exception Error) { MessageBox.Show(Error.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error); }
                 }
             };
 

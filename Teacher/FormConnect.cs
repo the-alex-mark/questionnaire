@@ -279,12 +279,12 @@ namespace Teacher
                     lTest.ForeColor = Color.Black;
                     lTest.Text = (_survay.Name != "") ? _survay.Name : _file;
                 }
-                catch
+                catch (Exception Error)
                 {
                     _file = null;
                     lTest.ForeColor = _errorColor;
 
-                    MessageBox.Show("Файл имел неверный формат!", "Опросник", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(Error.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else

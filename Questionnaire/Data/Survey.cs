@@ -56,7 +56,7 @@ namespace Questionnaire.Data
                             Answers.ToArray()));
                 }
             }
-            catch { throw new Exception("Файл имел некорректный формат"); }
+            catch { throw new Exception("Файл имел неверный формат!"); }
         }
 
         /// <summary>

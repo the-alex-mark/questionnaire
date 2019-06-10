@@ -316,11 +316,13 @@ namespace Teacher
         // Вид
         private void mSurvey_Click(Object sender, EventArgs e)
         {
-            pbQuestionView_Click(sender, e);
+            if (pbQuestionView.Enabled)
+                pbQuestionView_Click(sender, e);
         }
         private void mStatistics_Click(Object sender, EventArgs e)
         {
-            pbStatisticsView_Click(sender, e);
+            if (pbStatisticsView.Enabled)
+                pbStatisticsView_Click(sender, e);
         }
 
         // О программе

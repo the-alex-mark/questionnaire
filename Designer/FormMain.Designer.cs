@@ -425,6 +425,7 @@
             this.mRandomOrderAnswers.Padding = new System.Windows.Forms.Padding(0);
             this.mRandomOrderAnswers.Size = new System.Drawing.Size(208, 20);
             this.mRandomOrderAnswers.Text = "Случайный порядок ответов";
+            this.mRandomOrderAnswers.Visible = false;
             this.mRandomOrderAnswers.Click += new System.EventHandler(this.mRandomOrderAnswers_Click);
             // 
             // mAddImage
