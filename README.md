@@ -34,7 +34,3 @@
 
 ## Дополнительные ссылки
 * [Тестирование программы (видео)](https://vk.com/video135058746_456239188)
-
-## Связь с разработчиком
-* [ВКонтакте](https://vk.com/the_alex_mark)
-* [Instagram](https://www.instagram.com/the_alex_mark/)
