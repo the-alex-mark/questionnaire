@@ -1,6 +1,5 @@
-
-# Created by https://www.toptal.com/developers/gitignore/api/visualstudio,visualstudiocode,git,csharp
-# Edit at https://www.toptal.com/developers/gitignore?templates=visualstudio,visualstudiocode,git,csharp
+# Created by https://www.toptal.com/developers/gitignore/api/windows,visualstudio,visualstudiocode,csharp,git
+# Edit at https://www.toptal.com/developers/gitignore?templates=windows,visualstudio,visualstudiocode,csharp,git
 
 ### Csharp ###
 ## Ignore Visual Studio temporary files, build results, and
@@ -384,6 +383,32 @@ MigrationBackup/
 # Ignore all local history of files
 .history
 
+### Windows ###
+# Windows thumbnail cache files
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+
+# Dump file
+*.stackdump
+
+# Folder config file
+[Dd]esktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
 ### VisualStudio ###
 
 # User-specific files
@@ -542,4 +567,4 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 
-# End of https://www.toptal.com/developers/gitignore/api/visualstudio,visualstudiocode,git,csharp
+# End of https://www.toptal.com/developers/gitignore/api/windows,visualstudio,visualstudiocode,csharp,git
